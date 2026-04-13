@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>참고문헌 — 으뜸 파이썬 Express</title>
+  <style>
+    :root {
+      --deep-blue: #1a3a5c;
+      --accent-blue: #2c7be5;
+      --light-bg: #f7f9fc;
+      --card-bg: #ffffff;
+      --text: #2d3748;
+      --text-light: #718096;
+      --border: #e2e8f0;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Pretendard', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text);
+      background: var(--light-bg);
+      line-height: 1.7;
+    }
+
+    /* Header */
+    .header {
+      background: linear-gradient(135deg, var(--deep-blue), #2c5282);
+      color: white;
+      padding: 2.5rem 2rem;
+      text-align: center;
+    }
+    .header h1 { font-size: 2rem; margin-bottom: 0.3rem; }
+    .header p { opacity: 0.85; }
+    .header a { color: rgba(255,255,255,0.8); text-decoration: underline; }
+
+    .container { max-width: 960px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* Navigation */
+    .toc {
+      background: var(--card-bg);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin: 2rem 0;
+      border: 1px solid var(--border);
+    }
+    .toc h3 { color: var(--deep-blue); margin-bottom: 0.75rem; font-size: 1.1rem; }
+    .toc ul { list-style: none; display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.4rem; }
+    .toc a {
+      color: var(--accent-blue);
+      text-decoration: none;
+      font-size: 0.9rem;
+      padding: 0.2rem 0;
+      display: block;
+    }
+    .toc a:hover { text-decoration: underline; }
+    .toc .cat-num {
+      display: inline-block;
+      width: 1.5em;
+      color: var(--text-light);
+      font-weight: 600;
+    }
+
+    /* Category */
+    .category {
+      margin: 2.5rem 0;
+    }
+    .category h2 {
+      font-size: 1.4rem;
+      color: var(--deep-blue);
+      padding-bottom: 0.5rem;
+      border-bottom: 3px solid var(--accent-blue);
+      margin-bottom: 1rem;
+    }
+    .category > p {
+      margin-bottom: 1.25rem;
+      font-size: 0.95rem;
+      color: var(--text-light);
+    }
+
+    /* Reference card */
+    .ref-card {
+      background: var(--card-bg);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1rem;
+      border: 1px solid var(--border);
+      transition: box-shadow 0.2s;
+    }
+    .ref-card:hover { box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    .ref-card .ref-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--deep-blue);
+      margin-bottom: 0.25rem;
+    }
+    .ref-card .ref-authors {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      margin-bottom: 0.4rem;
+    }
+    .ref-card .ref-meta {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      margin-bottom: 0.5rem;
+    }
+    .ref-card .ref-meta span {
+      margin-right: 1rem;
+    }
+    .ref-card .ref-summary {
+      font-size: 0.9rem;
+      color: var(--text);
+      line-height: 1.6;
+      padding-top: 0.4rem;
+      border-top: 1px solid var(--border);
+    }
+    .ref-card .ref-link {
+      display: inline-block;
+      margin-top: 0.4rem;
+      font-size: 0.85rem;
+      color: var(--accent-blue);
+      text-decoration: none;
+    }
+    .ref-card .ref-link:hover { text-decoration: underline; }
+    .tag {
+      display: inline-block;
+      background: #edf2f7;
+      color: var(--text-light);
+      font-size: 0.75rem;
+      padding: 0.1rem 0.5rem;
+      border-radius: 4px;
+      margin-right: 0.3rem;
+    }
+
+    footer {
+      background: var(--deep-blue);
+      color: rgba(255,255,255,0.7);
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.85rem;
+      margin-top: 3rem;
+    }
+    footer a { color: rgba(255,255,255,0.9); }
+
+    @media (max-width: 768px) {
+      .toc ul { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <h1>참고문헌</h1>
+  <p>『으뜸 파이썬 Express』에서 인용한 참고문헌 목록</p>
+  <p style="margin-top:0.5rem;"><a href="index.html">&larr; 책 소개로 돌아가기</a></p>
+</div>
+
+<div class="container">
+
+  <!-- TOC -->
+  <div class="toc">
+    <h3>카테고리 목차</h3>
+    <ul>
+      <li><a href="#cat1"><span class="cat-num">1.</span> Python 공식 자료</a></li>
+      <li><a href="#cat2"><span class="cat-num">2.</span> 파이썬 입문서</a></li>
+      <li><a href="#cat3"><span class="cat-num">3.</span> 파이썬 중급/고급서</a></li>
+      <li><a href="#cat4"><span class="cat-num">4.</span> 데이터 과학 &amp; 분석</a></li>
+      <li><a href="#cat5"><span class="cat-num">5.</span> 머신러닝 &amp; AI</a></li>
+      <li><a href="#cat6"><span class="cat-num">6.</span> NumPy, pandas, matplotlib, scikit-learn</a></li>
+      <li><a href="#cat7"><span class="cat-num">7.</span> 소프트웨어 공학</a></li>
+      <li><a href="#cat8"><span class="cat-num">8.</span> 컴퓨터 과학 기초</a></li>
+      <li><a href="#cat9"><span class="cat-num">9.</span> 웹 &amp; API 개발</a></li>
+      <li><a href="#cat10"><span class="cat-num">10.</span> 한국어 파이썬 도서</a></li>
+      <li><a href="#cat11"><span class="cat-num">11.</span> 온라인 학습 자료</a></li>
+    </ul>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- 1. Python Language & Official -->
+  <!-- ============================================================ -->
+  <div class="category" id="cat1">
+    <h2>1. Python 공식 자료</h2>
+    <p>파이썬 언어의 공식 문서, 표준 라이브러리, 그리고 언어 설계 원칙을 담은 PEP 문서들입니다.</p>
+
+    <div class="ref-card">
+      <div class="ref-title">Python Official Website</div>
+      <div class="ref-authors">Python Software Foundation</div>
+      <div class="ref-meta"><span>2024</span> <span class="tag">웹사이트</span></div>
+      <div class="ref-summary">파이썬 언어의 공식 홈페이지. 최신 버전 다운로드, 뉴스, 커뮤니티 링크를 제공한다.</div>
+      <a class="ref-link" href="https://www.python.org" target="_blank">python.org &rarr;</a>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">Python 3 Documentation</div>
+      <div class="ref-authors">Python Software Foundation</div>
+      <div class="ref-meta"><span>2024</span> <span class="tag">공식 문서</span></div>
+      <div class="ref-summary">파이썬 3의 전체 공식 문서. 언어 레퍼런스, 라이브러리 레퍼런스, 설치 가이드, HOW-TO 문서 등을 망라한다. 파이썬 학습 시 가장 권위 있는 1차 자료이다.</div>
+      <a class="ref-link" href="https://docs.python.org/3/" target="_blank">docs.python.org &rarr;</a>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">The Python Tutorial</div>
+      <div class="ref-authors">Python Software Foundation</div>
+      <div class="ref-meta"><span>2024</span> <span class="tag">튜토리얼</span></div>
+      <div class="ref-summary">파이썬 공식 튜토리얼. 언어의 기본 개념과 기능을 단계적으로 소개하며, 다른 언어 경험이 있는 프로그래머가 파이썬에 빠르게 입문할 수 있도록 구성되어 있다.</div>
+      <a class="ref-link" href="https://docs.python.org/3/tutorial/" target="_blank">Python Tutorial &rarr;</a>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">The Python Standard Library</div>
+      <div class="ref-authors">Python Software Foundation</div>
+      <div class="ref-meta"><span>2024</span> <span class="tag">레퍼런스</span></div>
+      <div class="ref-summary">파이썬에 기본 포함된 표준 라이브러리의 전체 레퍼런스. math, datetime, os, json 등 200여 개 모듈의 사용법을 상세히 기술한다.</div>
+      <a class="ref-link" href="https://docs.python.org/3/library/" target="_blank">Standard Library &rarr;</a>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">PEP 8 — Style Guide for Python Code</div>
+      <div class="ref-authors">Guido van Rossum, Barry Warsaw, Alyssa Coghlan</div>
+      <div class="ref-meta"><span>2001</span> <span class="tag">PEP</span></div>
+      <div class="ref-summary">파이썬 코딩 스타일의 사실상 표준. 들여쓰기, 네이밍 컨벤션, 주석 작성법 등 가독성 높은 코드를 작성하기 위한 규약을 정의한다. 파이썬 개발자라면 반드시 숙지해야 할 문서이다.</div>
+      <a class="ref-link" href="https://peps.python.org/pep-0008/" target="_blank">PEP 8 &rarr;</a>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">PEP 20 — The Zen of Python</div>
+      <div class="ref-authors">Tim Peters</div>
+      <div class="ref-meta"><span>2004</span> <span class="tag">PEP</span></div>
+      <div class="ref-summary">파이썬의 설계 철학을 19개의 경구(aphorism)로 표현한 문서. "Beautiful is better than ugly", "Explicit is better than implicit" 등 파이썬 커뮤니티의 핵심 가치를 담고 있다. <code>import this</code>로 확인 가능하다.</div>
+      <a class="ref-link" href="https://peps.python.org/pep-0020/" target="_blank">PEP 20 &rarr;</a>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">PEP 257 — Docstring Conventions</div>
+      <div class="ref-authors">David Goodger, Guido van Rossum</div>
+      <div class="ref-meta"><span>2001</span> <span class="tag">PEP</span></div>
+      <div class="ref-summary">파이썬 독스트링(docstring) 작성 규약. 모듈, 클래스, 함수에 대한 문서화 문자열의 형식과 내용에 대한 가이드라인을 제공한다.</div>
+      <a class="ref-link" href="https://peps.python.org/pep-0257/" target="_blank">PEP 257 &rarr;</a>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">PEP 484 — Type Hints</div>
+      <div class="ref-authors">Guido van Rossum, Jukka Lehtosalo, Łukasz Langa</div>
+      <div class="ref-meta"><span>2014</span> <span class="tag">PEP</span></div>
+      <div class="ref-summary">파이썬에 타입 힌트(type hint)를 도입한 PEP. 정적 타입 검사 도구(mypy 등)를 활용할 수 있게 하며, 코드의 가독성과 유지보수성을 높이는 데 기여한다.</div>
+      <a class="ref-link" href="https://peps.python.org/pep-0484/" target="_blank">PEP 484 &rarr;</a>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">PEP 0 — Index of Python Enhancement Proposals</div>
+      <div class="ref-authors">Python Software Foundation</div>
+      <div class="ref-meta"><span>2024</span> <span class="tag">PEP</span></div>
+      <div class="ref-summary">모든 PEP(Python Enhancement Proposal)의 색인. 파이썬 언어의 발전 과정과 설계 결정의 역사를 추적할 수 있다.</div>
+      <a class="ref-link" href="https://peps.python.org/pep-0000/" target="_blank">PEP Index &rarr;</a>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">Python Reference Manual</div>
+      <div class="ref-authors">Guido van Rossum</div>
+      <div class="ref-meta"><span>1995</span> <span class="tag">기술 문서</span></div>
+      <div class="ref-summary">파이썬 창시자 귀도 반 로섬이 작성한 초기 파이썬 레퍼런스 매뉴얼. CWI(네덜란드 수학·컴퓨터과학 센터)에서 발행되었으며, 파이썬 언어의 역사적 원전이다.</div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">Python Package Index (PyPI)</div>
+      <div class="ref-authors">Python Software Foundation</div>
+      <div class="ref-meta"><span>2024</span> <span class="tag">웹사이트</span></div>
+      <div class="ref-summary">파이썬 서드파티 패키지의 공식 저장소. 50만 개 이상의 패키지가 등록되어 있으며, <code>pip install</code> 명령으로 설치할 수 있다.</div>
+      <a class="ref-link" href="https://pypi.org" target="_blank">pypi.org &rarr;</a>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">Python Glossary</div>
+      <div class="ref-authors">Python Software Foundation</div>
+      <div class="ref-meta"><span>2024</span> <span class="tag">레퍼런스</span></div>
+      <div class="ref-summary">파이썬 공식 용어 사전. iterable, generator, decorator 등 파이썬 특유의 용어를 정확하게 정의하고 설명한다.</div>
+      <a class="ref-link" href="https://docs.python.org/3/glossary.html" target="_blank">Glossary &rarr;</a>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- 2. Python Textbooks - Beginner -->
+  <!-- ============================================================ -->
+  <div class="category" id="cat2">
+    <h2>2. 파이썬 입문서</h2>
+    <p>파이썬 프로그래밍을 처음 배우는 독자를 위한 입문 교재들입니다.</p>
+
+    <div class="ref-card">
+      <div class="ref-title">Learning Python (5th Edition)</div>
+      <div class="ref-authors">Mark Lutz</div>
+      <div class="ref-meta"><span>O'Reilly, 2013</span> <span>ISBN: 978-1449355739</span></div>
+      <div class="ref-summary">1,600페이지에 달하는 파이썬 종합 입문서. 자료형, 함수, 모듈, 클래스, 예외 처리 등 파이썬의 모든 기초 문법을 깊이 있게 다루며, 풍부한 예제와 연습 문제를 제공한다. 초보자부터 중급 개발자까지 레퍼런스로 활용 가능하다.</div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">Python Crash Course (3rd Edition)</div>
+      <div class="ref-authors">Eric Matthes</div>
+      <div class="ref-meta"><span>No Starch Press, 2023</span> <span>ISBN: 978-1718502703</span></div>
+      <div class="ref-summary">가장 인기 있는 파이썬 입문서 중 하나. 전반부에서 기초 문법을 빠르게 학습한 뒤, 후반부에서 웹 애플리케이션, 데이터 시각화, 게임 등 세 가지 프로젝트를 실습한다. 빠르고 실용적인 학습을 추구하는 독자에게 적합하다.</div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">Automate the Boring Stuff with Python (2nd Edition)</div>
+      <div class="ref-authors">Al Sweigart</div>
+      <div class="ref-meta"><span>No Starch Press, 2019</span> <span>ISBN: 978-1593279929</span></div>
+      <div class="ref-summary">반복적인 업무를 파이썬으로 자동화하는 방법을 다루는 실용서. 파일 관리, 웹 스크래핑, 엑셀 처리, 이메일 발송 등 실생활에서 바로 활용 가능한 자동화 기법을 소개한다. 온라인에서 무료로 읽을 수 있다.</div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">Think Python: How to Think Like a Computer Scientist (2nd Edition)</div>
+      <div class="ref-authors">Allen B. Downey</div>
+      <div class="ref-meta"><span>O'Reilly, 2015</span> <span>ISBN: 978-1491939369</span></div>
+      <div class="ref-summary">컴퓨터 과학적 사고방식을 파이썬을 통해 배울 수 있는 교재. 알고리즘 설계, 디버깅 전략, 분석적 사고 등 프로그래밍의 본질에 초점을 맞추며, 간결하면서도 명료한 설명이 특징이다.</div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">Head First Python (2nd Edition)</div>
+      <div class="ref-authors">Paul Barry</div>
+      <div class="ref-meta"><span>O'Reilly, 2016</span> <span>ISBN: 978-1491919538</span></div>
+      <div class="ref-summary">시각적이고 참여형인 Head First 시리즈의 파이썬판. 뇌과학 기반의 학습 원리를 적용하여 그림, 퍼즐, 대화 형식 등으로 파이썬 개념을 직관적으로 전달한다.</div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">Python for Everybody: Exploring Data in Python 3</div>
+      <div class="ref-authors">Charles R. Severance</div>
+      <div class="ref-meta"><span>CreateSpace, 2016</span> <span>ISBN: 978-1530051120</span></div>
+      <div class="ref-summary">데이터 탐색에 초점을 맞춘 파이썬 입문서. 웹 데이터 수집, 데이터베이스 활용, 데이터 시각화 등을 다루며, Coursera 강좌와 함께 세계적으로 널리 사용된다. 온라인 무료 공개 도서이다.</div>
+      <a class="ref-link" href="https://www.py4e.com/book" target="_blank">py4e.com &rarr;</a>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">Introduction to Computation and Programming Using Python (3rd Edition)</div>
+      <div class="ref-authors">John V. Guttag</div>
+      <div class="ref-meta"><span>MIT Press, 2021</span> <span>ISBN: 978-0262542364</span></div>
+      <div class="ref-summary">MIT의 전설적인 컴퓨터 과학 입문 교재. 파이썬을 도구로 활용하여 계산적 사고, 알고리즘 분석, 데이터 과학의 기초를 체계적으로 학습한다. 학술적 깊이와 실용성을 겸비한 교재이다.</div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">Python Programming: An Introduction to Computer Science (3rd Edition)</div>
+      <div class="ref-authors">John Zelle</div>
+      <div class="ref-meta"><span>Franklin, Beedle &amp; Associates, 2016</span> <span>ISBN: 978-1590282755</span></div>
+      <div class="ref-summary">컴퓨터 과학 입문 과정을 위한 교과서. 그래픽스를 활용한 시각적 예제가 특징이며, 프로그래밍의 기본 개념을 단계적으로 소개한다.</div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">Intro to Python for Computer Science and Data Science</div>
+      <div class="ref-authors">Paul Deitel, Harvey Deitel</div>
+      <div class="ref-meta"><span>Pearson, 2019</span> <span>ISBN: 978-0135404676</span></div>
+      <div class="ref-summary">컴퓨터 과학과 데이터 과학을 동시에 다루는 Deitel 시리즈의 파이썬 교재. AI, 빅데이터, 클라우드 컴퓨팅 등 현대적 주제를 풍부하게 포함한다.</div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">Learn to Program (3rd Edition)</div>
+      <div class="ref-authors">David Pine</div>
+      <div class="ref-meta"><span>Pragmatic Bookshelf, 2021</span> <span>ISBN: 978-1680508178</span></div>
+      <div class="ref-summary">프로그래밍을 전혀 모르는 완전한 초보자를 위한 입문서. 최소한의 전제 지식만으로 프로그래밍의 기초 개념을 차근차근 배울 수 있도록 구성되어 있다.</div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- 3. Python Textbooks - Intermediate/Advanced -->
+  <!-- ============================================================ -->
+  <div class="category" id="cat3">
+    <h2>3. 파이썬 중급/고급서</h2>
+    <p>파이썬의 고급 기법과 관용구, 성능 최적화 등을 다루는 중급 이상의 교재들입니다.</p>
+
+    <div class="ref-card">
+      <div class="ref-title">Fluent Python (2nd Edition)</div>
+      <div class="ref-authors">Luciano Ramalho</div>
+      <div class="ref-meta"><span>O'Reilly, 2022</span> <span>ISBN: 978-1492056355</span></div>
+      <div class="ref-summary">파이썬의 고급 기법을 마스터하기 위한 필독서. 데이터 모델, 함수형 프로그래밍, 메타프로그래밍, 동시성 프로그래밍 등 파이썬다운(Pythonic) 코드를 작성하기 위한 심층적인 내용을 다룬다.</div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">Effective Python: 90 Specific Ways to Write Better Python (2nd Edition)</div>
+      <div class="ref-authors">Brett Slatkin</div>
+      <div class="ref-meta"><span>Addison-Wesley, 2019</span> <span>ISBN: 978-0134853987</span></div>
+      <div class="ref-summary">90개의 구체적인 조언을 통해 더 나은 파이썬 코드를 작성하는 방법을 제시한다. 각 항목은 독립적으로 읽을 수 있으며, 실무에서 흔히 마주치는 상황에 대한 모범 답안을 제공한다.</div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">Python Cookbook (3rd Edition)</div>
+      <div class="ref-authors">David Beazley, Brian K. Jones</div>
+      <div class="ref-meta"><span>O'Reilly, 2013</span> <span>ISBN: 978-1449340377</span></div>
+      <div class="ref-summary">파이썬 프로그래밍의 실전 레시피 모음. 자료구조, 문자열, 파일, 네트워킹, 메타프로그래밍 등 다양한 주제에 대한 검증된 해결책을 제시한다.</div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">Python in a Nutshell (3rd Edition)</div>
+      <div class="ref-authors">Alex Martelli, Anna Ravenscroft, Steve Holden</div>
+      <div class="ref-meta"><span>O'Reilly, 2017</span> <span>ISBN: 978-1449392925</span></div>
+      <div class="ref-summary">파이썬 언어의 핵심을 압축적으로 정리한 데스크 레퍼런스. 언어 문법, 표준 라이브러리, 확장 모듈 등을 빠르게 찾아볼 수 있도록 구성되어 있다.</div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">Robust Python: Write Clean and Maintainable Code</div>
+      <div class="ref-authors">Patrick Viafore</div>
+      <div class="ref-meta"><span>O'Reilly, 2021</span> <span>ISBN: 978-1098100667</span></div>
+      <div class="ref-summary">견고하고 유지보수 가능한 파이썬 코드를 작성하는 기법을 다룬다. 타입 어노테이션, 열거형, 데이터 클래스, 의존성 관리 등 코드의 안정성을 높이는 실용적인 방법을 소개한다.</div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">Architecture Patterns with Python</div>
+      <div class="ref-authors">Harry Percival, Bob Gregory</div>
+      <div class="ref-meta"><span>O'Reilly, 2020</span> <span>ISBN: 978-1492052203</span></div>
+      <div class="ref-summary">TDD, DDD, 이벤트 기반 마이크로서비스 등 현대적 소프트웨어 아키텍처 패턴을 파이썬으로 구현하는 방법을 보여준다.</div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">Python 3 Object-Oriented Programming (3rd Edition)</div>
+      <div class="ref-authors">Dusty Phillips</div>
+      <div class="ref-meta"><span>Packt, 2018</span> <span>ISBN: 978-1789615852</span></div>
+      <div class="ref-summary">파이썬의 객체 지향 프로그래밍을 깊이 있게 다루는 교재. 상속, 다형성, 디자인 패턴, 테스팅 등을 체계적으로 학습할 수 있다.</div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">Serious Python</div>
+      <div class="ref-authors">Julien Danjou</div>
+      <div class="ref-meta"><span>No Starch Press, 2018</span> <span>ISBN: 978-1593278786</span></div>
+      <div class="ref-summary">배포, 확장성, 테스팅 등 실무 파이썬 개발의 고급 주제를 다룬다. 오픈 소스 프로젝트에서의 실전 경험을 바탕으로 한 조언이 풍부하다.</div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">Python Essential Reference (4th Edition)</div>
+      <div class="ref-authors">David M. Beazley</div>
+      <div class="ref-meta"><span>Addison-Wesley, 2009</span> <span>ISBN: 978-0672329784</span></div>
+      <div class="ref-summary">파이썬 언어의 핵심 기능과 가장 많이 사용되는 라이브러리를 간결하게 정리한 레퍼런스. 숙련된 개발자가 빠르게 참고하기에 적합하다.</div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- 4. Data Science & Analytics -->
+  <!-- ============================================================ -->
+  <div class="category" id="cat4">
+    <h2>4. 데이터 과학 &amp; 분석</h2>
+    <p>데이터 분석, 시각화, 통계의 원리를 다루는 서적들입니다.</p>
+
+    <div class="ref-card">
+      <div class="ref-title">Python for Data Analysis (3rd Edition)</div>
+      <div class="ref-authors">Wes McKinney</div>
+      <div class="ref-meta"><span>O'Reilly, 2022</span> <span>ISBN: 978-1098104030</span></div>
+      <div class="ref-summary">pandas 라이브러리의 창시자가 직접 쓴 데이터 분석 교재. pandas, NumPy, matplotlib를 활용한 데이터 정제, 변환, 분석, 시각화의 전 과정을 체계적으로 다룬다.</div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">Python Data Science Handbook</div>
+      <div class="ref-authors">Jake VanderPlas</div>
+      <div class="ref-meta"><span>O'Reilly, 2016</span> <span>ISBN: 978-1491912058</span></div>
+      <div class="ref-summary">IPython/Jupyter, NumPy, pandas, matplotlib, scikit-learn의 5대 도구를 깊이 있게 다루는 데이터 과학 핸드북. 풍부한 실습 예제와 함께 각 도구의 핵심 기능을 설명한다.</div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">Data Science from Scratch (2nd Edition)</div>
+      <div class="ref-authors">Joel Grus</div>
+      <div class="ref-meta"><span>O'Reilly, 2019</span> <span>ISBN: 978-1492041139</span></div>
+      <div class="ref-summary">데이터 과학의 핵심 알고리즘을 라이브러리 없이 순수 파이썬으로 직접 구현해 보는 교재. 통계, 확률, 선형대수, 머신러닝의 원리를 밑바닥부터 이해할 수 있다.</div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">Storytelling with Data</div>
+      <div class="ref-authors">Cole Nussbaumer Knaflic</div>
+      <div class="ref-meta"><span>Wiley, 2015</span> <span>ISBN: 978-1119002253</span></div>
+      <div class="ref-summary">데이터 시각화를 통한 효과적인 커뮤니케이션 방법을 다루는 서적. 어떤 차트를 선택하고, 어떻게 디자인해야 메시지를 명확하게 전달할 수 있는지를 실례를 통해 보여준다.</div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">R for Data Science (2nd Edition)</div>
+      <div class="ref-authors">Hadley Wickham, Mine Çetinkaya-Rundel, Garrett Grolemund</div>
+      <div class="ref-meta"><span>O'Reilly, 2023</span> <span>ISBN: 978-1492097402</span></div>
+      <div class="ref-summary">R 언어를 사용한 데이터 과학 입문서이지만, 데이터 과학의 워크플로우(가져오기, 정리, 변환, 시각화, 모델링, 소통)를 체계적으로 정립한 교과서적 구성으로 파이썬 사용자에게도 큰 참고가 된다.</div>
+      <a class="ref-link" href="https://r4ds.hadley.nz" target="_blank">r4ds.hadley.nz &rarr;</a>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">Naked Statistics</div>
+      <div class="ref-authors">Charles Wheelan</div>
+      <div class="ref-meta"><span>W.W. Norton, 2013</span> <span>ISBN: 978-0393347777</span></div>
+      <div class="ref-summary">통계학의 핵심 개념을 수식 없이 일상적 사례를 통해 설명하는 교양서. 회귀분석, 중심극한정리, 가설검정 등을 직관적으로 이해할 수 있다.</div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">The Art of Statistics: How to Learn from Data</div>
+      <div class="ref-authors">David Spiegelhalter</div>
+      <div class="ref-meta"><span>Basic Books, 2019</span> <span>ISBN: 978-1541618510</span></div>
+      <div class="ref-summary">현대 통계학의 원리를 실제 사례를 통해 설명하는 교양서. 데이터에서 의미 있는 결론을 도출하는 통계적 사고방식을 배울 수 있다.</div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">Practical Statistics for Data Scientists (2nd Edition)</div>
+      <div class="ref-authors">Peter Bruce, Andrew Bruce, Peter Gedeck</div>
+      <div class="ref-meta"><span>O'Reilly, 2020</span> <span>ISBN: 978-1492072942</span></div>
+      <div class="ref-summary">데이터 과학자를 위한 실용 통계서. EDA, 통계적 실험, 회귀, 분류 등 데이터 과학 실무에서 빈번히 사용되는 통계 기법을 R과 Python 코드로 실습한다.</div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">The Visual Display of Quantitative Information (2nd Edition)</div>
+      <div class="ref-authors">Edward R. Tufte</div>
+      <div class="ref-meta"><span>Graphics Press, 2001</span> <span>ISBN: 978-1930824133</span></div>
+      <div class="ref-summary">데이터 시각화의 고전. 정보 디자인의 원칙, 차트 왜곡(chartjunk)의 위험, 높은 데이터-잉크 비율의 중요성 등 시각화의 기본 철학을 정립한 명저이다.</div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">The Truthful Art</div>
+      <div class="ref-authors">Alberto Cairo</div>
+      <div class="ref-meta"><span>New Riders, 2016</span> <span>ISBN: 978-0321934079</span></div>
+      <div class="ref-summary">데이터, 차트, 지도를 통한 정확한 커뮤니케이션을 다루는 시각화 교재. 통계적 사고와 시각적 표현을 결합하여 진실을 전달하는 방법을 탐구한다.</div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">Fundamentals of Data Visualization</div>
+      <div class="ref-authors">Claus O. Wilke</div>
+      <div class="ref-meta"><span>O'Reilly, 2019</span> <span>ISBN: 978-1492031086</span></div>
+      <div class="ref-summary">정보 전달력이 높은 시각화를 만들기 위한 기본 원칙을 다루는 교재. 색상 선택, 축 설계, 차트 유형 선택 등 실무적 판단 기준을 제공한다. 온라인 무료 공개이다.</div>
+      <a class="ref-link" href="https://clauswilke.com/dataviz/" target="_blank">clauswilke.com/dataviz &rarr;</a>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- 5. Machine Learning & AI -->
+  <!-- ============================================================ -->
+  <div class="category" id="cat5">
+    <h2>5. 머신러닝 &amp; AI</h2>
+    <p>머신러닝, 딥러닝, 인공지능의 이론과 실습을 다루는 서적들입니다.</p>
+
+    <div class="ref-card">
+      <div class="ref-title">Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow (3rd Edition)</div>
+      <div class="ref-authors">Aurélien Géron</div>
+      <div class="ref-meta"><span>O'Reilly, 2022</span> <span>ISBN: 978-1098125974</span></div>
+      <div class="ref-summary">머신러닝과 딥러닝의 실습 바이블. scikit-learn으로 전통적 ML을, Keras/TensorFlow로 딥러닝을 배운다. 이론과 실습의 균형이 뛰어나며, 실무 투입 가능한 수준의 프로젝트를 다룬다.</div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">Pattern Recognition and Machine Learning</div>
+      <div class="ref-authors">Christopher M. Bishop</div>
+      <div class="ref-meta"><span>Springer, 2006</span> <span>ISBN: 978-0387310732</span></div>
+      <div class="ref-summary">패턴 인식과 머신러닝의 수학적 기초를 정립한 대학원 수준의 교과서. 베이지안 관점에서 확률 모델, 커널 방법, 그래프 모델 등을 엄밀하게 다룬다.</div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">An Introduction to Statistical Learning (2nd Edition)</div>
+      <div class="ref-authors">Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani</div>
+      <div class="ref-meta"><span>Springer, 2021</span> <span>ISBN: 978-1071614174</span></div>
+      <div class="ref-summary">통계적 학습의 입문서로, 선형 회귀, 분류, 리샘플링, 트리 기반 모델, SVM, 비지도 학습 등을 수학적 부담 없이 직관적으로 설명한다. 대학 학부 수준의 교과서로 널리 채택되고 있다.</div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">Deep Learning</div>
+      <div class="ref-authors">Ian Goodfellow, Yoshua Bengio, Aaron Courville</div>
+      <div class="ref-meta"><span>MIT Press, 2016</span> <span>ISBN: 978-0262035613</span></div>
+      <div class="ref-summary">딥러닝 분야의 바이블. 선형대수, 확률론 등 수학적 기초부터 CNN, RNN, 생성 모델 등 핵심 아키텍처까지 체계적으로 다룬다. 온라인 무료 공개이다.</div>
+      <a class="ref-link" href="https://www.deeplearningbook.org" target="_blank">deeplearningbook.org &rarr;</a>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">Machine Learning Yearning</div>
+      <div class="ref-authors">Andrew Ng</div>
+      <div class="ref-meta"><span>deeplearning.ai, 2018</span> <span class="tag">무료 공개</span></div>
+      <div class="ref-summary">ML 프로젝트를 구조화하고 의사결정을 내리는 실전 전략서. 학습/테스트 세트 설계, 오류 분석, 전이 학습 등 AI 엔지니어가 프로젝트를 성공으로 이끌기 위한 전략적 사고를 다룬다.</div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">Artificial Intelligence: A Modern Approach (4th Edition)</div>
+      <div class="ref-authors">Stuart Russell, Peter Norvig</div>
+      <div class="ref-meta"><span>Pearson, 2020</span> <span>ISBN: 978-0134610993</span></div>
+      <div class="ref-summary">인공지능 분야의 표준 교과서. 탐색, 논리, 확률, 머신러닝, 자연어 처리, 로봇공학 등 AI의 모든 분야를 포괄적으로 다루며, 전 세계 1,500여 대학에서 채택되고 있다.</div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">The Elements of Statistical Learning (2nd Edition)</div>
+      <div class="ref-authors">Trevor Hastie, Robert Tibshirani, Jerome Friedman</div>
+      <div class="ref-meta"><span>Springer, 2009</span> <span>ISBN: 978-0387848570</span></div>
+      <div class="ref-summary">통계적 학습 이론의 고급 교과서. 부스팅, 랜덤 포레스트, 신경망, SVM, 비지도 학습 등을 수학적으로 엄밀하게 다루며, 대학원 수준의 교재이다.</div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">Probabilistic Machine Learning: An Introduction</div>
+      <div class="ref-authors">Kevin P. Murphy</div>
+      <div class="ref-meta"><span>MIT Press, 2022</span> <span>ISBN: 978-0262046824</span></div>
+      <div class="ref-summary">확률적 관점에서 머신러닝을 체계적으로 정리한 교과서. 베이지안 추론, 가우시안 과정, 딥러닝 등을 확률 프레임워크 안에서 통합적으로 설명한다.</div>
+      <a class="ref-link" href="https://probml.github.io/pml-book/book1.html" target="_blank">PML Book &rarr;</a>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">Deep Learning with Python (2nd Edition)</div>
+      <div class="ref-authors">François Chollet</div>
+      <div class="ref-meta"><span>Manning, 2021</span> <span>ISBN: 978-1617296864</span></div>
+      <div class="ref-summary">Keras 창시자가 직접 쓴 딥러닝 실습서. 직관적인 설명과 풍부한 코드 예제로 컴퓨터 비전, 텍스트 처리, 생성 모델 등을 구현하는 방법을 배울 수 있다.</div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">Python Machine Learning (3rd Edition)</div>
+      <div class="ref-authors">Sebastian Raschka, Vahid Mirjalili</div>
+      <div class="ref-meta"><span>Packt, 2019</span> <span>ISBN: 978-1789955750</span></div>
+      <div class="ref-summary">파이썬으로 머신러닝과 딥러닝을 실습하는 종합서. scikit-learn과 TensorFlow를 활용하여 감정 분석, 이미지 인식 등 다양한 프로젝트를 수행한다.</div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">Machine Learning</div>
+      <div class="ref-authors">Tom M. Mitchell</div>
+      <div class="ref-meta"><span>McGraw-Hill, 1997</span> <span>ISBN: 978-0070428072</span></div>
+      <div class="ref-summary">머신러닝의 초기 교과서 중 하나. 결정 트리, 신경망, 베이지안 학습, 강화 학습 등 핵심 알고리즘을 명확하게 정의하고 분석한다.</div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- 6. NumPy, pandas, matplotlib, scikit-learn -->
+  <!-- ============================================================ -->
+  <div class="category" id="cat6">
+    <h2>6. NumPy, pandas, matplotlib, scikit-learn</h2>
+    <p>파이썬 과학 컴퓨팅 생태계의 핵심 라이브러리에 대한 학술 논문과 공식 문서입니다.</p>
+
+    <div class="ref-card">
+      <div class="ref-title">Array programming with NumPy</div>
+      <div class="ref-authors">Charles R. Harris et al.</div>
+      <div class="ref-meta"><span>Nature, 585, 357–362 (2020)</span> <span class="tag">학술 논문</span></div>
+      <div class="ref-summary">NumPy의 설계 원리와 배열 프로그래밍 패러다임을 소개하는 Nature 논문. N차원 배열, 브로드캐스팅, 유니버설 함수 등 NumPy의 핵심 개념을 학술적으로 정리한다.</div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">NumPy Documentation</div>
+      <div class="ref-authors">NumPy Developers</div>
+      <div class="ref-meta"><span>2024</span> <span class="tag">공식 문서</span></div>
+      <div class="ref-summary">NumPy 라이브러리의 공식 문서. 배열 생성, 인덱싱, 수학 함수, 선형대수 등의 API 레퍼런스와 사용 가이드를 제공한다.</div>
+      <a class="ref-link" href="https://numpy.org/doc/stable/" target="_blank">numpy.org &rarr;</a>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">pandas Documentation</div>
+      <div class="ref-authors">pandas Development Team</div>
+      <div class="ref-meta"><span>2024</span> <span class="tag">공식 문서</span></div>
+      <div class="ref-summary">pandas 라이브러리의 공식 문서. DataFrame과 Series의 생성, 인덱싱, 그룹화, 병합, 시계열 처리 등의 기능을 상세히 설명한다.</div>
+      <a class="ref-link" href="https://pandas.pydata.org/docs/" target="_blank">pandas.pydata.org &rarr;</a>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">Matplotlib: A 2D Graphics Environment</div>
+      <div class="ref-authors">John D. Hunter</div>
+      <div class="ref-meta"><span>Computing in Science &amp; Engineering, 9(3), 90–95 (2007)</span> <span class="tag">학술 논문</span></div>
+      <div class="ref-summary">matplotlib 라이브러리를 소개하는 학술 논문. MATLAB과 유사한 인터페이스로 파이썬에서 출판 품질의 2D 그래프를 생성할 수 있는 도구의 설계를 설명한다.</div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">Matplotlib Documentation</div>
+      <div class="ref-authors">Matplotlib Development Team</div>
+      <div class="ref-meta"><span>2024</span> <span class="tag">공식 문서</span></div>
+      <div class="ref-summary">matplotlib의 공식 문서. 선 그래프, 막대 그래프, 히스토그램, 산점도, 3D 플롯 등 다양한 시각화 기법의 사용법과 커스터마이징 방법을 제공한다.</div>
+      <a class="ref-link" href="https://matplotlib.org/stable/" target="_blank">matplotlib.org &rarr;</a>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">Scikit-learn: Machine Learning in Python</div>
+      <div class="ref-authors">Fabian Pedregosa et al.</div>
+      <div class="ref-meta"><span>JMLR, 12, 2825–2830 (2011)</span> <span class="tag">학술 논문</span></div>
+      <div class="ref-summary">scikit-learn 라이브러리를 소개하는 JMLR 논문. 분류, 회귀, 클러스터링, 차원 축소 등의 ML 알고리즘을 일관된 API로 제공하는 설계 철학을 설명한다.</div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">scikit-learn User Guide</div>
+      <div class="ref-authors">scikit-learn Developers</div>
+      <div class="ref-meta"><span>2024</span> <span class="tag">공식 문서</span></div>
+      <div class="ref-summary">scikit-learn의 공식 사용자 가이드. 각 알고리즘의 이론적 배경과 사용법, 모델 선택, 전처리, 파이프라인 구성 등을 체계적으로 설명한다.</div>
+      <a class="ref-link" href="https://scikit-learn.org/stable/user_guide.html" target="_blank">scikit-learn.org &rarr;</a>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">SciPy 1.0: Fundamental Algorithms for Scientific Computing in Python</div>
+      <div class="ref-authors">Pauli Virtanen et al.</div>
+      <div class="ref-meta"><span>Nature Methods, 17, 261–272 (2020)</span> <span class="tag">학술 논문</span></div>
+      <div class="ref-summary">SciPy 라이브러리의 설계와 핵심 알고리즘을 소개하는 Nature Methods 논문. 최적화, 적분, 보간, 신호 처리, 통계 등 과학 컴퓨팅의 기반 도구를 다룬다.</div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">Jupyter Notebooks — A Publishing Format for Reproducible Computational Workflows</div>
+      <div class="ref-authors">Thomas Kluyver et al.</div>
+      <div class="ref-meta"><span>2016</span> <span class="tag">학술 논문</span></div>
+      <div class="ref-summary">Jupyter Notebook의 설계 철학을 소개하는 논문. 코드, 텍스트, 시각화를 하나의 문서에 결합하여 재현 가능한 연구를 지원하는 도구의 개념을 설명한다.</div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">seaborn: Statistical Data Visualization</div>
+      <div class="ref-authors">Michael L. Waskom</div>
+      <div class="ref-meta"><span>JOSS, 6(60), 3021 (2021)</span> <span class="tag">학술 논문</span></div>
+      <div class="ref-summary">seaborn 라이브러리를 소개하는 JOSS 논문. matplotlib 위에 구축된 고수준 인터페이스로, 통계적 데이터 시각화를 간결한 코드로 생성할 수 있다.</div>
+      <a class="ref-link" href="https://seaborn.pydata.org" target="_blank">seaborn.pydata.org &rarr;</a>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">Plotly Python Open Source Graphing Library</div>
+      <div class="ref-authors">Plotly Technologies Inc.</div>
+      <div class="ref-meta"><span>2024</span> <span class="tag">라이브러리</span></div>
+      <div class="ref-summary">인터랙티브 시각화를 위한 Plotly 라이브러리. 확대/축소, 호버 정보 표시, 애니메이션 등 대화형 차트를 웹 브라우저에서 구현할 수 있다.</div>
+      <a class="ref-link" href="https://plotly.com/python/" target="_blank">plotly.com &rarr;</a>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- 7. Software Engineering -->
+  <!-- ============================================================ -->
+  <div class="category" id="cat7">
+    <h2>7. 소프트웨어 공학</h2>
+    <p>좋은 코드를 작성하고 유지보수하기 위한 원칙과 패턴을 다루는 서적들입니다.</p>
+
+    <div class="ref-card">
+      <div class="ref-title">Clean Code</div>
+      <div class="ref-authors">Robert C. Martin</div>
+      <div class="ref-meta"><span>Prentice Hall, 2008</span> <span>ISBN: 978-0132350884</span></div>
+      <div class="ref-summary">깨끗한 코드를 작성하기 위한 원칙과 패턴을 정리한 명저. 의미 있는 이름 짓기, 함수 설계, 주석 작성, 오류 처리 등 코드 품질의 기본기를 다진다.</div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">The Pragmatic Programmer (20th Anniversary Edition)</div>
+      <div class="ref-authors">David Thomas, Andrew Hunt</div>
+      <div class="ref-meta"><span>Addison-Wesley, 2019</span> <span>ISBN: 978-0135957059</span></div>
+      <div class="ref-summary">실용적인 프로그래머가 되기 위한 70가지 팁을 제시하는 고전. DRY 원칙, 직교성, 탄력적 설계 등 시대를 초월하는 소프트웨어 개발 철학을 담고 있다.</div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">Design Patterns</div>
+      <div class="ref-authors">Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides</div>
+      <div class="ref-meta"><span>Addison-Wesley, 1994</span> <span>ISBN: 978-0201633610</span></div>
+      <div class="ref-summary">객체 지향 설계 패턴의 원전(GoF 책). 23개의 설계 패턴(생성, 구조, 행위)을 체계적으로 분류하고 설명하며, 소프트웨어 설계의 공통 어휘를 정립하였다.</div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">Refactoring (2nd Edition)</div>
+      <div class="ref-authors">Martin Fowler</div>
+      <div class="ref-meta"><span>Addison-Wesley, 2018</span> <span>ISBN: 978-0134757599</span></div>
+      <div class="ref-summary">기존 코드의 구조를 개선하는 리팩터링 기법을 체계적으로 정리한 명저. 코드 냄새(code smell) 식별과 그에 대응하는 리팩터링 패턴을 풍부한 예제로 보여준다.</div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">Test Driven Development: By Example</div>
+      <div class="ref-authors">Kent Beck</div>
+      <div class="ref-meta"><span>Addison-Wesley, 2002</span> <span>ISBN: 978-0321146533</span></div>
+      <div class="ref-summary">TDD(테스트 주도 개발)의 창시자가 직접 쓴 입문서. "테스트 작성 → 통과하는 코드 작성 → 리팩터링"의 반복 사이클을 실습을 통해 체득하게 한다.</div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">Code Complete (2nd Edition)</div>
+      <div class="ref-authors">Steve McConnell</div>
+      <div class="ref-meta"><span>Microsoft Press, 2004</span> <span>ISBN: 978-0735619678</span></div>
+      <div class="ref-summary">소프트웨어 구현(construction)의 모든 측면을 다루는 백과사전적 교재. 변수, 조건문, 루프, 클래스, 디버깅, 코드 리뷰 등 코드 작성의 실질적인 노하우를 집대성하였다.</div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">Clean Architecture</div>
+      <div class="ref-authors">Robert C. Martin</div>
+      <div class="ref-meta"><span>Prentice Hall, 2017</span> <span>ISBN: 978-0134494166</span></div>
+      <div class="ref-summary">소프트웨어 아키텍처의 보편 원칙을 다루는 교재. SOLID 원칙, 컴포넌트 설계, 아키텍처 경계 등을 통해 변경에 유연한 시스템을 설계하는 방법을 제시한다.</div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">The Art of Unix Programming</div>
+      <div class="ref-authors">Eric S. Raymond</div>
+      <div class="ref-meta"><span>Addison-Wesley, 2003</span> <span>ISBN: 978-0131429017</span></div>
+      <div class="ref-summary">유닉스 철학과 설계 원칙을 정리한 서적. "한 가지 일을 잘하는 작은 프로그램을 만들어라" 등 소프트웨어 설계의 근본 원칙을 탐구한다.</div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">A Philosophy of Software Design (2nd Edition)</div>
+      <div class="ref-authors">John Ousterhout</div>
+      <div class="ref-meta"><span>Yaknyam Press, 2021</span> <span>ISBN: 978-1732102217</span></div>
+      <div class="ref-summary">소프트웨어 복잡성을 관리하는 설계 철학을 제시한다. 깊은 모듈, 정보 은닉, 전술적 vs 전략적 프로그래밍 등 간결하면서도 깊이 있는 통찰을 담고 있다.</div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">High Performance Python (2nd Edition)</div>
+      <div class="ref-authors">Micha Gorelick, Ian Ozsvald</div>
+      <div class="ref-meta"><span>O'Reilly, 2020</span> <span>ISBN: 978-1492055020</span></div>
+      <div class="ref-summary">파이썬 코드의 성능을 극대화하는 기법을 다루는 전문서. 프로파일링, 멀티프로세싱, Cython, GPU 컴퓨팅 등 고성능 파이썬 프로그래밍의 핵심을 다룬다.</div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- 8. Computer Science Fundamentals -->
+  <!-- ============================================================ -->
+  <div class="category" id="cat8">
+    <h2>8. 컴퓨터 과학 기초</h2>
+    <p>컴퓨터 과학의 기본 원리, 알고리즘, 컴퓨터 구조를 다루는 교재들입니다.</p>
+
+    <div class="ref-card">
+      <div class="ref-title">Computer Science: An Overview (13th Edition)</div>
+      <div class="ref-authors">J. Glenn Brookshear, Dennis Brylow</div>
+      <div class="ref-meta"><span>Pearson, 2019</span> <span>ISBN: 978-0134875460</span></div>
+      <div class="ref-summary">컴퓨터 과학 전반을 개관하는 입문 교재. 알고리즘, 자료구조, 운영체제, 네트워킹, 데이터베이스, AI 등 CS의 주요 분야를 폭넓게 소개한다.</div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">Structure and Interpretation of Computer Programs (2nd Edition)</div>
+      <div class="ref-authors">Harold Abelson, Gerald Jay Sussman, Julie Sussman</div>
+      <div class="ref-meta"><span>MIT Press, 1996</span> <span>ISBN: 978-0262510875</span></div>
+      <div class="ref-summary">MIT의 전설적인 컴퓨터 과학 입문 교재(SICP). 추상화, 재귀, 고차 함수, 메타프로그래밍 등 프로그래밍의 본질을 Scheme 언어를 통해 탐구한다. 프로그래밍 교육의 고전이다.</div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">Introduction to Algorithms (4th Edition)</div>
+      <div class="ref-authors">Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein</div>
+      <div class="ref-meta"><span>MIT Press, 2022</span> <span>ISBN: 978-0262046305</span></div>
+      <div class="ref-summary">알고리즘 교과서의 표준(CLRS). 정렬, 그래프, 동적 프로그래밍, NP-완전 문제 등 알고리즘의 설계와 분석을 엄밀하면서도 접근 가능한 수준으로 다룬다.</div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">The Art of Computer Programming, Volume 1</div>
+      <div class="ref-authors">Donald E. Knuth</div>
+      <div class="ref-meta"><span>Addison-Wesley, 1997</span> <span>ISBN: 978-0201896831</span></div>
+      <div class="ref-summary">컴퓨터 과학의 기념비적 저작(TAOCP). 기본 알고리즘, 정보 구조, 수학적 분석을 최고 수준의 깊이로 다루며, 프로그래밍의 예술적 측면을 강조한다.</div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">Algorithms (4th Edition)</div>
+      <div class="ref-authors">Robert Sedgewick, Kevin Wayne</div>
+      <div class="ref-meta"><span>Addison-Wesley, 2011</span> <span>ISBN: 978-0321573513</span></div>
+      <div class="ref-summary">알고리즘의 핵심 개념을 Java 코드와 풍부한 시각 자료로 설명하는 교재. Coursera 강좌와 연계되어 있어 온라인 학습에도 활용 가능하다.</div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">Grokking Algorithms</div>
+      <div class="ref-authors">Aditya Y. Bhargava</div>
+      <div class="ref-meta"><span>Manning, 2016</span> <span>ISBN: 978-1617292231</span></div>
+      <div class="ref-summary">알고리즘을 그림으로 쉽게 설명하는 입문서. 이진 탐색, BFS, 다이나믹 프로그래밍 등 핵심 알고리즘을 직관적인 일러스트레이션으로 이해할 수 있다.</div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">Code: The Hidden Language of Computer Hardware and Software (2nd Edition)</div>
+      <div class="ref-authors">Charles Petzold</div>
+      <div class="ref-meta"><span>Microsoft Press, 2022</span> <span>ISBN: 978-0137909100</span></div>
+      <div class="ref-summary">전기 회로부터 운영체제까지, 컴퓨터가 어떻게 작동하는지를 밑바닥부터 설명하는 교양서. 이진수, 논리 게이트, CPU, 메모리 등을 비전공자도 이해할 수 있도록 풀어낸다.</div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">The Algorithm Design Manual (3rd Edition)</div>
+      <div class="ref-authors">Steven S. Skiena</div>
+      <div class="ref-meta"><span>Springer, 2020</span> <span>ISBN: 978-3030542559</span></div>
+      <div class="ref-summary">알고리즘 설계의 실전 가이드. 이론적 분석과 함께 실제 문제에 알고리즘을 적용하는 방법을 "전쟁 이야기(war stories)"로 생생하게 전달한다.</div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">Structured Computer Organization (6th Edition)</div>
+      <div class="ref-authors">Andrew S. Tanenbaum, Todd Austin</div>
+      <div class="ref-meta"><span>Pearson, 2012</span> <span>ISBN: 978-0132916523</span></div>
+      <div class="ref-summary">컴퓨터 조직을 계층적 관점에서 설명하는 교재. 디지털 논리, 마이크로아키텍처, ISA, 운영체제, 어셈블리 언어 등을 단계별로 다룬다.</div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">Computer Organization and Design (5th Edition)</div>
+      <div class="ref-authors">John L. Hennessy, David A. Patterson</div>
+      <div class="ref-meta"><span>Morgan Kaufmann, 2013</span> <span>ISBN: 978-0124077263</span></div>
+      <div class="ref-summary">컴퓨터 구조의 표준 교과서. RISC 아키텍처, 파이프라인, 메모리 계층, 병렬 처리 등 하드웨어-소프트웨어 인터페이스의 핵심을 다룬다.</div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- 9. Web & API Development -->
+  <!-- ============================================================ -->
+  <div class="category" id="cat9">
+    <h2>9. 웹 &amp; API 개발</h2>
+    <p>파이썬을 활용한 웹 애플리케이션과 API 개발 관련 서적입니다.</p>
+
+    <div class="ref-card">
+      <div class="ref-title">Flask Web Development (2nd Edition)</div>
+      <div class="ref-authors">Miguel Grinberg</div>
+      <div class="ref-meta"><span>O'Reilly, 2018</span> <span>ISBN: 978-1491991732</span></div>
+      <div class="ref-summary">Flask 프레임워크를 활용한 웹 개발 입문서. 라우팅, 템플릿, 데이터베이스, 사용자 인증, REST API 등을 단계적으로 구현하면서 실전 웹 애플리케이션을 완성한다.</div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">Django Documentation</div>
+      <div class="ref-authors">Django Software Foundation</div>
+      <div class="ref-meta"><span>2024</span> <span class="tag">공식 문서</span></div>
+      <div class="ref-summary">Django 웹 프레임워크의 공식 문서. "배터리 포함" 철학에 따라 ORM, 관리자 사이트, 인증, 폼 처리 등 웹 개발에 필요한 모든 기능을 내장하고 있다.</div>
+      <a class="ref-link" href="https://docs.djangoproject.com" target="_blank">djangoproject.com &rarr;</a>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">FastAPI Documentation</div>
+      <div class="ref-authors">Sebastián Ramírez</div>
+      <div class="ref-meta"><span>2024</span> <span class="tag">공식 문서</span></div>
+      <div class="ref-summary">FastAPI의 공식 문서. Python 타입 힌트를 기반으로 자동 API 문서 생성, 데이터 검증, 비동기 처리 등을 지원하는 현대적 웹 프레임워크이다.</div>
+      <a class="ref-link" href="https://fastapi.tiangolo.com" target="_blank">fastapi.tiangolo.com &rarr;</a>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">Requests: HTTP for Humans</div>
+      <div class="ref-authors">Kenneth Reitz</div>
+      <div class="ref-meta"><span>2024</span> <span class="tag">라이브러리</span></div>
+      <div class="ref-summary">파이썬에서 HTTP 요청을 보내기 위한 사실상의 표준 라이브러리. 직관적인 API로 GET, POST 등의 HTTP 메서드를 간편하게 사용할 수 있다.</div>
+      <a class="ref-link" href="https://docs.python-requests.org" target="_blank">python-requests.org &rarr;</a>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">REST API Design Rulebook</div>
+      <div class="ref-authors">Mark Massé</div>
+      <div class="ref-meta"><span>O'Reilly, 2011</span> <span>ISBN: 978-1449310509</span></div>
+      <div class="ref-summary">일관성 있는 RESTful API를 설계하기 위한 규칙과 가이드라인을 정리한 서적. URI 설계, HTTP 메서드 활용, 상태 코드 선택 등 API 설계의 모범 사례를 제시한다.</div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">Test-Driven Development with Python (2nd Edition)</div>
+      <div class="ref-authors">Harry J. W. Percival</div>
+      <div class="ref-meta"><span>O'Reilly, 2017</span> <span>ISBN: 978-1491958704</span></div>
+      <div class="ref-summary">Django와 Selenium을 활용하여 TDD 방식으로 웹 애플리케이션을 개발하는 실습서. "Testing Goat"라는 캐릭터를 통해 TDD의 원칙과 실천을 재미있게 전달한다.</div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- 10. Korean Python Books -->
+  <!-- ============================================================ -->
+  <div class="category" id="cat10">
+    <h2>10. 한국어 파이썬 도서</h2>
+    <p>한국어로 작성된 파이썬 관련 도서들입니다.</p>
+
+    <div class="ref-card">
+      <div class="ref-title">점프 투 파이썬</div>
+      <div class="ref-authors">박응용</div>
+      <div class="ref-meta"><span>이지스퍼블리싱, 2019</span> <span>ISBN: 978-8997390915</span> <span class="tag">무료 공개</span></div>
+      <div class="ref-summary">한국에서 가장 널리 읽히는 파이썬 입문서. 위키독스(wikidocs.net)에서 온라인으로 무료 공개되어 있으며, 파이썬의 기초부터 웹 프로그래밍까지 체계적으로 다룬다.</div>
+      <a class="ref-link" href="https://wikidocs.net/book/1" target="_blank">wikidocs.net &rarr;</a>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">Do it! 점프 투 파이썬 (개정 2판)</div>
+      <div class="ref-authors">박응용</div>
+      <div class="ref-meta"><span>이지스퍼블리싱, 2022</span> <span>ISBN: 978-8997390946</span></div>
+      <div class="ref-summary">『점프 투 파이썬』의 출판 버전. 실습 위주의 구성으로 파이썬 기초를 빠르게 학습할 수 있으며, 단계별 프로젝트를 통해 실전 감각을 기를 수 있다.</div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">혼자 공부하는 파이썬 (개정판)</div>
+      <div class="ref-authors">윤인성</div>
+      <div class="ref-meta"><span>한빛미디어, 2022</span> <span>ISBN: 978-8969213187</span></div>
+      <div class="ref-summary">독학으로 파이썬을 배우려는 학습자를 위한 입문서. 친절한 설명, 풍부한 그림, 단계별 예제로 프로그래밍 경험이 전혀 없는 초보자도 따라갈 수 있도록 구성되어 있다.</div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">으뜸 데이터 분석과 시각화</div>
+      <div class="ref-authors">조대표, 박동규</div>
+      <div class="ref-meta"><span>생능출판, 2021</span> <span>ISBN: 978-8970505091</span></div>
+      <div class="ref-summary">파이썬을 활용한 데이터 분석과 시각화를 체계적으로 다루는 한국어 교재. pandas, matplotlib, seaborn 등을 활용한 실습 예제가 풍부하다.</div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">블록과 함께하는 파이썬 딥러닝 케라스</div>
+      <div class="ref-authors">김태영</div>
+      <div class="ref-meta"><span>디지털북스, 2020</span> <span>ISBN: 978-8960883222</span></div>
+      <div class="ref-summary">블록 다이어그램을 활용하여 딥러닝의 개념을 시각적으로 설명하는 한국어 교재. Keras를 사용한 실습을 통해 신경망의 원리와 구현을 쉽게 배울 수 있다.</div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- 11. Online Resources -->
+  <!-- ============================================================ -->
+  <div class="category" id="cat11">
+    <h2>11. 온라인 학습 자료</h2>
+    <p>파이썬 학습에 도움이 되는 온라인 플랫폼과 커뮤니티입니다.</p>
+
+    <div class="ref-card">
+      <div class="ref-title">Stack Overflow</div>
+      <div class="ref-authors">Stack Exchange Inc.</div>
+      <div class="ref-meta"><span class="tag">커뮤니티</span></div>
+      <div class="ref-summary">세계 최대의 프로그래밍 질의응답 커뮤니티. 파이썬 관련 질문만 200만 건 이상 축적되어 있으며, 프로그래밍 중 마주치는 거의 모든 문제의 해결책을 찾을 수 있다.</div>
+      <a class="ref-link" href="https://stackoverflow.com" target="_blank">stackoverflow.com &rarr;</a>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">GitHub</div>
+      <div class="ref-authors">GitHub Inc.</div>
+      <div class="ref-meta"><span class="tag">플랫폼</span></div>
+      <div class="ref-summary">세계 최대의 소프트웨어 개발 협업 플랫폼. 오픈 소스 프로젝트의 소스 코드를 탐색하고, 자신의 프로젝트를 관리하며, 다른 개발자와 협업할 수 있다.</div>
+      <a class="ref-link" href="https://github.com" target="_blank">github.com &rarr;</a>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">Real Python</div>
+      <div class="ref-authors">Real Python</div>
+      <div class="ref-meta"><span class="tag">튜토리얼</span></div>
+      <div class="ref-summary">고품질 파이썬 튜토리얼을 제공하는 학습 사이트. 초급부터 고급까지 다양한 주제의 튜토리얼, 비디오 강좌, 퀴즈를 통해 파이썬 실력을 향상시킬 수 있다.</div>
+      <a class="ref-link" href="https://realpython.com" target="_blank">realpython.com &rarr;</a>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">Kaggle</div>
+      <div class="ref-authors">Kaggle Inc.</div>
+      <div class="ref-meta"><span class="tag">플랫폼</span></div>
+      <div class="ref-summary">데이터 과학 경진대회 및 학습 플랫폼. 실제 데이터셋을 활용한 경진대회, 무료 GPU 환경, 커뮤니티 노트북 등을 제공하여 실전 데이터 과학 역량을 기를 수 있다.</div>
+      <a class="ref-link" href="https://www.kaggle.com" target="_blank">kaggle.com &rarr;</a>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">Google Colaboratory</div>
+      <div class="ref-authors">Google</div>
+      <div class="ref-meta"><span class="tag">클라우드 환경</span></div>
+      <div class="ref-summary">클라우드 기반 Jupyter Notebook 환경. 설치 없이 브라우저에서 파이썬 코드를 실행할 수 있으며, 무료 GPU/TPU를 제공하여 머신러닝 실습에 적합하다.</div>
+      <a class="ref-link" href="https://colab.research.google.com" target="_blank">colab.google &rarr;</a>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">Python for Everybody Specialization</div>
+      <div class="ref-authors">Charles R. Severance (University of Michigan)</div>
+      <div class="ref-meta"><span>Coursera</span> <span class="tag">온라인 강좌</span></div>
+      <div class="ref-summary">미시간 대학교의 파이썬 입문 전문 과정. Coursera에서 수강할 수 있으며, 프로그래밍 기초부터 데이터베이스, 웹 크롤링까지 체계적으로 학습한다.</div>
+      <a class="ref-link" href="https://www.coursera.org/specializations/python" target="_blank">Coursera &rarr;</a>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">W3Schools Python Tutorial</div>
+      <div class="ref-authors">W3Schools</div>
+      <div class="ref-meta"><span class="tag">튜토리얼</span></div>
+      <div class="ref-summary">웹 기반 파이썬 튜토리얼. 브라우저에서 직접 코드를 실행해 볼 수 있는 "Try it Yourself" 기능과 함께, 파이썬 문법을 빠르게 참고할 수 있다.</div>
+      <a class="ref-link" href="https://www.w3schools.com/python/" target="_blank">w3schools.com &rarr;</a>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-title">Anaconda Distribution</div>
+      <div class="ref-authors">Anaconda Inc.</div>
+      <div class="ref-meta"><span class="tag">배포판</span></div>
+      <div class="ref-summary">데이터 과학을 위한 파이썬 배포판. NumPy, pandas, matplotlib, scikit-learn 등 핵심 패키지가 사전 설치되어 있어, 환경 설정의 번거로움 없이 바로 데이터 과학 작업을 시작할 수 있다.</div>
+      <a class="ref-link" href="https://www.anaconda.com" target="_blank">anaconda.com &rarr;</a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p>&copy; 으뜸 파이썬 Express &mdash; 생능출판사</p>
+  <p style="margin-top: 0.5rem;">
+    <a href="index.html">책 소개</a> &middot;
+    <a href="https://github.com/dknife/PythonExpress">GitHub</a>
+  </p>
+</footer>
+
+</body>
+</html>

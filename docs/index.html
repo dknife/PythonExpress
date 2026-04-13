@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>으뜸 파이썬 Express</title>
+  <style>
+    :root {
+      --deep-blue: #1a3a5c;
+      --accent-blue: #2c7be5;
+      --light-bg: #f7f9fc;
+      --card-bg: #ffffff;
+      --text: #2d3748;
+      --text-light: #718096;
+      --border: #e2e8f0;
+      --gold: #d69e2e;
+      --green: #38a169;
+      --purple: #805ad5;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Pretendard', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text);
+      background: var(--light-bg);
+      line-height: 1.7;
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, var(--deep-blue) 0%, #2c5282 50%, var(--accent-blue) 100%);
+      color: white;
+      padding: 4rem 2rem 3rem;
+      text-align: center;
+    }
+    .hero h1 { font-size: 2.5rem; margin-bottom: 0.5rem; font-weight: 800; }
+    .hero .subtitle { font-size: 1.15rem; opacity: 0.9; margin-bottom: 1.5rem; }
+    .hero .badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 20px;
+      padding: 0.3rem 1rem;
+      font-size: 0.85rem;
+      margin: 0 0.25rem;
+    }
+
+    /* Container */
+    .container { max-width: 960px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* Section */
+    section { padding: 3rem 0; }
+    section h2 {
+      font-size: 1.6rem;
+      color: var(--deep-blue);
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 3px solid var(--accent-blue);
+      display: inline-block;
+    }
+
+    /* About */
+    .about p { margin-bottom: 1rem; font-size: 1.05rem; }
+
+    /* Part groups */
+    .part-group { margin-bottom: 2rem; }
+    .part-label {
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent-blue);
+      margin-bottom: 0.75rem;
+    }
+    .part-label.part1 { color: var(--accent-blue); }
+    .part-label.part2 { color: var(--green); }
+    .part-label.part3 { color: var(--purple); }
+    .part-label.part4 { color: var(--gold); }
+
+    /* Chapter cards */
+    .chapter-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+    .chapter-card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      padding: 1.25rem;
+      border: 1px solid var(--border);
+      transition: transform 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+      color: var(--text);
+      display: block;
+    }
+    .chapter-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    }
+    .chapter-card .ch-num {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-light);
+      margin-bottom: 0.25rem;
+    }
+    .chapter-card .ch-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--deep-blue);
+    }
+    .chapter-card .ch-desc {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      margin-top: 0.4rem;
+    }
+
+    /* Structure table */
+    .structure-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--card-bg);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    }
+    .structure-table th {
+      background: var(--deep-blue);
+      color: white;
+      padding: 0.75rem 1rem;
+      text-align: left;
+      font-size: 0.9rem;
+    }
+    .structure-table td {
+      padding: 0.6rem 1rem;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.95rem;
+    }
+    .structure-table tr:last-child td { border-bottom: none; }
+    .structure-table tr:hover { background: var(--light-bg); }
+
+    /* Links section */
+    .link-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+    .link-card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      padding: 1.5rem;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: var(--text);
+      display: block;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .link-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    }
+    .link-card h3 { color: var(--deep-blue); margin-bottom: 0.5rem; }
+    .link-card p { font-size: 0.9rem; color: var(--text-light); }
+
+    /* Footer */
+    footer {
+      background: var(--deep-blue);
+      color: rgba(255,255,255,0.7);
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.85rem;
+    }
+    footer a { color: rgba(255,255,255,0.9); }
+
+    /* 15-week plan */
+    .week-plan {
+      background: var(--card-bg);
+      border-radius: 10px;
+      padding: 1.5rem;
+      border: 1px solid var(--border);
+    }
+    .week-plan table { width: 100%; border-collapse: collapse; }
+    .week-plan th { background: var(--accent-blue); color: white; padding: 0.5rem 0.75rem; font-size: 0.85rem; text-align: center; }
+    .week-plan td { padding: 0.4rem 0.75rem; border-bottom: 1px solid var(--border); font-size: 0.85rem; text-align: center; }
+    .week-plan tr:nth-child(even) { background: var(--light-bg); }
+    .week-plan .midterm { background: #fff5f5; font-weight: 600; color: #c53030; }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 1.8rem; }
+      .chapter-grid { grid-template-columns: 1fr; }
+      .link-cards { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Hero -->
+<div class="hero">
+  <h1>으뜸 파이썬 Express</h1>
+  <p class="subtitle">핵심을 빠르게, 활용은 깊게 &mdash; 파이썬 입문의 Express 코스</p>
+  <span class="badge">Python 3</span>
+  <span class="badge">12개 장</span>
+  <span class="badge">4개 파트</span>
+  <span class="badge">생능출판사</span>
+</div>
+
+<div class="container">
+
+  <!-- 책 소개 -->
+  <section class="about">
+    <h2>책 소개</h2>
+    <p>
+      <strong>『으뜸 파이썬 Express』</strong>는 기존 『으뜸 파이썬』의 핵심 내용을 12개 장으로 압축한 Express 에디션입니다.
+      한 학기 수업이나 독학으로 파이썬 프로그래밍을 빠르게 학습하고자 하는 독자를 위해 구성되었습니다.
+    </p>
+    <p>
+      특히 <strong>IV부 "한 걸음 더"</strong>에서는 원서에 담지 않았던 새로운 내용을 포함하였습니다.
+      파이썬다운 코딩 기법과 넘파이, 실생활에 활용 가능한 응용 프로그램 제작,
+      그리고 판다스와 맷플롯립을 이용한 데이터 과학 입문까지 &mdash;
+      빠르게 학습하되, 배운 것을 곧바로 활용할 수 있도록 구성하였습니다.
+    </p>
+    <p>
+      이 책의 표지와 각 장의 도입부에 실린 그림은 저자가 고양이들과 함께 생활하면서 시작한 그림 그리기의 결과물입니다.
+      프로그래밍도 마찬가지로, 서툴더라도 자신감을 갖고 도전해 보시기 바랍니다.
+      오류를 만나고, 고치고, 다시 실행하는 그 과정 자체가 성장입니다.
+    </p>
+  </section>
+
+  <!-- 장별 코드 -->
+  <section>
+    <h2>장별 예제 코드</h2>
+
+    <div class="part-group">
+      <div class="part-label part1">Part I &mdash; 파이썬 시작</div>
+      <div class="chapter-grid">
+        <a class="chapter-card" href="https://github.com/dknife/PythonExpress/blob/main/ch01/ch01_examples.py">
+          <div class="ch-num">제1장</div>
+          <div class="ch-title">파이썬 소개와 개발 환경</div>
+          <div class="ch-desc">print() 함수, IDLE, 스크립트 작성</div>
+        </a>
+        <a class="chapter-card" href="https://github.com/dknife/PythonExpress/blob/main/ch02/ch02_examples.py">
+          <div class="ch-num">제2장</div>
+          <div class="ch-title">변수, 연산자, 문자열</div>
+          <div class="ch-desc">변수, 자료형, 연산자, 문자열 처리</div>
+        </a>
+        <a class="chapter-card" href="https://github.com/dknife/PythonExpress/blob/main/ch03/ch03_examples.py">
+          <div class="ch-num">제3장</div>
+          <div class="ch-title">조건문과 반복문</div>
+          <div class="ch-desc">if/elif/else, for, while, break/continue</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="part-group">
+      <div class="part-label part2">Part II &mdash; 함수와 자료구조</div>
+      <div class="chapter-grid">
+        <a class="chapter-card" href="https://github.com/dknife/PythonExpress/blob/main/ch04/ch04_examples.py">
+          <div class="ch-num">제4장</div>
+          <div class="ch-title">함수와 입출력</div>
+          <div class="ch-desc">함수 정의, 매개변수, 반환값, 변수 범위</div>
+        </a>
+        <a class="chapter-card" href="https://github.com/dknife/PythonExpress/blob/main/ch05/ch05_examples.py">
+          <div class="ch-num">제5장</div>
+          <div class="ch-title">리스트와 슬라이싱</div>
+          <div class="ch-desc">리스트 생성, 인덱싱, 슬라이싱, 메서드</div>
+        </a>
+        <a class="chapter-card" href="https://github.com/dknife/PythonExpress/blob/main/ch06/ch06_examples.py">
+          <div class="ch-num">제6장</div>
+          <div class="ch-title">딕셔너리, 튜플, 집합</div>
+          <div class="ch-desc">딕셔너리, 튜플, 집합, 컬렉션 비교</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="part-group">
+      <div class="part-label part3">Part III &mdash; 실전 활용</div>
+      <div class="chapter-grid">
+        <a class="chapter-card" href="https://github.com/dknife/PythonExpress/blob/main/ch07/ch07_examples.py">
+          <div class="ch-num">제7장</div>
+          <div class="ch-title">모듈 활용</div>
+          <div class="ch-desc">import, datetime, math, random, pip</div>
+        </a>
+        <a class="chapter-card" href="https://github.com/dknife/PythonExpress/blob/main/ch08/ch08_examples.py">
+          <div class="ch-num">제8장</div>
+          <div class="ch-title">예외 처리와 파일</div>
+          <div class="ch-desc">try/except, 파일 읽기/쓰기</div>
+        </a>
+        <a class="chapter-card" href="https://github.com/dknife/PythonExpress/blob/main/ch09/ch09_examples.py">
+          <div class="ch-num">제9장</div>
+          <div class="ch-title">클래스와 객체</div>
+          <div class="ch-desc">클래스, 생성자, 캡슐화, 상속</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="part-group">
+      <div class="part-label part4">Part IV &mdash; 한 걸음 더</div>
+      <div class="chapter-grid">
+        <a class="chapter-card" href="https://github.com/dknife/PythonExpress/blob/main/ch10/ch10_examples.py">
+          <div class="ch-num">제10장</div>
+          <div class="ch-title">파이썬다운 코딩과 넘파이</div>
+          <div class="ch-desc">람다, 리스트 축약, NumPy 배열</div>
+        </a>
+        <a class="chapter-card" href="https://github.com/dknife/PythonExpress/blob/main/ch11/ch11_examples.py">
+          <div class="ch-num">제11장</div>
+          <div class="ch-title">파이썬의 응용</div>
+          <div class="ch-desc">단어장 앱, 데이터 정제, Flask 웹 앱</div>
+        </a>
+        <a class="chapter-card" href="https://github.com/dknife/PythonExpress/blob/main/ch12/ch12_examples.py">
+          <div class="ch-num">제12장</div>
+          <div class="ch-title">데이터 과학과 파이썬</div>
+          <div class="ch-desc">pandas, matplotlib, scikit-learn</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 15주 학습 계획 -->
+  <section>
+    <h2>15주 학습 계획</h2>
+    <div class="week-plan">
+      <table>
+        <tr><th>주차</th><th>내용</th><th>주차</th><th>내용</th></tr>
+        <tr><td>1주</td><td>제1장: 파이썬 소개와 개발 환경</td><td>9주</td><td>제7장: 모듈 활용</td></tr>
+        <tr><td>2주</td><td>제2장: 변수, 연산자, 문자열</td><td>10주</td><td>제8장: 예외 처리와 파일</td></tr>
+        <tr><td>3주</td><td>제3장: 조건문과 반복문 (1)</td><td>11주</td><td>제9장: 클래스와 객체</td></tr>
+        <tr><td>4주</td><td>제3장: 조건문과 반복문 (2)</td><td>12주</td><td>제10장: 파이썬다운 코딩과 넘파이</td></tr>
+        <tr><td>5주</td><td>제4장: 함수와 입출력</td><td>13주</td><td>제11장: 파이썬의 응용</td></tr>
+        <tr><td>6주</td><td>제5장: 리스트와 슬라이싱</td><td>14주</td><td>제12장: 데이터 과학과 파이썬</td></tr>
+        <tr><td>7주</td><td>제6장: 딕셔너리, 튜플, 집합</td><td>15주</td><td>기말 평가</td></tr>
+        <tr class="midterm"><td>8주</td><td>중간 평가</td><td></td><td></td></tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- 참고 자료 -->
+  <section>
+    <h2>참고 자료</h2>
+    <div class="link-cards">
+      <a class="link-card" href="references.html">
+        <h3>참고문헌</h3>
+        <p>책에서 인용한 100여 권의 참고문헌에 대한 서지 정보와 요약을 확인할 수 있습니다.</p>
+      </a>
+      <a class="link-card" href="https://github.com/dknife/PythonExpress">
+        <h3>GitHub 저장소</h3>
+        <p>전체 예제 코드를 다운로드하거나 개별 파일을 확인할 수 있습니다.</p>
+      </a>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <p>&copy; 으뜸 파이썬 Express &mdash; 생능출판사</p>
+  <p style="margin-top: 0.5rem;">
+    <a href="https://github.com/dknife/PythonExpress">GitHub</a> &middot;
+    <a href="references.html">참고문헌</a>
+  </p>
+</footer>
+
+</body>
+</html>
