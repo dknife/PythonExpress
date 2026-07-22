@@ -254,6 +254,35 @@ pre.pyout *, pre.termout * {
   font-size: 0.88rem; }
 .box.goals p, .box.goals li { font-size: 0.88rem; }
 .box.goals .box-head { font-size: 0.95rem; }
+/* 학습 목표는 접어 두고 제목을 눌러 펼친다 (<details>/<summary>, JS 불필요) */
+details.box.goals { padding-top: 0.9rem; padding-bottom: 0.9rem; }
+details.box.goals > summary {
+  cursor: pointer;
+  list-style: none;                 /* 기본 삼각형 마커 제거 */
+  display: flex; align-items: center; gap: 0.55rem;
+  margin-bottom: 0;
+  transition: color 0.3s ease;
+}
+details.box.goals > summary::-webkit-details-marker { display: none; }
+details.box.goals > summary::after {
+  content: '';
+  width: 0.42em; height: 0.42em;
+  margin-left: auto;
+  border-right: 2px solid var(--cyan);
+  border-bottom: 2px solid var(--cyan);
+  transform: rotate(45deg) translate(-0.12em, -0.12em);
+  transition: transform 0.3s var(--ease);
+}
+details.box.goals[open] > summary::after {
+  transform: rotate(225deg) translate(-0.12em, -0.12em);
+}
+details.box.goals > summary:hover { color: var(--cyan); }
+details.box.goals > summary:focus-visible {
+  outline: 2px solid var(--cyan); outline-offset: 3px; border-radius: 3px;
+}
+.goals-body { margin-top: 0.75rem; }
+.goals-body > :last-child { margin-bottom: 0; }
+.goals-body ul { margin-bottom: 0; }
 .box .box-head {
   font-weight: 800; color: var(--text); font-size: 1.08rem;
   margin-bottom: 0.8rem; letter-spacing: -0.01em;
