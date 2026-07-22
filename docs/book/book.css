@@ -370,8 +370,11 @@ p.signoff { text-align: right; font-weight: 700; color: var(--text-light); }
 /* ---- 그림 확대 & 코드 복사 ---- */
 img.zoomable { cursor: zoom-in; }
 .code-wrap { position: relative; }
-.copy-btn {
+.code-actions {
   position: absolute; top: 10px; right: 10px;
+  display: flex; gap: 0.35rem;
+}
+.copy-btn {
   display: inline-flex; align-items: center; gap: 0.35rem;
   background: rgba(34,34,34,0.85); color: #fff;
   border: none; border-radius: 6px;
@@ -382,7 +385,102 @@ img.zoomable { cursor: zoom-in; }
 .code-wrap:hover .copy-btn { opacity: 1; }
 .copy-btn:hover { background: var(--btn-hover); }
 .copy-btn.ok { background: var(--mint); color: var(--text); opacity: 1; }
+.copy-btn.run-btn { background: rgba(250,93,41,0.92); }
+.copy-btn.run-btn:hover { background: var(--accent); }
+.copy-btn:focus-visible { opacity: 1; outline: 2px solid var(--cyan); outline-offset: 2px; }
 @media (hover: none) { .copy-btn { opacity: 0.85; } }
+
+/* ---- 코드 실행 창 (Pyodide) ---- */
+dialog.runner {
+  width: min(860px, 94vw);
+  max-height: 92vh;
+  /* display:flex로 덮어쓰면 UA 스타일의 margin:auto(가운데 정렬)가 풀린다 */
+  margin: auto;
+  padding: 0; border: none;
+  border-radius: var(--radius-lg);
+  background: var(--white); color: var(--text);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.28);
+  flex-direction: column; gap: 0;
+}
+dialog.runner[open] { display: flex; }
+dialog.runner::backdrop { background: rgba(20,20,20,0.55); backdrop-filter: blur(3px); }
+.runner-head {
+  display: flex; align-items: center; gap: 0.7rem;
+  padding: 0.85rem 1.1rem;
+  border-bottom: 1px solid var(--border);
+}
+.runner-title { font-weight: 800; letter-spacing: -0.01em; }
+.runner-hint { font-size: 0.74rem; color: var(--text-light); margin-left: auto; }
+.runner-close {
+  background: none; border: none; cursor: pointer;
+  font-size: 1rem; line-height: 1; color: var(--text-light);
+  padding: 0.3rem 0.4rem; border-radius: 6px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+.runner-close:hover { background: var(--bg-2); color: var(--text); }
+.runner-code, .runner-stdin {
+  width: 100%; resize: vertical;
+  font-family: 'D2Coding', Consolas, 'JetBrains Mono', monospace;
+  font-size: 0.84rem; line-height: 1.55;
+  color: var(--text); background: var(--bg);
+  border: none; border-bottom: 1px solid var(--border);
+  padding: 0.9rem 1.1rem;
+  tab-size: 4;
+}
+.runner-code { min-height: 8.5rem; max-height: 42vh; }
+.runner-code:focus, .runner-stdin:focus {
+  outline: none; background: var(--white);
+  box-shadow: inset 3px 0 0 var(--accent);
+}
+.runner-stdin-wrap { border-bottom: 1px solid var(--border); }
+.runner-label {
+  display: block; padding: 0.6rem 1.1rem 0;
+  font-size: 0.76rem; font-weight: 700; color: var(--text-2);
+}
+.runner-label span { font-weight: 400; color: var(--text-light); }
+.runner-stdin { border-bottom: none; min-height: 2.6rem; }
+.runner-bar {
+  display: flex; align-items: center; gap: 0.5rem;
+  padding: 0.7rem 1.1rem;
+}
+.runner-bar button {
+  font: inherit; font-size: 0.8rem; font-weight: 600;
+  border: none; border-radius: var(--radius); cursor: pointer;
+  padding: 0.42rem 1.1rem;
+  transition: background 0.3s ease, opacity 0.3s ease;
+}
+.runner-run { background: var(--accent); color: #fff; }
+.runner-run:hover:not(:disabled) { background: #e14e1d; }
+.runner-run:disabled { opacity: 0.5; cursor: default; }
+.runner-stop { background: var(--btn); color: #fff; }
+.runner-stop:hover { background: var(--btn-hover); }
+.runner-reset { background: var(--bg-2); color: var(--text-2); }
+.runner-reset:hover { background: var(--border); }
+.runner-status { font-size: 0.78rem; color: var(--text-light); margin-left: auto; }
+.runner-out {
+  margin: 0; padding: 0.9rem 1.1rem;
+  background: var(--btn); color: #EDEDED;
+  font-family: 'D2Coding', Consolas, 'JetBrains Mono', monospace;
+  font-size: 0.82rem; line-height: 1.5;
+  white-space: pre-wrap; word-break: break-word;
+  min-height: 5rem; max-height: 32vh; overflow-y: auto;
+  flex: 1;
+}
+.runner-out .err { color: #FF9B84; }
+.runner-out .warn { color: var(--yellow); }
+.runner-out .muted { color: #8A8A8A; }
+.runner-figs:not(:empty) {
+  padding: 0.9rem 1.1rem; background: var(--bg);
+  max-height: 40vh; overflow-y: auto;
+}
+.runner-figs img {
+  display: block; max-width: 100%; margin: 0 auto 0.8rem;
+  border-radius: var(--radius); background: #fff;
+}
+@media (max-width: 640px) {
+  dialog.runner { width: 100vw; max-height: 100vh; border-radius: 0; }
+  .runner-hint { display: none; }
+}
 
 /* ---- scroll reveal ---- */
 .reveal {
