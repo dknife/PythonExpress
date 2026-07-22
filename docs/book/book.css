@@ -187,6 +187,12 @@ pre.pyout, pre.termout {
   border: none; border-radius: var(--radius);
   padding: 0.85rem 1.1rem; font-size: 0.84rem; overflow-x: auto;
 }
+/* 어두운 터미널 배경 위에서는 안쪽 요소도 밝은 글자색을 물려받게 한다
+   (본문 색 #313131이 새어 들어오면 검은 바탕에서 글자가 보이지 않는다) */
+pre.pyout *, pre.termout * {
+  color: inherit; background: none; margin: 0; padding: 0;
+  font: inherit;
+}
 .listing { margin: 1.2rem 0; }
 .listing pre { margin-bottom: 0.35rem; }
 .listing-caption, figcaption, .table-caption {

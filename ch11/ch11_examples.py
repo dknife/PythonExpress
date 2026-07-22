@@ -9,7 +9,7 @@
 
 # 일반 함수를 이용한 덧셈
 def add(x, y):
- return x + y
+    return x + y
 
 print('Sum of 100 and 200 :', add(100, 200))
 
@@ -35,15 +35,15 @@ print('Sum of 100 and 200 :', (lambda x, y: x + y)(100, 200))
 filter(function, iterable)
 
 def adult_func(n): # 나이가 19 이상이면 True, 아니면 False
- if n >= 19:
- return True
- else:
- return False
+    if n >= 19:
+        return True
+    else:
+        return False
 
 ages = [34, 39, 20, 18, 13, 54]
 print('Adult list :')
 for a in filter(adult_func, ages): # filter() 함수로 필터링
- print(a, end = ' ')
+    print(a, end = ' ')
 
 ages = [34, 39, 20, 18, 13, 54]
 adult_ages = list(filter(lambda x: x >= 19, ages))
@@ -59,7 +59,7 @@ map(function, iterable,...)
 a = [1, 2, 3, 4, 5, 6, 7]
 square_a = []
 for n in a:
- square_a.append(n ** 2) # n의 제곱을 square_a 리스트에 추가
+    square_a.append(n ** 2) # n의 제곱을 square_a 리스트에 추가
 print(square_a)
 
 a = [1, 2, 3, 4, 5, 6, 7]

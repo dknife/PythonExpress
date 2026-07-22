@@ -46,28 +46,28 @@ print((200).__add__(100)) # 300 (200 + 100과 동일)
 
 # --- class 키워드로 클래스 정의 문법 ---
 class ClassName:
- <statement-1>
-...
- <statement-n>
+    <statement-1>
+    ...
+    <statement-n>
 
 # --- 빈 Cat 클래스 정의와 인스턴스 생성 ---
 class Cat: # Cat 클래스 정의
- pass # 추후 코드를 위한 자리 표시자
+    pass # 추후 코드를 위한 자리 표시자
 
 nabi = Cat() # Cat 클래스의 인스턴스 생성
 print(nabi) # <__main__.Cat object at 0x7f78399e0eb8>
 print(type(nabi)) # <class '__main__.Cat'>
 
 class Cat:
- def meow(self): # Cat 클래스의 메소드
- print('Meow meow~~~')
+    def meow(self): # Cat 클래스의 메소드
+        print('Meow meow~~~')
 
 nabi = Cat()
 nabi.meow() # Meow meow~~~
 
 class Cat:
- def meow(self):
- print('Meow meow~~~')
+    def meow(self):
+        print('Meow meow~~~')
 
 nabi = Cat()
 nabi.meow() # Meow meow~~~
@@ -77,13 +77,13 @@ mimi = Cat()
 mimi.meow() # Meow meow~~~
 
 class Cat:
- # 생성자 -- 인스턴스가 생성될 때 자동으로 호출됨
- def __init__(self, name, color):
- self.name = name # 인스턴스 변수
- self.color = color # 인스턴스 변수
+    # 생성자 -- 인스턴스가 생성될 때 자동으로 호출됨
+    def __init__(self, name, color):
+        self.name = name # 인스턴스 변수
+        self.color = color # 인스턴스 변수
 
- def meow(self):
- print(f'My name is {self.name}, color is {self.color}, meow~~')
+    def meow(self):
+        print(f'My name is {self.name}, color is {self.color}, meow~~')
 
 nabi = Cat('Nabi', 'black') # nabi 인스턴스
 nero = Cat('Nero', 'white') # nero 인스턴스
@@ -95,23 +95,23 @@ mimi.meow() # My name is Mimi, color is brown, meow~~
 
 # --- 학생 정보를 관리하는 Student 클래스 ---
 class Student:
- def __init__(self, name, student_id, major):
- self.name = name
- self.student_id = student_id
- self.major = major
- self.scores = []
+    def __init__(self, name, student_id, major):
+        self.name = name
+        self.student_id = student_id
+        self.major = major
+        self.scores = []
 
- def add_score(self, score):
- self.scores.append(score)
+    def add_score(self, score):
+        self.scores.append(score)
 
- def average(self):
- if len(self.scores) == 0:
- return 0
- return sum(self.scores) / len(self.scores)
+    def average(self):
+        if len(self.scores) == 0:
+            return 0
+        return sum(self.scores) / len(self.scores)
 
- def info(self):
- avg = self.average()
- print(f'{self.name}({self.student_id}) - {self.major}, avg: {avg:.1f}')
+    def info(self):
+        avg = self.average()
+        print(f'{self.name}({self.student_id}) - {self.major}, avg: {avg:.1f}')
 
 # 학생 객체를 생성하고 사용
 s1 = Student('Hong Gildong', '2026001', 'Computer Science')
@@ -130,14 +130,14 @@ s2.info() # Kim Younghee(2026002) - Business, avg: 91.5
 # ============================================================
 
 class Dog:
- count = 0 # 클래스 변수 -- 모든 인스턴스가 공유
+    count = 0 # 클래스 변수 -- 모든 인스턴스가 공유
 
- def __init__(self, name):
- self.name = name # 인스턴스 변수 -- 인스턴스마다 고유
- Dog.count += 1 # 객체가 생성될 때마다 1씩 증가
+    def __init__(self, name):
+        self.name = name # 인스턴스 변수 -- 인스턴스마다 고유
+        Dog.count += 1 # 객체가 생성될 때마다 1씩 증가
 
- def bark(self):
- print(f'{self.name}: Woof woof~~!!')
+    def bark(self):
+        print(f'{self.name}: Woof woof~~!!')
 
 d1 = Dog('Baduk')
 d2 = Dog('Choco')
@@ -148,24 +148,24 @@ d1.bark() # Baduk: Woof woof~~!!
 d2.bark() # Choco: Woof woof~~!!
 
 class BankAccount:
- def __init__(self, owner, balance):
- self.owner = owner
- self.__balance = balance # 외부에서 직접 접근 제한
+    def __init__(self, owner, balance):
+        self.owner = owner
+        self.__balance = balance # 외부에서 직접 접근 제한
 
- def deposit(self, amount):
- if amount > 0:
- self.__balance += amount
- print(f'Deposited {amount}. Balance: {self.__balance}')
+    def deposit(self, amount):
+        if amount > 0:
+            self.__balance += amount
+            print(f'Deposited {amount}. Balance: {self.__balance}')
 
- def withdraw(self, amount):
- if 0 < amount <= self.__balance:
- self.__balance -= amount
- print(f'Withdrew {amount}. Balance: {self.__balance}')
- else:
- print('Insufficient balance.')
+    def withdraw(self, amount):
+        if 0 < amount <= self.__balance:
+            self.__balance -= amount
+            print(f'Withdrew {amount}. Balance: {self.__balance}')
+        else:
+            print('Insufficient balance.')
 
- def get_balance(self):
- return self.__balance
+    def get_balance(self):
+        return self.__balance
 
 acc = BankAccount('Hong Gildong', 100000)
 acc.deposit(50000) # Deposited 50000. Balance: 150000
@@ -175,30 +175,30 @@ print(acc.get_balance()) # 120000
 # acc.__balance # AttributeError! 직접 접근 불가
 
 class Cat:
- def __init__(self, name, color):
- self.name = name
- self.color = color
+    def __init__(self, name, color):
+        self.name = name
+        self.color = color
 
- def __str__(self):
- return f'Cat({self.name}, {self.color})'
+    def __str__(self):
+        return f'Cat({self.name}, {self.color})'
 
 nabi = Cat('Nabi', 'black')
 print(nabi) # Cat(Nabi, black)
 
 class Animal:
- def __init__(self, name):
- self.name = name
+    def __init__(self, name):
+        self.name = name
 
- def speak(self):
- print(f'{self.name} makes a sound.')
+    def speak(self):
+        print(f'{self.name} makes a sound.')
 
 class Dog(Animal): # Animal 클래스를 상속
- def speak(self): # 메소드 오버라이딩
- print(f'{self.name}: Woof!')
+    def speak(self): # 메소드 오버라이딩
+        print(f'{self.name}: Woof!')
 
 class Cat(Animal): # Animal 클래스를 상속
- def speak(self): # 메소드 오버라이딩
- print(f'{self.name}: Meow~')
+    def speak(self): # 메소드 오버라이딩
+        print(f'{self.name}: Meow~')
 
 dog = Dog('Baduk')
 cat = Cat('Nabi')
@@ -206,20 +206,20 @@ dog.speak() # Baduk: Woof!
 cat.speak() # Nabi: Meow~
 
 class BankAccount:
- def __init__(self, owner, balance):
- self.owner = owner
- self.__balance = balance
+    def __init__(self, owner, balance):
+        self.owner = owner
+        self.__balance = balance
 
- @property
- def balance(self): # 속성처럼 사용됨
- return self.__balance
+    @property
+    def balance(self): # 속성처럼 사용됨
+        return self.__balance
 
- @balance.setter
- def balance(self, value): # 값을 대입할 때 호출됨
- if value < 0:
- print('Balance cannot be negative.')
- return
- self.__balance = value
+    @balance.setter
+    def balance(self, value): # 값을 대입할 때 호출됨
+        if value < 0:
+            print('Balance cannot be negative.')
+            return
+        self.__balance = value
 
 acc = BankAccount('Hong Gildong', 100000)
 print(acc.balance) # 100000 -- 괄호 없이 접근
@@ -228,14 +228,14 @@ print(acc.balance) # 50000
 acc.balance = -1000 # 세터가 거부
 
 class Cat:
- def __init__(self, name, age):
- self.name = name
- self.age = age
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
 
- @classmethod
- def from_string(cls, text): # 'Nabi,3' -> Cat('Nabi', 3)
- name, age = text.split(',')
- return cls(name, int(age))
+    @classmethod
+    def from_string(cls, text): # 'Nabi,3' -> Cat('Nabi', 3)
+        name, age = text.split(',')
+        return cls(name, int(age))
 
 c1 = Cat('Choco', 2) # 기본 생성자
 c2 = Cat.from_string('Nabi,3') # 대안 생성자
@@ -247,59 +247,59 @@ print(c2.name, c2.age) # Nabi 3
 # ============================================================
 
 class Animal:
- def __init__(self, name, age):
- self.name = name
- self.age = age
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
 
- def info(self):
- print(f'{self.name} ({self.age} years old)')
+    def info(self):
+        print(f'{self.name} ({self.age} years old)')
 
 class Dog(Animal):
- def __init__(self, name, age, breed):
- super().__init__(name, age) # 부모의 __init__ 호출
- self.breed = breed # 자식만의 속성 추가
+    def __init__(self, name, age, breed):
+        super().__init__(name, age) # 부모의 __init__ 호출
+        self.breed = breed # 자식만의 속성 추가
 
- def info(self):
- super().info() # 부모의 info()를 확장
- print(f' Breed: {self.breed}')
+    def info(self):
+        super().info() # 부모의 info()를 확장
+        print(f' Breed: {self.breed}')
 
 baduk = Dog('Baduk', 3, 'Jindo')
 baduk.info()
 
 class Animal:
- def __init__(self, name):
- self.name = name
- def speak(self):
- print(f'{self.name} makes a sound.')
+    def __init__(self, name):
+        self.name = name
+    def speak(self):
+        print(f'{self.name} makes a sound.')
 
 class Dog(Animal):
- def speak(self):
- print(f'{self.name}: Woof!')
+    def speak(self):
+        print(f'{self.name}: Woof!')
 
 class Cat(Animal):
- def speak(self):
- print(f'{self.name}: Meow~')
+    def speak(self):
+        print(f'{self.name}: Meow~')
 
 class Cow(Animal):
- def speak(self):
- print(f'{self.name}: Moo~')
+    def speak(self):
+        print(f'{self.name}: Moo~')
 
 # 같은 인터페이스로 모든 동물을 동일하게 처리
 animals = [Dog('Baduk'), Cat('Nabi'), Cow('Worky')]
 for a in animals:
- a.speak()
+    a.speak()
 
 class Duck:
- def speak(self):
- print('Quack!')
+    def speak(self):
+        print('Quack!')
 
 class Person:
- def speak(self):
- print('Hello!')
+    def speak(self):
+        print('Hello!')
 
 # 공통 부모는 없지만 둘 다 동일하게 처리 가능
 for obj in [Duck(), Person()]:
- obj.speak()
+    obj.speak()
 
 # ============================================================
 # 실습을 통한 9장 개념 정리

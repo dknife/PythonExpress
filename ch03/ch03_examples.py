@@ -20,26 +20,26 @@ print('num =', num)
 
 age = 18
 if age < 20:
- print('Youth discount')
+    print('Youth discount')
 
 # --- 들여쓰기에 따른 블록의 범위 차이 (조건 만족 시) ---
 age = 18
 if age < 20:
- print('Youth discount')
+    print('Youth discount')
 print('Welcome!')
 
 # --- 세 개의 print 문이 모두 블록 안에 있는 경우 ---
 age = 18
 if age < 20:
- print('Age:', age)
- print('Youth discount')
- print('Welcome, young person!')
+    print('Age:', age)
+    print('Youth discount')
+    print('Welcome, young person!')
 
 hour = int(input('Enter the hour: '))
 if hour < 12:
- print('It is AM.')
+    print('It is AM.')
 else:
- print('It is PM.')
+    print('It is PM.')
 
 # --- if-else 문을 이용한 짝수/홀수 판별 — if_else_even_test.py ---
 num = int(input('Enter a positive integer: '))
@@ -50,15 +50,15 @@ else:
 
 score = int(input('Enter score: '))
 if score >= 90:
- grade = 'A'
+    grade = 'A'
 elif score >= 80:
- grade = 'B'
+    grade = 'B'
 elif score >= 70:
- grade = 'C'
+    grade = 'C'
 elif score >= 60:
- grade = 'D'
+    grade = 'D'
 else:
- grade = 'F'
+    grade = 'F'
 print(f'Grade: {grade}')
 
 # --- 논리 연산자를 활용한 복합 조건식 — if_modulo2.py ---
@@ -87,7 +87,7 @@ else:
 # ============================================================
 
 for i in range(5):
- print('Welcome to everyone!!')
+    print('Welcome to everyone!!')
 
 list(range(5))
 list(range(1, 6))
@@ -97,24 +97,24 @@ list(range(-2, -10, -2))
 
 s = 0
 for i in range(1, 11):
- s = s + i
+    s = s + i
 print('Sum from 1 to 10:', s)
 
 n = int(input('Enter a number: '))
 fact = 1
 for i in range(1, n+1):
- fact = fact * i
+    fact = fact * i
 print(f'{n}! = {fact}')
 
 # 리스트 순회
 fruits = ['apple', 'banana', 'grape']
 for fruit in fruits:
- print(fruit, end=' ')
+    print(fruit, end=' ')
 print()
 
 # 문자열 순회
 for ch in 'Python':
- print(ch, end=' ')
+    print(ch, end=' ')
 print()
 
 # --- 이중 for 문으로 구구단 전체 출력 — double_for.py ---
@@ -129,8 +129,8 @@ for i in range(2, 10):
 
 i = 1
 while i <= 5:
- print(i, end=' ')
- i += 1
+    print(i, end=' ')
+    i += 1
 print()
 
 # --- 사용자 입력을 이용한 while 문 — while_input.py ---
@@ -147,46 +147,46 @@ else:
  print('No numbers were entered.')
 
 for i in range(1, 11):
- if i == 6:
- break
- print(i, end=' ')
+    if i == 6:
+        break
+    print(i, end=' ')
 print()
 print('Loop ended')
 
 for i in range(1, 11):
- if i % 2 == 0:
- continue
- print(i, end=' ')
+    if i % 2 == 0:
+        continue
+    print(i, end=' ')
 print()
 
 even_sum = 0
 odd_sum = 0
 for i in range(1, 101):
- if i % 2 == 0:
- even_sum += i
- else:
- odd_sum += i
+    if i % 2 == 0:
+        even_sum += i
+    else:
+        odd_sum += i
 print(f'Sum of even numbers: {even_sum}')
 print(f'Sum of odd numbers: {odd_sum}')
 
 # --- while True와 break를 이용한 입력 처리 ---
 while True:
- text = input('Enter text (quit to exit): ')
- if text == 'quit':
- print('Goodbye!')
- break
- print(f'You entered: {text}')
+    text = input('Enter text (quit to exit): ')
+    if text == 'quit':
+        print('Goodbye!')
+        break
+    print(f'You entered: {text}')
 
 # --- 1부터 5까지 출력하는 for 문 ---
 for i in range(1, 6):
- print(i, end=' ')
+    print(i, end=' ')
 print()
 
 # --- 같은 동작을 while 문으로 옮긴 코드 ---
 i = 1 # 초기값 설정
 while i < 6: # 조건 검사
- print(i, end=' ')
- i += 1 # 갱신
+    print(i, end=' ')
+    i += 1 # 갱신
 print()
 
 # ============================================================

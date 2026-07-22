@@ -39,7 +39,7 @@ print(person.items())
 person = {'name': 'Hong Gildong', 'age': 26, 'weight': 82}
 
 for key in person:
- print(f'{key} : {person[key]}')
+    print(f'{key} : {person[key]}')
 
 # ============================================================
 # 튜플
@@ -73,7 +73,7 @@ a, b = b, a # 파이썬의 간편한 변수 교환
 print(f'a = {a}, b = {b}')
 
 def get_min_max(numbers):
- return min(numbers), max(numbers) # 튜플로 반환
+    return min(numbers), max(numbers) # 튜플로 반환
 
 data = [45, 23, 78, 12, 67]
 minimum, maximum = get_min_max(data)
@@ -141,7 +141,7 @@ print(list(person.items())) # (키, 값) 튜플의 리스트
 
 # 딕셔너리: 과일 가격
 fruits_dic = {'apple': 6000, 'melon': 3000,
- 'banana': 5000, 'orange': 4000}
+    'banana': 5000, 'orange': 4000}
 
 # 리스트: 모든 키를 리스트로
 fruit_names = list(fruits_dic.keys())
@@ -154,7 +154,7 @@ print('Discountable:', available_discount)
 
 # 튜플: 가격 범위 (불변)
 price_range = (min(fruits_dic.values()),
- max(fruits_dic.values()))
+    max(fruits_dic.values()))
 print('Price range:', price_range)
 
 # ============================================================

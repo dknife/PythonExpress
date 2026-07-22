@@ -206,8 +206,8 @@ emails = re.findall(r'[\w.]+@[\w.]+\.[a-zA-Z]+', text)
 print(emails)
 
 def is_valid_email(s):
- pattern = r'^[\w.]+@[\w.]+\.[a-zA-Z]{2,}$'
- return re.match(pattern, s) is not None
+    pattern = r'^[\w.]+@[\w.]+\.[a-zA-Z]{2,}$'
+    return re.match(pattern, s) is not None
 
 print(is_valid_email('alice@example.com'))
 print(is_valid_email('not_an_email@'))

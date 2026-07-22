@@ -11,18 +11,18 @@ import pandas as pd
 
 # Series: 인덱스가 있는 1차원 데이터
 s = pd.Series([85, 92, 78, 88],
- index=['Korean', 'English', 'Math', 'Science'])
+    index=['Korean', 'English', 'Math', 'Science'])
 print(s)
 print(f'\nKorean score: {s["Korean"]}')
 print(f'Mean: {s.mean():.1f}')
 
 # DataFrame: 2차원 표 형태 데이터
 data = {
- 'name': ['Hong Gildong', 'Kim Cheolsu',
- 'Lee Younghee', 'Park Jimin'],
- 'Korean': [85, 92, 78, 95],
- 'English': [90, 88, 82, 91],
- 'Math': [78, 95, 88, 87]
+    'name': ['Hong Gildong', 'Kim Cheolsu',
+             'Lee Younghee', 'Park Jimin'],
+    'Korean': [85, 92, 78, 95],
+    'English': [90, 88, 82, 91],
+    'Math': [78, 95, 88, 87]
 }
 df = pd.DataFrame(data)
 print(df)
@@ -60,12 +60,12 @@ import pandas as pd
 import numpy as np
 
 data = {
- 'name': ['Hong Gildong', 'Kim Cheolsu', 'Lee Younghee',
- 'Park Jimin', 'Choi Suhyun'],
- 'year': [1, 2, 1, 3, 2],
- 'Korean': [85, 92, np.nan, 95, 78],
- 'English': [90, np.nan, 82, 91, 88],
- 'Math': [78, 95, 88, np.nan, 92]
+    'name': ['Hong Gildong', 'Kim Cheolsu', 'Lee Younghee',
+             'Park Jimin', 'Choi Suhyun'],
+    'year': [1, 2, 1, 3, 2],
+    'Korean': [85, 92, np.nan, 95, 78],
+    'English': [90, np.nan, 82, 91, 88],
+    'Math': [78, 95, 88, np.nan, 92]
 }
 df = pd.DataFrame(data)
 print(df)
@@ -85,11 +85,11 @@ print(df_filled)
 # 열 평균으로 채우기 (더 합리적)
 df_mean = df.copy()
 df_mean['Korean'] = df_mean['Korean'].fillna(
- df_mean['Korean'].mean())
+    df_mean['Korean'].mean())
 df_mean['English'] = df_mean['English'].fillna(
- df_mean['English'].mean())
+    df_mean['English'].mean())
 df_mean['Math'] = df_mean['Math'].fillna(
- df_mean['Math'].mean())
+    df_mean['Math'].mean())
 print('\nfillna(mean) result:')
 print(df_mean)
 
@@ -119,7 +119,7 @@ sales = [120, 135, 148, 162, 155, 178]
 
 plt.figure(figsize=(7, 4))
 plt.plot(months, sales, marker='o', color='\#2196F3',
- linewidth=2, label='Sales')
+    linewidth=2, label='Sales')
 plt.title('Monthly Sales Trend', fontsize=14)
 plt.xlabel('Month')
 plt.ylabel('Sales (10K KRW)')
@@ -137,12 +137,12 @@ scores = np.random.normal(70, 10, 200)
 
 plt.figure(figsize=(7, 4))
 plt.hist(scores, bins=15, color='\#4CAF50', edgecolor='white',
- alpha=0.8)
+    alpha=0.8)
 plt.title('Exam Score Distribution', fontsize=14)
 plt.xlabel('Score')
 plt.ylabel('Number of Students')
 plt.axvline(scores.mean(), color='red', linestyle='--',
- label=f'Mean: {scores.mean():.1f}')
+    label=f'Mean: {scores.mean():.1f}')
 plt.legend()
 plt.tight_layout()
 plt.show()
@@ -157,7 +157,7 @@ scores = study_hours * 8 + np.random.normal(0, 5, 30) + 20
 
 plt.figure(figsize=(7, 4))
 plt.scatter(study_hours, scores, color='\#FF5722', alpha=0.7,
- edgecolors='black', linewidth=0.5)
+    edgecolors='black', linewidth=0.5)
 plt.title('Study Hours and Score Relation', fontsize=14)
 plt.xlabel('Study Hours')
 plt.ylabel('Score')
@@ -171,11 +171,11 @@ import matplotlib.pyplot as plt
 categories = ['Food', 'Transport', 'Culture', 'Phone', 'Savings']
 amounts = [35, 15, 20, 10, 20]
 colors = ['#FF6B6B', '#4ECDC4', '#45B7D1',
- '#96CEB4', '#FFEAA7']
+    '#96CEB4', '#FFEAA7']
 
 plt.figure(figsize=(6, 6))
 plt.pie(amounts, labels=categories, colors=colors,
- autopct='%1.1f%%', startangle=90, shadow=True)
+    autopct='%1.1f%%', startangle=90, shadow=True)
 plt.title('Monthly Expense Ratio', fontsize=14)
 plt.show()
 
@@ -184,13 +184,13 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 df = pd.DataFrame({
- 'name': ['Hong', 'Kim', 'Lee', 'Park'],
- 'Korean': [85, 92, 78, 95],
- 'English': [90, 88, 82, 91],
- 'Math': [78, 95, 88, 87]
+    'name': ['Hong', 'Kim', 'Lee', 'Park'],
+    'Korean': [85, 92, 78, 95],
+    'English': [90, 88, 82, 91],
+    'Math': [78, 95, 88, 87]
 })
 df.set_index('name')[['Korean', 'English', 'Math']].plot.bar(
- figsize=(7, 4), rot=0, edgecolor='white')
+    figsize=(7, 4), rot=0, edgecolor='white')
 plt.title('Student Scores by Subject', fontsize=14)
 plt.ylabel('Score')
 plt.ylim(0, 100)
@@ -230,24 +230,24 @@ predictions = model.predict(new_hours)
 
 print('Predictions:')
 for h, s in zip(new_hours.flatten(), predictions):
- print(f' Study {h:.1f} hours -> {s:.1f} points')
+    print(f' Study {h:.1f} hours -> {s:.1f} points')
 
 # 그래프: 산점도 + 회귀선
 plt.figure(figsize=(8, 5))
 
 # 원본 데이터 (산점도)
 plt.scatter(study_hours, scores, color='steelblue', s=80,
- edgecolors='navy', label='Actual data', zorder=3)
+    edgecolors='navy', label='Actual data', zorder=3)
 
 # 회귀선
 line_x = np.linspace(0, 10, 100).reshape(-1, 1)
 line_y = model.predict(line_x)
 plt.plot(line_x, line_y, color='red', linewidth=2,
- label=f'Fit line: y={a:.2f}x+{b:.2f}')
+    label=f'Fit line: y={a:.2f}x+{b:.2f}')
 
 # 예측된 점
 plt.scatter(new_hours, predictions, color='red', s=120,
- marker='*', zorder=4, label='Predicted')
+    marker='*', zorder=4, label='Predicted')
 
 plt.xlabel('Study Hours')
 plt.ylabel('Score')

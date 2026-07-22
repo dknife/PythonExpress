@@ -59,9 +59,9 @@ print(50 not in a_list) # True
 n_list = [11, 22, 33, 44, 55, 66]
 
 if 55 in n_list: # 55가 있으면 삭제
- n_list.remove(55)
+    n_list.remove(55)
 if 88 in n_list: # 88은 없으므로 실행되지 않음
- n_list.remove(88)
+    n_list.remove(88)
 
 print(n_list)
 
@@ -83,13 +83,13 @@ print(max(fruits)) # 사전 순으로 가장 뒤: orange
 fruits = ['apple', 'banana', 'cherry', 'date']
 
 for fruit in fruits:
- print(fruit)
+    print(fruit)
 
 scores = [87, 84, 95, 67, 88]
 total = 0
 
 for score in scores:
- total += score
+    total += score
 
 average = total / len(scores)
 print(f'Sum: {total}, Average: {average:.1f}')
@@ -97,7 +97,7 @@ print(f'Sum: {total}, Average: {average:.1f}')
 nations = ['Korea', 'China', 'India', 'Nepal']
 
 for i, nation in enumerate(nations):
- print(f'No.{i}: {nation}')
+    print(f'No.{i}: {nation}')
 
 a_list = ['a', 'b', 'c', 'd', 'e']
 a_list.append('f')
@@ -114,8 +114,8 @@ print(n_list)
 names = [] # 빈 리스트 생성
 
 for i in range(3):
- name = input(f'Name {i+1}: ')
- names.append(name)
+    name = input(f'Name {i+1}: ')
+    names.append(name)
 
 print('Entered names:', names)
 

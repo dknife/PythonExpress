@@ -300,88 +300,88 @@ INPUT_FILE = 'members_raw.txt'
 OUTPUT_FILE = 'members.csv'
 
 def unify_separator(line):
- """Replace / and, with | as a single separator."""
- line = line.replace('/', '|')
- line = line.replace(',', '|')
- if '|' not in line:
- # /나 ,가 없는 경우: 공백으로 분리
- parts = line.split()
- # 재조합: 이름은 두 단어일 수 있음
- # @가 포함된 이메일을 찾아 필드 위치 파악
- for i, p in enumerate(parts):
- if '@' in p:
- email_idx = i
- break
- else:
- return None
- name = ' '.join(parts[:email_idx - 1])
- phone = parts[email_idx - 1]
- email = parts[email_idx]
- city = ' '.join(parts[email_idx + 1:])
- return f'{name}|{phone}|{email}|{city}'
- return line
+    """Replace / and, with | as a single separator."""
+    line = line.replace('/', '|')
+    line = line.replace(',', '|')
+    if '|' not in line:
+        # /나 ,가 없는 경우: 공백으로 분리
+        parts = line.split()
+        # 재조합: 이름은 두 단어일 수 있음
+        # @가 포함된 이메일을 찾아 필드 위치 파악
+        for i, p in enumerate(parts):
+            if '@' in p:
+                email_idx = i
+                break
+        else:
+            return None
+        name = ' '.join(parts[:email_idx - 1])
+        phone = parts[email_idx - 1]
+        email = parts[email_idx]
+        city = ' '.join(parts[email_idx + 1:])
+        return f'{name}|{phone}|{email}|{city}'
+    return line
 
 def normalize_phone(phone):
- """Normalize phone number to 010-XXXX-XXXX format."""
- digits = ''
- for ch in phone:
- if ch.isdigit():
- digits += ch
- if len(digits) != 11:
- return None
- return f'{digits[:3]}-{digits[3:7]}-{digits[7:]}'
+    """Normalize phone number to 010-XXXX-XXXX format."""
+    digits = ''
+    for ch in phone:
+        if ch.isdigit():
+            digits += ch
+    if len(digits) != 11:
+        return None
+    return f'{digits[:3]}-{digits[3:7]}-{digits[7:]}'
 
 def clean_data(input_file, output_file):
- """Read raw text, clean it, and write to CSV."""
- cleaned = []
- errors = []
+    """Read raw text, clean it, and write to CSV."""
+    cleaned = []
+    errors = []
 
- with open(input_file, 'r', encoding='utf-8') as f:
- for line_num, line in enumerate(f, 1):
- line = line.strip()
- if not line or line.startswith('#'):
- continue
+    with open(input_file, 'r', encoding='utf-8') as f:
+        for line_num, line in enumerate(f, 1):
+            line = line.strip()
+            if not line or line.startswith('#'):
+                continue
 
- unified = unify_separator(line)
- if unified is None:
- errors.append((line_num, 'Cannot parse'))
- continue
+            unified = unify_separator(line)
+            if unified is None:
+                errors.append((line_num, 'Cannot parse'))
+                continue
 
- parts = unified.split('|')
- parts = [p.strip() for p in parts]
+            parts = unified.split('|')
+            parts = [p.strip() for p in parts]
 
- if len(parts) != 4:
- errors.append((line_num, 'Field count error'))
- continue
+            if len(parts) != 4:
+                errors.append((line_num, 'Field count error'))
+                continue
 
- name, phone, email, city = parts
- phone = normalize_phone(phone)
- if phone is None:
- errors.append((line_num, 'Invalid phone'))
- continue
+            name, phone, email, city = parts
+            phone = normalize_phone(phone)
+            if phone is None:
+                errors.append((line_num, 'Invalid phone'))
+                continue
 
- cleaned.append({
- 'name': name, 'phone': phone,
- 'email': email, 'city': city
- })
+            cleaned.append({
+                'name': name, 'phone': phone,
+                'email': email, 'city': city
+            })
 
- # CSV 파일로 저장
- fields = ['name', 'phone', 'email', 'city']
- with open(output_file, 'w', newline='',
- encoding='utf-8-sig') as f:
- writer = csv.DictWriter(f, fieldnames=fields)
- writer.writeheader()
- writer.writerows(cleaned)
+    # CSV 파일로 저장
+    fields = ['name', 'phone', 'email', 'city']
+    with open(output_file, 'w', newline='',
+              encoding='utf-8-sig') as f:
+        writer = csv.DictWriter(f, fieldnames=fields)
+        writer.writeheader()
+        writer.writerows(cleaned)
 
- print(f'Completed: {len(cleaned)} records saved '
- f'to {output_file}')
- if errors:
- print(f'Warnings ({len(errors)} lines skipped):')
- for num, msg in errors:
- print(f' Line {num}: {msg}')
+    print(f'Completed: {len(cleaned)} records saved '
+          f'to {output_file}')
+    if errors:
+        print(f'Warnings ({len(errors)} lines skipped):')
+        for num, msg in errors:
+            print(f'  Line {num}: {msg}')
 
 if __name__ == '__main__':
- clean_data(INPUT_FILE, OUTPUT_FILE)</code></pre><div class="listing-caption">코드 10.2: 비정형 데이터 정리 자동화</div></div>
+    clean_data(INPUT_FILE, OUTPUT_FILE)</code></pre><div class="listing-caption">코드 10.2: 비정형 데이터 정리 자동화</div></div>
 <p>지금부터 앞에서 살펴본 코드의 중요한 부분을 하나씩 짚어 보자.
 세 함수가 각각 어떤 역할을 맡고, 어떤 아이디어로 비정형 데이터를 다루는지 살펴보면 데이터 전처리의 전형적인 패턴을 이해할 수 있다.</p>
 <h3>구분자 통일: unify_separator()</h3>
@@ -439,8 +439,8 @@ if __name__ == '__main__':
 t = turtle.Turtle()
 t.speed(0)
 for _ in range(4):
- t.forward(120) # 한 변 그리기
- t.left(90) # 90도 회전
+    t.forward(120) # 한 변 그리기
+    t.left(90) # 90도 회전
 turtle.done()</code></pre><div class="listing-caption">코드 10.3: turtle로 정사각형 그리기</div></div>
 <p><code>forward(120)</code>으로 한 변을 긋고 <code>left(90)</code>으로 90도 회전하는 동작을 네 번 반복하면 정사각형이 완성된다.
 이처럼 turtle 프로그래밍은 "전진  —  회전"의 짧은 명령을 반복·중첩하여 점점 복잡한 도형을 만들어 나가는 방식이다.
@@ -458,32 +458,32 @@ ANGLE = 30 # 가지가 꺾이는 각도(단위: 도)
 RATIO = 0.7 # 단계마다 줄어드는 길이 비율
 
 def tree(t, length, depth):
- if depth == 0: # 종료 조건
- return
- t.forward(length) # 현재 가지 그리기
- t.left(ANGLE)
- tree(t, length * RATIO, depth - 1) # 왼쪽 부분 나무
- t.right(2 * ANGLE)
- tree(t, length * RATIO, depth - 1) # 오른쪽 부분 나무
- t.left(ANGLE)
- t.backward(length) # 시작 위치로 복귀
+    if depth == 0: # 종료 조건
+        return
+    t.forward(length) # 현재 가지 그리기
+    t.left(ANGLE)
+    tree(t, length * RATIO, depth - 1) # 왼쪽 부분 나무
+    t.right(2 * ANGLE)
+    tree(t, length * RATIO, depth - 1) # 오른쪽 부분 나무
+    t.left(ANGLE)
+    t.backward(length) # 시작 위치로 복귀
 
 def main():
- screen = turtle.Screen()
- screen.bgcolor('white')
- t = turtle.Turtle()
- t.speed(0)
- t.hideturtle()
- t.color('saddlebrown')
- t.left(90) # 위쪽을 향하도록 회전
- t.penup()
- t.goto(0, -200)
- t.pendown()
- tree(t, 110, 9)
- turtle.done()
+    screen = turtle.Screen()
+    screen.bgcolor('white')
+    t = turtle.Turtle()
+    t.speed(0)
+    t.hideturtle()
+    t.color('saddlebrown')
+    t.left(90) # 위쪽을 향하도록 회전
+    t.penup()
+    t.goto(0, -200)
+    t.pendown()
+    tree(t, 110, 9)
+    turtle.done()
 
 if __name__ == '__main__':
- main()</code></pre><div class="listing-caption">코드 10.4: 재귀 나무 그리기</div></div>
+    main()</code></pre><div class="listing-caption">코드 10.4: 재귀 나무 그리기</div></div>
 <p>코드가 25줄 남짓이지만, 실행하면 가지가 9단계까지 갈라진 풍성한 나무가 한 번에 그려진다.
 그림자가 차곡차곡 쌓이는 듯한 가지 분포는 자연의 나무와 놀랍도록 닮아 있다.</p>
 <h3>한 줄씩 따라가 보기</h3>
@@ -506,32 +506,32 @@ if __name__ == '__main__':
 <div class="listing"><pre class="line-numbers"><code class="language-python">import turtle
 
 def koch(t, length, depth):
- if depth == 0:
- t.forward(length)
- return
- length /= 3
- koch(t, length, depth - 1); t.left(60)
- koch(t, length, depth - 1); t.right(120)
- koch(t, length, depth - 1); t.left(60)
- koch(t, length, depth - 1)
+    if depth == 0:
+        t.forward(length)
+        return
+    length /= 3
+    koch(t, length, depth - 1); t.left(60)
+    koch(t, length, depth - 1); t.right(120)
+    koch(t, length, depth - 1); t.left(60)
+    koch(t, length, depth - 1)
 
 def main():
- screen = turtle.Screen()
- screen.bgcolor('midnightblue')
- t = turtle.Turtle()
- t.speed(0)
- t.hideturtle()
- t.color('white')
- t.penup()
- t.goto(-150, 90)
- t.pendown()
- for _ in range(3): # 눈송이 = 코흐 곡선 3개
- koch(t, 300, 4)
- t.right(120)
- turtle.done()
+    screen = turtle.Screen()
+    screen.bgcolor('midnightblue')
+    t = turtle.Turtle()
+    t.speed(0)
+    t.hideturtle()
+    t.color('white')
+    t.penup()
+    t.goto(-150, 90)
+    t.pendown()
+    for _ in range(3): # 눈송이 = 코흐 곡선 3개
+        koch(t, 300, 4)
+        t.right(120)
+    turtle.done()
 
 if __name__ == '__main__':
- main()</code></pre><div class="listing-caption">코드 10.5: 코흐 눈송이 그리기</div></div>
+    main()</code></pre><div class="listing-caption">코드 10.5: 코흐 눈송이 그리기</div></div>
 <p><code>koch()</code> 함수의 본체는 단 네 개의 재귀 호출과 두 번의 회전(<code>left(60)</code>, <code>right(120)</code>)이 전부이다.
 이 짧은 함수가 그 어떤 곡선보다도 복잡한 눈송이의 둘레를 만들어 낸다는 점이 프랙탈의 매력이다.
 두 코드를 모두 실행한 결과를 그림 10.5에 모아 두었다  —  한쪽은 자연을 닮은 가지, 한쪽은 결정처럼 정교한 둘레로, 같은 <strong>재귀</strong>라는 한 가지 도구가 얼마나 다른 모양을 만들어 낼 수 있는지를 한눈에 비교할 수 있다.</p>
@@ -565,12 +565,12 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
- return '&lt;h1&gt;Hello, Flask!&lt;/h1&gt;&lt;p&gt;My first web app.&lt;/p&gt;'
+    return '&lt;h1&gt;Hello, Flask!&lt;/h1&gt;&lt;p&gt;My first web app.&lt;/p&gt;'
 
 if __name__ == '__main__':
- app.run(debug=True)</code></pre><div class="listing-caption">코드 10.6: 첫 번째 Flask 웹 앱</div></div>
+    app.run(debug=True)</code></pre><div class="listing-caption">코드 10.6: 첫 번째 Flask 웹 앱</div></div>
 <p>이 코드를 <code>python hello_flask.py</code>로 실행하면 터미널에 다음과 같은 메시지가 나타난다.</p>
-<pre class="termout">* Running on http://127.0.0.1:5000</pre>
+<pre class="termout"> * Running on http://127.0.0.1:5000</pre>
 <p>웹 브라우저에서 <code>http://127.0.0.1:5000</code>에 접속하면 "Hello, Flask!" 메시지가 표시된다.
 <code>127.0.0.1</code>은 내 컴퓨터 자신을 가리키는 주소이고, <code>5000</code>은 Flask가 사용하는 포트 번호이다.
 실제로 위 코드를 실행한 터미널 화면과 그 결과를 브라우저로 확인한 모습은 그림 10.6에 나란히 정리되어 있다.</p>
@@ -589,15 +589,15 @@ if __name__ == '__main__':
 <p><code>@app.route()</code>에 다른 경로를 지정하면 여러 페이지를 만들 수 있다.</p>
 <div class="listing"><pre class="line-numbers"><code class="language-python">@app.route('/')
 def home():
- return '&lt;h1&gt;Home Page&lt;/h1&gt;&lt;a href="/about"&gt;About&lt;/a&gt;'
+    return '&lt;h1&gt;Home Page&lt;/h1&gt;&lt;a href="/about"&gt;About&lt;/a&gt;'
 
 @app.route('/about')
 def about():
- return '&lt;h1&gt;About&lt;/h1&gt;&lt;p&gt;This is a Flask web app.&lt;/p&gt;'
+    return '&lt;h1&gt;About&lt;/h1&gt;&lt;p&gt;This is a Flask web app.&lt;/p&gt;'
 
 @app.route('/greet/&lt;name&gt;')
 def greet(name):
- return f'&lt;h1&gt;Hello, {name}!&lt;/h1&gt;'</code></pre><div class="listing-caption">코드 10.7: 여러 URL 경로 연결과 동적 인자 받기</div></div>
+    return f'&lt;h1&gt;Hello, {name}!&lt;/h1&gt;'</code></pre><div class="listing-caption">코드 10.7: 여러 URL 경로 연결과 동적 인자 받기</div></div>
 <p><code>/greet/&lt;name&gt;</code>처럼 꺽쇠괄호 안에 변수를 넣으면 URL의 일부를 함수의 매개변수로 받을 수 있다.
 예를 들어 <code>/greet/Python</code>에 접속하면 "Hello, Python!"이 표시된다.
 이처럼 URL에 따라 동적으로 내용이 바뀌는 것이 웹 앱의 핵심이다.</p>
@@ -613,10 +613,10 @@ tasks = ['Buy groceries', 'Read Python book', 'Exercise']
 
 @app.route('/')
 def home():
- return render_template('index.html', tasks=tasks)
+    return render_template('index.html', tasks=tasks)
 
 if __name__ == '__main__':
- app.run(debug=True)</code></pre><div class="listing-caption">코드 10.8: 템플릿을 사용하는 Flask 앱</div></div>
+    app.run(debug=True)</code></pre><div class="listing-caption">코드 10.8: 템플릿을 사용하는 Flask 앱</div></div>
 <p><code>render_template('index.html', tasks=tasks)</code>는 <code>templates/index.html</code> 파일을 읽어서 <code>tasks</code> 변수를 전달한다.
 템플릿 파일에서는 <code>{{ }}</code>와 <code>{% %}</code>라는 특수 문법(Jinja2 템플릿 엔진)으로 파이썬 변수와 제어문을 사용할 수 있다.</p>
 <pre class="pyout">&lt;!-- templates/index.html --&gt;
@@ -624,12 +624,12 @@ if __name__ == '__main__':
 &lt;html&gt;
 &lt;head&gt;&lt;title&gt;To-Do List&lt;/title&gt;&lt;/head&gt;
 &lt;body&gt;
- &lt;h1&gt;To-Do List&lt;/h1&gt;
- &lt;ul&gt;
- {% for task in tasks %}
- &lt;li&gt;{{ task }}&lt;/li&gt;
- {% endfor %}
- &lt;/ul&gt;
+    &lt;h1&gt;To-Do List&lt;/h1&gt;
+    &lt;ul&gt;
+        {% for task in tasks %}
+        &lt;li&gt;{{ task }}&lt;/li&gt;
+        {% endfor %}
+    &lt;/ul&gt;
 &lt;/body&gt;
 &lt;/html&gt;</pre>
 <p><code>{% for task in tasks %}</code>는 파이썬의 <code>for</code> 문과 동일한 역할을 하며, <code>tasks</code> 리스트의 각 항목을 <code>&lt;li&gt;</code> 태그로 반복 출력한다.
@@ -654,23 +654,23 @@ tasks = []
 
 @app.route('/')
 def home():
- return render_template('todo.html', tasks=tasks)
+    return render_template('todo.html', tasks=tasks)
 
 @app.route('/add', methods=['POST'])
 def add_task():
- task = request.form.get('task')
- if task:
- tasks.append(task)
- return redirect('/')
+    task = request.form.get('task')
+    if task:
+        tasks.append(task)
+    return redirect('/')
 
 @app.route('/delete/&lt;int:index&gt;')
 def delete_task(index):
- if 0 &lt;= index &lt; len(tasks):
- tasks.pop(index)
- return redirect('/')
+    if 0 &lt;= index &lt; len(tasks):
+        tasks.pop(index)
+    return redirect('/')
 
 if __name__ == '__main__':
- app.run(debug=True)</code></pre><div class="listing-caption">코드 10.9: 할 일 관리 웹 앱</div></div>
+    app.run(debug=True)</code></pre><div class="listing-caption">코드 10.9: 할 일 관리 웹 앱</div></div>
 <p>핵심 요소를 정리하면 다음과 같다.
 <code>methods=['POST']</code>는 이 경로가 POST 방식의 요청(폼 제출)만 받도록 지정한다.
 <code>request.form.get('task')</code>는 사용자가 폼에 입력한 값을 가져온다.
@@ -682,18 +682,18 @@ if __name__ == '__main__':
 &lt;html&gt;
 &lt;head&gt;&lt;title&gt;To-Do App&lt;/title&gt;&lt;/head&gt;
 &lt;body&gt;
- &lt;h1&gt;To-Do List ({{ tasks|length }} items)&lt;/h1&gt;
- &lt;form action="/add" method="post"&gt;
- &lt;input type="text" name="task" placeholder="Enter a task"&gt;
- &lt;button type="submit"&gt;Add&lt;/button&gt;
- &lt;/form&gt;
- &lt;ul&gt;
- {% for task in tasks %}
- &lt;li&gt;{{ task }}
- &lt;a href="/delete/{{ loop.index0 }}"&gt;[X]&lt;/a&gt;
- &lt;/li&gt;
- {% endfor %}
- &lt;/ul&gt;
+    &lt;h1&gt;To-Do List ({{ tasks|length }} items)&lt;/h1&gt;
+    &lt;form action="/add" method="post"&gt;
+        &lt;input type="text" name="task" placeholder="Enter a task"&gt;
+        &lt;button type="submit"&gt;Add&lt;/button&gt;
+    &lt;/form&gt;
+    &lt;ul&gt;
+        {% for task in tasks %}
+        &lt;li&gt;{{ task }}
+            &lt;a href="/delete/{{ loop.index0 }}"&gt;[X]&lt;/a&gt;
+        &lt;/li&gt;
+        {% endfor %}
+    &lt;/ul&gt;
 &lt;/body&gt;
 &lt;/html&gt;</pre>
 <p><code>&lt;form action="/add" method="post"&gt;</code>는 폼 데이터를 <code>/add</code> 경로에 POST 방식으로 전송한다.

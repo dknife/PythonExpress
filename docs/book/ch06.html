@@ -86,9 +86,9 @@ print(person['name'])
 print(person['age'])
 print(person['weight'])</code></pre>
 <pre class="termout">Hong Gildong
-<p>26</p>
-<p>82</pre>
-<div class="listing-caption">코드 6.1: 딕셔너리 생성과 키로 값 조회</div></p>
+26
+82</pre>
+<div class="listing-caption">코드 6.1: 딕셔너리 생성과 키로 값 조회</div>
 <p>위 코드에서 <code>person</code>이라는 딕셔너리는 세 개의 항목을 가지고 있다. <code>'name'</code>이라는 키에 <code>'Hong Gildong'</code>이라는 값이, <code>'age'</code>라는 키에 <code>26</code>이라는 값이, <code>'weight'</code>라는 키에 <code>82</code>라는 값이 연결되어 있다. <code>person['name']</code>처럼 대괄호 안에 키를 넣으면 해당 값을 조회할 수 있다.</p>
 <figure class="fig">
 <img class="tikz" src="img/fig/ch06/ch06_fig01.svg" alt="figure">
@@ -99,8 +99,8 @@ print(person['weight'])</code></pre>
 print(students[2024001])
 print(students[2024003])</code></pre>
 <pre class="termout">Lee Sunsin
-<p>Kang Gamchan</pre>
-<div class="listing-caption">코드 6.2: 정수 키를 사용하는 딕셔너리</div></p>
+Kang Gamchan</pre>
+<div class="listing-caption">코드 6.2: 정수 키를 사용하는 딕셔너리</div>
 <p>리스트에서 <code>students[0]</code>처럼 인덱스(위치)로 접근하는 것과 비교하면, 딕셔너리에서 <code>students\allowbreak[2024001]</code>처럼 학번(키)으로 접근하는 것이 훨씬 직관적이다.
 이것이 딕셔너리의 핵심적인 장점이다. 딕셔너리의 내부 구현과 효율성에 대해서는 David Beazley의 『Python Cookbook』에서 상세히 설명하고 있다.</p>
 <h3>항목 추가, 수정, 삭제</h3>
@@ -119,9 +119,9 @@ print(person)
 del person['weight']
 print(person)</code></pre>
 <pre class="termout">{'name': 'Hong Gildong', 'age': 26, 'weight': 82, 'job': 'King of Yuldo'}
-<p>{'name': 'Hong Gildong', 'age': 27, 'weight': 82, 'job': 'King of Yuldo'}</p>
-<p>{'name': 'Hong Gildong', 'age': 27, 'job': 'King of Yuldo'}</pre>
-<div class="listing-caption">코드 6.3: 딕셔너리 항목의 추가·수정·삭제</div></p>
+{'name': 'Hong Gildong', 'age': 27, 'weight': 82, 'job': 'King of Yuldo'}
+{'name': 'Hong Gildong', 'age': 27, 'job': 'King of Yuldo'}</pre>
+<div class="listing-caption">코드 6.3: 딕셔너리 항목의 추가·수정·삭제</div>
 <p>삭제는 리스트와 마찬가지로 <code>del</code> 키워드를 사용한다. <code>del person['weight']</code>는 키가 <code>'weight'</code>인 항목 전체(키와 값 모두)를 삭제한다.</p>
 <div class="box caution"><span class="chip">주의</span><p>존재하지 않는 키로 접근하면 <code>KeyError</code>가 발생한다.
 안전하게 값을 조회하려면 <code>get()</code> 메소드를 사용하자. <code>get()</code>은 키가 존재하면 값을 반환하고, 존재하지 않으면 오류 대신 <code>None</code>을 반환한다. 이 방법은 "키가 있을 수도 있고 없을 수도 있는" 상황에서 특히 유용하다.
@@ -136,20 +136,20 @@ print(person.keys())
 print(person.values())
 print(person.items())</code></pre>
 <pre class="termout">dict_keys(['name', 'age', 'weight'])
-<p>dict_values(['Hong Gildong', 26, 82])</p>
-<p>dict_items([('name', 'Hong Gildong'), ('age', 26), ('weight', 82)])</pre>
-<div class="listing-caption">코드 6.4: keys(), values(), items() 메소드</div></p>
+dict_values(['Hong Gildong', 26, 82])
+dict_items([('name', 'Hong Gildong'), ('age', 26), ('weight', 82)])</pre>
+<div class="listing-caption">코드 6.4: keys(), values(), items() 메소드</div>
 <p><code>keys()</code>는 딕셔너리의 모든 키를, <code>values()</code>는 모든 값을, <code>items()</code>는 (키, 값) 쌍의 목록을 반환한다. 이 메소드들의 반환값은 <code>list()</code> 함수를 통해 리스트로 변환할 수도 있다.</p>
 <h3>for문으로 딕셔너리 순회</h3>
 <p>딕셔너리의 항목을 하나하나 처리하려면 <code>for</code> 문을 사용한다. 리스트의 <code>for</code> 문이 각 원소를 순회하듯, 딕셔너리의 <code>for</code> 문은 각 항목의 <strong>키</strong>를 순회한다는 특성이 있다.</p>
 <pre class="line-numbers"><code class="language-python">person = {'name': 'Hong Gildong', 'age': 26, 'weight': 82}
 
 for key in person:
- print(f'{key} : {person[key]}')</code></pre>
+    print(f'{key} : {person[key]}')</code></pre>
 <pre class="termout">name : Hong Gildong
-<p>age : 26</p>
-<p>weight : 82</pre>
-<div class="listing-caption">코드 6.5: for 문으로 딕셔너리 순회</div></p>
+age : 26
+weight : 82</pre>
+<div class="listing-caption">코드 6.5: for 문으로 딕셔너리 순회</div>
 <p><code>for key in person:</code>에서 반복 변수 <code>key</code>에는 차례로 <code>'name'</code>, <code>'age'</code>, <code>'weight'</code>가 대입된다. 그리고 <code>person[key]</code>를 통해 해당 키의 값을 꺼내어 출력한다.</p>
 <div class="box note"><span class="chip">잠깐</span><span class="box-title">in 연산자의 딕셔너리 동작</span><p>딕셔너리에서 <code>in</code> 연산자는 <strong>키</strong>를 대상으로 검사한다. 예를 들어 <code>'name' in person</code>은 <code>True</code>이지만, <code>'Hong Gildong' in person</code>은 <code>False</code>이다. 값이 아닌 키를 기준으로 검사한다는 점에 주의하자. 값의 존재 여부를 확인하려면 <code>'Hong Gildong' in person.values()</code>처럼 <code>values()</code> 메소드를 사용해야 한다.</p></div>
 <h3>딕셔너리는 어떻게 빠를까?  —  해시의 개념</h3>
@@ -179,9 +179,9 @@ print(t1)
 print(t2)
 print(type(t1))</code></pre>
 <pre class="termout">(1, 2, 3, 4)
-<p>(10, 20, 30)</p>
-<p>&lt;class 'tuple'&gt;</pre>
-<div class="listing-caption">코드 6.6: 튜플을 만드는 여러 방법</div></p>
+(10, 20, 30)
+&lt;class 'tuple'&gt;</pre>
+<div class="listing-caption">코드 6.6: 튜플을 만드는 여러 방법</div>
 <div class="box caution"><span class="chip">주의</span><p>하나의 원소만 가지는 튜플을 생성할 때는 반드시 쉼표를 붙여야 한다. <code>tup = (100)</code>은 괄호가 수학의 괄호로 해석되어 정수 100이 되지만, <code>tup = (100,)</code>은 원소가 하나인 튜플이 된다. 이것은 초보자가 매우 자주 실수하는 부분이므로 반드시 기억하자.
 <pre class="pyout">tup = (100) # 정수 100 (튜플이 아님!)
 tup = (100,) # 원소가 하나인 튜플</pre></p></div>
@@ -193,8 +193,8 @@ print(t[-1]) # 4
 
 # t[0] = 100 # TypeError 발생!</code></pre>
 <pre class="termout">0
-<p>4</pre>
-<div class="listing-caption">코드 6.7: 튜플 인덱싱과 불변성 확인</div></p>
+4</pre>
+<div class="listing-caption">코드 6.7: 튜플 인덱싱과 불변성 확인</div>
 <p><code>t[0] = 100</code>을 실행하면 <code>TypeError: 'tuple' object does not support item assignment</code>라는 오류가 발생한다.
 "튜플 객체는 항목 할당을 지원하지 않는다"는 뜻으로, 튜플의 불변성을 직접 확인할 수 있다. <code>append()</code>, <code>remove()</code>, <code>sort()</code> 같은 원소 변경 메소드도 튜플에서는 사용할 수 없다. 튜플이 지원하는 메소드는 값을 변경하지 않는 <code>count()</code>와 <code>index()</code> 두 가지뿐이다.</p>
 <h3>패킹과 언패킹</h3>
@@ -211,8 +211,8 @@ a, b = 10, 20
 a, b = b, a # 파이썬의 간편한 변수 교환
 print(f'a = {a}, b = {b}')</code></pre>
 <pre class="termout">x = 3, y = 4
-<p>a = 20, b = 10</pre>
-<div class="listing-caption">코드 6.8: 튜플 패킹·언패킹과 변수 교환</div></p>
+a = 20, b = 10</pre>
+<div class="listing-caption">코드 6.8: 튜플 패킹·언패킹과 변수 교환</div>
 <figure class="fig">
 <img class="tikz" src="img/fig/ch06/ch06_fig02.svg" alt="figure">
 <p><figcaption>그림 6.2: 튜플의 패킹과 언패킹</figcaption></figure></p>
@@ -221,7 +221,7 @@ print(f'a = {a}, b = {b}')</code></pre>
 <h3>함수 반환값으로 활용</h3>
 <p>4장에서 배운 다중 반환값이 바로 튜플을 이용한 것이다. 함수에서 <code>return a, b</code>처럼 여러 값을 반환하면, 이들은 자동으로 튜플로 패킹되어 전달된다.</p>
 <pre class="line-numbers"><code class="language-python">def get_min_max(numbers):
- return min(numbers), max(numbers) # 튜플로 반환
+    return min(numbers), max(numbers) # 튜플로 반환
 
 data = [45, 23, 78, 12, 67]
 minimum, maximum = get_min_max(data)
@@ -249,9 +249,9 @@ print(s1)
 print(s2)
 print(s3)</code></pre>
 <pre class="termout">{1, 2, 3, 4, 5}
-<p>{1, 2, 3}</p>
-<p>{'h', 'e', 'l', 'o'}</pre>
-<div class="listing-caption">코드 6.10: 집합의 여러 가지 생성 방법</div></p>
+{1, 2, 3}
+{'h', 'e', 'l', 'o'}</pre>
+<div class="listing-caption">코드 6.10: 집합의 여러 가지 생성 방법</div>
 <p><code>s2</code>를 보면 리스트 <code>[1, 2, 2, 3, 3, 3]</code>에서 중복된 값이 자동으로 제거되어 <code>{1, 2, 3}</code>만 남은 것을 확인할 수 있다. <code>s3</code>에서는 문자열 <code>'hello'</code>의 각 문자가 개별 원소가 되는데, <code>'l'</code>이 두 번 등장하지만 집합에서는 하나만 유지된다. 또한 출력 결과에서 원소의 순서가 입력 순서와 다를 수 있다는 점에 주목하자  —  집합은 순서가 없기 때문이다.</p>
 <div class="box caution"><span class="chip">주의</span><p>빈 집합을 만들 때 <code>{}</code>를 사용하면 빈 <strong>딕셔너리</strong>가 생성된다.
 빈 집합은 반드시 <code>set()</code>으로 만들어야 한다. 이것은 딕셔너리와 집합이 모두 중괄호를 사용하기 때문에 발생하는 혼동으로, 파이썬이 <code>{}</code>를 딕셔너리로 우선 해석하기 때문이다.</p></div>
@@ -273,10 +273,10 @@ print('Intersection:', A &amp; B) # 또는 A.intersection(B)
 print('Difference:', A - B) # 또는 A.difference(B)
 print('Symmetric diff:', A ^ B) # 또는 A.symmetric_difference(B)</code></pre>
 <pre class="termout">Union: {1, 2, 3, 4, 5, 6, 7}
-<p>Intersection: {3, 4, 5}</p>
-<p>Difference: {1, 2}</p>
-<p>Symmetric diff: {1, 2, 6, 7}</pre>
-<div class="listing-caption">코드 6.12: 합집합·교집합·차집합·대칭차집합</div></p>
+Intersection: {3, 4, 5}
+Difference: {1, 2}
+Symmetric diff: {1, 2, 6, 7}</pre>
+<div class="listing-caption">코드 6.12: 합집합·교집합·차집합·대칭차집합</div>
 <figure class="fig">
 <img class="tikz" src="img/fig/ch06/ch06_fig03.svg" alt="figure">
 <p><figcaption>그림 6.3: 집합 연산의 벤 다이어그램</figcaption></figure></p>
@@ -297,10 +297,10 @@ print(s)
 
 print(3 in s) # 원소 존재 확인: True</code></pre>
 <pre class="termout">{1, 2, 3, 4}
-<p>{1, 3, 4}</p>
-<p>{1, 3, 4}</p>
-<p>True</pre>
-<div class="listing-caption">코드 6.13: add, remove, discard 메소드</div></p>
+{1, 3, 4}
+{1, 3, 4}
+True</pre>
+<div class="listing-caption">코드 6.13: add, remove, discard 메소드</div>
 <p>리스트에서 안전한 삭제를 위해 <code>in</code>으로 먼저 확인해야 했던 것처럼, 집합에서도 <code>remove()</code> 대신 <code>discard()</code>를 사용하면 존재 여부를 확인할 필요 없이 안전하게 삭제할 수 있다. 어떤 메소드를 사용할지는 "원소가 없을 때 오류를 발생시켜 알려 줄 것인가, 아니면 조용히 넘어갈 것인가"라는 의도에 따라 선택하면 된다.</p>
 <div class="box keypoint"><span class="chip">요점</span><p>집합은 중복을 허용하지 않고 원소의 순서가 없는 자료형이다. <code>|</code> (합집합), <code>&amp;</code> (교집합), <code>-</code> (차집합) 등 수학의 집합 연산을 그대로 지원하며, 리스트의 중복 제거에도 <code>set()</code>을 활용할 수 있다. 원소 추가에는 <code>add()</code>, 안전한 삭제에는 <code>discard()</code>를 사용하자.</p></div>
 <h2 id="sec4">6.4 자료형 비교와 선택</h2>
@@ -331,9 +331,9 @@ print('Set:', my_set)
 back_to_list = list(my_set)
 print('List:', back_to_list)</code></pre>
 <pre class="termout">Tuple: (1, 2, 3, 2, 1)
-<p>Set: {1, 2, 3}</p>
-<p>List: [1, 2, 3]</pre>
-<div class="listing-caption">코드 6.14: 리스트·튜플·집합 간 변환</div></p>
+Set: {1, 2, 3}
+List: [1, 2, 3]</pre>
+<div class="listing-caption">코드 6.14: 리스트·튜플·집합 간 변환</div>
 <p>리스트 <code>[1, 2, 3, 2, 1]</code>을 튜플로 변환하면 값이 그대로 유지되지만, 집합으로 변환하면 중복이 제거되어 <code>{1, 2, 3}</code>이 된다. 다시 리스트로 변환하면 중복이 없는 <code>[1, 2, 3]</code>을 얻는다.</p>
 <p>딕셔너리를 리스트로 변환하면 키만 추출된다. 값이나 키-값 쌍을 리스트로 얻으려면 <code>values()</code>나 <code>items()</code> 메소드를 함께 사용해야 한다.</p>
 <pre class="line-numbers"><code class="language-python">person = {'name': 'Hong Gildong', 'age': 26}
@@ -342,14 +342,14 @@ print(list(person)) # 키의 리스트
 print(list(person.values())) # 값의 리스트
 print(list(person.items())) # (키, 값) 튜플의 리스트</code></pre>
 <pre class="termout">['name', 'age']
-<p>['Hong Gildong', 26]</p>
-<p>[('name', 'Hong Gildong'), ('age', 26)]</pre>
-<div class="listing-caption">코드 6.15: 딕셔너리를 리스트로 변환</div></p>
+['Hong Gildong', 26]
+[('name', 'Hong Gildong'), ('age', 26)]</pre>
+<div class="listing-caption">코드 6.15: 딕셔너리를 리스트로 변환</div>
 <h3>실습: 과일 가게 프로그램</h3>
 <p>네 가지 자료형을 활용한 종합 예제를 살펴보자. 이 예제에서는 딕셔너리로 과일 가격을 관리하고, 리스트로 과일 이름 목록을 만들고, 집합으로 할인 대상을 찾고, 튜플로 가격 범위를 저장한다. 하나의 프로그램 안에서 각 자료형이 자신의 강점에 맞는 역할을 담당하는 것을 확인할 수 있다.</p>
 <pre class="line-numbers"><code class="language-python"># 딕셔너리: 과일 가격
 fruits_dic = {'apple': 6000, 'melon': 3000,
- 'banana': 5000, 'orange': 4000}
+    'banana': 5000, 'orange': 4000}
 
 # 리스트: 모든 키를 리스트로
 fruit_names = list(fruits_dic.keys())
@@ -362,12 +362,12 @@ print('Discountable:', available_discount)
 
 # 튜플: 가격 범위 (불변)
 price_range = (min(fruits_dic.values()),
- max(fruits_dic.values()))
+    max(fruits_dic.values()))
 print('Price range:', price_range)</code></pre>
 <pre class="termout">Fruit list: ['apple', 'melon', 'banana', 'orange']
-<p>Discountable: {'apple', 'melon'}</p>
-<p>Price range: (3000, 6000)</pre>
-<div class="listing-caption">코드 6.16: 자료형을 조합한 과일 가게 프로그램</div></p>
+Discountable: {'apple', 'melon'}
+Price range: (3000, 6000)</pre>
+<div class="listing-caption">코드 6.16: 자료형을 조합한 과일 가게 프로그램</div>
 <p>이 프로그램에서 과일 가격 데이터는 "과일 이름으로 가격을 조회"하는 구조이므로 딕셔너리가 적합하다. 과일 이름의 순서 있는 목록이 필요할 때는 리스트로 변환했다. 할인 대상 과일 중 실제로 판매 중인 과일을 찾을 때는 집합의 교집합 연산을 활용했다. 그리고 가격 범위는 "한 번 결정되면 바뀌지 않는" 정보이므로 튜플에 저장했다. 이처럼 각 자료형의 특성을 이해하고 적절히 조합하면 명확하고 효율적인 프로그램을 작성할 수 있다. 파이썬 자료구조의 고급 활용에 대해 더 알고 싶다면 Luciano Ramalho의 『Fluent Python』과 David Beazley의 『Python Cookbook』을 추천한다. 또한 파이썬의 자료형 힌트를 활용한 안전한 프로그래밍은 PEP 484에서 소개하고 있다.</p>
 <div class="box keypoint"><span class="chip">요점</span><p>리스트(변경 가능, 순서 있음), 튜플(변경 불가, 순서 있음), 딕셔너리(키-값 쌍), 집합(중복 불허, 순서 없음)의 특성을 정확히 이해하고, 데이터의 성격에 맞는 자료형을 선택해야 한다. <code>list()</code>, <code>tuple()</code>, <code>set()</code> 함수로 자료형을 상호 변환할 수 있으며, 실제 프로그램에서는 여러 자료형을 조합하여 사용하는 경우가 많다.</p></div>
 <p><span id="labs"></span><div class="box lab"><div class="lab-title">실습을 통한 6 장 개념 정리</div><ol>
@@ -431,9 +431,9 @@ print(sorted(set(a) | set(b)))   # [1, 2, 3, 4, 5, 6, 7]</code></pre></li>
 <li><span class="diff"><span class="d2">★★</span></span>  다음과 같은 키-값의 항목을 가지는 <code>capital_dic</code> 딕셔너리를 생성하고, <code>for</code> 문을 사용하여 모든 항목을 출력하시오.
 <div class="center"><div class="table-wrap"><table><tr><th><strong>키(key)</strong></th><th><strong>값(value)</strong></th></tr><tr><td><code>'Korea'</code></td><td><code>'Seoul'</code></td></tr><tr><td><code>'China'</code></td><td><code>'Beijing'</code></td></tr><tr><td><code>'USA'</code></td><td><code>'Washington DC'</code></td></tr></table></div></div>
 <pre class="termout">The capital of Korea is Seoul.
-<p>The capital of China is Beijing.</p>
-<p>The capital of USA is Washington DC.</pre></li>
-<li><span class="diff"><span class="d2">★★</span></span>  튜플 <code>t = (10, 20, 30, 40, 50)</code>에 대해 다음을 수행하시오.</p>
+The capital of China is Beijing.
+The capital of USA is Washington DC.</pre></li>
+<li><span class="diff"><span class="d2">★★</span></span>  튜플 <code>t = (10, 20, 30, 40, 50)</code>에 대해 다음을 수행하시오.
 <ol type="a">
 <li>첫 번째 원소와 마지막 원소를 출력하시오.</li>
 <li>튜플의 원소를 리스트로 변환한 후, 원소 <code>60</code>을 추가하고 다시 튜플로 변환하여 출력하시오.</li>
@@ -467,9 +467,9 @@ print(len(result))</code></pre></li>
     'Kim': {'kor': 88, 'eng': 92, 'math': 95},
     'Lee': {'kor': 76, 'eng': 80, 'math': 84}
 }</code></pre>
-<pre class="termout">Hong: 84.3</p>
-<p>Kim: 91.7</p>
-<p>Lee: 80.0</pre></li>
+<pre class="termout">Hong: 84.3
+Kim: 91.7
+Lee: 80.0</pre></li>
 <li><span class="diff"><span class="d2">★★</span></span>  집합의 메소드를 이용하여 다음을 수행하시오.
 <ol type="a">
 <li>빈 집합을 만들고 <code>add()</code>로 10, 20, 30, 20을 추가한 뒤 결과를 출력하시오.</li>

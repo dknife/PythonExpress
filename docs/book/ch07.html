@@ -224,8 +224,8 @@ print(today.day) # 6</code></pre><div class="listing-caption">코드 7.10: date.
 <pre class="line-numbers"><code class="language-python">import datetime
 print(dir(datetime))</code></pre>
 <pre class="termout">['MAXYEAR', 'MINYEAR', '__builtins__',..., 'date', 'datetime',
-<p>'datetime_CAPI', 'time', 'timedelta', 'timezone', 'tzinfo']</pre>
-<div class="listing-caption">코드 7.11: dir()로 모듈의 구성 요소 살펴보기</div></p>
+ 'datetime_CAPI', 'time', 'timedelta', 'timezone', 'tzinfo']</pre>
+<div class="listing-caption">코드 7.11: dir()로 모듈의 구성 요소 살펴보기</div>
 <p>위의 결과에서 MAXYEAR는 <code>datetime</code> 오브젝트가 표현 가능한 최대 년도로 9999 값을 가지며,
 MINYEAR는 1 값을 가진다.
 <code>datetime</code> 모듈은 <code>date</code>, <code>datetime</code>, <code>datetime_CAPI</code>, <code>time</code>,
@@ -260,8 +260,8 @@ gap = xMas - dt.datetime.now()
 
 print(f'Christmas is {gap.days} days {gap.seconds // 3600} hours away.')</code></pre>
 <pre class="termout">Today is 2026/4/7.
-<p>Christmas is 261 days 15 hours away.</pre>
-<div class="listing-caption">코드 7.13: 크리스마스까지 남은 날 계산</div></p>
+Christmas is 261 days 15 hours away.</pre>
+<div class="listing-caption">코드 7.13: 크리스마스까지 남은 날 계산</div>
 <p>이 코드를 따라가 보면 <code>datetime</code> 모듈의 <code>date.today()</code> 메소드를 이용하여 오늘 날짜 값을
 <code>today</code>라는 변수에 대입한다.
 그리고 <code>today</code> 속성의 <code>year</code>, <code>month</code>, <code>day</code> 값을 각각 출력해 준다.
@@ -282,9 +282,9 @@ print('100 days later =', plus100day)
 minus100day = dt.datetime.now() - hundred
 print('100 days ago =', minus100day)</code></pre>
 <pre class="termout">Today = 2026-04-07 10:32:49.474428
-<p>100 days later = 2026-07-16 10:32:49.600513</p>
-<p>100 days ago = 2025-12-28 10:32:49.667744</pre>
-<div class="listing-caption">코드 7.14: timedelta로 100일 전후 날짜 계산</div></p>
+100 days later = 2026-07-16 10:32:49.600513
+100 days ago = 2025-12-28 10:32:49.667744</pre>
+<div class="listing-caption">코드 7.14: timedelta로 100일 전후 날짜 계산</div>
 <p><code>timedelta</code>는 위의 코드와 같이 <code>timedelta</code> 객체를 생성할 때 <code>days</code>라는 키워드 인자로 100을 대입한다.
 그러면 <code>hundred</code>는 100일의 <code>timedelta</code> 값을 갖게 된다.
 그런 다음에 현재 날짜 <code>now()</code>에 <code>hundred</code>를 더하고 뺀 후 각각 출력해 본다.</p>
@@ -323,13 +323,13 @@ print(now.strftime('%H:%M:%S')) # 14:30:25</code></pre><div class="listing-capti
 <pre class="line-numbers"><code class="language-python">import math
 print(dir(math)) # math 모듈의 모든 속성과 메소드 나열</code></pre>
 <pre class="termout">['__doc__', '__loader__', '__name__', '__package__', '__spec__', 'acos',
-<p>'acosh', 'asin', 'asinh', 'atan', 'atan2', 'atanh', 'ceil', 'copysign',</p>
-<p>'cos', 'cosh', 'degrees', 'e', 'erf', 'erfc', 'exp', 'expm1', 'fabs',</p>
-<p>'factorial', 'floor', 'fmod', 'frexp', 'fsum', 'gamma', 'gcd', 'hypot',</p>
-<p>'inf', 'isclose', 'isfinite', 'isinf', 'isnan', 'ldexp', 'lgamma',</p>
-<p>'log', 'log10', 'log2', 'modf', 'nan', 'pi', 'pow', 'radians', 'sin',</p>
-<p>'sinh', 'sqrt', 'tan', 'tanh', 'tau', 'trunc']</pre>
-<div class="listing-caption">코드 7.16: math 모듈의 함수 목록 보기</div></p>
+'acosh', 'asin', 'asinh', 'atan', 'atan2', 'atanh', 'ceil', 'copysign',
+'cos', 'cosh', 'degrees', 'e', 'erf', 'erfc', 'exp', 'expm1', 'fabs',
+'factorial', 'floor', 'fmod', 'frexp', 'fsum', 'gamma', 'gcd', 'hypot',
+'inf', 'isclose', 'isfinite', 'isinf', 'isnan', 'ldexp', 'lgamma',
+'log', 'log10', 'log2', 'modf', 'nan', 'pi', 'pow', 'radians', 'sin',
+'sinh', 'sqrt', 'tan', 'tanh', 'tau', 'trunc']</pre>
+<div class="listing-caption">코드 7.16: math 모듈의 함수 목록 보기</div>
 <p>위의 결과는 앞에서 배운 <code>dir()</code> 함수를 이용하여 <code>math</code>의 사용 가능한 함수들의 목록을 나열한 것이다.
 이렇게 나타난 함수 중의 몇 개만 함께 활용해보자.</p>
 <div class="listing"><pre class="line-numbers"><code class="language-python">import math as m
@@ -520,9 +520,9 @@ print(nums) # 일치한 모든 부분의 리스트
 cleaned = re.sub(r'\d', '*', text) # 모든 숫자를 *로 치환
 print(cleaned)</code></pre>
 <pre class="termout">010-1234-5678
-<p>{}['010-1234-5678', '02-555-7777']</p>
-<p>My phone is ***-****-**** and home is **-***-****.</pre>
-<div class="listing-caption">코드 7.24: search, findall, sub로 전화번호 처리</div></p>
+{}['010-1234-5678', '02-555-7777']
+My phone is ***-****-**** and home is **-***-****.</pre>
+<div class="listing-caption">코드 7.24: search, findall, sub로 전화번호 처리</div>
 <p>문자열 앞에 붙은 <code>r</code>은 <strong class="term-ko">원시 문자열</strong><sup class="term">raw string</sup>을 뜻하는 표시로, 백슬래시를 그대로 둔다.
 정규표현식에는 백슬래시가 자주 등장하므로 항상 <code>r'\dots'</code> 형태로 쓰는 것이 관례이다.</p>
 <h3>자주 쓰는 메타문자</h3>
@@ -540,15 +540,15 @@ emails = re.findall(r'[\w.]+@[\w.]+\.[a-zA-Z]+', text)
 print(emails)
 
 def is_valid_email(s):
- pattern = r'^[\w.]+@[\w.]+\.[a-zA-Z]{2,}$'
- return re.match(pattern, s) is not None
+    pattern = r'^[\w.]+@[\w.]+\.[a-zA-Z]{2,}$'
+    return re.match(pattern, s) is not None
 
 print(is_valid_email('alice@example.com'))
 print(is_valid_email('not_an_email@'))</code></pre>
 <pre class="termout">['alice@example.com', 'bob.smith@univ.ac.kr']
-<p>True</p>
-<p>False</pre>
-<div class="listing-caption">코드 7.25: 이메일 주소 추출과 형식 검증</div></p>
+True
+False</pre>
+<div class="listing-caption">코드 7.25: 이메일 주소 추출과 형식 검증</div>
 <p><code>[ w.]+@[ w.]+\.[a-zA-Z]+</code> 패턴은 "단어 문자 또는 점이 하나 이상, <code>@</code> 기호, 단어 문자 또는 점이 하나 이상, 점, 영문자 하나 이상"을 의미한다.
 검증 함수에서는 추가로 <code>\textasciicircum</code>과 <code>$</code>을 붙여 <strong>문자열 전체</strong>가 패턴과 일치하는지 확인한다.
 이러한 패턴은 11장에서 다루는 비정형 데이터 정리에서도 매우 유용하게 쓰인다.</p>
