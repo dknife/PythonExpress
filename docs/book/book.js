@@ -138,6 +138,9 @@ window.algjaRunner = (function () {
   ];
 
   var dlg = null, ui = {}, worker = null, timer = null, original = '';
+  // 워커는 창을 닫아도 살려 둔다 -- 파이썬을 한 번만 올리기 위해서다.
+  // ready: 파이썬이 이미 올라와 있는가, busy: 지금 실행 중인가
+  var ready = false, busy = false, startedAt = 0;
 
   function build() {
     dlg = document.createElement('dialog');
@@ -178,10 +181,12 @@ window.algjaRunner = (function () {
     ui.figs = dlg.querySelector('.runner-figs');
 
     dlg.querySelector('.runner-close').addEventListener('click', close);
-    dlg.addEventListener('close', stop);
+    // 창을 닫을 때는 돌고 있는 것만 끊는다. 놀고 있는 워커는 그대로 두어야
+    // 다음에 열었을 때 파이썬을 다시 내려받지 않는다.
+    dlg.addEventListener('close', function () { if (busy) abortRun(); });
     ui.run.addEventListener('click', run);
     ui.stop.addEventListener('click', function () {
-      stop();
+      abortRun();
       setStatus('중지했습니다.');
     });
     ui.reset.addEventListener('click', function () {
@@ -219,14 +224,61 @@ window.algjaRunner = (function () {
     ui.out.scrollTop = ui.out.scrollHeight;
   }
 
-  function stop() {
+  // 실행 하나가 끝났을 때 -- UI만 되돌리고 워커는 살려 둔다.
+  // 워커를 죽이면 다음 실행 때 파이썬을 처음부터 다시 올려야 한다.
+  function endRun() {
     if (timer) { clearTimeout(timer); timer = null; }
-    if (worker) { worker.terminate(); worker = null; }
+    busy = false;
     ui.run.disabled = false;
     ui.stop.hidden = true;
   }
 
+  // 중지·시간 초과 -- 돌고 있는 파이썬을 멈출 방법은 워커를 죽이는 것뿐이다.
+  // 이 경우에만 다음 실행이 다시 준비 과정을 거친다.
+  function abortRun() {
+    if (worker) { worker.terminate(); worker = null; }
+    ready = false;
+    endRun();
+  }
+
+
+  function ensureWorker() {
+    if (worker) return worker;
+    // Pyodide 314는 모듈 워커만 지원한다 (클래식 워커 불가)
+    worker = new Worker('pyrunner.js', { type: 'module' });
+    worker.onmessage = function (ev) {
+      var t = ev.data.t, m = ev.data.m;
+      if (t === 'ack') { /* 수신 확인 신호 -- 따로 할 일은 없다 */ }
+      else if (t === 'status') { setStatus(m); }
+      else if (t === 'out') { append(null, m); }
+      else if (t === 'err') { append('err', m); }
+      else if (t === 'figs') {
+        (m || []).forEach(function (b64) {
+          var img = document.createElement('img');
+          img.src = 'data:image/png;base64,' + b64;
+          img.alt = '실행 결과 그래프';
+          ui.figs.appendChild(img);
+        });
+      } else if (t === 'done') {
+        var secs = ((Date.now() - startedAt) / 1000).toFixed(1);
+        ready = true;
+        endRun();
+        if (!ui.out.textContent && !ui.figs.childNodes.length) {
+          append('muted', '(출력 없음)\n');
+        }
+        setStatus('완료 — ' + secs + '초');
+      }
+    };
+    worker.onerror = function (e) {
+      append('err', '실행기를 불러오지 못했습니다: ' + (e.message || e) + '\n');
+      abortRun();
+      setStatus('오류');
+    };
+    return worker;
+  }
+
   function run() {
+    if (busy) return;
     var code = ui.code.value;
     ui.out.textContent = '';
     ui.figs.innerHTML = '';
@@ -242,57 +294,27 @@ window.algjaRunner = (function () {
       }
     }
 
-    stop();
+    busy = true;
     ui.run.disabled = true;
     ui.stop.hidden = false;
-    setStatus('준비 중…');
+    setStatus(ready ? '실행 중…' : '준비 중…');
 
-    // Pyodide 314는 모듈 워커만 지원한다 (클래식 워커 불가)
-    worker = new Worker('pyrunner.js', { type: 'module' });
-    var startedAt = Date.now();
-
-    worker.onmessage = function (ev) {
-      var t = ev.data.t, m = ev.data.m;
-      if (t === 'status') { setStatus(m); }
-      else if (t === 'out') { append(null, m); }
-      else if (t === 'err') { append('err', m); }
-      else if (t === 'figs') {
-        (m || []).forEach(function (b64) {
-          var img = document.createElement('img');
-          img.src = 'data:image/png;base64,' + b64;
-          img.alt = '실행 결과 그래프';
-          ui.figs.appendChild(img);
-        });
-      } else if (t === 'done') {
-        var secs = ((Date.now() - startedAt) / 1000).toFixed(1);
-        stop();
-        if (!ui.out.textContent && !ui.figs.childNodes.length) {
-          append('muted', '(출력 없음)\n');
-        }
-        setStatus('완료 — ' + secs + '초');
-      }
-    };
-
-    worker.onerror = function (e) {
-      append('err', '실행기를 불러오지 못했습니다: ' + (e.message || e) + '\n');
-      stop();
-      setStatus('오류');
-    };
-
-    worker.postMessage({ code: code, stdin: ui.stdin.value });
+    startedAt = Date.now();
+    ensureWorker().postMessage({ code: code, stdin: ui.stdin.value });
 
     timer = setTimeout(function () {
-      stop();
+      abortRun();
       append('warn',
         '\n실행이 ' + (RUN_TIMEOUT_MS / 1000) + '초를 넘겨 중지했습니다. ' +
-        '끝나지 않는 반복문이 있는지 확인해 보세요.\n');
+        '끝나지 않는 반복문이 있는지 확인해 보세요.\n' +
+        '(멈추려면 파이썬을 내려야 해서 다음 실행은 준비 시간이 다시 걸립니다)\n');
       setStatus('시간 초과로 중지');
     }, RUN_TIMEOUT_MS);
   }
 
   function open(code) {
     if (!dlg) build();
-    stop();
+    if (busy) abortRun();
     original = code;
     ui.code.value = code;
     ui.out.textContent = '';

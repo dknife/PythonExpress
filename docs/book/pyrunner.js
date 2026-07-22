@@ -75,6 +75,8 @@ self.onmessage = async function (ev) {
   var code = ev.data.code || '';
   var stdin = ev.data.stdin || '';
   var ns = null;
+  // 메시지를 받았다는 신호. 이게 안 오면 창 쪽에서 워커를 되살린다.
+  post('ack', '');
   try {
     var p = await ensurePyodide();
 
@@ -83,19 +85,20 @@ self.onmessage = async function (ev) {
 
     // matplotlib은 화면이 없으므로 Agg로 그린 뒤 PNG로 뽑아 보여 준다.
     // (plt.show()는 Agg에서 아무 일도 하지 않는다)
-    try {
-      await p.runPythonAsync(
-        'import sys\n' +
-        'if "matplotlib" in sys.modules or True:\n' +
-        '    try:\n' +
-        '        import matplotlib\n' +
-        '        matplotlib.use("Agg")\n' +
-        '    except ImportError:\n' +
-        '        pass\n');
-    } catch (e) { /* matplotlib이 없으면 그냥 넘어간다 */ }
+    //
+    // 여기서 runPythonAsync를 쓰면 안 된다. import를 만나면 패키지를 자동으로
+    // 받으러 가는데, 그 경로를 실행마다 타면 이따금 응답이 돌아오지 않는다.
+    // 실제로 matplotlib을 쓰는 코드에서만, 동기 runPython으로 처리한다.
+    if (/\bmatplotlib\b|\bpyplot\b|\bplt\b/.test(code)) {
+      try {
+        p.runPython('import matplotlib\nmatplotlib.use("Agg")');
+      } catch (e) {
+        post('err', 'matplotlib 준비 실패: ' + (e.message || e) + '\n');
+      }
+    }
 
     p.globals.set('_algja_stdin_text', stdin);
-    await p.runPythonAsync('_algja_stdin(_algja_stdin_text)');
+    p.runPython('_algja_stdin(_algja_stdin_text)');
 
     // 실행할 때마다 빈 이름공간을 준다.
     // __name__을 "__main__"으로 두어야 if __name__ == "__main__": 블록이 돈다.
@@ -104,7 +107,7 @@ self.onmessage = async function (ev) {
     post('status', '실행 중…');
     await p.runPythonAsync(code, { globals: ns });
 
-    var figs = await p.runPythonAsync('_algja_figs()');
+    var figs = p.runPython('_algja_figs()');
     var list = figs && figs.toJs ? figs.toJs() : [];
     if (figs && figs.destroy) figs.destroy();
 
