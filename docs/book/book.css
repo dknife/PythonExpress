@@ -234,7 +234,11 @@ pre.pyout, pre.termout {
 .box.summary { background: var(--bg-2); }
 .box.exercise { background: var(--white); border: 1.5px solid var(--text); }
 .box.goals { background: var(--bg); border-left: 4px solid var(--cyan);
-  border-radius: var(--radius); }
+  border-radius: var(--radius);
+  text-align: left;          /* center 블록 안에서도 왼쪽 정렬 */
+  font-size: 0.88rem; }
+.box.goals p, .box.goals li { font-size: 0.88rem; }
+.box.goals .box-head { font-size: 0.95rem; }
 .box .box-head {
   font-weight: 800; color: var(--text); font-size: 1.08rem;
   margin-bottom: 0.8rem; letter-spacing: -0.01em;
