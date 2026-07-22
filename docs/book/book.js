@@ -20,6 +20,16 @@
   targets.forEach(function (el) { io.observe(el); });
 })();
 
+// ---- 1.5) 사이드바 링크 클릭 시 모바일 목차 서랍 닫기 ----
+// 절(#anchor) 링크는 페이지 이동이 없어 서랍이 열린 채 본문을 가리는 문제 방지
+(function () {
+  document.querySelectorAll('.sidebar a').forEach(function (a) {
+    a.addEventListener('click', function () {
+      document.body.classList.remove('nav-open');
+    });
+  });
+})();
+
 // ---- 2) 그림 클릭 → 별도 창 확대 ----
 (function () {
   var imgs = document.querySelectorAll(
