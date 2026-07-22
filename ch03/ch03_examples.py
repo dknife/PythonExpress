@@ -44,9 +44,9 @@ else:
 # --- if-else 문을 이용한 짝수/홀수 판별 — if_else_even_test.py ---
 num = int(input('Enter a positive integer: '))
 if num % 2 == 0:
- print(num, 'is even.')
+    print(num, 'is even.')
 else:
- print(num, 'is odd.')
+    print(num, 'is odd.')
 
 score = int(input('Enter score: '))
 if score >= 90:
@@ -64,23 +64,23 @@ print(f'Grade: {grade}')
 # --- 논리 연산자를 활용한 복합 조건식 — if_modulo2.py ---
 number = int(input('Enter an integer: '))
 if number % 3 == 0 and number % 5 == 0:
- print(number, 'is a multiple of both 3 and 5.')
+    print(number, 'is a multiple of both 3 and 5.')
 elif number % 3 == 0:
- print(number, 'is a multiple of 3.')
+    print(number, 'is a multiple of 3.')
 elif number % 5 == 0:
- print(number, 'is a multiple of 5.')
+    print(number, 'is a multiple of 5.')
 else:
- print(number, 'is neither a multiple of 3 nor 5.')
+    print(number, 'is neither a multiple of 3 nor 5.')
 
 # --- 중첩 조건문 — nested_if.py ---
 age = int(input('Enter your age: '))
 if age >= 20:
- if age >= 65:
- print('Senior discount')
- else:
- print('Regular adult')
+    if age >= 65:
+        print('Senior discount')
+    else:
+        print('Regular adult')
 else:
- print('Minor')
+    print('Minor')
 
 # ============================================================
 # for 반복문
@@ -119,9 +119,9 @@ print()
 
 # --- 이중 for 문으로 구구단 전체 출력 — double_for.py ---
 for i in range(2, 10):
- for j in range(1, 10):
- print(f'{i}*{j}={i*j:2d}', end=' ')
- print()
+    for j in range(1, 10):
+        print(f'{i}*{j}={i*j:2d}', end=' ')
+    print()
 
 # ============================================================
 # while 반복문과 흐름 제어
@@ -138,13 +138,13 @@ total = 0
 count = 0
 num = int(input('Enter a number (0 to quit): '))
 while num != 0:
- total += num
- count += 1
- num = int(input('Enter a number (0 to quit): '))
+    total += num
+    count += 1
+    num = int(input('Enter a number (0 to quit): '))
 if count > 0:
- print(f'Sum: {total}, Average: {total/count:.1f}')
+    print(f'Sum: {total}, Average: {total/count:.1f}')
 else:
- print('No numbers were entered.')
+    print('No numbers were entered.')
 
 for i in range(1, 11):
     if i == 6:

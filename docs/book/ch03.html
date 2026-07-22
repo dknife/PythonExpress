@@ -153,9 +153,9 @@ It is AM.</pre>
 <p><code>if-else</code> 문의 다른 예로 임의의 정수가 음수인지 판단하는 프로그램을 작성할 수 있다. 임의의 정수가 0보다 작으면 음수이고 그렇지 않으면 음수가 아니다. 또한 짝수와 홀수를 판별하는 것도 <code>if-else</code> 문으로 표현하기에 적당하다. 짝수와 홀수 역시 배타적 관계에 있기 때문이다.</p>
 <div class="listing"><pre class="line-numbers"><code class="language-python">num = int(input('Enter a positive integer: '))
 if num % 2 == 0:
- print(num, 'is even.')
+    print(num, 'is even.')
 else:
- print(num, 'is odd.')</code></pre><div class="listing-caption">코드 3.6: if-else 문을 이용한 짝수/홀수 판별  —  if_else_even_test.py</div></div>
+    print(num, 'is odd.')</code></pre><div class="listing-caption">코드 3.6: if-else 문을 이용한 짝수/홀수 판별  —  if_else_even_test.py</div></div>
 <h3>if-elif-else 문</h3>
 <p>세 가지 이상의 조건을 검사해야 할 때는 <code>elif</code>를 사용한다. <code>elif</code>는 "else if"를 줄인 것으로, 앞의 조건이 거짓일 때 새로운 조건을 검사한다.</p>
 <pre class="line-numbers"><code class="language-python">score = int(input('Enter score: '))
@@ -184,22 +184,22 @@ parity = 'even' if n % 2 == 0 else 'odd'</pre>
 <p>앞 장에서 배운 비교 연산자와 논리 연산자를 조합하면 더 복잡한 조건식을 만들 수 있다. 예를 들어, 특정한 정수 \(n\) 값이 3의 배수이면서 동시에 5의 배수인지를 알아보려 하는 경우 <code>(n % 3) == 0 and (n % 5) == 0</code>과 같이 두 개의 조건식을 <code>and</code>로 묶은 복합 조건식을 사용할 수 있다. 혹은 어떤 학생의 시험점수 <code>score</code>가 90을 넘고 100 이하일 때 ‘A’ 등급을 부여하고자 하는 경우 <code>(score &gt; 90) and (score &lt;= 100)</code>과 같은 조건식을 사용할 수 있다.</p>
 <div class="listing"><pre class="line-numbers"><code class="language-python">number = int(input('Enter an integer: '))
 if number % 3 == 0 and number % 5 == 0:
- print(number, 'is a multiple of both 3 and 5.')
+    print(number, 'is a multiple of both 3 and 5.')
 elif number % 3 == 0:
- print(number, 'is a multiple of 3.')
+    print(number, 'is a multiple of 3.')
 elif number % 5 == 0:
- print(number, 'is a multiple of 5.')
+    print(number, 'is a multiple of 5.')
 else:
- print(number, 'is neither a multiple of 3 nor 5.')</code></pre><div class="listing-caption">코드 3.8: 논리 연산자를 활용한 복합 조건식  —  if_modulo2.py</div></div>
+    print(number, 'is neither a multiple of 3 nor 5.')</code></pre><div class="listing-caption">코드 3.8: 논리 연산자를 활용한 복합 조건식  —  if_modulo2.py</div></div>
 <p>조건문 안에 또 다른 조건문을 넣는 <strong>중첩 조건문</strong>도 가능하다. 편의상 바깥의 <code>if-else</code> 문을 <strong>외부 if-else 문</strong>이라 하고 <code>else</code> 문 내의 <code>if-else</code> 문을 <strong>내부 if-else 문</strong>이라 하자. 중첩 조건문은 여러 단계의 판단이 필요할 때 사용하지만, 너무 깊이 중첩하면 코드의 가독성이 떨어지므로 적절한 수준에서 사용하는 것이 좋다. 일반적으로 3단계 이상의 중첩은 피하고, <code>elif</code>를 활용하여 평탄한 구조로 작성하는 것이 권장된다. 조건문의 다양한 활용 예제는 Al Sweigart의 『Automate the Boring Stuff with Python』에서 풍부하게 다루고 있다.</p>
 <div class="listing"><pre class="line-numbers"><code class="language-python">age = int(input('Enter your age: '))
 if age &gt;= 20:
- if age &gt;= 65:
- print('Senior discount')
- else:
- print('Regular adult')
+    if age &gt;= 65:
+        print('Senior discount')
+    else:
+        print('Regular adult')
 else:
- print('Minor')</code></pre><div class="listing-caption">코드 3.9: 중첩 조건문  —  nested_if.py</div></div>
+    print('Minor')</code></pre><div class="listing-caption">코드 3.9: 중첩 조건문  —  nested_if.py</div></div>
 <p>나이로 22세를 입력하면 외부 <code>if</code> 조건 <code>age &gt;= 20</code>을 만족하지만 내부 조건 <code>age &gt;= 65</code>는 만족하지 않으므로 <code>Regular adult</code>가 출력된다.</p>
 <pre class="termout">Enter your age: 22
 Regular adult</pre>
@@ -281,9 +281,9 @@ P y t h o n</pre>
 <p><code>for</code> 문 안에 또 다른 <code>for</code> 문을 넣는 것을 <strong class="term-ko">이중 반복문</strong><sup class="term">nested loop</sup> 혹은 <strong>중첩 for 문</strong>이라 한다. 이중 반복문은 구구단 출력, 표 형태의 데이터 처리, 2차원 패턴 그리기 등에 자주 사용된다.</p>
 <p>구구단을 출력하는 프로그램을 만들어 보자. 우선 구구단의 구조에 대해 살펴보면, 2단에서 9단까지 있어 단은 <code>range(2, 10)</code>으로 표현할 수 있다. 그리고 각 단마다 단의 수에 1에서 9를 곱한 결과가 필요하다. 곱해지는 수는 <code>range(1, 10)</code>이 된다. 따라서 이를 구현하기 위해서는 <code>for</code> 문 안에 <code>for</code> 문을 다시 넣는 중첩 <code>for</code> 문이 필요하다.</p>
 <div class="listing"><pre class="line-numbers"><code class="language-python">for i in range(2, 10):
- for j in range(1, 10):
- print(f'{i}*{j}={i*j:2d}', end=' ')
- print()</code></pre><div class="listing-caption">코드 3.14: 이중 for 문으로 구구단 전체 출력  —  double_for.py</div></div>
+    for j in range(1, 10):
+        print(f'{i}*{j}={i*j:2d}', end=' ')
+    print()</code></pre><div class="listing-caption">코드 3.14: 이중 for 문으로 구구단 전체 출력  —  double_for.py</div></div>
 <p>외부 <code>for</code> 루프가 한 번 실행될 때마다 내부 <code>for</code> 루프가 처음부터 끝까지 전부 실행된다. 따라서 전체 반복 횟수는 외부 루프의 횟수와 내부 루프의 횟수를 곱한 것이 된다. 위 코드에서는 외부 루프가 8번(2단 9단), 내부 루프가 9번(1 9)이므로 총 \(8 \times 9 = 72\)번의 곱셈과 출력이 수행된다.</p>
 <div class="box note"><span class="chip">잠깐</span><span class="box-title">팩토리얼과 파이썬의 정수 표현</span><p>팩토리얼을 구하는 코드에서 <code>n</code> 값을 50으로 바꾸면 다음과 같은 엄청나게 큰 수를 출력한다. C나 Java와 같은 프로그래밍 언어는 정수의 크기가 4바이트 형으로 정해져 있어서 일정한 크기 이상의 정수는 표현할 수 없다. 이와 달리 <strong>파이썬은 정수 표현의 한계가 없다</strong>. 이 점이 파이썬의 또 다른 큰 장점이다.</p></div>
 <h2 id="sec4">3.4 while 반복문과 흐름 제어</h2>
@@ -312,13 +312,13 @@ print()</code></pre>
 count = 0
 num = int(input('Enter a number (0 to quit): '))
 while num != 0:
- total += num
- count += 1
- num = int(input('Enter a number (0 to quit): '))
+    total += num
+    count += 1
+    num = int(input('Enter a number (0 to quit): '))
 if count &gt; 0:
- print(f'Sum: {total}, Average: {total/count:.1f}')
+    print(f'Sum: {total}, Average: {total/count:.1f}')
 else:
- print('No numbers were entered.')</code></pre><div class="listing-caption">코드 3.16: 사용자 입력을 이용한 while 문  —  while_input.py</div></div>
+    print('No numbers were entered.')</code></pre><div class="listing-caption">코드 3.16: 사용자 입력을 이용한 while 문  —  while_input.py</div></div>
 <p>이 프로그램에서 <code>while</code> 문의 조건식은 <code>num != 0</code>이다. 사용자가 0이 아닌 숫자를 입력하는 동안 반복이 계속되며, 0을 입력하면 조건이 거짓이 되어 반복이 종료된다. 이처럼 특정 값을 입력하면 반복을 종료하는 값을 <strong class="term-ko">센티넬</strong><sup class="term">sentinel</sup> 값이라고 한다.</p>
 <h3>for 문과 while 문의 비교</h3>
 <p>두 반복문의 사용 상황을 비교하면 다음과 같다. <code>for</code> 문은 반복 횟수가 정해져 있을 때 사용하며 제어변수가 자동으로 변경된다. 대표적으로 <code>for i in range(10):</code>과 같은 형태로 사용한다. <code>while</code> 문은 조건이 만족되는 동안 반복할 때 사용하며 제어변수를 직접 변경해야 한다. 대표적으로 <code>while i &lt; 10:</code>과 같은 형태로 사용한다.</p>
