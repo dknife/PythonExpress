@@ -19,6 +19,7 @@
 </header>
 <div class="layout">
 <nav class="sidebar">
+<div class="nav-ch"><a class="nav-ch-link" href="front.html"><span class="nav-num">&#128214;</span> 표지·머릿말</a></div>
 <div class="nav-part">Part I. 파이썬 시작</div>
 <div class="nav-ch"><a class="nav-ch-link" href="ch01.html"><span class="nav-num">01</span> 파이썬 소개와 개발 환경</a>
 </div>
@@ -111,7 +112,7 @@ Hello Hello Hello Hello
 ==============================</pre>
 <p><code>print()</code> 함수 내에서 <code>'Hello ' * 2</code>를 하면 <code>'Hello '</code>가 두 번 반복하여 출력되며, <code>'Hello ' * 4</code>를 하면 네 번 출력되는 것을 확인할 수 있다. 이 기능은 구분선을 출력하거나 특정 패턴을 반복할 때 유용하게 사용된다.</p>
 <h3>주석문</h3>
-<p>소스 코드에 <code>#</code> 기호를 붙이면 그 뒤의 내용은 <strong>주석문</strong><sup class="term">comment</sup>이 된다. 주석문은 프로그램이 하는 일을 설명하는 설명글과 같다. 이 부분은 프로그래밍 언어에서 소스 코드에 붙이는 설명글과 같다. 주석문은 <code>#</code> 기호로 시작하는데, 이 기호가 나타난 부분부터 줄의 끝까지 파이썬 인터프리터가 해석하지 않기 때문에 <strong>실행에 전혀 영향을 주지 않는다</strong>. 주석문은 코드의 의미를 다른 사람이나 미래의 자신이 이해할 수 있도록 설명하는 데 사용한다.</p>
+<p>소스 코드에 <code>#</code> 기호를 붙이면 그 뒤의 내용은 <strong class="term-ko">주석문</strong><sup class="term">comment</sup>이 된다. 주석문은 프로그램이 하는 일을 설명하는 설명글과 같다. 이 부분은 프로그래밍 언어에서 소스 코드에 붙이는 설명글과 같다. 주석문은 <code>#</code> 기호로 시작하는데, 이 기호가 나타난 부분부터 줄의 끝까지 파이썬 인터프리터가 해석하지 않기 때문에 <strong>실행에 전혀 영향을 주지 않는다</strong>. 주석문은 코드의 의미를 다른 사람이나 미래의 자신이 이해할 수 있도록 설명하는 데 사용한다.</p>
 <div class="listing"><pre class="line-numbers"><code class="language-python"># 이 줄 전체가 주석 (실행되지 않음)
 print('Hello') # 인라인 주석: # 뒤의 내용만 주석</code></pre><div class="listing-caption">코드 2.2: 주석문 작성 예</div></div>
 <p>주석문은 프로그래머가 나중에 코드를 다시 읽을 때 "이 코드가 무슨 일을 하는지" 빠르게 파악할 수 있도록 도와준다. 잘 작성된 주석문은 코드의 가독성을 크게 높여주며, 팀으로 개발할 때는 더욱 중요하다. 처음 프로그래밍을 배울 때부터 적절한 주석을 다는 습관을 들이는 것이 좋다. PEP 8 스타일 가이드에서는 주석 작성에 대한 권장 사항도 제시하고 있으므로 참고하자.</p>
@@ -129,7 +130,7 @@ Area of circle 50.24
 Circumference of circle 25.12</pre>
 <div class="listing-caption">코드 2.3: 변수 없이 원의 정보를 출력하는 프로그램  —  circle.py</div>
 <p>그런데, 만약 반지름이 5.0인 원의 면적과 둘레를 새로 구해야 한다면 어떻게 해야 할까? 우리는 위의 코드에서 <code>4.0</code>이 사용된 모든 곳을 <code>5.0</code>으로 수정해야만 한다. 만약 원의 반지름을 <code>6.0</code>으로 또 다시 고치려고 하면, 다음과 같이 이 작업을 반복해야 한다. 이것은 매우 번거로운 일이다. 이와 같이 반지름이 사용되는 곳이 여러 곳에 사용되고 상황이 바뀔 때마다 사용된 곳을 모두 찾아 그 값을 바꾸는 일은 귀찮은 일이다. 그리고 몇 개라도 빠트리고 수정하면 우리가 의도한 바와 다른 결과를 얻게 된다.</p>
-<p>이러한 문제를 해결하기 위해 <strong>변수</strong><sup class="term">variable</sup>를 도입해 보자. 이제 다음과 같이 반지름을 의미하는 <code>radius</code>라는 이름의 변수를 사용할 것이다. 이 변수에 값을 저장하고 그 이후에는 값이 아니라 이 변수를 사용하는 것이다.</p>
+<p>이러한 문제를 해결하기 위해 <strong class="term-ko">변수</strong><sup class="term">variable</sup>를 도입해 보자. 이제 다음과 같이 반지름을 의미하는 <code>radius</code>라는 이름의 변수를 사용할 것이다. 이 변수에 값을 저장하고 그 이후에는 값이 아니라 이 변수를 사용하는 것이다.</p>
 <pre class="line-numbers"><code class="language-python">radius = 4.0
 print('Radius of circle', radius)
 print('Area of circle', 3.14 * radius * radius)
@@ -145,9 +146,9 @@ Circumference of circle 25.12</pre>
 <figure class="fig">
 <img class="tikz" src="img/fig/ch02/ch02_fig03.svg" alt="figure">
 <p><figcaption>그림 2.2: 변수와 메모리의 관계</figcaption></figure></p>
-<p>그림 2.2에서 보듯이, 변수 이름이 메모리 공간에 저장된 값을 참조한다. 이런 참조는 <strong>주소</strong><sup class="term">address</sup>라는 개념을 통해 이루어진다. 컴퓨터의 데이터는 어디에 저장되어 읽기와 쓰기, 덮어쓰기를 하는 것일까? 컴퓨터 내부에는 핵심적인 부품인 <strong>메인 메모리</strong><sup class="term">main memory</sup>가 있다. 메인 메모리는 줄여서 <strong>메모리</strong>라고도 한다. 이 메모리 공간은 바둑판 모양으로 표현할 수 있다. 이곳에 저장된 데이터를 읽고 쓰기 위해서는 데이터가 저장된 곳이 어디인가를 알아야 한다. 이렇게 컴퓨터 메모리의 특정한 위치를 가리키는 값을 <strong>메모리 주소</strong><sup class="term">memory address</sup>라고 한다.</p>
+<p>그림 2.2에서 보듯이, 변수 이름이 메모리 공간에 저장된 값을 참조한다. 이런 참조는 <strong class="term-ko">주소</strong><sup class="term">address</sup>라는 개념을 통해 이루어진다. 컴퓨터의 데이터는 어디에 저장되어 읽기와 쓰기, 덮어쓰기를 하는 것일까? 컴퓨터 내부에는 핵심적인 부품인 <strong class="term-ko">메인 메모리</strong><sup class="term">main memory</sup>가 있다. 메인 메모리는 줄여서 <strong>메모리</strong>라고도 한다. 이 메모리 공간은 바둑판 모양으로 표현할 수 있다. 이곳에 저장된 데이터를 읽고 쓰기 위해서는 데이터가 저장된 곳이 어디인가를 알아야 한다. 이렇게 컴퓨터 메모리의 특정한 위치를 가리키는 값을 <strong class="term-ko">메모리 주소</strong><sup class="term">memory address</sup>라고 한다.</p>
 <p>메모리 공간은 주소로 표현되는데, 이 주소는 보통 16진수로 표현된다. 컴퓨터의 입장에서는 이러한 주소를 이해하는 것이 전혀 어려운 일이 아니지만, 사람의 입장에서는 숫자로 된 주소를 이해하기 힘들고 다른 주소와 구별도 어렵다. 그래서 이 메모리 공간에 사람이 인지하기 쉬운 이름을 붙여보자. 반지름을 의미하는 "radius"라는 이름을 붙이면 이 공간에 무엇을 저장해야 하는지, 그리고 읽은 값이 무엇을 의미하는지 다루기가 훨씬 편리하다.</p>
-<div class="box note"><span class="chip">잠깐</span><span class="box-title">변수는 값을 저장하는 상자일까?</span><p>파이썬에서 변수는 값을 담는 상자가 아니라, <strong>객체</strong><sup class="term">object</sup>를 가리키는 <strong>이름</strong>이다. 예를 들어 다음 코드를 보자.</p>
+<div class="box note"><span class="chip">잠깐</span><span class="box-title">변수는 값을 저장하는 상자일까?</span><p>파이썬에서 변수는 값을 담는 상자가 아니라, <strong class="term-ko">객체</strong><sup class="term">object</sup>를 가리키는 <strong>이름</strong>이다. 예를 들어 다음 코드를 보자.</p>
 <pre class="pyout">a = [1, 2, 3]
 b = a
 b[0] = 100
@@ -172,9 +173,9 @@ Area of rectangle : 50</pre>
 &gt;&gt;&gt; print(age)
 23</pre>
 <p>위와 같이 <code>name</code>이라는 변수는 <code>'Hong Gildong'</code>이라는 문자열을 참조하며, <code>age</code>라는 변수 역시 27이라는 값을 가리키다가 23을 가리키도록 변경할 수 있다. 새로운 값이 할당되었는지 출력을 통해 확인해 보았다.</p>
-<p>이때 할당 연산자 <code>=</code>의 왼쪽에는 변수 이름이 오고 오른쪽에는 값으로 계산될 수 있는 상수, 변수 혹은 수식이 올 수 있다. 그 반대의 순서는 허용되지 않는다. 따라서 위의 문장을 <code>27 = age</code>와 같이 사용할 수 없다. 이 경우 리터럴에 할당할 수 없음이라는 오류가 발생한다. 어떤 변수에 처음으로 할당 연산자가 적용될 때 "변수가 <strong>선언</strong><sup class="term">declare</sup>되었다"라고 한다.</p>
+<p>이때 할당 연산자 <code>=</code>의 왼쪽에는 변수 이름이 오고 오른쪽에는 값으로 계산될 수 있는 상수, 변수 혹은 수식이 올 수 있다. 그 반대의 순서는 허용되지 않는다. 따라서 위의 문장을 <code>27 = age</code>와 같이 사용할 수 없다. 이 경우 리터럴에 할당할 수 없음이라는 오류가 발생한다. 어떤 변수에 처음으로 할당 연산자가 적용될 때 "변수가 <strong class="term-ko">선언</strong><sup class="term">declare</sup>되었다"라고 한다.</p>
 <h3>자료형</h3>
-<p>변수에 저장되는 데이터에는 다양한 종류가 있으며, 이를 <strong>자료형</strong><sup class="term">data type</sup>이라 한다. 파이썬에서는 변수에 값을 저장할 때 사용자가 자료형을 직접 지정하지 않아도 파이썬이 가장 적합한 형을 자동으로 결정한다. 정수를 저장하면 <code>int</code> 형이 되고, 소수점이 포함된 실수를 저장하면 <code>float</code> 형이 된다. 문자열은 <code>str</code> 형으로, 참이나 거짓을 나타내는 논리값은 <code>bool</code> 형으로 저장된다.</p>
+<p>변수에 저장되는 데이터에는 다양한 종류가 있으며, 이를 <strong class="term-ko">자료형</strong><sup class="term">data type</sup>이라 한다. 파이썬에서는 변수에 값을 저장할 때 사용자가 자료형을 직접 지정하지 않아도 파이썬이 가장 적합한 형을 자동으로 결정한다. 정수를 저장하면 <code>int</code> 형이 되고, 소수점이 포함된 실수를 저장하면 <code>float</code> 형이 된다. 문자열은 <code>str</code> 형으로, 참이나 거짓을 나타내는 논리값은 <code>bool</code> 형으로 저장된다.</p>
 <div class="table-wrap"><div class="table-caption">표 2.1: 기본 자료형</div><table><tr><th><strong>자료형</strong></th><th><strong>키워드</strong></th><th><strong>예시</strong></th></tr><tr><td>정수형</td><td><code>int</code></td><td><code>10, -5, 0, 100</code></td></tr><tr><td>실수형</td><td><code>float</code></td><td><code>3.14, -2.5, 0.0</code></td></tr><tr><td>문자열형</td><td><code>str</code></td><td><code>'Hello', "파이썬"</code></td></tr><tr><td>논리형</td><td><code>bool</code></td><td><code>True, False</code></td></tr></table></div>
 <p><code>type()</code> 함수를 사용하면 변수의 자료형을 확인할 수 있다. 이 함수는 프로그래밍을 하다가 "이 변수에 어떤 종류의 데이터가 들어 있지?"라고 궁금할 때 매우 유용하다.</p>
 <pre class="pyout">&gt;&gt;&gt; x = 10
@@ -191,7 +192,7 @@ Area of rectangle : 50</pre>
 &lt;class 'bool'&gt;</pre>
 <p>파이썬에서 정수형의 특별한 점은 <strong>정수 표현의 한계가 없다</strong>는 것이다. C나 Java와 같은 프로그래밍 언어는 정수의 크기가 4바이트 형으로 정해져 있어서 일정한 크기 이상의 정수는 표현할 수 없다. 이와 달리 파이썬은 아무리 큰 정수라도 정확하게 표현할 수 있다. 이 점이 파이썬의 또 다른 큰 장점이다.</p>
 <h3>형 변환</h3>
-<p>서로 다른 자료형 사이의 변환이 필요할 때 <strong>형 변환</strong><sup class="term">type conversion</sup> 함수를 사용한다. <code>int()</code> 함수는 값을 정수로 변환하는데, 실수를 정수로 변환할 때는 소수점 이하를 버린다(반올림이 아님). <code>float()</code> 함수는 값을 실수로, <code>str()</code> 함수는 값을 문자열로 변환한다.</p>
+<p>서로 다른 자료형 사이의 변환이 필요할 때 <strong class="term-ko">형 변환</strong><sup class="term">type conversion</sup> 함수를 사용한다. <code>int()</code> 함수는 값을 정수로 변환하는데, 실수를 정수로 변환할 때는 소수점 이하를 버린다(반올림이 아님). <code>float()</code> 함수는 값을 실수로, <code>str()</code> 함수는 값을 문자열로 변환한다.</p>
 <pre class="pyout">&gt;&gt;&gt; int(3.7)
 3
 &gt;&gt;&gt; float(10)
@@ -212,7 +213,7 @@ Enter your age: 20
 <h2 id="sec3">2.3 연산자</h2>
 <p>이제 앞서 배운 <strong>변수</strong>라는 개념을 바탕으로 변수의 연산을 수행하는 방법에 대해서 알아보자. 컴퓨터는 변수를 이용하여 자료값을 저장하고 불러낼 수 있으며, 다양한 연산도 가능하다. 파이썬은 할당 연산자뿐만 아니라 다양한 연산자들을 가지고 있다. 특히, 숫자 데이터에 대해서는 사칙연산과 나머지연산, 제곱연산을 수행하는 연산자와 함께 다양한 연산자들을 제공한다.</p>
 <h3>산술 연산자</h3>
-<p>파이썬은 수치 데이터에 대한 다양한 <strong>산술 연산자</strong><sup class="term">arithmetic operator</sup>를 제공한다. 이러한 연산들 중에서 수치값에 대한 연산을 <strong>산술연산</strong><sup class="term">mathematical operation</sup>이라 한다.</p>
+<p>파이썬은 수치 데이터에 대한 다양한 <strong class="term-ko">산술 연산자</strong><sup class="term">arithmetic operator</sup>를 제공한다. 이러한 연산들 중에서 수치값에 대한 연산을 <strong class="term-ko">산술연산</strong><sup class="term">mathematical operation</sup>이라 한다.</p>
 <div class="table-wrap"><div class="table-caption">표 2.2: 산술 연산자</div><table><tr><th><strong>연산자</strong></th><th><strong>이름</strong></th><th><strong>예시</strong></th></tr><tr><td><code>+</code></td><td>덧셈</td><td><code>10 + 3</code> \(\rightarrow\) <code>13</code></td></tr><tr><td><code>-</code></td><td>뺄셈</td><td><code>10 - 3</code> \(\rightarrow\) <code>7</code></td></tr><tr><td><code>*</code></td><td>곱셈</td><td><code>10 * 3</code> \(\rightarrow\) <code>30</code></td></tr><tr><td><code>/</code></td><td>나눗셈</td><td><code>10 / 3</code> \(\rightarrow\) <code>3.333...</code></td></tr><tr><td><code>//</code></td><td>정수 나눗셈</td><td><code>10 // 3</code> \(\rightarrow\) <code>3</code></td></tr><tr><td><code>%</code></td><td>나머지</td><td><code>10 % 3</code> \(\rightarrow\) <code>1</code></td></tr><tr><td><code>**</code></td><td>거듭제곱</td><td><code>2 ** 10</code> \(\rightarrow\) <code>1024</code></td></tr></table></div>
 <p>산술 연산자를 대화식 모드에서 직접 실행해 보자.</p>
 <pre class="pyout">&gt;&gt;&gt; 10 + 3
@@ -245,7 +246,7 @@ print(10 // 4) # 2</pre>
 <p><figcaption>그림 2.3: 연산자 우선순위</figcaption></figure></p>
 <p>그림 2.3은 파이썬 연산자의 우선순위를 시각적으로 보여 준다. 위쪽에 있는 연산자일수록 먼저 계산된다. 괄호가 가장 높은 우선순위를 가지고, 논리 연산자가 가장 낮은 우선순위를 가진다.</p>
 <h3>비교 연산자</h3>
-<p><strong>비교 연산자</strong><sup class="term">comparison operator</sup>는 두 값을 비교하여 <code>True</code> 또는 <code>False</code>를 반환한다. 비교 연산자는 연산자 왼쪽의 값과 오른쪽의 값의 크기를 비교하여 해당 연산자의 조건을 만족할 경우 <code>True</code>를 반환하며, 그렇지 않으면 <code>False</code>를 반환한다. 비교 연산자는 조건문에서 주로 사용되는데, 다음 장에서 조건문을 배울 때 더 자세히 활용하게 될 것이다.</p>
+<p><strong class="term-ko">비교 연산자</strong><sup class="term">comparison operator</sup>는 두 값을 비교하여 <code>True</code> 또는 <code>False</code>를 반환한다. 비교 연산자는 연산자 왼쪽의 값과 오른쪽의 값의 크기를 비교하여 해당 연산자의 조건을 만족할 경우 <code>True</code>를 반환하며, 그렇지 않으면 <code>False</code>를 반환한다. 비교 연산자는 조건문에서 주로 사용되는데, 다음 장에서 조건문을 배울 때 더 자세히 활용하게 될 것이다.</p>
 <div class="table-wrap"><div class="table-caption">표 2.3: 비교 연산자</div><table><tr><th><strong>연산자</strong></th><th><strong>의미</strong></th><th><strong>예시</strong></th></tr><tr><td><code>&gt;</code></td><td>크다</td><td><code>5 &gt; 3</code> \(\rightarrow\) <code>True</code></td></tr><tr><td><code>&lt;</code></td><td>작다</td><td><code>5 &lt; 3</code> \(\rightarrow\) <code>False</code></td></tr><tr><td><code>==</code></td><td>같다</td><td><code>5 == 5</code> \(\rightarrow\) <code>True</code></td></tr><tr><td><code>!=</code></td><td>같지 않다</td><td><code>5 != 3</code> \(\rightarrow\) <code>True</code></td></tr><tr><td><code>&gt;=</code></td><td>크거나 같다</td><td><code>5 &gt;= 5</code> \(\rightarrow\) <code>True</code></td></tr><tr><td><code>&lt;=</code></td><td>작거나 같다</td><td><code>3 &lt;= 5</code> \(\rightarrow\) <code>True</code></td></tr></table></div>
 <p>여기서 특히 주의할 점은 "같다"를 비교하는 연산자가 <code>=</code>가 아니라 <code>==</code>(등호 두 개)라는 것이다. <code>=</code>는 할당 연산자이고 <code>==</code>는 비교 연산자이다. 초보자가 가장 흔히 범하는 실수 중 하나가 바로 이 두 연산자를 혼동하는 것이다.</p>
 <div class="box note"><span class="chip">잠깐</span><span class="box-title"><code>==</code>와 <code>is</code>의 차이</span><p><code>==</code> 연산자는 <strong>값</strong>이 같은지를 비교하고, <code>is</code> 연산자는 두 변수가 <strong>같은 객체</strong>를 가리키는지를 비교한다.</p>
@@ -255,7 +256,7 @@ print(a == b) # True
 print(a is b) # False</pre>
 <p>두 리스트는 값은 같지만 서로 다른 객체이므로 <code>is</code>는 <code>False</code>를 반환한다. 초보 단계에서는 <code>==</code>를 주로 사용하며, <code>is</code>는 특별한 경우(예: <code>None</code>과의 비교)에만 사용된다는 점을 기억하자.</p></div>
 <h3>논리 연산자</h3>
-<p><strong>논리 연산자</strong><sup class="term">logical operator</sup>는 조건식을 결합하거나 부정할 때 사용한다. 파이썬에서는 <code>and</code>, <code>or</code>, <code>not</code>이라는 세 가지 논리 연산자를 제공한다.</p>
+<p><strong class="term-ko">논리 연산자</strong><sup class="term">logical operator</sup>는 조건식을 결합하거나 부정할 때 사용한다. 파이썬에서는 <code>and</code>, <code>or</code>, <code>not</code>이라는 세 가지 논리 연산자를 제공한다.</p>
 <p><code>and</code> 연산자는 두 조건이 <strong>모두</strong> 참일 때만 <code>True</code>를 반환한다. 예를 들어 "시험 점수가 90점 이상이고 출석률이 80% 이상일 때 A 등급을 부여한다"와 같은 상황에서 사용한다. <code>or</code> 연산자는 두 조건 중 <strong>하나라도</strong> 참이면 <code>True</code>를 반환한다. <code>not</code> 연산자는 조건의 참/거짓을 반전시킨다.</p>
 <pre class="pyout">&gt;&gt;&gt; (5 &gt; 3) and (10 &gt; 7)
 True
@@ -279,10 +280,10 @@ False</pre>
 &gt;&gt;&gt; print(x)
 4</pre>
 <h3>식별자와 키워드</h3>
-<p>변수나 함수에 붙이는 이름을 <strong>식별자</strong><sup class="term">identifier</sup>라 한다. 프로그래밍 언어를 사용할 때 사용자가 정의하는 변수나 함수에 대해 서로 구별되는 이름을 부여해야 하는데 이 이름을 식별자라고 한다. 파이썬에서 식별자의 이름을 짓는데 반드시 지켜야 하는 규칙은 다음과 같다.</p>
-<p>첫째, 식별자의 이름은 영문자와 숫자, 밑줄 문자(<code>_</code>)로 이루어진다. 둘째, 중간에 공백이 들어가면 안 된다. 셋째, 첫 글자는 반드시 영문자나 밑줄 문자(<code>_</code>)로 시작해야만 한다. 숫자로 시작할 수 없다. 넷째, 대문자와 소문자는 구분된다. 따라서 <code>Count</code>와 <code>count</code>는 서로 다른 식별자이다. 다섯째, 식별자의 길이에 제한은 없다. 여섯째, <strong>키워드</strong><sup class="term">keyword</sup>는 식별자로 사용할 수 없다.</p>
+<p>변수나 함수에 붙이는 이름을 <strong class="term-ko">식별자</strong><sup class="term">identifier</sup>라 한다. 프로그래밍 언어를 사용할 때 사용자가 정의하는 변수나 함수에 대해 서로 구별되는 이름을 부여해야 하는데 이 이름을 식별자라고 한다. 파이썬에서 식별자의 이름을 짓는데 반드시 지켜야 하는 규칙은 다음과 같다.</p>
+<p>첫째, 식별자의 이름은 영문자와 숫자, 밑줄 문자(<code>_</code>)로 이루어진다. 둘째, 중간에 공백이 들어가면 안 된다. 셋째, 첫 글자는 반드시 영문자나 밑줄 문자(<code>_</code>)로 시작해야만 한다. 숫자로 시작할 수 없다. 넷째, 대문자와 소문자는 구분된다. 따라서 <code>Count</code>와 <code>count</code>는 서로 다른 식별자이다. 다섯째, 식별자의 길이에 제한은 없다. 여섯째, <strong class="term-ko">키워드</strong><sup class="term">keyword</sup>는 식별자로 사용할 수 없다.</p>
 <p>변수를 잘 사용하기 위해서는 그 변수의 역할에 맞는 이름을 지어야 한다. 만일 <code>ijjxtx = 27</code>과 같이 자신만 이해할 수 있는 이름이나 아무 의미 없는 식별자를 변수명으로 사용하면 어떻게 될까? 작성할 당시에는 이 변수의 의미를 나름대로 파악할 수 있지만, 시간이 지나면 작성자 자신조차 이 변수를 왜 사용했는지 알 수 없게 된다. 그러나 이를 <code>age = 27</code>로 고쳐보자. 이 경우는 나이를 뜻하는 변수 <code>age</code>에 27세라는 나이 데이터를 저장하였다고 쉽게 이해할 수 있을 것이다.</p>
-<div class="box note"><span class="chip">잠깐</span><span class="box-title">파이썬의 식별자 이름 짓기 가이드라인</span><p>PEP 8 스타일 가이드에서는 파이썬의 변수와 함수 이름을 <code>my_variable</code>과 같이 밑줄 문자를 이어서 사용하도록 권장하고 있다. 식별자 이름을 지을 때는 단어와 단어 사이를 <code>walk_distance</code>처럼 밑줄문자로 연결하거나 <code>walkDistance</code>와 같이 이어지는 단어를 대문자로 시작하는 식별자도 가능하다. 이와 같은 표기법을 <strong>캠워드</strong><sup class="term">capword</sup> 표기법 혹은 <strong>낙타등</strong><sup class="term">camel case</sup> 표기법이라고 한다. 이 책에서는 <code>student_name</code>과 같이 밑줄문자를 사용한다.</p></div>
+<div class="box note"><span class="chip">잠깐</span><span class="box-title">파이썬의 식별자 이름 짓기 가이드라인</span><p>PEP 8 스타일 가이드에서는 파이썬의 변수와 함수 이름을 <code>my_variable</code>과 같이 밑줄 문자를 이어서 사용하도록 권장하고 있다. 식별자 이름을 지을 때는 단어와 단어 사이를 <code>walk_distance</code>처럼 밑줄문자로 연결하거나 <code>walkDistance</code>와 같이 이어지는 단어를 대문자로 시작하는 식별자도 가능하다. 이와 같은 표기법을 <strong class="term-ko">캠워드</strong><sup class="term">capword</sup> 표기법 혹은 <strong class="term-ko">낙타등</strong><sup class="term">camel case</sup> 표기법이라고 한다. 이 책에서는 <code>student_name</code>과 같이 밑줄문자를 사용한다.</p></div>
 <p>파이썬의 <strong>키워드</strong>는 이미 용도가 정해진 단어로, 변수 이름 등으로 사용할 수 없다. <code>False</code>, <code>True</code>, <code>None</code>, <code>and</code>, <code>or</code>, <code>not</code>, <code>if</code>, <code>else</code>, <code>elif</code>, <code>for</code>, <code>while</code>, <code>break</code>, <code>continue</code>, <code>def</code>, <code>class</code>, <code>import</code>, <code>return</code> 등이 있다. 이 키워드들의 사용법은 이 책에서 하나하나 설명할 예정이다.</p>
 <div class="box caution"><span class="chip">주의</span><p>파이썬 내장 함수의 이름(<code>sum</code>, <code>max</code>, <code>min</code>, <code>len</code>, <code>list</code> 등)도 변수 이름으로 사용하지 않는 것이 좋다. 이렇게 사용된 변수 이름은 파이썬에서 제공하는 내장함수의 이름과 중복되므로 사용하지 않도록 한다. 즉, 다음과 같이 <code>sum</code>이라는 변수를 사용한 후 <code>sum()</code> 내장함수를 호출하면 내장함수의 호출이 일어나지 않고 오류가 발생한다.</p>
 <pre class="pyout">&gt;&gt;&gt; sum = 100
@@ -291,7 +292,7 @@ False</pre>
 ...
 TypeError: 'int' object is not callable</pre></div>
 <h2 id="sec4">2.4 문자열 다루기</h2>
-<p>프로그램에서 숫자만큼이나 자주 다루는 데이터가 바로 <strong>문자열</strong><sup class="term">string</sup>이다. 사용자의 이름, 주소, 이메일 등의 텍스트 정보를 처리하려면 문자열을 자유자재로 다룰 수 있어야 한다. 파이썬은 문자열을 매우 강력하고 편리하게 처리할 수 있는 기능을 제공하며, 이것이 파이썬이 텍스트 처리 분야에서 인기 있는 이유 중 하나이다.</p>
+<p>프로그램에서 숫자만큼이나 자주 다루는 데이터가 바로 <strong class="term-ko">문자열</strong><sup class="term">string</sup>이다. 사용자의 이름, 주소, 이메일 등의 텍스트 정보를 처리하려면 문자열을 자유자재로 다룰 수 있어야 한다. 파이썬은 문자열을 매우 강력하고 편리하게 처리할 수 있는 기능을 제공하며, 이것이 파이썬이 텍스트 처리 분야에서 인기 있는 이유 중 하나이다.</p>
 <h3>문자열의 생성</h3>
 <p>문자열은 문자들의 나열로, 작은따옴표(<code>'</code>) 또는 큰따옴표(<code>"</code>)로 감싸서 생성한다. 어떤 따옴표를 사용하든 결과는 동일하지만, 시작과 끝에 같은 종류의 따옴표를 사용해야 한다. 여러 줄에 걸친 긴 문자열을 작성하고 싶을 때는 삼중 따옴표(<code>"'</code> 또는 <code>"""</code>)를 사용한다. 삼중 따옴표 안에서는 줄 바꿈이 그대로 유지된다.</p>
 <pre class="pyout">&gt;&gt;&gt; s1 = 'Hello'
@@ -305,7 +306,7 @@ multi-line
 strings.</pre>
 <p>작은따옴표와 큰따옴표를 구분하여 사용하면 따옴표 자체를 문자열 안에 포함시킬 수 있다. 예를 들어 문자열 안에 작은따옴표가 포함되어야 한다면 전체를 큰따옴표로 감싸면 되고, 반대의 경우에는 작은따옴표로 감싸면 된다.</p>
 <h3>문자열 인덱싱</h3>
-<p>문자열의 각 문자에는 0부터 시작하는 번호가 매겨진다. 이 번호를 <strong>인덱스</strong><sup class="term">index</sup>라고 하며, 대괄호 <code>[]</code>를 사용하여 특정 위치의 문자에 접근할 수 있다. 파이썬에서는 인덱스가 항상 0부터 시작한다는 점에 주의해야 한다. 즉, 첫 번째 문자의 인덱스는 0이고, 두 번째 문자의 인덱스는 1이다.</p>
+<p>문자열의 각 문자에는 0부터 시작하는 번호가 매겨진다. 이 번호를 <strong class="term-ko">인덱스</strong><sup class="term">index</sup>라고 하며, 대괄호 <code>[]</code>를 사용하여 특정 위치의 문자에 접근할 수 있다. 파이썬에서는 인덱스가 항상 0부터 시작한다는 점에 주의해야 한다. 즉, 첫 번째 문자의 인덱스는 0이고, 두 번째 문자의 인덱스는 1이다.</p>
 <p>음수 인덱스를 사용하면 문자열의 뒤에서부터 접근할 수 있다. <code>-1</code>은 마지막 문자, <code>-2</code>는 마지막에서 두 번째 문자를 가리킨다. 이는 문자열의 길이를 모르더라도 뒤에서부터 쉽게 접근할 수 있게 해주므로 매우 편리하다.</p>
 <pre class="pyout">&gt;&gt;&gt; s = 'Python'
 &gt;&gt;&gt; s[0]
@@ -321,7 +322,7 @@ strings.</pre>
 <p><figcaption>그림 2.4: 문자열 인덱싱</figcaption></figure></p>
 <p>그림 2.4은 문자열 <code>'Python'</code>의 양수 인덱스와 음수 인덱스를 시각적으로 보여 준다. 양수 인덱스는 앞에서부터 0으로 시작하고, 음수 인덱스는 뒤에서부터 \(-1\)로 시작한다.</p>
 <h3>문자열 슬라이싱</h3>
-<p><strong>슬라이싱</strong><sup class="term">slicing</sup>은 문자열의 일부분을 추출하는 기능이다.
+<p><strong class="term-ko">슬라이싱</strong><sup class="term">slicing</sup>은 문자열의 일부분을 추출하는 기능이다.
 <code>[시작:끝]</code> 형식으로 사용하며, 시작 인덱스의 문자는 포함하고 끝 인덱스의 문자는 포함하지 않는다. 이를 "시작 이상, 끝 미만"이라고 기억하면 편하다. 시작 인덱스를 생략하면 처음부터, 끝 인덱스를 생략하면 끝까지를 의미한다.</p>
 <pre class="pyout">&gt;&gt;&gt; s = 'Python'
 &gt;&gt;&gt; s[0:3]
@@ -362,7 +363,7 @@ print(s[1:4]) # 'bcd'</pre>
 6</pre>
 <p>주의할 점은 문자열과 숫자를 <code>+</code> 연산자로 직접 연결할 수 없다는 것이다. 문자열과 숫자를 연결하려면 <code>str()</code> 함수로 숫자를 문자열로 변환하거나, f-string 등의 포매팅 기법을 사용해야 한다.</p>
 <h3>주요 문자열 메소드</h3>
-<p>문자열 객체에는 다양한 <strong>메소드</strong><sup class="term">method</sup>가 제공된다. 메소드란 특정 객체에 속한 함수로, <code>객체.메소드이름()</code>의 형태로 호출한다. 문자열 메소드는 원래 문자열을 변경하지 않고 새로운 문자열을 반환한다는 특징이 있다. 이는 파이썬에서 문자열이 <strong>불변</strong><sup class="term">immutable</sup> 자료형이기 때문이다.</p>
+<p>문자열 객체에는 다양한 <strong class="term-ko">메소드</strong><sup class="term">method</sup>가 제공된다. 메소드란 특정 객체에 속한 함수로, <code>객체.메소드이름()</code>의 형태로 호출한다. 문자열 메소드는 원래 문자열을 변경하지 않고 새로운 문자열을 반환한다는 특징이 있다. 이는 파이썬에서 문자열이 <strong class="term-ko">불변</strong><sup class="term">immutable</sup> 자료형이기 때문이다.</p>
 <div class="box caution"><span class="chip">주의</span><p>문자열은 변경할 수 없는 자료형(immutable)이다. 다음과 같이 문자열의 일부를 바꾸려 하면 오류가 발생한다.</p>
 <pre class="pyout">s = "hello"
 s[0] = "H" # TypeError: 'str' object does not support item assignment</pre>
@@ -384,7 +385,7 @@ s[0] = "H" # TypeError: 'str' object does not support item assignment</pre>
 <p>이 메소드들은 실제 프로그래밍에서 매우 자주 사용되므로 익숙해지는 것이 중요하다. 예를 들어, 사용자가 입력한 이메일 주소에서 아이디와 도메인을 분리하거나, 대소문자를 통일하여 비교하는 등의 작업에 활용된다. 자세한 문자열 메소드 목록은 파이썬 공식 문서를 참고하자.</p>
 <h3>format()과 f-string</h3>
 <p>문자열 안에 변수의 값을 삽입하는 방법으로 <code>format()</code> 메소드와
-<strong>f-string</strong>이 있다. 이 기능을 <strong>문자열 포매팅</strong><sup class="term">string formatting</sup>이라 하며, 출력 결과를 보기 좋게 구성할 때 매우 유용하다.</p>
+<strong>f-string</strong>이 있다. 이 기능을 <strong class="term-ko">문자열 포매팅</strong><sup class="term">string formatting</sup>이라 하며, 출력 결과를 보기 좋게 구성할 때 매우 유용하다.</p>
 <p><code>format()</code> 메소드는 문자열 안에 중괄호 <code>{}</code>를 넣고, <code>format()</code> 메소드의 인자로 삽입할 값을 전달하는 방식이다. f-string은 파이썬 3.6 이상에서 지원되는 기능으로, 문자열 앞에 <code>f</code>를 붙이고 중괄호 안에 직접 변수 이름이나 수식을 적는 방식이다. f-string이 더 간결하고 읽기 쉬우므로 최근에는 f-string을 주로 사용하는 추세이다.</p>
 <pre class="line-numbers"><code class="language-python">name = 'Hong Gildong'
 age = 27
@@ -408,10 +409,10 @@ Area of circle: 78.5</pre>
 <p>파이썬의 자료형은 크게 <strong>기본형</strong>과 <strong>컬렉션형</strong>으로 나뉜다.
 이 장에서 배운 <code>int</code>, <code>float</code>, <code>str</code>, <code>bool</code>은 하나의 값을 담는 기본형이다.
 이후 5장과 6장에서 배울 <code>list</code>, <code>dict</code>, <code>tuple</code>, <code>set</code>은 여러 값을 묶어 담는 컬렉션형이다.</p>
-<p>파이썬은 변수에 값을 할당할 때 자료형을 자동으로 결정하는 <strong>동적 타이핑</strong><sup class="term">dynamic typing</sup> 언어이다. 변수를 만들 때 자료형을 미리 선언할 필요가 없으며, 같은 변수에 정수를 넣었다가 문자열을 넣는 것도 가능하다.</p>
+<p>파이썬은 변수에 값을 할당할 때 자료형을 자동으로 결정하는 <strong class="term-ko">동적 타이핑</strong><sup class="term">dynamic typing</sup> 언어이다. 변수를 만들 때 자료형을 미리 선언할 필요가 없으며, 같은 변수에 정수를 넣었다가 문자열을 넣는 것도 가능하다.</p>
 <div class="listing"><pre class="line-numbers"><code class="language-python">x = 10 # x는 int 형
 x = 'hello' # 이제 x는 str 형 (오류 없음)</code></pre><div class="listing-caption">코드 2.6: 파이썬의 동적 타이핑</div></div>
-<p>반면 C, C++, Java, C# 같은 <strong>정적 타이핑</strong><sup class="term">static typing</sup> 언어에서는 변수를 사용하기 전에 반드시 자료형을 선언해야 한다. 한 번 선언한 자료형은 바꿀 수 없으므로, 정수로 선언한 변수에 문자열을 넣으면 컴파일 오류가 발생한다.</p>
+<p>반면 C, C++, Java, C# 같은 <strong class="term-ko">정적 타이핑</strong><sup class="term">static typing</sup> 언어에서는 변수를 사용하기 전에 반드시 자료형을 선언해야 한다. 한 번 선언한 자료형은 바꿀 수 없으므로, 정수로 선언한 변수에 문자열을 넣으면 컴파일 오류가 발생한다.</p>
 <div class="listing"><pre class="line-numbers"><code class="language-python">// C 언어 예제
 int x = 10; /* x를 int 형으로 선언 */
 x = "hello"; /* 컴파일 오류! 자료형 불일치 */</code></pre><div class="listing-caption">코드 2.7: C 언어의 정적 타이핑</div></div>
@@ -456,7 +457,7 @@ d2 = (n // 100) % 10     # 백의 자리
 d3 = (n // 10) % 10      # 십의 자리
 d4 = n % 10              # 일의 자리
 print('Sum of digits :', d1 + d2 + d3 + d4)</code></pre></li>
-<li>문자열이 <strong>회문</strong><sup class="term">palindrome</sup>, 즉 거꾸로 읽어도 같은지 판별하여 출력하시오. 슬라이싱 <code>[::-1]</code>로 문자열을 뒤집은 뒤 원본과 비교하면 된다.</p>
+<li>문자열이 <strong class="term-ko">회문</strong><sup class="term">palindrome</sup>, 즉 거꾸로 읽어도 같은지 판별하여 출력하시오. 슬라이싱 <code>[::-1]</code>로 문자열을 뒤집은 뒤 원본과 비교하면 된다.</p>
 <p><pre class="line-numbers"><code class="language-python">s = 'level'
 print(f'"{s}" is palindrome? {s == s[::-1]}')
 

@@ -19,6 +19,7 @@
 </header>
 <div class="layout">
 <nav class="sidebar">
+<div class="nav-ch"><a class="nav-ch-link" href="front.html"><span class="nav-num">&#128214;</span> 표지·머릿말</a></div>
 <div class="nav-part">Part I. 파이썬 시작</div>
 <div class="nav-ch"><a class="nav-ch-link" href="ch01.html"><span class="nav-num">01</span> 파이썬 소개와 개발 환경</a>
 </div>
@@ -65,7 +66,7 @@
 <p>프로그래밍을 하다 보면 같은 기능을 여러 프로젝트에서 반복적으로 작성하게 되는 경우가 많다.
 날짜를 계산하거나, 수학 함수를 사용하거나, 난수를 생성하는 코드가 대표적인 예이다.
 만약 이런 코드를 매번 처음부터 작성해야 한다면 개발자의 시간과 노력이 크게 낭비될 것이다.
-다행히 파이썬은 이러한 문제를 해결하기 위해 <strong>모듈</strong><sup class="term">module</sup>이라는 강력한 재사용 시스템을 제공한다.</p>
+다행히 파이썬은 이러한 문제를 해결하기 위해 <strong class="term-ko">모듈</strong><sup class="term">module</sup>이라는 강력한 재사용 시스템을 제공한다.</p>
 <p>모듈은 마치 잘 정리된 도구 상자와 같다.
 목공을 할 때 톱, 망치, 드라이버가 담긴 도구 상자를 가져와 필요한 도구를 꺼내 쓰듯이,
 프로그래밍에서도 미리 만들어진 함수와 클래스가 담긴 모듈을 가져와 필요한 기능을 사용할 수 있다.
@@ -77,7 +78,7 @@
 이 장을 마치면 "바퀴를 다시 발명하지 않는다(Don’t reinvent the wheel)"는 프로그래밍 격언의 의미를
 몸소 체험하게 될 것이다.</p>
 <h2 id="sec1">7.1 모듈과 import</h2>
-<p><strong>모듈</strong><sup class="term">module</sup>이란 파이썬 함수나 변수, 클래스들을 모아 놓은 스크립트 파일을 말한다.
+<p><strong class="term-ko">모듈</strong><sup class="term">module</sup>이란 파이썬 함수나 변수, 클래스들을 모아 놓은 스크립트 파일을 말한다.
 확장자가 <code>.py</code>인 파이썬 파일 하나가 곧 하나의 모듈이 될 수 있다.
 파이썬은 여러 기관과 개발자들에 의해 만들어진 수많은 모듈을 보유하고 있으며,
 이 모듈들을 이용하면 복잡한 기능도 몇 줄의 코드로 구현할 수 있다.</p>
@@ -87,7 +88,7 @@
 프로그래밍에서 모듈이 바로 이런 역할을 한다.
 전 세계의 뛰어난 개발자들이 이미 검증하고 최적화한 코드를 가져다 쓸 수 있으므로,
 우리는 프로그램의 핵심 로직에만 집중할 수 있는 것이다.</p>
-<p>이렇게 미리 개발된 모듈은 <strong>표준 라이브러리</strong><sup class="term">standard library</sup>라는 이름으로
+<p>이렇게 미리 개발된 모듈은 <strong class="term-ko">표준 라이브러리</strong><sup class="term">standard library</sup>라는 이름으로
 파이썬 설치 파일과 함께 제공된다.
 문자열과 텍스트 처리를 위한 모듈, 이진 데이터 처리, 날짜, 시간, 배열 등의 자료형 처리를 위한 모듈,
 수치 연산과 수학 함수 모듈, 파일과 디렉토리 접근, 데이터베이스 접근을 위한 모듈,
@@ -141,7 +142,7 @@ start_time.replace(month = 12, day = 25)</code></pre>
 <pre class="termout">datetime.datetime(2024, 12, 25, 7, 1, 25, 880317)</pre>
 <div class="listing-caption">코드 7.6: 별칭을 사용한 datetime 활용</div>
 <h3>파이썬 표준 라이브러리</h3>
-<p>파이썬 설치와 함께 기본적으로 제공되는 모듈들을 <strong>파이썬 표준 라이브러리</strong><sup class="term">Python standard library</sup>라고 한다.
+<p>파이썬 설치와 함께 기본적으로 제공되는 모듈들을 <strong class="term-ko">파이썬 표준 라이브러리</strong><sup class="term">Python standard library</sup>라고 한다.
 문자열 처리, 날짜와 시간, 수학 함수, 파일 처리, 난수 생성 등 100여 가지 이상의 모듈이 포함되어 있다.</p>
 <div class="table-wrap"><div class="table-caption">표 7.1: 주요 표준 라이브러리 모듈</div><table><tr><th><strong>모듈</strong></th><th><strong>설명</strong></th></tr><tr><td><code>datetime</code></td><td>날짜와 시간 처리</td></tr><tr><td><code>math</code></td><td>수학 함수와 상수</td></tr><tr><td><code>random</code></td><td>난수 생성</td></tr><tr><td><code>os</code></td><td>운영체제 관련 기능</td></tr><tr><td><code>sys</code></td><td>파이썬 인터프리터 관련 기능</td></tr><tr><td><code>json</code></td><td>JSON 데이터 처리</td></tr><tr><td><code>time</code></td><td>시간 관련 기능</td></tr></table></div>
 <p>그림 7.1은 모듈에서 함수나 변수를 가져오는 세 가지 방식을 시각적으로 보여 준다.
@@ -292,7 +293,7 @@ print(now.strftime('%H:%M:%S')) # 14:30:25</code></pre><div class="listing-capti
 <div class="box note"><span class="chip">잠깐</span><span class="box-title">time 모듈</span><p><code>time</code> 모듈은 시간에 관련된 정보를 제공하는 모듈이다.
 서버용 시스템의 운영체제로 많이 사용되는 유닉스 시스템은 1970년 1월 1일 0시 0분 0초 협정 세계시(UTC)를
 시작 시간으로 해서 지금까지의 경과한 시간을 백만분의 1초 단위로 기록하고 저장하는 체계를 가지고 있다.
-이 시작 시간을 <strong>에폭</strong><sup class="term">epoch</sup>이라 하며,
+이 시작 시간을 <strong class="term-ko">에폭</strong><sup class="term">epoch</sup>이라 하며,
 <code>time.time()</code> 함수는 에폭 이후 경과 시간을 초 단위 실수로 반환한다.
 또한 <code>time.sleep()</code> 함수는 일정한 시간 동안 현재 실행 중인 쓰레드를 일시 중지시키는 기능을 한다.
 이 함수들은 프로그램의 실행 시간 측정이나 지연 실행 등에 활용된다.</p></div>
@@ -337,7 +338,7 @@ print(m.sqrt(144)) # 12.0 -- 제곱근</code></pre><div class="listing-caption">
 <div class="table-wrap"><div class="table-caption">표 7.3: math 모듈 주요 함수</div><table><tr><th><strong>함수</strong></th><th><strong>예시</strong></th><th><strong>설명</strong></th></tr><tr><td><code>sqrt(x)</code></td><td><code>sqrt(16)</code> \(\to\) 4.0</td><td>제곱근</td></tr><tr><td><code>pow(x, y)</code></td><td><code>pow(2, 3)</code> \(\to\) 8.0</td><td>거듭제곱</td></tr><tr><td><code>ceil(x)</code></td><td><code>ceil(3.2)</code> \(\to\) 4</td><td>올림</td></tr><tr><td><code>floor(x)</code></td><td><code>floor(3.8)</code> \(\to\) 3</td><td>내림</td></tr><tr><td><code>fabs(x)</code></td><td><code>fabs(-5)</code> \(\to\) 5.0</td><td>절대값</td></tr><tr><td><code>log(x)</code></td><td><code>log(m.e)</code> \(\to\) 1.0</td><td>자연로그</td></tr><tr><td><code>log(x, b)</code></td><td><code>log(100, 10)</code> \(\to\) 2.0</td><td>밑이 b인 로그</td></tr><tr><td><code>sin(x)</code></td><td><code>sin(m.pi/2)</code> \(\to\) 1.0</td><td>사인 (라디안)</td></tr><tr><td><code>radians(x)</code></td><td><code>radians(90)</code> \(\to\) 1.5707...</td><td>각도\(\to\)라디안 변환</td></tr><tr><td><code>degrees(x)</code></td><td><code>degrees(m.pi)</code> \(\to\) 180.0</td><td>라디안\(\to\)각도 변환</td></tr></table></div>
 <h4>삼각함수와 라디안</h4>
 <p><code>math</code> 모듈의 삼각함수를 사용할 때 주의해야 할 점이 있다.
-<code>sin()</code>, <code>cos()</code>, <code>tan()</code> 함수는 <strong>라디안</strong><sup class="term">radian</sup> 값을 인자로 사용한다.
+<code>sin()</code>, <code>cos()</code>, <code>tan()</code> 함수는 <strong class="term-ko">라디안</strong><sup class="term">radian</sup> 값을 인자로 사용한다.
 그런데 우리가 일상에서 사용하는 각도는 60분법의 일반각(이하 각도라고 표기함)이다.
 따라서 <code>sin()</code> 함수에 90을 넣으면 1이 나와야 하는데 0.8939… 의 값이 나오는 것을 볼 수 있다.
 그 이유는 파이썬에서 제공하는 삼각함수들이 라디안 각도를 인자 값으로 사용하기 때문이다.</p>
@@ -422,11 +423,11 @@ print('This week lotto numbers:', lotto)</code></pre>
 <code>randint()</code>와 <code>randrange()</code>의 범위 차이(이하 vs 미만)에 주의한다.</p></div>
 <h2 id="sec4">7.4 외부 패키지 설치  —  pip</h2>
 <p>파이썬 표준 라이브러리만으로도 많은 작업을 수행할 수 있지만,
-전 세계 개발자들이 만든 수많은 <strong>외부 패키지</strong><sup class="term">external package</sup>를 활용하면
+전 세계 개발자들이 만든 수많은 <strong class="term-ko">외부 패키지</strong><sup class="term">external package</sup>를 활용하면
 더욱 강력한 프로그래밍이 가능해진다.
 데이터 분석을 위한 <code>pandas</code>, 웹 개발을 위한 <code>flask</code>,
 인공지능을 위한 <code>tensorflow</code> 등이 대표적인 외부 패키지이다.</p>
-<p>이러한 패키지들은 <strong>PyPI</strong><sup class="term">Python Package Index</sup>라는 중앙 저장소에 등록되어 있으며,
+<p>이러한 패키지들은 <strong class="term-ko">PyPI</strong><sup class="term">Python Package Index</sup>라는 중앙 저장소에 등록되어 있으며,
 현재 50만 개 이상의 패키지가 등록되어 있다.
 <code>pip</code>이라는 도구를 이용하면 이 방대한 생태계의 패키지를 쉽게 설치하고 관리할 수 있다.
 이것은 마치 스마트폰의 앱스토어에서 필요한 앱을 검색하고 설치하는 것과 비슷하다.</p>
@@ -442,7 +443,7 @@ pip install --upgrade package # 최신 버전으로 업그레이드</pre>
 <pre class="pyout">pip install numpy</pre>
 <div class="box note"><span class="chip">잠깐</span><span class="box-title"><code>externally-managed-environment</code> 오류가 난다면</span><p>최근 파이썬 배포판(예: Homebrew, Ubuntu 24.04 이상)에서는 시스템 파이썬에 직접 <code>pip install</code>을 실행하면 <code>error: externally-managed-environment</code> 오류가 발생한다.
 이는 시스템 파이썬을 보호하기 위한 정책(PEP 668)이며, 오류가 아니다.
-이런 경우 아래처럼 <strong>가상환경</strong><sup class="term">virtual environment</sup>을 먼저 만들어 활성화한 뒤 그 안에서 <code>pip install</code>을 실행하면 된다. 가상환경의 자세한 설명은 이 절 뒤쪽 <strong>가상환경</strong> 항목에서 다룬다.</p>
+이런 경우 아래처럼 <strong class="term-ko">가상환경</strong><sup class="term">virtual environment</sup>을 먼저 만들어 활성화한 뒤 그 안에서 <code>pip install</code>을 실행하면 된다. 가상환경의 자세한 설명은 이 절 뒤쪽 <strong>가상환경</strong> 항목에서 다룬다.</p>
 <pre class="pyout">python3 -m venv myenv # 가상환경 생성
 source myenv/bin/activate # macOS/Linux
 myenv\Scripts\activate # Windows
@@ -475,7 +476,7 @@ print(a.sum()) # 15 -- 합계</code></pre><div class="listing-caption">코드 7.
 <p>여러 프로젝트를 진행하다 보면 프로젝트마다 필요한 패키지와 버전이 다를 수 있다.
 예를 들어, A 프로젝트는 <code>numpy</code> 1.24 버전을 사용하고, B 프로젝트는 1.26 버전이 필요할 수 있다.
 이 두 버전을 하나의 파이썬 환경에 동시에 설치할 수는 없으므로 충돌이 발생하게 된다.</p>
-<p>이때 <strong>가상환경</strong><sup class="term">virtual environment</sup>을 사용하면
+<p>이때 <strong class="term-ko">가상환경</strong><sup class="term">virtual environment</sup>을 사용하면
 프로젝트별로 독립적인 패키지 환경을 만들 수 있다.
 가상환경은 각 프로젝트에 전용 "작업 공간"을 만들어 주는 것과 같다.</p>
 <pre class="pyout">python -m venv myenv # myenv라는 이름의 가상환경 생성
@@ -489,7 +490,7 @@ deactivate # 가상환경 비활성화</pre>
 <h2 id="sec5">7.5 정규표현식  —  re</h2>
 <p>문자열을 다루다 보면 "이메일 형식이 올바른지", "숫자만 추출하고 싶다", "전화번호 표기를 통일하고 싶다"와 같은 <strong>패턴 기반 처리</strong>가 자주 필요하다.
 앞서 배운 문자열 메소드(<code>find()</code>, <code>replace()</code>, <code>split()</code>)만으로도 간단한 작업은 가능하지만, "숫자 11자리", "@ 기호 앞뒤로 어떤 문자든"과 같은 <strong>규칙</strong>을 표현하려면 한계가 있다.</p>
-<p>이때 사용하는 것이 <strong>정규표현식</strong><sup class="term">regular expression, regex</sup>이다.
+<p>이때 사용하는 것이 <strong class="term-ko">정규표현식</strong><sup class="term">regular expression, regex</sup>이다.
 정규표현식은 문자열의 패턴을 기호로 기술하는 작은 언어로, 거의 모든 프로그래밍 언어가 지원하는 표준 도구이다.
 파이썬에서는 표준 라이브러리의 <code>re</code> 모듈로 사용한다.</p>
 <h3>re 모듈의 핵심 함수</h3>
@@ -512,10 +513,10 @@ print(cleaned)</code></pre>
 <p>{}['010-1234-5678', '02-555-7777']</p>
 <p>My phone is ***-****-**** and home is **-***-****.</pre>
 <div class="listing-caption">코드 7.24: search, findall, sub로 전화번호 처리</div></p>
-<p>문자열 앞에 붙은 <code>r</code>은 <strong>원시 문자열</strong><sup class="term">raw string</sup>을 뜻하는 표시로, 백슬래시를 그대로 둔다.
+<p>문자열 앞에 붙은 <code>r</code>은 <strong class="term-ko">원시 문자열</strong><sup class="term">raw string</sup>을 뜻하는 표시로, 백슬래시를 그대로 둔다.
 정규표현식에는 백슬래시가 자주 등장하므로 항상 <code>r'\dots'</code> 형태로 쓰는 것이 관례이다.</p>
 <h3>자주 쓰는 메타문자</h3>
-<p>정규표현식에서 의미가 부여된 특수 기호를 <strong>메타문자</strong><sup class="term">metacharacter</sup>라고 한다.
+<p>정규표현식에서 의미가 부여된 특수 기호를 <strong class="term-ko">메타문자</strong><sup class="term">metacharacter</sup>라고 한다.
 처음에는 외울 것이 많아 보이지만, 다음 표의 8~ 10개만 익혀도 실무 패턴 대부분을 작성할 수 있다.</p>
 <div class="table-wrap"><div class="table-caption">표 7.6: 자주 쓰는 정규표현식 메타문자</div><table><tr><th><strong>기호</strong></th><th><strong>의미</strong></th><th><strong>예시</strong></th></tr><tr><td><code>.</code></td><td>줄바꿈을 제외한 임의의 문자 1개</td><td><code>a.c</code> → abc, a1c</td></tr><tr><td><code> d</code></td><td>숫자 1개 (<code>[0-9]</code>와 동일)</td><td><code> d{4}</code> → 1234</td></tr><tr><td><code> w</code></td><td>단어 문자 1개 (영문/숫자/_)</td><td><code> w+</code> → hello_1</td></tr><tr><td><code> s</code></td><td>공백 문자 1개 (스페이스/탭/줄바꿈)</td><td><code>a sb</code> → a b</td></tr><tr><td><code>*</code></td><td>0번 이상 반복</td><td><code>ab*</code> → a, ab, abb</td></tr><tr><td><code>+</code></td><td>1번 이상 반복</td><td><code>ab+</code> → ab, abb</td></tr><tr><td><code>?</code></td><td>0번 또는 1번 (있어도 되고 없어도 됨)</td><td><code>colou?r</code> → color, colour</td></tr><tr><td><code>{n}</code></td><td>정확히 n번 반복</td><td><code> d{3}</code> → 123</td></tr><tr><td><code>[\dots]</code></td><td>대괄호 안의 문자 중 하나</td><td><code>[aeiou]</code> → 모음 1개</td></tr><tr><td><code>\textasciicircum, $</code></td><td>문자열의 시작, 끝</td><td><code>\textasciicircum Hello</code> → 시작 문자열</td></tr></table></div>
 <p>표 7.6의 기호를 조합하면 다양한 패턴을 만들 수 있다.

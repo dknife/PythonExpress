@@ -19,6 +19,7 @@
 </header>
 <div class="layout">
 <nav class="sidebar">
+<div class="nav-ch"><a class="nav-ch-link" href="front.html"><span class="nav-num">&#128214;</span> 표지·머릿말</a></div>
 <div class="nav-part">Part I. 파이썬 시작</div>
 <div class="nav-ch"><a class="nav-ch-link" href="ch01.html"><span class="nav-num">01</span> 파이썬 소개와 개발 환경</a>
 </div>
@@ -82,16 +83,16 @@
 <h2 id="sec1">8.1 오류와 예외</h2>
 <p>이번 장에서는 파이썬의 예외 처리 방법에 대해 살펴보자.
 소프트웨어는 대부분 인간이 만드는 것이므로 오류의 가능성을 항상 포함하고 있다.
-프로그래밍 언어에서 말하는 <strong>오류</strong><sup class="term">error</sup>란 특정한 언어에서 정해 놓은
+프로그래밍 언어에서 말하는 <strong class="term-ko">오류</strong><sup class="term">error</sup>란 특정한 언어에서 정해 놓은
 문법을 따르지 않는 명령이 입력되어 프로그램이 문제를 일으키는 것을 말하는데,
 사소한 오류도 있을 수 있으나 때로는 치명적인 문제를 발생시키기도 한다.
-파이썬에서 발생하는 오류는 크게 <strong>구문 오류</strong><sup class="term">syntax error</sup>와
-<strong>예외</strong><sup class="term">exception</sup>로 나눌 수 있다.</p>
+파이썬에서 발생하는 오류는 크게 <strong class="term-ko">구문 오류</strong><sup class="term">syntax error</sup>와
+<strong class="term-ko">예외</strong><sup class="term">exception</sup>로 나눌 수 있다.</p>
 <h3>구문 오류</h3>
 <p><strong>구문 오류</strong>(문법 오류, 파싱 오류)는 파이썬의 정해진 문법을 지키지 않았을 때 발생한다.
 예를 들어, 문자열에서 닫는 따옴표를 빼먹는다든가, <code>if</code> 문의 비교 후 콜론을 빼먹는 등의
 파이썬 오류는 정해진 문법을 지키지 않았기 때문에 발생하므로 구문 오류, 문법 오류 혹은
-<strong>파싱 오류</strong><sup class="term">parsing error</sup>라고 한다.
+<strong class="term-ko">파싱 오류</strong><sup class="term">parsing error</sup>라고 한다.
 프로그램이 실행되기 전에 발견되므로, 코드를 수정해야 실행할 수 있다.</p>
 <div class="listing"><pre class="line-numbers"><code class="language-python"># 닫는 따옴표 누락 -- 구문 오류
 print('Hello World!)
@@ -106,7 +107,7 @@ if True
 <h3>예외</h3>
 <p>그러나 문법적으로는 올바른 프로그램이 수행 도중 예상하지 못한 입력값이 들어오거나
 비정상적 상황으로 인해 종료되는 경우도 있을 수 있다.
-이러한 경우의 오류를 <strong>예외</strong><sup class="term">exception</sup>라고 지칭한다.
+이러한 경우의 오류를 <strong class="term-ko">예외</strong><sup class="term">exception</sup>라고 지칭한다.
 예를 들어 0으로 나누기, 존재하지 않는 인덱스 접근, 잘못된 자료형 변환 등이 해당된다.</p>
 <p>일반적으로 프로그램을 실행하다 보면 문법적으로는 올바른 프로그램이
 실행 중에 오류를 일으키는 경우가 있다.
@@ -123,7 +124,7 @@ result = int(a) / int(b) # b가 0이면 ZeroDivisionError 발생!</code></pre>
 오류가 발생하며 실행이 이루어지지 않는다.
 이때 발생한 오류의 이름도 함께 나타나는데, 위의 코드에서는 <code>ZeroDivisionError</code>라는 오류가 발생하였다.
 즉, 프로그램 수행 도중 0으로 나누려는 연산 오류가 발생했다는 의미이다.
-이러한 정보는 파이썬 <strong>인터프리터</strong><sup class="term">interpreter</sup>에서 제공한다.</p>
+이러한 정보는 파이썬 <strong class="term-ko">인터프리터</strong><sup class="term">interpreter</sup>에서 제공한다.</p>
 <p>또한 사용자가 "사백 이백"과 같은 문자열 형식의 자료를 숫자로 바꾸는 경우에도 오류가 발생한다.
 <code>int()</code> 함수를 이용하여 문자열 "사백"과 "이백"을 처리하는 경우
 <code>ValueError</code>라는 오류 메시지를 출력한다.</p>
@@ -135,14 +136,14 @@ result = int(a) / int(b)</code></pre>
 <p>개발자 입장에서 사용자로부터 입력을 받아 처리할 때 이와 같이 예상하지 못한 입력이
 발생할 수 있다는 것을 항상 명심해야 한다.
 이와 같이 <strong>구문상의 오류는 없으나 실행 도중에 만나게 되는 오류</strong>를
-<strong>예외</strong><sup class="term">exception</sup>라고 부르며,
+<strong class="term-ko">예외</strong><sup class="term">exception</sup>라고 부르며,
 이 예외처리를 위해 사용하는 것이 <code>try-except</code> 문이다.
-이러한 기능을 <strong>예외 처리</strong><sup class="term">exception handling</sup>라고 하는데,
+이러한 기능을 <strong class="term-ko">예외 처리</strong><sup class="term">exception handling</sup>라고 하는데,
 <code>except</code>라는 예외 처리문이 예외를 유연하게 다룰 수 있다.</p>
 <h3>주요 예외 종류</h3>
 <p>프로그램에서 발생하는 오류에 대응하는 방법은 크게 두 가지 방향이 있다.
-하나는 오류의 <strong>사전탐지</strong><sup class="term">detection</sup>이며,
-다른 하나는 오류를 <strong>적절하게 다루는 방법</strong><sup class="term">handling</sup>이다.
+하나는 오류의 <strong class="term-ko">사전탐지</strong><sup class="term">detection</sup>이며,
+다른 하나는 오류를 <strong class="term-ko">적절하게 다루는 방법</strong><sup class="term">handling</sup>이다.
 예를 들어서 파일을 읽어들이는 <code>open()</code> 함수에서 존재하지 않는 파일을 읽으려고 하면
 오류가 발생하는데, 이를 방지하기 위해서 이 파일이 존재하는가를 미리 검사하는
 사전탐지 기법을 사용할 수 있다.
@@ -151,7 +152,7 @@ result = int(a) / int(b)</code></pre>
 파이썬의 예외처리는 이와 같이 예상하지 못한 오류에 대한 적절한 대응 방법을 사용자가 작성할 수 있는 기법이다. 
 파이썬에서 자주 만나는 예외의 종류는 표 8.1과 같다.</p>
 <div class="table-wrap"><div class="table-caption">표 8.1: 주요 예외 종류</div><table><tr><th><strong>예외</strong></th><th><strong>발생 상황</strong></th></tr><tr><td><code>ZeroDivisionError</code></td><td>0으로 나누기를 시도한 경우</td></tr><tr><td><code>ValueError</code></td><td>적절하지 않은 값을 사용한 경우 (<code>int('abc')</code>)</td></tr><tr><td><code>IndexError</code></td><td>리스트 인덱스가 범위를 벗어난 경우</td></tr><tr><td><code>TypeError</code></td><td>지원되지 않는 자료형 연산 (<code>'10' + 5</code>)</td></tr><tr><td><code>KeyError</code></td><td>딕셔너리에 존재하지 않는 키를 사용한 경우</td></tr><tr><td><code>FileNotFoundError</code></td><td>존재하지 않는 파일을 열려는 경우</td></tr><tr><td><code>NameError</code></td><td>정의되지 않은 변수를 사용한 경우</td></tr><tr><td><code>AttributeError</code></td><td>객체에 존재하지 않는 속성/메소드를 사용한 경우</td></tr></table></div>
-<p>예외가 발생하면 파이썬 인터프리터는 <strong>역추적</strong><sup class="term">traceback</sup> 정보를 출력하여
+<p>예외가 발생하면 파이썬 인터프리터는 <strong class="term-ko">역추적</strong><sup class="term">traceback</sup> 정보를 출력하여
 어디서 오류가 발생하였는지를 출력해 주고 프로그램을 종료시킨다.
 이때 프로그램은 어디서 오류가 발생하였는가를 역추적하여 오류가 발생한 곳에서
 오류의 종류를 출력한다.
@@ -376,9 +377,9 @@ while True:
 이 출력된 문자를 <code>hello.txt</code>라는 이름의 파일로 만들어서 저장한다면
 우리는 이 문자열을 다시 활용할 수 있을 것이다.</p>
 <h3>파일이란 무엇인가?</h3>
-<p>컴퓨터 <strong>파일</strong><sup class="term">file</sup>이란 컴퓨터의 저장 장치 내에 데이터를 저장하기 위해
+<p>컴퓨터 <strong class="term-ko">파일</strong><sup class="term">file</sup>이란 컴퓨터의 저장 장치 내에 데이터를 저장하기 위해
 사용하는 논리적인 단위를 말한다.
-파일은 <strong>하드 디스크</strong><sup class="term">hard disk</sup>나 <strong>외장 디스크</strong><sup class="term">external disk</sup>
+파일은 <strong class="term-ko">하드 디스크</strong><sup class="term">hard disk</sup>나 <strong class="term-ko">외장 디스크</strong><sup class="term">external disk</sup>
 같은 저장 장치에 저장한 후 필요할 때 다시 불러서 사용하는 것이 가능하며,
 필요에 따라서 수정하는 것도 가능하다.
 A라는 사용자가 "과제0423.hwp"라는 이름으로 한글 파일을 저장하고 며칠 후
@@ -391,7 +392,7 @@ A라는 사용자가 "과제0423.hwp"라는 이름으로 한글 파일을 저장
 <img class="tikz" src="img/fig/ch08/ch08_fig03.svg" alt="figure">
 <p><figcaption>그림 8.3: 파일 입출력의 세 단계</figcaption></figure></p>
 <p>그림 8.3에서 보듯이, 파일 처리는 열기, 읽기/쓰기, 닫기의 세 단계를 거친다. 첫 번째 절차는 파일을 여는 것으로 저장 장치 내의 위치와 파일 이름을 지정해서 파일을 가져온다.
-컴퓨터 저장 장치 내의 파일 위치는 <strong>경로</strong><sup class="term">path</sup>라고 한다.
+컴퓨터 저장 장치 내의 파일 위치는 <strong class="term-ko">경로</strong><sup class="term">path</sup>라고 한다.
 두 번째 절차는 사용 목적에 따라서 사용하는 것으로 단순하게 읽어서 내용을 확인할 수도 있고
 새로운 내용을 추가하거나 기존 내용을 삭제할 수 있다.
 세 번째 절차는 파일을 닫는 절차이다.
