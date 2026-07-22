@@ -1,223 +1,404 @@
 """
-제10장: 파이썬다운 코딩과 넘파이
+제10장: 파이썬의 응용
 으뜸 파이썬 Express — 예제 코드
 """
 
 # ============================================================
-# 간결한 표현을 위한 람다 함수
+# 나만의 단어장 앱
 # ============================================================
 
-# addition using a regular function
-def add(x, y):
-    return x + y
+import json
+import random
+import os
 
-print('Sum of 100 and 200 :', add(100, 200))
+FILENAME = 'my_words.json'
 
-# addition using a lambda function
-add = lambda x, y: x + y
-print('Sum of 100 and 200 :', add(100, 200))
+def load_words():
+    """Load vocabulary from file."""
+    if os.path.exists(FILENAME):
+        with open(FILENAME, 'r', encoding='utf-8') as f:
+            return json.load(f)
+    return {}
 
-lambda parameters : expression
+def save_words(words):
+    """Save vocabulary to file."""
+    with open(FILENAME, 'w', encoding='utf-8') as f:
+        json.dump(words, f, ensure_ascii=False, indent=2)
 
-# lambda definition and call
-(lambda x, y : x + y)(100, 200)   # returns 300
+def add_word(words):
+    """Add a new word."""
+    eng = input('English word : ').strip().lower()
+    if eng in words:
+        print(f'  "{eng}" is already registered.')
+        return
+    meaning = input('Meaning      : ').strip()
+    words[eng] = meaning
+    print(f'  "{eng}: {meaning}" added!')
 
-# call directly without assigning to a variable
-print('Sum of 100 and 200 :', (lambda x, y: x + y)(100, 200))
+def show_words(words):
+    """Display all words."""
+    if not words:
+        print('  No words registered.')
+        return
+    print(f'  --- Total {len(words)} words ---')
+    for eng, meaning in words.items():
+        print(f'  {eng:20s} : {meaning}')
 
-# ============================================================
-# filter(), map()과 리스트 축약
-# ============================================================
-
-filter(function, iterable)
-
-def adult_func(n):  # True if age >= 19, False otherwise
-    if n >= 19:
-        return True
+def search_word(words):
+    """Search for a word."""
+    eng = input('Word to search : ').strip().lower()
+    if eng in words:
+        print(f'  {eng} : {words[eng]}')
     else:
-        return False
+        print(f'  "{eng}" not found.')
 
-ages = [34, 39, 20, 18, 13, 54]
-print('Adult list :')
-for a in filter(adult_func, ages):  # filtering using filter()
-    print(a, end = ' ')
+def quiz(words):
+    """Quiz mode: randomly ask 5 questions."""
+    if len(words) < 2:
+        print('  Need at least 2 words for a quiz.')
+        return
+    items = list(words.items())
+    random.shuffle(items)
+    count = min(5, len(items))
+    score = 0
+    print(f'\n  === Quiz Start ({count} questions) ===')
+    for i, (eng, meaning) in enumerate(items[:count], 1):
+        answer = input(f'  Q{i}. What does "{eng}" mean? ')
+        if answer.strip() == meaning:
+            print('  Correct!')
+            score += 1
+        else:
+            print(f'  Wrong! The answer is "{meaning}".')
+    print(f'\n  Result: {score} out of {count} correct')
 
-ages = [34, 39, 20, 18, 13, 54]
-adult_ages = list(filter(lambda x: x >= 19, ages))
-print('Adult list :', adult_ages)
+def main():
+    words = load_words()
+    print('=== My Vocabulary App ===')
+    while True:
+        print('\n1.Add  2.List  3.Search  4.Quiz  5.Save  6.Quit')
+        choice = input('Choice : ').strip()
+        if choice == '1':
+            add_word(words)
+        elif choice == '2':
+            show_words(words)
+        elif choice == '3':
+            search_word(words)
+        elif choice == '4':
+            quiz(words)
+        elif choice == '5':
+            save_words(words)
+            print('  Saved!')
+        elif choice == '6':
+            save_words(words)
+            print('  Vocabulary saved. Goodbye!')
+            break
+        else:
+            print('  Invalid input.')
 
-n_list = [-30, 45, -5, -90, 20, 53, 77, -36]
-minus_list = list(filter(lambda x: x < 0, n_list))
-print('Negative list :', minus_list)
-
-map(function, iterable, ...)
-
-a = [1, 2, 3, 4, 5, 6, 7]
-square_a = []
-for n in a:
-    square_a.append(n ** 2)  # add n squared to square_a list
-print(square_a)
-
-a = [1, 2, 3, 4, 5, 6, 7]
-square_a = list(map(lambda x: x**2, a))
-print(square_a)
-
-a = [1, 2, 3, 4, 5, 6, 7]
-square_a = list(map(lambda x: x**2, a))
-cubic_a = list(map(lambda x: x**3, a))
-print('square_a =', square_a)
-print('cubic_a =', cubic_a)
-
-[expression for var in iterable]             # map functionality
-[expression for var in iterable if condition]  # map + filter functionality
-
-a = [1, 2, 3, 4, 5, 6, 7]
-a = [x**2 for x in a]  # apply x**2 to each element of the list
-print(a)
-
-a = [x**2 for x in range(1, 8)]
-print(a)
-
-st = 'Hello World'
-s_list = [x.upper() for x in st]
-print(s_list)
-
-# filter + lambda approach
-ages = [34, 39, 20, 18, 13, 54]
-adult_ages = list(filter(lambda x: x >= 19, ages))
-print('Adult list :', adult_ages)
-
-# list comprehension approach
-ages = [34, 39, 20, 18, 13, 54]
-print('Adult list :', [x for x in ages if x >= 19])
-
->>> [x for x in range(10)]
-[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
->>> [x * x for x in range(10)]
-[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
->>> [x for x in range(10) if x % 2 == 0]
-[0, 2, 4, 6, 8]
->>> [x for x in range(10) if x % 2 == 1]
-[1, 3, 5, 7, 9]
->>> [x * x for x in range(10) if x % 2 == 0]
-[0, 4, 16, 36, 64]
->>> [x * x for x in range(10) if x % 2 == 1]
-[1, 9, 25, 49, 81]
-
->>> s = input('Enter 5 integers : ').split()
-Enter 5 integers : 10 20 30 40 50
->>> lst = [int(x) for x in s]
->>> lst
-[10, 20, 30, 40, 50]
+if __name__ == '__main__':
+    main()
 
 # ============================================================
-# 넘파이 라이브러리
+# 비정형 데이터 정리 자동화
+# ============================================================
+
+
+
+# --- data\_cleaner.py \{ ---
+import csv
+
+INPUT_FILE = 'members_raw.txt'
+OUTPUT_FILE = 'members.csv'
+
+def unify_separator(line):
+    """Replace / and , with | as a single separator."""
+    line = line.replace('/', '|')
+    line = line.replace(',', '|')
+    if '|' not in line:
+        # no / or , found: split by 2+ spaces
+        parts = line.split()
+        # regroup: name may be two words
+        # find email (contains @) to locate fields
+        for i, p in enumerate(parts):
+            if '@' in p:
+                email_idx = i
+                break
+        else:
+            return None
+        name = ' '.join(parts[:email_idx - 1])
+        phone = parts[email_idx - 1]
+        email = parts[email_idx]
+        city = ' '.join(parts[email_idx + 1:])
+        return f'{name}|{phone}|{email}|{city}'
+    return line
+
+def normalize_phone(phone):
+    """Normalize phone number to 010-XXXX-XXXX format."""
+    digits = ''
+    for ch in phone:
+        if ch.isdigit():
+            digits += ch
+    if len(digits) != 11:
+        return None
+    return f'{digits[:3]}-{digits[3:7]}-{digits[7:]}'
+
+def clean_data(input_file, output_file):
+    """Read raw text, clean it, and write to CSV."""
+    cleaned = []
+    errors = []
+
+    with open(input_file, 'r', encoding='utf-8') as f:
+        for line_num, line in enumerate(f, 1):
+            line = line.strip()
+            if not line or line.startswith('#'):
+                continue
+
+            unified = unify_separator(line)
+            if unified is None:
+                errors.append((line_num, 'Cannot parse'))
+                continue
+
+            parts = unified.split('|')
+            parts = [p.strip() for p in parts]
+
+            if len(parts) != 4:
+                errors.append((line_num, 'Field count error'))
+                continue
+
+            name, phone, email, city = parts
+            phone = normalize_phone(phone)
+            if phone is None:
+                errors.append((line_num, 'Invalid phone'))
+                continue
+
+            cleaned.append({
+                'name': name, 'phone': phone,
+                'email': email, 'city': city
+            })
+
+    # write CSV
+    fields = ['name', 'phone', 'email', 'city']
+    with open(output_file, 'w', newline='',
+              encoding='utf-8-sig') as f:
+        writer = csv.DictWriter(f, fieldnames=fields)
+        writer.writeheader()
+        writer.writerows(cleaned)
+
+    print(f'Completed: {len(cleaned)} records saved '
+          f'to {output_file}')
+    if errors:
+        print(f'Warnings ({len(errors)} lines skipped):')
+        for num, msg in errors:
+            print(f'  Line {num}: {msg}')
+
+if __name__ == '__main__':
+    clean_data(INPUT_FILE, OUTPUT_FILE)
+
+
+
+# ============================================================
+# 달의 위상 시각화
+# ============================================================
+
+from datetime import datetime
+
+LUNAR_CYCLE = 29.530588853  # synodic month (days)
+KNOWN_NEW_MOON = datetime(1970, 1, 7, 20, 35)  # new moon (UTC)
+
+def moon_age(date):
+    """Calculate the moon's age (days since last new moon)."""
+    diff = date - KNOWN_NEW_MOON
+    days = diff.total_seconds() / 86400
+    return days % LUNAR_CYCLE
+
+import turtle
+
+t = turtle.Turtle()
+t.circle(100)          # draw a circle with radius 100
+t.fillcolor('yellow')
+t.begin_fill()
+t.circle(100)
+t.end_fill()           # fill the circle with yellow
+turtle.done()
+
+# --- moon\_phase.py \{ ---
+import turtle
+import math
+from datetime import datetime
+
+LUNAR_CYCLE = 29.530588853   # synodic month (days)
+KNOWN_NEW_MOON = datetime(1970, 1, 7, 20, 35)  # new moon (UTC)
+RADIUS = 120
+
+def moon_age(date):
+    """Calculate the moon's age in days."""
+    diff = date - KNOWN_NEW_MOON
+    days = diff.total_seconds() / 86400
+    return days % LUNAR_CYCLE
+
+def draw_filled_circle(t, x, y, r, color):
+    """Draw a filled circle at (x, y) with radius r."""
+    t.penup()
+    t.goto(x, y - r)
+    t.pendown()
+    t.fillcolor(color)
+    t.begin_fill()
+    t.circle(r)
+    t.end_fill()
+
+def draw_moon(t, age):
+    """Draw the moon shape based on its age."""
+    phase = age / LUNAR_CYCLE   # 0.0 ~ 1.0
+    bg = '#1a1a2e'              # dark sky
+    bright = '#fffacd'          # lemon chiffon
+    dark = bg                   # shadow = background
+
+    # draw bright full circle first
+    draw_filled_circle(t, 0, 0, RADIUS, bright)
+
+    # calculate shadow ellipse width
+    # phase 0~0.5: shadow shrinks from right
+    # phase 0.5~1: shadow grows from right
+    if phase <= 0.5:
+        ratio = 1 - 2 * phase  # 1 -> 0
+        shadow_from_right = True
+    else:
+        ratio = 2 * phase - 1  # 0 -> 1
+        shadow_from_right = False
+
+    # draw shadow as vertical slices (oval overlay)
+    if ratio > 0.02:
+        t.penup()
+        shadow_rx = RADIUS * ratio
+        steps = 200
+        t.fillcolor(dark)
+        t.begin_fill()
+        for i in range(steps + 1):
+            angle = math.pi * i / steps - math.pi / 2
+            sy = RADIUS * math.sin(angle)
+            if shadow_from_right:
+                sx = shadow_rx * math.cos(angle)
+            else:
+                sx = -shadow_rx * math.cos(angle)
+            # half circle (dark side)
+            t.goto(sx, sy)
+        # close with bright-side half circle
+        for i in range(steps, -1, -1):
+            angle = math.pi * i / steps - math.pi / 2
+            sy = RADIUS * math.sin(angle)
+            if shadow_from_right:
+                sx = RADIUS * math.cos(angle)
+            else:
+                sx = -RADIUS * math.cos(angle)
+            t.goto(sx, sy)
+        t.end_fill()
+
+def main():
+    date_str = input('Enter date (YYYY-MM-DD), '
+                     'or press Enter for today: ').strip()
+    if date_str:
+        date = datetime.strptime(date_str, '%Y-%m-%d')
+    else:
+        date = datetime.now()
+
+    age = moon_age(date)
+    print(f'Date : {date.strftime("%Y-%m-%d")}')
+    print(f'Age  : {age:.1f} days')
+
+    # set up turtle
+    screen = turtle.Screen()
+    screen.bgcolor('#1a1a2e')
+    screen.title(f'Moon Phase - {date.strftime("%Y-%m-%d")}')
+    t = turtle.Turtle()
+    t.speed(0)
+    t.hideturtle()
+    t.pencolor('#1a1a2e')
+
+    draw_moon(t, age)
+
+    # label
+    t.penup()
+    t.goto(0, -RADIUS - 40)
+    t.pencolor('white')
+    t.write(f'{date.strftime("%Y-%m-%d")}\n'
+            f'Moon age: {age:.1f} days',
+            align='center',
+            font=('Arial', 14, 'normal'))
+    turtle.done()
+
+if __name__ == '__main__':
+    main()
+
+
+# ============================================================
+# 웹 앱 만들기: Flask
 # ============================================================
 
 # install from terminal
-# $ pip install numpy
+# $ pip install flask
 
-import numpy as np
+# --- hello\_flask.py \{ ---
+from flask import Flask
 
-import numpy as np
+app = Flask(__name__)
 
-a = np.array([1, 2, 3])           # create 1D array from list
-b = np.array([[1, 2], [3, 4]])    # create 2D array
-print('a =', a)
-print('b =')
-print(b)
+@app.route('/')
+def home():
+    return '<h1>Hello, Flask!</h1><p>My first web app.</p>'
 
-a = np.array([1, 2, 3])
-print('shape  :', a.shape)      # shape of array
-print('ndim   :', a.ndim)       # number of dimensions
-print('dtype  :', a.dtype)      # data type of elements
-print('size   :', a.size)       # total number of elements
-print('itemsize:', a.itemsize)  # byte size of each element
+if __name__ == '__main__':
+    app.run(debug=True)
 
-print(np.zeros(5))           # array filled with 0s
-print(np.ones((2, 3)))       # 2x3 array filled with 1s
-print(np.arange(0, 10, 2))   # 0 to under 10, step 2
-print(np.linspace(0, 1, 5))  # 5 evenly spaced values from 0 to 1
-print(np.random.rand(3))     # 3 random numbers between 0 and 1
-print(np.random.randint(0, 10, size=5))  # 5 random integers 0~9
+@app.route('/')
+def home():
+    return '<h1>Home Page</h1><a href="/about">About</a>'
 
-import numpy as np
-import time
+@app.route('/about')
+def about():
+    return '<h1>About</h1><p>This is a Flask web app.</p>'
 
-n = 1_000_000
+@app.route('/greet/<name>')
+def greet(name):
+    return f'<h1>Hello, {name}!</h1>'
 
-# Python list
-py_list = list(range(n))
-start = time.time()
-result = [x**2 for x in py_list]
-py_time = time.time() - start
+# --- app.py \{ ---
+from flask import Flask, render_template
 
-# NumPy array
-np_arr = np.arange(n)
-start = time.time()
-result = np_arr ** 2
-np_time = time.time() - start
+app = Flask(__name__)
 
-print(f'List comprehension : {py_time:.4f} sec')
-print(f'NumPy vectorization: {np_time:.4f} sec')
-print(f'NumPy is {py_time/np_time:.1f}x faster')
+tasks = ['Buy groceries', 'Read Python book', 'Exercise']
 
-# ============================================================
-# 배열 연산과 인덱싱
-# ============================================================
+@app.route('/')
+def home():
+    return render_template('index.html', tasks=tasks)
 
-student_mid = [70, 85, 90, 75]   # midterm scores
-student_fin = [90, 65, 70, 85]   # final scores
-student_sum = student_mid + student_fin
-print(student_sum)
-# student_sum / 2  # TypeError: unsupported operand type(s)
+if __name__ == '__main__':
+    app.run(debug=True)
 
-import numpy as np
 
-student_mid = np.array([70, 85, 90, 75])  # midterm scores
-student_fin = np.array([90, 65, 70, 85])  # final scores
-student_sum = student_mid + student_fin
-print('Total :', student_sum)
-print('Average :', student_sum / 2)
+# --- todo\_app.py \{ ---
+from flask import Flask, render_template, request, redirect
 
-sal = np.array([300, 360, 400, 380])  # salaries of 4 employees
-sal_bonus = sal + 100       # add 100 bonus to each
-sal_inc = sal * 1.2          # 20% raise for each
-print('100만 원 보너스 추가 후:', sal_bonus)
-print('20% 인상된 급여:', sal_inc)
+app = Flask(__name__)
+tasks = []
 
-a = np.array([[1, 2], [3, 4]])      # 2D array a
-b = np.array([[10, 20], [30, 40]])  # 2D array b
+@app.route('/')
+def home():
+    return render_template('todo.html', tasks=tasks)
 
-print('a + b =\n', a + b)
-print('a * b =\n', a * b)    # element-wise multiplication
-print('a @ b =\n', a @ b)    # matrix multiplication
+@app.route('/add', methods=['POST'])
+def add_task():
+    task = request.form.get('task')
+    if task:
+        tasks.append(task)
+    return redirect('/')
 
-a = [[1, 2], [3, 4]]
-b = [[1, 0], [0, 1]]    # identity matrix
-print(np.matmul(a, b))   # result is a itself
+@app.route('/delete/<int:index>')
+def delete_task(index):
+    if 0 <= index < len(tasks):
+        tasks.pop(index)
+    return redirect('/')
 
-a = np.array([10, 20, 30, 40, 50])
+if __name__ == '__main__':
+    app.run(debug=True)
 
-print(a[0])       # first element
-print(a[1:4])     # slicing
-print(a[-1])      # last element
-
-# boolean indexing: extract elements matching condition
-print(a[a > 25])  # elements greater than 25 only
-
-b = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
-print(b[0, 2])      # row 0, col 2: 3
-print(b[1, :])      # entire row 1: [4, 5, 6]
-print(b[:, 0])      # entire col 0: [1, 4, 7]
-print(b[0:2, 1:3])  # rows 0~1, cols 1~2 subarray
-
-data = np.array([23, 45, 67, 7, 2, 30, 34, 82])
-print('Max  :', data.max())
-print('Min  :', data.min())
-print('Mean :', data.mean())
-print('Sum  :', data.sum())
-print('Sort :', np.sort(data))
-
-a = np.array([[1, 1], [2, 2], [3, 3]])
-print(a.flatten())  # flatten to 1D array
