@@ -169,7 +169,16 @@ code {
   font-size: 0.86em; color: var(--text);
 }
 pre { margin: 1.2rem 0; }
-pre code { background: none; padding: 0; font-size: 0.85rem; color: inherit; }
+pre code { background: none; padding: 0; font-size: 0.84rem; color: inherit; }
+/* Prism 기본 테마가 code[class*=language-]에 font-size:1em과 Consolas를 건다.
+   book.css가 prism.min.css보다 먼저 실려 같은 특정도에서는 Prism이 이긴다.
+   (Prism이 실행 시 language-* 클래스를 <pre>에도 복사하므로 pre까지 해당된다.)
+   본문 코드가 출력 블록보다 커지고 글꼴도 달라지므로 특정도를 높여 되돌린다. */
+.content pre.line-numbers,
+.content pre.line-numbers > code[class*="language-"] {
+  font-family: 'D2Coding', Consolas, 'JetBrains Mono', monospace;
+  font-size: 0.84rem;
+}
 pre.line-numbers, .listing pre {
   background: var(--bg);
   border: 1px solid var(--border);
