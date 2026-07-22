@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>부록 C 주요 메소드·함수 빠른 참조 카드 — 알짜 파이썬</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="book.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="home" href="../index.html">&#8962; 홈</a>
+  <span class="book-title">알짜 파이썬</span>
+  <span class="ch-indicator">부록 C 주요 메소드·함수 빠른 참조 카드</span>
+  <button class="nav-toggle" onclick="document.body.classList.toggle('nav-open')">목차</button>
+</header>
+<div class="layout">
+<nav class="sidebar">
+<div class="nav-ch"><a class="nav-ch-link" href="front.html"><span class="nav-num">&#128214;</span> 표지·머릿말</a></div>
+<div class="nav-part">Part I. 파이썬 시작</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch01.html"><span class="nav-num">01</span> 파이썬 소개와 개발 환경</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch02.html"><span class="nav-num">02</span> 변수, 연산자, 문자열</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch03.html"><span class="nav-num">03</span> 조건문과 반복문</a>
+</div>
+<div class="nav-part">Part II. 함수와 자료구조</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch04.html"><span class="nav-num">04</span> 함수와 입출력</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch05.html"><span class="nav-num">05</span> 리스트와 슬라이싱</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch06.html"><span class="nav-num">06</span> 딕셔너리, 튜플, 집합</a>
+</div>
+<div class="nav-part">Part III. 실전 활용</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch07.html"><span class="nav-num">07</span> 모듈 활용</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch08.html"><span class="nav-num">08</span> 예외 처리와 파일</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch09.html"><span class="nav-num">09</span> 클래스와 객체</a>
+</div>
+<div class="nav-part">Part IV. 한 걸음 더</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch10.html"><span class="nav-num">10</span> 파이썬의 응용</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch11.html"><span class="nav-num">11</span> 파이썬다운 코딩과 넘파이</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch12.html"><span class="nav-num">12</span> 데이터 과학과 파이썬</a>
+</div>
+<div class="nav-part">부록</div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxa.html"><span class="nav-num">A</span> 파이썬 설치 트러블슈팅</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxb.html"><span class="nav-num">B</span> 자주 보는 오류 메시지 사전</a>
+</div>
+<div class="nav-ch current"><a class="nav-ch-link" href="apxc.html"><span class="nav-num">C</span> 주요 메소드·함수 빠른 참조 카드</a>
+<div class="nav-secs"><a class="nav-sec" href="apxc.html#sec1">C.1 내장 함수</a><a class="nav-sec" href="apxc.html#sec2">C.2 문자열 메소드</a><a class="nav-sec" href="apxc.html#sec3">C.3 리스트 메소드</a><a class="nav-sec" href="apxc.html#sec4">C.4 딕셔너리 메소드</a><a class="nav-sec" href="apxc.html#sec5">C.5 집합 메소드</a><a class="nav-sec" href="apxc.html#sec6">C.6 파일 입출력 패턴</a><a class="nav-sec" href="apxc.html#sec7">C.7 자주 쓰는 표준 모듈</a><a class="nav-sec" href="apxc.html#sec8">C.8 함께 익혀 두면 좋은 빈출 패턴</a></div>
+</div>
+</nav>
+<main class="content">
+<div class="chapter-head">
+  <div class="ch-label">APPENDIX C</div>
+  <h1>주요 메소드·함수 빠른 참조 카드</h1>
+</div>
+<p>본문에서 한 번씩은 다룬 빈출 함수와 메소드를 자료형·모듈별로 표로 정리하였다. 시그니처는 입문 학습에 필요한 핵심만 단순화하였으며, 실전 코드를 작성할 때 곁눈질로 빠르게 확인하기 위한 카드 역할을 한다.</p>
+<h2 id="sec1">C.1 내장 함수</h2>
+<h3>입출력·자료형 변환</h3>
+<div class="table-wrap"><table><tr><th><strong>시그니처</strong></th><th><strong>설명</strong></th></tr><tr><td><code>print(*objects, sep=' ', end='\n')</code></td><td>표준 출력. 여러 인자를 <code>sep</code>으로 잇는다.</td></tr><tr><td><code>input(prompt='')</code></td><td>한 줄 입력을 문자열로 반환.</td></tr><tr><td><code>int(x)</code>, <code>float(x)</code>, <code>str(x)</code>, <code>bool(x)</code></td><td>기본 형 변환.</td></tr><tr><td><code>list(iter)</code>, <code>tuple(iter)</code>, <code>set(iter)</code>, <code>dict(pairs)</code></td><td>컬렉션 생성.</td></tr><tr><td><code>type(x)</code>, <code>isinstance(x, T)</code></td><td>객체의 자료형 확인 / 자료형 일치 검사.</td></tr></table></div>
+<h3>시퀀스·반복</h3>
+<div class="table-wrap"><table><tr><th><strong>시그니처</strong></th><th><strong>설명</strong></th></tr><tr><td><code>len(seq)</code></td><td>길이.</td></tr><tr><td><code>range(start, stop, step)</code></td><td>정수 시퀀스(<code>range</code> 객체).</td></tr><tr><td><code>enumerate(iter, start=0)</code></td><td><code>(인덱스, 값)</code> 짝.</td></tr><tr><td><code>zip(*iters)</code></td><td>같은 인덱스끼리 묶어 튜플 시퀀스로.</td></tr><tr><td><code>sorted(iter, key=None, reverse=False)</code></td><td>정렬된 새 리스트 반환.</td></tr><tr><td><code>reversed(seq)</code></td><td>역순 이터레이터.</td></tr><tr><td><code>sum(iter)</code>, <code>min(iter)</code>, <code>max(iter)</code></td><td>합·최솟값·최댓값.</td></tr><tr><td><code>any(iter)</code>, <code>all(iter)</code></td><td>하나라도 참 / 모두 참 검사.</td></tr><tr><td><code>map(f, iter)</code>, <code>filter(f, iter)</code></td><td>함수 적용 / 조건 통과 항목.</td></tr></table></div>
+<h3>기타</h3>
+<div class="table-wrap"><table><tr><th><strong>시그니처</strong></th><th><strong>설명</strong></th></tr><tr><td><code>abs(x)</code>, <code>round(x, n)</code>, <code>pow(x, y)</code></td><td>절댓값·반올림·거듭제곱.</td></tr><tr><td><code>help(obj)</code>, <code>dir(obj)</code></td><td>도움말과 속성 목록.</td></tr><tr><td><code>open(path, mode='r', encoding='utf-8')</code></td><td>파일 열기.</td></tr></table></div>
+<h2 id="sec2">C.2 문자열 메소드</h2>
+<div class="table-wrap"><table><tr><th><strong>메소드</strong></th><th><strong>설명</strong></th></tr><tr><td><code>s.upper()</code>, <code>s.lower()</code>, <code>s.title()</code></td><td>대소문자 변환.</td></tr><tr><td><code>s.strip()</code>, <code>s.lstrip()</code>, <code>s.rstrip()</code></td><td>양쪽·왼쪽·오른쪽 공백 제거(인자에 문자 지정 가능).</td></tr><tr><td><code>s.split(sep=None)</code></td><td>구분자로 나눠 리스트.</td></tr><tr><td><code>sep.join(iter)</code></td><td>문자열 시퀀스를 <code>sep</code>으로 잇는다.</td></tr><tr><td><code>s.replace(old, new)</code></td><td>부분 문자열 교체.</td></tr><tr><td><code>s.find(sub)</code>, <code>s.index(sub)</code></td><td>위치 검색(없으면 (-1) / 예외).</td></tr><tr><td><code>s.startswith(p)</code>, <code>s.endswith(s)</code></td><td>시작·끝 검사.</td></tr><tr><td><code>s.isdigit()</code>, <code>s.isalpha()</code>, <code>s.isalnum()</code></td><td>문자 종류 검사.</td></tr><tr><td><code>s.format(...)</code>, <code>f'{var}'</code></td><td>서식화 출력.</td></tr></table></div>
+<h2 id="sec3">C.3 리스트 메소드</h2>
+<div class="table-wrap"><table><tr><th><strong>메소드</strong></th><th><strong>설명</strong></th></tr><tr><td><code>lst.append(x)</code></td><td>끝에 한 항목 추가.</td></tr><tr><td><code>lst.extend(iter)</code></td><td>여러 항목을 한 번에 이어 붙임.</td></tr><tr><td><code>lst.insert(i, x)</code></td><td>위치 <code>i</code>에 삽입.</td></tr><tr><td><code>lst.remove(x)</code></td><td>첫 번째로 등장하는 <code>x</code> 제거.</td></tr><tr><td><code>lst.pop(i=-1)</code></td><td>인덱스 <code>i</code> 항목을 꺼내 반환(기본은 마지막).</td></tr><tr><td><code>lst.index(x)</code>, <code>lst.count(x)</code></td><td>위치·등장 횟수.</td></tr><tr><td><code>lst.sort(key=None, reverse=False)</code></td><td>제자리 정렬.</td></tr><tr><td><code>lst.reverse()</code></td><td>제자리 뒤집기.</td></tr><tr><td><code>lst.copy()</code></td><td>얕은 복사(<code>lst[:]</code>와 동일).</td></tr></table></div>
+<h2 id="sec4">C.4 딕셔너리 메소드</h2>
+<div class="table-wrap"><table><tr><th><strong>메소드</strong></th><th><strong>설명</strong></th></tr><tr><td><code>d.keys()</code>, <code>d.values()</code>, <code>d.items()</code></td><td>키·값·쌍 뷰.</td></tr><tr><td><code>d.get(key, default=None)</code></td><td>키가 없으면 <code>default</code> 반환.</td></tr><tr><td><code>d.setdefault(key, default)</code></td><td>키가 없을 때만 추가.</td></tr><tr><td><code>d.pop(key, default)</code></td><td>키 제거 후 값 반환.</td></tr><tr><td><code>d.update(other)</code></td><td>다른 딕셔너리·쌍 시퀀스 병합.</td></tr><tr><td><code>d.clear()</code></td><td>모든 항목 제거.</td></tr><tr><td><code>key in d</code></td><td>키 존재 검사(딕셔너리에서 가장 빠른 패턴).</td></tr></table></div>
+<h2 id="sec5">C.5 집합 메소드</h2>
+<div class="table-wrap"><table><tr><th><strong>메소드 / 연산자</strong></th><th><strong>설명</strong></th></tr><tr><td><code>s.add(x)</code>, <code>s.remove(x)</code>, <code>s.discard(x)</code></td><td>추가·제거(없을 때 예외 / 무시).</td></tr><tr><td><code>s.union(t)</code> 또는 <code>s | t</code></td><td>합집합.</td></tr><tr><td><code>s.intersection(t)</code> 또는 <code>s &amp; t</code></td><td>교집합.</td></tr><tr><td><code>s.difference(t)</code> 또는 <code>s - t</code></td><td>차집합.</td></tr><tr><td><code>s.symmetric_difference(t)</code> 또는 <code>s \^{} t</code></td><td>대칭차.</td></tr><tr><td><code>s.issubset(t)</code>, <code>s.issuperset(t)</code></td><td>부분·상위 집합 판정.</td></tr></table></div>
+<h2 id="sec6">C.6 파일 입출력 패턴</h2>
+<pre class="line-numbers"><code class="language-python"># 텍스트 읽기 (한 번에)
+with open('data.txt', encoding='utf-8') as f:
+    text = f.read()
+# 한 줄씩 처리
+with open('data.txt', encoding='utf-8') as f:
+    for line in f:
+        print(line.rstrip())
+# 쓰기 / 추가
+with open('out.txt', 'w', encoding='utf-8') as f:
+    f.write('hello\n')
+with open('out.txt', 'a', encoding='utf-8') as f:
+    f.write('one more line\n')</code></pre>
+<h2 id="sec7">C.7 자주 쓰는 표준 모듈</h2>
+<h3><code>math</code>  —  수학 함수</h3>
+<div class="table-wrap"><table><tr><th><strong>이름</strong></th><th><strong>설명</strong></th></tr><tr><td><code>math.pi</code>, <code>math.e</code>, <code>math.inf</code>, <code>math.nan</code></td><td>주요 상수.</td></tr><tr><td><code>math.sqrt(x)</code>, <code>math.pow(x, y)</code>, <code>math.exp(x)</code></td><td>제곱근·거듭제곱·지수함수.</td></tr><tr><td><code>math.log(x, base=e)</code></td><td>로그(밑 지정 가능).</td></tr><tr><td><code>math.sin(x)</code>, <code>math.cos(x)</code>, <code>math.tan(x)</code></td><td>삼각함수(인자 단위는 라디안).</td></tr><tr><td><code>math.floor(x)</code>, <code>math.ceil(x)</code>, <code>math.trunc(x)</code></td><td>내림·올림·정수부.</td></tr><tr><td><code>math.gcd(a, b)</code>, <code>math.factorial(n)</code></td><td>최대공약수·팩토리얼.</td></tr></table></div>
+<h3><code>random</code>  —  의사 난수</h3>
+<div class="table-wrap"><table><tr><th><strong>함수</strong></th><th><strong>설명</strong></th></tr><tr><td><code>random.random()</code></td><td>([0.0, 1.0)) 사이 실수.</td></tr><tr><td><code>random.uniform(a, b)</code></td><td>([a, b]) 사이 실수.</td></tr><tr><td><code>random.randint(a, b)</code></td><td>([a, b]) 사이 정수(양 끝 포함).</td></tr><tr><td><code>random.choice(seq)</code>, <code>random.sample(seq, k)</code></td><td>무작위 추첨 / 비복원 추출.</td></tr><tr><td><code>random.shuffle(lst)</code></td><td>제자리에서 섞기.</td></tr><tr><td><code>random.seed(n)</code></td><td>결과 재현용 시드.</td></tr></table></div>
+<h3><code>datetime</code>  —  날짜와 시간</h3>
+<div class="table-wrap"><table><tr><th><strong>함수 / 메소드</strong></th><th><strong>설명</strong></th></tr><tr><td><code>datetime.now()</code></td><td>현재 시각.</td></tr><tr><td><code>datetime(year, month, day)</code></td><td>특정 시각 생성.</td></tr><tr><td><code>dt.strftime(fmt)</code></td><td>문자열 서식 (예: <code>'%Y-%m-%d %H:%M'</code>).</td></tr><tr><td><code>datetime.strptime(s, fmt)</code></td><td>문자열을 <code>datetime</code>으로 파싱.</td></tr><tr><td><code>timedelta(days, seconds, ...)</code></td><td>시간 간격(덧·뺄셈 가능).</td></tr></table></div>
+<h3><code>os</code>  —  운영체제 인터페이스</h3>
+<div class="table-wrap"><table><tr><th><strong>함수</strong></th><th><strong>설명</strong></th></tr><tr><td><code>os.getcwd()</code>, <code>os.chdir(path)</code></td><td>현재 디렉터리 확인·변경.</td></tr><tr><td><code>os.listdir(path='.')</code></td><td>디렉터리 안의 항목 목록.</td></tr><tr><td><code>os.path.join(a, b, ...)</code></td><td>OS에 맞춘 경로 연결.</td></tr><tr><td><code>os.path.exists(path)</code></td><td>파일/폴더 존재 확인.</td></tr><tr><td><code>os.makedirs(path, exist_ok=True)</code></td><td>중간 디렉터리까지 생성.</td></tr></table></div>
+<h2 id="sec8">C.8 함께 익혀 두면 좋은 빈출 패턴</h2>
+<div class="table-wrap"><table><tr><th><strong>패턴</strong></th><th><strong>설명</strong></th></tr><tr><td><code>try-except ValueError</code></td><td>안전한 형 변환  —  사용자 입력 보호.</td></tr><tr><td><code>with open(...) as f:</code></td><td>자원 자동 해제.</td></tr><tr><td><code>[f(x) for x in seq if cond]</code></td><td>리스트 컴프리헨션.</td></tr><tr><td><code>dict(zip(keys, values))</code></td><td>두 시퀀스로 딕셔너리 만들기.</td></tr><tr><td><code>', '.join(map(str, seq))</code></td><td>숫자 시퀀스를 보기 좋은 문자열로.</td></tr></table></div>
+<div class="pager-row"><a class="pager prev" href="apxb.html">&larr; 부록 B</a><span></span></div>
+</main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+<script src="book.js"></script>
+</body>
+</html>

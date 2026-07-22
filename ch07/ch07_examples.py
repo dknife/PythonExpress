@@ -1,62 +1,71 @@
 """
 제7장: 모듈 활용
-알짜 파이썬 — 예제 코드
+알짜 파이썬 — 예제 코드 (원고에서 자동 추출)
 """
 
 # ============================================================
 # 모듈과 import
 # ============================================================
 
-import module_name1 [, module_name2, ...]
+# --- import 문의 기본 형식 ---
+import module_name1 [, module_name2,...]
 
+# --- math 모듈을 import해서 사용 ---
 import math
-print(math.pi)        # 3.141592653589793
-print(math.sqrt(16))  # 4.0
+print(math.pi) # 3.141592653589793
+print(math.sqrt(16)) # 4.0
 
+# --- from import로 특정 요소만 가져오기 ---
 from math import sqrt, pi
-print(pi)        # 3.141592653589793
-print(sqrt(25))  # 5.0
+print(pi) # 3.141592653589793
+print(sqrt(25)) # 5.0
 
+# --- 별표로 모든 요소 가져오기 ---
 from math import *
-print(ceil(3.2))   # 4
-print(floor(3.8))  # 3
+print(ceil(3.2)) # 4
+print(floor(3.8)) # 3
 
-import datetime as dt      # datetime -> dt
-import random as rd        # random -> rd
-import math as m           # math -> m
-import turtle as t         # turtle -> t
+# --- as로 모듈에 별칭 붙이기 ---
+import datetime as dt # datetime -> dt
+import random as rd # random -> rd
+import math as m # math -> m
+import turtle as t # turtle -> t
 
 import datetime as dt
 start_time = dt.datetime.now()
 start_time.replace(month = 12, day = 25)
 
 # ============================================================
-# 날짜와 시간 \{
+# 날짜와 시간 — datetime
 # ============================================================
 
+# --- 현재 날짜와 시간 얻기 ---
 import datetime
 
-# current date and time
+# 현재 날짜와 시간
 print(datetime.datetime.now())
 # datetime.datetime(2025, 1, 2, 6, 57, 27, 904565)
 
-import datetime as dt     # use alias dt
+# --- as 별칭으로 datetime 간결하게 쓰기 ---
+import datetime as dt # dt라는 별칭 사용
 
 start_time = dt.datetime.now()
 print(start_time)
 
+# --- from import로 datetime 직접 호출 ---
 from datetime import datetime
 
 start_time = datetime.now()
 print(start_time)
 
+# --- date.today()로 연·월·일 추출 ---
 import datetime as dt
 
 today = dt.date.today()
-print(today)        # 2026-04-06
-print(today.year)   # 2026
-print(today.month)  # 4
-print(today.day)    # 6
+print(today) # 2026-04-06
+print(today.year) # 2026
+print(today.month) # 4
+print(today.day) # 6
 
 import datetime
 print(dir(datetime))
@@ -64,7 +73,7 @@ print(dir(datetime))
 import datetime as dt
 
 start_time = dt.datetime.now()
-# change month to 12 and day to 25
+# 월을 12, 일을 25로 변경
 new_time = start_time.replace(month = 12, day = 25)
 print(new_time)
 
@@ -81,7 +90,7 @@ print(f'Christmas is {gap.days} days {gap.seconds // 3600} hours away.')
 import datetime as dt
 
 print('Today =', dt.datetime.now())
-hundred = dt.timedelta(days = 100)   # 100 days
+hundred = dt.timedelta(days = 100) # 100일
 
 plus100day = dt.datetime.now() + hundred
 print('100 days later =', plus100day)
@@ -89,83 +98,175 @@ print('100 days later =', plus100day)
 minus100day = dt.datetime.now() - hundred
 print('100 days ago =', minus100day)
 
+# --- strftime()으로 날짜 문자열 포매팅 ---
 import datetime as dt
 
 now = dt.datetime.now()
-print(now.strftime('%Y-%m-%d'))       # 2026-04-06
-print(now.strftime('%B %d, %Y'))      # April 06, 2026
-print(now.strftime('%H:%M:%S'))       # 14:30:25
-
+print(now.strftime('%Y-%m-%d')) # 2026-04-06
+print(now.strftime('%B %d, %Y')) # April 06, 2026
+print(now.strftime('%H:%M:%S')) # 14:30:25
 
 # ============================================================
-# 수학과 난수 \{
+# 수학과 난수 — math, random
 # ============================================================
 
 import math
-print(dir(math))  # list all attributes and methods of math module
+print(dir(math)) # math 모듈의 모든 속성과 메소드 나열
 
+# --- math 모듈의 상수와 주요 함수 ---
 import math as m
 
-print(m.pi)           # 3.141592653589793 -- pi constant
-print(m.e)            # 2.718281828459045 -- e constant
-print(m.pow(3, 3))    # 27.0 -- 3 to the power of 3
-print(m.fabs(-99))    # 99.0 -- absolute value of -99
-print(m.ceil(2.1))    # 3 -- ceiling of 2.1
-print(m.ceil(-2.1))   # -2 -- ceiling of -2.1
-print(m.floor(2.1))   # 2 -- floor of 2.1
-print(m.log(2.71828)) # 0.999999327... -- natural logarithm
-print(m.log(100, 10)) # 2.0 -- log base 10 of 100
-print(m.sqrt(144))    # 12.0 -- square root
+print(m.pi) # 3.141592653589793 -- 원주율 상수
+print(m.e) # 2.718281828459045 -- 자연상수 e
+print(m.pow(3, 3)) # 27.0 -- 3의 3제곱
+print(m.fabs(-99)) # 99.0 -- -99의 절대값
+print(m.ceil(2.1)) # 3 -- 2.1의 올림
+print(m.ceil(-2.1)) # -2 -- -2.1의 올림
+print(m.floor(2.1)) # 2 -- 2.1의 내림
+print(m.log(2.71828)) # 0.999999327... -- 자연로그
+print(m.log(100, 10)) # 2.0 -- 밑이 10인 로그
+print(m.sqrt(144)) # 12.0 -- 제곱근
 
+# --- sin()에 각도를 직접 넣었을 때의 오류 ---
 import math as m
 
-print(m.sin(0.0))    # 0.0 -- correct, sin(0) = 0
-print(m.sin(90.0))   # 0.8939... -- NOT sin(90 degrees)!
+print(m.sin(0.0)) # 0.0 -- 정상, sin(0) = 0
+print(m.sin(90.0)) # 0.8939... -- sin(90도)가 아님!
 
+# --- radians()로 각도를 라디안으로 변환 ---
 import math as m
 
-# using pi/2 directly -- correct result
-print(m.sin(m.pi/2.0))       # 1.0
+# pi/2를 직접 사용 -- 올바른 결과
+print(m.sin(m.pi/2.0)) # 1.0
 
-# pi value
-print(m.pi)                  # 3.141592653589793
+# 원주율 값
+print(m.pi) # 3.141592653589793
 
-# convert 90 degrees to radians, then use sin
-print(m.radians(90))         # 1.5707963267948966 (pi/2)
-print(m.sin(m.radians(90)))  # 1.0 -- correct result!
+# 90도를 라디안으로 변환한 후 sin 사용
+print(m.radians(90)) # 1.5707963267948966 (pi/2)
+print(m.sin(m.radians(90))) # 1.0 -- 올바른 결과!
 
+# --- random 모듈의 기본 난수 함수 ---
 import random as rd
 
-print(rd.random())         # float between 0.0 and 1.0
-print(rd.randint(1, 6))    # integer between 1 and 6 (dice roll)
-print(rd.randrange(0, 10)) # integer between 0 and 9
+print(rd.random()) # 0.0 이상 1.0 미만의 실수
+print(rd.randint(1, 6)) # 1 이상 6 이하의 정수 (주사위)
+print(rd.randrange(0, 10)) # 0 이상 9 이하의 정수
 
+# --- choice, shuffle, sample로 리스트 다루기 ---
 import random as rd
 
 colors = ['red', 'blue', 'green', 'yellow', 'purple']
-print(rd.choice(colors))    # pick one randomly from list
+print(rd.choice(colors)) # 리스트에서 무작위로 하나 선택
 
-rd.shuffle(colors)          # shuffle list in-place
-print(colors)               # order changed randomly
+rd.shuffle(colors) # 리스트를 무작위로 섞기 (원본 변경)
+print(colors) # 순서가 무작위로 바뀜
 
-print(rd.sample(colors, 3)) # sample 3 without replacement
+print(rd.sample(colors, 3)) # 3개를 비복원 추출
 
 import random as rd
 
-lotto = rd.sample(range(1, 46), 6)  # pick 6 from 1~45
+lotto = rd.sample(range(1, 46), 6) # 1~45 중 6개 선택
 lotto.sort()
 print('This week lotto numbers:', lotto)
 
 # ============================================================
-# 외부 패키지 설치 \{
+# 외부 패키지 설치 — pip
 # ============================================================
 
-
-
+# --- numpy 배열 연산의 간결함 ---
 import numpy as np
 
 a = np.array([1, 2, 3, 4, 5])
-print(a * 2)       # [2 4 6 8 10] -- element-wise multiplication
-print(a.mean())    # 3.0 -- average
-print(a.sum())     # 15  -- sum
+print(a * 2) # [2 4 6 8 10] -- 요소별 곱셈
+print(a.mean()) # 3.0 -- 평균
+print(a.sum()) # 15 -- 합계
 
+# ============================================================
+# 정규표현식 — re
+# ============================================================
+
+import re
+
+text = 'My phone is 010-1234-5678 and home is 02-555-7777.'
+
+m = re.search(r'\d{2,3}-\d{3,4}-\d{4}', text)
+print(m.group()) # 처음 일치한 부분 문자열
+
+nums = re.findall(r'\d{2,3}-\d{3,4}-\d{4}', text)
+print(nums) # 일치한 모든 부분의 리스트
+
+cleaned = re.sub(r'\d', '*', text) # 모든 숫자를 *로 치환
+print(cleaned)
+
+import re
+
+text = 'Contact: alice@example.com, bob.smith@univ.ac.kr, not_an_email@'
+emails = re.findall(r'[\w.]+@[\w.]+\.[a-zA-Z]+', text)
+print(emails)
+
+def is_valid_email(s):
+ pattern = r'^[\w.]+@[\w.]+\.[a-zA-Z]{2,}$'
+ return re.match(pattern, s) is not None
+
+print(is_valid_email('alice@example.com'))
+print(is_valid_email('not_an_email@'))
+
+# ============================================================
+# 실습을 통한 7장 개념 정리
+# ============================================================
+
+from datetime import datetime
+now = datetime.now()
+print(f'오늘의 날짜 : {now.year}년 {now.month}월 {now.day}일')
+ampm = '오전' if now.hour < 12 else '오후'
+h = now.hour if now.hour <= 12 else now.hour - 12
+if h == 0:
+    h = 12
+print(f'현재시간 : {ampm} {h}시 {now.minute}분 {now.second}초')
+
+from datetime import date
+today = date.today()
+bday  = date(today.year, 5, 15)   # 자신의 생일로 변경
+if bday < today:
+    bday = date(today.year + 1, 5, 15)
+remaining = (bday - today).days
+print(f'내 생일까지 {remaining}일 남았습니다')
+
+from datetime import date
+y = int(input('출생 연도: '))
+m = int(input('출생 월: '))
+d = int(input('출생 일: '))
+born  = date(y, m, d)
+days  = (date.today() - born).days
+print(f'태어난 지 {days}일 지났습니다.')
+print(f'태어난 요일: {born.strftime("%A")}')
+
+from datetime import date, timedelta
+y = int(input('시작 연도: '))
+m = int(input('시작 월: '))
+d = int(input('시작 일: '))
+start = date(y, m, d)
+print('100일 기념일 :', start + timedelta(days=100))
+
+import re
+text = 'I bought 3 apples, 5 pears, 12 oranges for 8400 won.'
+nums = re.findall(r'\d+', text)
+total = 0
+for n in nums:
+    total += int(n)
+print('Found:', nums)
+print('Sum  :', total)
+
+import random
+choices = ['가위', '바위', '보']
+user = input('가위/바위/보: ').strip()
+cpu  = random.choice(choices)
+print(f'컴퓨터: {cpu}')
+win_pairs = {('가위','보'), ('바위','가위'), ('보','바위')}
+if user == cpu:
+    print('비김')
+elif (user, cpu) in win_pairs:
+    print('이김')
+else:
+    print('짐')

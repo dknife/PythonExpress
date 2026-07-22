@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>부록 A 파이썬 설치 트러블슈팅 — 알짜 파이썬</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="book.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="home" href="../index.html">&#8962; 홈</a>
+  <span class="book-title">알짜 파이썬</span>
+  <span class="ch-indicator">부록 A 파이썬 설치 트러블슈팅</span>
+  <button class="nav-toggle" onclick="document.body.classList.toggle('nav-open')">목차</button>
+</header>
+<div class="layout">
+<nav class="sidebar">
+<div class="nav-ch"><a class="nav-ch-link" href="front.html"><span class="nav-num">&#128214;</span> 표지·머릿말</a></div>
+<div class="nav-part">Part I. 파이썬 시작</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch01.html"><span class="nav-num">01</span> 파이썬 소개와 개발 환경</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch02.html"><span class="nav-num">02</span> 변수, 연산자, 문자열</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch03.html"><span class="nav-num">03</span> 조건문과 반복문</a>
+</div>
+<div class="nav-part">Part II. 함수와 자료구조</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch04.html"><span class="nav-num">04</span> 함수와 입출력</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch05.html"><span class="nav-num">05</span> 리스트와 슬라이싱</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch06.html"><span class="nav-num">06</span> 딕셔너리, 튜플, 집합</a>
+</div>
+<div class="nav-part">Part III. 실전 활용</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch07.html"><span class="nav-num">07</span> 모듈 활용</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch08.html"><span class="nav-num">08</span> 예외 처리와 파일</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch09.html"><span class="nav-num">09</span> 클래스와 객체</a>
+</div>
+<div class="nav-part">Part IV. 한 걸음 더</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch10.html"><span class="nav-num">10</span> 파이썬의 응용</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch11.html"><span class="nav-num">11</span> 파이썬다운 코딩과 넘파이</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch12.html"><span class="nav-num">12</span> 데이터 과학과 파이썬</a>
+</div>
+<div class="nav-part">부록</div>
+<div class="nav-ch current"><a class="nav-ch-link" href="apxa.html"><span class="nav-num">A</span> 파이썬 설치 트러블슈팅</a>
+<div class="nav-secs"><a class="nav-sec" href="apxa.html#sec1">A.1 Windows 환경</a><a class="nav-sec" href="apxa.html#sec2">A.2 macOS 환경</a><a class="nav-sec" href="apxa.html#sec3">A.3 Linux 환경</a><a class="nav-sec" href="apxa.html#sec4">A.4 공통 — pip 가속 — 미러 사용</a></div>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxb.html"><span class="nav-num">B</span> 자주 보는 오류 메시지 사전</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxc.html"><span class="nav-num">C</span> 주요 메소드·함수 빠른 참조 카드</a>
+</div>
+</nav>
+<main class="content">
+<div class="chapter-head">
+  <div class="ch-label">APPENDIX A</div>
+  <h1>파이썬 설치 트러블슈팅</h1>
+</div>
+<p>파이썬을 설치하다 보면 운영체제별로 자주 마주치는 함정이 있다. 이 부록은 <strong>Windows</strong>, <strong>macOS</strong>, <strong>Linux</strong> 환경에서 실제로 자주 보고되는 문제와 해결 방법을 모아 두었다. 1장의 설치 안내로 해결되지 않는 상황에서 사전처럼 찾아 보면 된다.</p>
+<h2 id="sec1">A.1 Windows 환경</h2>
+<h3>PATH 환경 변수 누락 — <code>python</code>이라고 쳤더니 인식되지 않을 때</h3>
+<p><code>cmd</code>나 <code>PowerShell</code>에 <code>python</code>을 입력했는데
+<code>'python' is not recognized as an internal or external command</code> 메시지가 나오면
+파이썬 실행 파일이 PATH에 등록되지 않은 상태이다. 가장 흔한 원인은 설치 마법사의
+<strong>Add Python to PATH</strong> 체크 박스를 빠뜨린 것이다.</p>
+<p>해결 방법은 두 가지다. 첫째, 파이썬 인스톨러를 다시 실행해 <code>Modify</code>를 누르고
+<strong>Add python.exe to PATH</strong> 항목을 켜면 된다. 둘째, 수동으로 PATH를 추가한다.
+<code>Win + R</code>을 누르고 <code>sysdm.cpl</code>을 입력하면 시스템 속성이 열린다.
+<strong>고급 → 환경 변수 → Path</strong>를 선택해 편집하고, 일반적으로
+<code>C:\Users\&lt;사용자&gt;\AppData\Local\Programs\Python\Python312</code> 경로와 그 아래 <code>Scripts</code> 경로를 추가한다.</p>
+<h3>여러 파이썬 버전 충돌 — <code>py launcher</code> 사용</h3>
+<p>Anaconda·VS Code·또 다른 인스톨러로 여러 버전이 깔린 경우 <code>python</code> 명령이 어느 버전을 가리키는지 헷갈린다. Windows에는 <strong class="term-ko">py launcher</strong><sup class="term">Python Launcher for Windows</sup>가 함께 설치되므로 다음과 같이 명시적으로 호출한다.</p>
+<pre class="pyout">py -3.12 --version       # 3.12 버전으로 실행
+py -3.11 my_script.py    # 3.11 버전으로 스크립트 실행
+py -0                    # 설치된 버전 목록</pre>
+<h2 id="sec2">A.2 macOS 환경</h2>
+<h3>시스템 파이썬과 사용자 파이썬 구분 — Homebrew 권장</h3>
+<p>macOS에는 시스템 파이썬(<code>/usr/bin/python3</code>)이 함께 설치되어 있지만, 시스템 도구가 의존하는 버전이라 직접 패키지를 설치하지 않는 편이 안전하다. 학습용으로는 <strong>Homebrew</strong>로 별도 설치하는 것이 일반적이다.</p>
+<pre class="pyout"># Homebrew 설치(이미 깔려 있으면 생략)
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/\
+Homebrew/install/HEAD/install.sh)"
+
+# 파이썬 설치
+brew install python@3.12
+
+# 설치 위치 확인
+which python3            # /opt/homebrew/bin/python3 (Apple Silicon)
+                         # /usr/local/bin/python3     (Intel)</pre>
+<h3>여러 버전 관리 — <code>pyenv</code></h3>
+<p>학습이 진행되어 여러 프로젝트를 다루다 보면 프로젝트마다 다른 파이썬 버전이 필요해진다. 이 때 <code>pyenv</code>가 유용하다. 디렉터리별로 다른 버전을 자동 전환해 준다.</p>
+<pre class="pyout">brew install pyenv
+pyenv install 3.12.5         # 원하는 버전 설치
+pyenv local 3.12.5           # 현재 폴더의 기본 버전 지정
+python --version             # Python 3.12.5</pre>
+<h3>SSL 인증서 오류 — <code>Install Certificates.command</code></h3>
+<p><code>pip install</code> 시 <code>SSL: CERTIFICATE_VERIFY_FAILED</code> 오류가 발생하면
+<code>Applications/Python 3.x/Install Certificates.command</code>를 한 번 실행하면 해결된다.</p>
+<h2 id="sec3">A.3 Linux 환경</h2>
+<h3><code>sudo pip install</code>을 피하라</h3>
+<p>배포판 패키지 매니저로 깔린 시스템 파이썬에 <code>sudo pip install</code> 명령으로 패키지를 설치하면 시스템 도구가 의존하는 버전과 충돌해 OS가 망가질 수 있다. 대신 <strong>사용자 영역</strong> 또는 <strong>가상 환경</strong>을 쓴다.</p>
+<pre class="pyout"># 사용자 영역에 설치 (--user)
+pip install --user numpy
+
+# 또는 venv로 가상 환경 만들기 (권장)
+python3 -m venv .venv
+source .venv/bin/activate     # 가상 환경 진입
+pip install numpy             # sudo 없이 안전하게 설치
+deactivate                     # 가상 환경 종료</pre>
+<h3><code>python</code>/<code>python3</code> 명령 혼동 (Ubuntu)</h3>
+<p>오래 된 Ubuntu에는 <code>python</code>이 <code>python2</code>를 가리키는 경우가 있다. <code>python: command not found</code>가 뜨거나 의도치 않은 버전이 실행되면 <code>python3</code>을 명시적으로 사용하자. 매번 입력이 번거롭다면 셸 별칭을 만든다.</p>
+<pre class="pyout"># ~/.bashrc 또는 ~/.zshrc 끝에 추가
+alias python=python3
+alias pip=pip3</pre>
+<h3><code>tkinter</code> 모듈 누락 — IDLE이 실행되지 않을 때</h3>
+<p>Linux 배포판은 GUI 라이브러리(<code>tkinter</code>)를 별도 패키지로 분리해 두는 경우가 많다. IDLE 실행 시 <code>ModuleNotFoundError: No module named 'tkinter'</code>가 발생하면 다음을 설치한다.</p>
+<pre class="pyout"># Debian/Ubuntu
+sudo apt install python3-tk
+
+# Fedora/RHEL
+sudo dnf install python3-tkinter</pre>
+<h2 id="sec4">A.4 공통 — pip 가속  —  미러 사용</h2>
+<p>해외 PyPI 서버 응답이 느리거나 차단된 환경에서는 국내 미러를 임시로 지정해 다운로드 속도를 끌어올릴 수 있다.</p>
+<pre class="pyout">pip install -i https://mirror.kakao.com/pypi/simple/ numpy
+pip install -i https://pypi.org/simple/ numpy   # 기본 PyPI</pre>
+<p><code>$HOME/.config/pip/pip.conf</code>(또는 Windows의 <code>%APPDATA%\pip\pip.ini</code>)에 다음을 적어 두면 매번 옵션을 주지 않아도 된다.</p>
+<pre class="pyout">[global]
+index-url = https://mirror.kakao.com/pypi/simple/</pre>
+<p><strong>도움이 되는 명령 한 줄 정리</strong></p>
+<ul>
+<li><code>python -V</code>  —  현재 파이썬 버전 확인</li>
+<li><code>which python</code> (Linux/macOS) 또는 <code>where python</code> (Windows)  —  실제 실행 파일 경로</li>
+<li><code>python -m site</code>  —  검색 경로(<code>sys.path</code>)와 사용자 디렉터리 확인</li>
+<li><code>pip list</code>  —  설치된 패키지 목록</li>
+<li><code>pip –version</code>  —  pip가 어느 파이썬과 묶여 있는지 표시</li>
+</ul>
+<div class="pager-row"><a class="pager prev" href="ch12.html">&larr; 12장</a><a class="pager next" href="apxb.html">부록 B &rarr;</a></div>
+</main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+<script src="book.js"></script>
+</body>
+</html>
