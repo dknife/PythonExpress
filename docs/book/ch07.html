@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>7장 모듈 활용 — 알짜 파이썬</title>
+<link rel="stylesheet" href="book.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.css">
+<script>MathJax = {tex: {inlineMath: [['\\(', '\\)']]}, svg: {fontCache: 'global'}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<header class="topbar">
+  <a class="home" href="../index.html">&#8962; 홈</a>
+  <span class="book-title">알짜 파이썬</span>
+  <span class="ch-indicator">7장 모듈 활용</span>
+  <button class="nav-toggle" onclick="document.body.classList.toggle('nav-open')">목차</button>
+</header>
+<div class="layout">
+<nav class="sidebar">
+<div class="nav-part">Part I. 파이썬 시작</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch01.html"><span class="nav-num">01</span> 파이썬 소개와 개발 환경</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch02.html"><span class="nav-num">02</span> 변수, 연산자, 문자열</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch03.html"><span class="nav-num">03</span> 조건문과 반복문</a>
+</div>
+<div class="nav-part">Part II. 함수와 자료구조</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch04.html"><span class="nav-num">04</span> 함수와 입출력</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch05.html"><span class="nav-num">05</span> 리스트와 슬라이싱</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch06.html"><span class="nav-num">06</span> 딕셔너리, 튜플, 집합</a>
+</div>
+<div class="nav-part">Part III. 실전 활용</div>
+<div class="nav-ch current"><a class="nav-ch-link" href="ch07.html"><span class="nav-num">07</span> 모듈 활용</a>
+<div class="nav-secs"><a class="nav-sec" href="ch07.html#sec1">7.1 모듈과 import</a><a class="nav-sec" href="ch07.html#sec2">7.2 날짜와 시간 — datetime</a><a class="nav-sec" href="ch07.html#sec3">7.3 수학과 난수 — math, random</a><a class="nav-sec" href="ch07.html#sec4">7.4 외부 패키지 설치 — pip</a><a class="nav-sec" href="ch07.html#sec5">7.5 정규표현식 — re</a><a class="nav-sec" href="ch07.html#labs">실습을 통한 개념 정리</a><a class="nav-sec" href="ch07.html#summary">7장 요약</a><a class="nav-sec" href="ch07.html#exercises">연습문제</a></div>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch08.html"><span class="nav-num">08</span> 예외 처리와 파일</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch09.html"><span class="nav-num">09</span> 클래스와 객체</a>
+</div>
+<div class="nav-part">Part IV. 한 걸음 더</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch10.html"><span class="nav-num">10</span> 파이썬의 응용</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch11.html"><span class="nav-num">11</span> 파이썬다운 코딩과 넘파이</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch12.html"><span class="nav-num">12</span> 데이터 과학과 파이썬</a>
+</div>
+</nav>
+<main class="content">
+<div class="chapter-head">
+  <div class="ch-label">CHAPTER 07</div>
+  <h1>모듈 활용</h1>
+</div>
+<div class="center"><img class="chapfig" src="img/ch07/ch07_img01.jpg" alt="chapter art"><br>
+<div class="box goals"><div class="box-head">이 장을 마치면</div><ul>
+<li><code>import</code> 구문으로 모듈을 불러와 사용할 수 있다.</li>
+<li><code>math</code>·<code>random</code>·<code>datetime</code> 등 표준 라이브러리를 활용할 수 있다.</li>
+<li><code>pip</code>로 외부 패키지를 설치하고 사용할 수 있다.</li>
+<li>필요한 모듈을 검색하고 공식 문서를 읽어 적용할 수 있다.</li>
+</ul></div></div>
+<p>이 장에서 배우는 모듈 활용법은 이후 실전 프로젝트에서 핵심적인 역할을 한다. 예를 들어 달의 위상을 계산하려면 <code>datetime</code> 모듈이, 단어장 앱의 퀴즈 기능에는 <code>random</code> 모듈이, 웹 앱을 만들려면 외부 패키지 설치(<code>pip</code>)가 반드시 필요하다.</p>
+<p>프로그래밍을 하다 보면 같은 기능을 여러 프로젝트에서 반복적으로 작성하게 되는 경우가 많다.
+날짜를 계산하거나, 수학 함수를 사용하거나, 난수를 생성하는 코드가 대표적인 예이다.
+만약 이런 코드를 매번 처음부터 작성해야 한다면 개발자의 시간과 노력이 크게 낭비될 것이다.
+다행히 파이썬은 이러한 문제를 해결하기 위해 <strong>모듈</strong><sup class="term">module</sup>이라는 강력한 재사용 시스템을 제공한다.</p>
+<p>모듈은 마치 잘 정리된 도구 상자와 같다.
+목공을 할 때 톱, 망치, 드라이버가 담긴 도구 상자를 가져와 필요한 도구를 꺼내 쓰듯이,
+프로그래밍에서도 미리 만들어진 함수와 클래스가 담긴 모듈을 가져와 필요한 기능을 사용할 수 있다.
+파이썬 표준 라이브러리에는 100개 이상의 모듈이 포함되어 있어,
+날짜 처리, 수학 계산, 파일 관리, 네트워크 통신 등 거의 모든 분야의 기능을 즉시 활용할 수 있다.</p>
+<p>이 장에서는 먼저 모듈을 불러오는 <code>import</code> 문법을 배우고,
+이어서 실무에서 가장 많이 사용되는 <code>datetime</code>, <code>math</code>, <code>random</code> 모듈을 실습한다.
+마지막으로 파이썬 생태계의 수십만 개 외부 패키지를 설치하고 관리하는 <code>pip</code>에 대해 알아본다.
+이 장을 마치면 "바퀴를 다시 발명하지 않는다(Don’t reinvent the wheel)"는 프로그래밍 격언의 의미를
+몸소 체험하게 될 것이다.</p>
+<h2 id="sec1">7.1 모듈과 import</h2>
+<p><strong>모듈</strong><sup class="term">module</sup>이란 파이썬 함수나 변수, 클래스들을 모아 놓은 스크립트 파일을 말한다.
+확장자가 <code>.py</code>인 파이썬 파일 하나가 곧 하나의 모듈이 될 수 있다.
+파이썬은 여러 기관과 개발자들에 의해 만들어진 수많은 모듈을 보유하고 있으며,
+이 모듈들을 이용하면 복잡한 기능도 몇 줄의 코드로 구현할 수 있다.</p>
+<p>왜 모듈이 중요할까? 한 가지 비유를 들어 보자.
+요리를 할 때 모든 재료를 직접 재배하고 도구를 직접 만들 필요는 없다.
+마트에서 재료를 사고, 잘 만들어진 조리도구를 사용하면 훨씬 효율적으로 요리를 완성할 수 있다.
+프로그래밍에서 모듈이 바로 이런 역할을 한다.
+전 세계의 뛰어난 개발자들이 이미 검증하고 최적화한 코드를 가져다 쓸 수 있으므로,
+우리는 프로그램의 핵심 로직에만 집중할 수 있는 것이다.</p>
+<p>이렇게 미리 개발된 모듈은 <strong>표준 라이브러리</strong><sup class="term">standard library</sup>라는 이름으로
+파이썬 설치 파일과 함께 제공된다.
+문자열과 텍스트 처리를 위한 모듈, 이진 데이터 처리, 날짜, 시간, 배열 등의 자료형 처리를 위한 모듈,
+수치 연산과 수학 함수 모듈, 파일과 디렉토리 접근, 데이터베이스 접근을 위한 모듈,
+데이터 압축, 그래픽 모듈 등 100여 가지 이상의 표준 라이브러리들이 있다.</p>
+<h3>import 문</h3>
+<p>모듈을 사용하려면 먼저 <code>import</code> 문으로 모듈을 불러와야 한다.
+다음은 현재 스크립트나 대화창에서 모듈을 불러오는 명령이다.</p>
+<div class="listing"><pre class="line-numbers"><code class="language-python">import module_name1 [, module_name2,...]</code></pre><div class="listing-caption">코드 7.1: import 문의 기본 형식</div></div>
+<p>모듈을 가져온 후에는 <code>모듈이름.함수이름()</code> 또는 <code>모듈이름.변수이름</code>과 같이
+점(<code>.</code>) 연산자를 사용하여 모듈 안의 요소에 접근한다.
+이 점 연산자는 "~의 안에 있는"이라는 의미로 이해하면 된다.
+예를 들어 <code>math.pi</code>는 "math 모듈 안에 있는 pi"를 뜻한다.</p>
+<div class="listing"><pre class="line-numbers"><code class="language-python">import math
+print(math.pi) # 3.141592653589793
+print(math.sqrt(16)) # 4.0</code></pre><div class="listing-caption">코드 7.2: math 모듈을 import해서 사용</div></div>
+<h3>from … import 문</h3>
+<p>모듈 전체가 아니라 특정 함수나 변수만 가져오고 싶을 때는 <code>from \ldots{} import</code> 구문을 사용한다.
+이 방식을 쓰면 모듈 이름 없이 바로 함수를 호출할 수 있어 코드가 더 간결해진다.</p>
+<p><code>datetime.datetime.now()</code>와 같이 "[모듈 이름].[클래스 이름].[메소드 이름]()"을 점 연산자로
+구분해서 적는 것이 매우 번거롭기 때문에, <code>from [모듈 이름] import [클래스 이름]</code>이나
+<code>from [모듈 이름] import [함수 이름]</code>과 같은 방식으로 모듈로부터 클래스나 함수를 불러오게 되면
+"[클래스 이름].[메소드 이름]()" 방식과 같이 간단하게 클래스의 메소드를 호출할 수 있다.</p>
+<div class="listing"><pre class="line-numbers"><code class="language-python">from math import sqrt, pi
+print(pi) # 3.141592653589793
+print(sqrt(25)) # 5.0</code></pre><div class="listing-caption">코드 7.3: from import로 특정 요소만 가져오기</div></div>
+<p>모듈의 모든 요소를 한꺼번에 가져오려면 <code>*</code>을 사용한다.
+다만 이 방식은 이름 충돌의 위험이 있으므로 주의가 필요하다.
+예를 들어, 우리가 만든 변수 이름이 모듈에 있는 함수 이름과 같다면
+예상치 못한 오류가 발생할 수 있다.</p>
+<div class="listing"><pre class="line-numbers"><code class="language-python">from math import *
+print(ceil(3.2)) # 4
+print(floor(3.8)) # 3</code></pre><div class="listing-caption">코드 7.4: 별표로 모든 요소 가져오기</div></div>
+<div class="box caution"><span class="chip">주의</span><p><code>from math import *</code>처럼 모든 요소를 한꺼번에 가져오는 방식은 편리하지만 위험할 수 있다.
+모듈 안에 정의된 수십 개의 이름이 현재 프로그램에 한꺼번에 들어오므로, 기존 변수나 함수와 이름이 겹쳐서 예기치 않은 동작을 일으킬 수 있다.
+소규모 실습이 아닌 실무 프로젝트에서는 필요한 이름만 명시적으로 가져오는 것이 좋다.</p></div>
+<h3>as 별칭</h3>
+<p>모듈 이름이 길거나 자주 사용하는 경우 <code>as</code> 구문으로 짧은 별칭을 지정할 수 있다.
+모듈 내에 있는 클래스나 메소드를 활용할 때 점으로 연결하는데,
+모듈 이름이 너무 긴 경우 계속해서 이름을 써주는 것이 번거로울 수 있다.
+이때, <code>as</code>를 활용하여 모듈의 새 이름을 지정할 수 있다.</p>
+<div class="listing"><pre class="line-numbers"><code class="language-python">import datetime as dt # datetime -&gt; dt
+import random as rd # random -&gt; rd
+import math as m # math -&gt; m
+import turtle as t # turtle -&gt; t</code></pre><div class="listing-caption">코드 7.5: as로 모듈에 별칭 붙이기</div></div>
+<p>보통 <code>math</code> 모듈은 <code>m</code>, <code>datetime</code>은 <code>dt</code>, <code>random</code>은 <code>rd</code>,
+<code>turtle</code>은 <code>t</code>와 같은 짧은 이름을 널리 사용한다.
+별칭을 지정하면 이후 코드에서 짧은 이름으로 모듈에 접근할 수 있어 코드가 간결해진다.</p>
+<pre class="line-numbers"><code class="language-python">import datetime as dt
+start_time = dt.datetime.now()
+start_time.replace(month = 12, day = 25)</code></pre>
+<pre class="termout">datetime.datetime(2024, 12, 25, 7, 1, 25, 880317)</pre>
+<div class="listing-caption">코드 7.6: 별칭을 사용한 datetime 활용</div>
+<h3>파이썬 표준 라이브러리</h3>
+<p>파이썬 설치와 함께 기본적으로 제공되는 모듈들을 <strong>파이썬 표준 라이브러리</strong><sup class="term">Python standard library</sup>라고 한다.
+문자열 처리, 날짜와 시간, 수학 함수, 파일 처리, 난수 생성 등 100여 가지 이상의 모듈이 포함되어 있다.</p>
+<div class="table-wrap"><div class="table-caption">표 7.1: 주요 표준 라이브러리 모듈</div><table><tr><th><strong>모듈</strong></th><th><strong>설명</strong></th></tr><tr><td><code>datetime</code></td><td>날짜와 시간 처리</td></tr><tr><td><code>math</code></td><td>수학 함수와 상수</td></tr><tr><td><code>random</code></td><td>난수 생성</td></tr><tr><td><code>os</code></td><td>운영체제 관련 기능</td></tr><tr><td><code>sys</code></td><td>파이썬 인터프리터 관련 기능</td></tr><tr><td><code>json</code></td><td>JSON 데이터 처리</td></tr><tr><td><code>time</code></td><td>시간 관련 기능</td></tr></table></div>
+<p>그림 7.1은 모듈에서 함수나 변수를 가져오는 세 가지 방식을 시각적으로 보여 준다.
+<code>import</code> 방식에 따라 모듈의 요소에 접근하는 방법이 달라지므로,
+상황에 맞는 방식을 선택하는 것이 중요하다.</p>
+<figure class="fig">
+<img class="tikz" src="img/fig/ch07/ch07_fig01.svg" alt="figure">
+<p><figcaption>그림 7.1: 모듈 import 구조</figcaption></figure></p>
+<div class="box note"><span class="chip">잠깐</span><span class="box-title">import ~ as 문법</span><p>모듈 내에 있는 클래스나 메소드를 활용할 때 점으로 연결하는데, 모듈 이름이 너무 긴 경우 계속해서 이름을 써주는 것이 번거로울 수 있다.
+이때, <code>as</code>를 활용하여 모듈의 새 이름을 지정할 수 있다.
+<code>import \textasciitilde{} as</code>가 긴 모듈 이름을 간략하게 부르는 별명을 붙여주는 방법이라고 한다면,
+<code>from \textasciitilde{} import</code> 구문 역시 호출을 간단하게 하는 방법이다.
+두 방식의 차이를 이해하고 상황에 맞게 선택하는 것이 좋다.</p></div>
+<div class="box keypoint"><span class="chip">요점</span><p><code>import 모듈</code>은 모듈 전체를, <code>from 모듈 import 이름</code>은 특정 요소만 가져온다.
+<code>as</code>를 사용하면 모듈에 짧은 별칭을 붙여 코드를 간결하게 작성할 수 있다.
+파이썬의 모듈 시스템 덕분에 이미 검증된 코드를 재사용하여 개발 시간을 크게 단축할 수 있다.</p></div>
+<h2 id="sec2">7.2 날짜와 시간  —  datetime</h2>
+<p><code>datetime</code> 모듈은 날짜와 시간에 관한 기능을 제공하고 조작할 수 있도록 한다.
+우리가 일상에서 "오늘 날짜가 며칠이지?", "크리스마스까지 며칠 남았지?",
+"100일 후는 몇 월 며칠이지?"와 같은 질문을 자주 하듯이,
+프로그램에서도 날짜와 시간을 다루는 일은 매우 흔하다.
+회원가입일 계산, 이벤트 기간 확인, 로그 기록 등 거의 모든 소프트웨어에서 날짜 처리가 필요하다.</p>
+<p>이 모듈 안에는 <code>date</code>, <code>datetime</code>, <code>time</code>, <code>timedelta</code>,
+<code>timezone</code>, <code>tzinfo</code> 등의 클래스가 포함되어 있다.
+이 클래스들은 날짜, 시간, 시간대, 시간대 정보를 편리하게 이용할 수 있는 기능을 가지고 있다.
+이를 사용하기 위해서는 앞 절에서 배운 것과 같이 <code>import datetime</code>이라고 입력하면 된다.</p>
+<h3>현재 날짜와 시간</h3>
+<p><code>datetime.datetime.now()</code> 메소드를 이용하면 현재의 년, 월, 일, 시, 분, 초, 밀리초(ms)
+단위의 시간까지 나타난다.
+<code>datetime</code> 모듈 안에서 <code>datetime</code>이라는 클래스는 날짜와 시간에 관련된 여러 가지 기능을 제공한다.
+이 클래스의 함수에 접근하기 위해서는 <code>datetime.datetime</code>과 같이 클래스 이름 다음에
+마침표(<code>.</code>) 연산자를 써주면 된다.
+앞에 나온 <code>datetime</code>은 모듈의 이름이고 뒤에 나온 <code>datetime</code>은 클래스의 이름이 된다.</p>
+<div class="listing"><pre class="line-numbers"><code class="language-python">import datetime
+
+# 현재 날짜와 시간
+print(datetime.datetime.now())
+# datetime.datetime(2025, 1, 2, 6, 57, 27, 904565)</code></pre><div class="listing-caption">코드 7.7: 현재 날짜와 시간 얻기</div></div>
+<p>이처럼 매번 <code>datetime.datetime.now()</code>와 같이 긴 이름을 쓰는 것이 번거로우므로,
+<code>as</code> 구문을 사용하여 별칭을 지정하거나 <code>from</code> 구문을 사용하는 것이 편리하다.</p>
+<div class="listing"><pre class="line-numbers"><code class="language-python">import datetime as dt # dt라는 별칭 사용
+
+start_time = dt.datetime.now()
+print(start_time)</code></pre><div class="listing-caption">코드 7.8: as 별칭으로 datetime 간결하게 쓰기</div></div>
+<p>또는 <code>from datetime import datetime</code> 구문을 사용하면 더욱 간결하게 쓸 수 있다.</p>
+<div class="listing"><pre class="line-numbers"><code class="language-python">from datetime import datetime
+
+start_time = datetime.now()
+print(start_time)</code></pre><div class="listing-caption">코드 7.9: from import로 datetime 직접 호출</div></div>
+<p>오늘 날짜만 필요하다면 <code>date.today()</code>를 사용한다.
+<code>date</code> 클래스는 날짜에 관련된 정보를 포함하고 있으므로 이를 이용하면
+오늘의 날짜를 간단하게 살펴볼 수 있다.
+반환된 객체의 <code>year</code>, <code>month</code>, <code>day</code> 속성을 사용하면
+연도만, 월만, 또는 일만 따로 꺼내 쓸 수 있다.</p>
+<div class="listing"><pre class="line-numbers"><code class="language-python">import datetime as dt
+
+today = dt.date.today()
+print(today) # 2026-04-06
+print(today.year) # 2026
+print(today.month) # 4
+print(today.day) # 6</code></pre><div class="listing-caption">코드 7.10: date.today()로 연·월·일 추출</div></div>
+<figure class="fig">
+<img class="tikz" src="img/fig/ch07/ch07_fig02.svg" alt="figure">
+<p><figcaption>그림 7.2: datetime 객체의 구성요소</figcaption></figure></p>
+<p>그림 7.2은 <code>datetime</code> 객체가 어떤 구성요소로 이루어져 있는지를 보여 준다. <code>datetime</code> 객체는 날짜 부분(<code>year</code>, <code>month</code>, <code>day</code>)과 시간 부분(<code>hour</code>, <code>minute</code>, <code>second</code>)으로 구성되며, 각 속성에 점(<code>.</code>) 연산자로 접근할 수 있다.</p>
+<p>파이썬은 <code>dir()</code> 함수를 제공하는데 이 함수는 모듈이 가진 클래스의 목록을 출력해 준다.
+따라서 다음과 같은 방법으로 <code>datetime</code> 모듈이 어떤 클래스와 속성, 메소드를 가지고
+있는지 살펴볼 수 있다.</p>
+<pre class="line-numbers"><code class="language-python">import datetime
+print(dir(datetime))</code></pre>
+<pre class="termout">['MAXYEAR', 'MINYEAR', '__builtins__',..., 'date', 'datetime',
+<p>'datetime_CAPI', 'time', 'timedelta', 'timezone', 'tzinfo']</pre>
+<div class="listing-caption">코드 7.11: dir()로 모듈의 구성 요소 살펴보기</div></p>
+<p>위의 결과에서 MAXYEAR는 <code>datetime</code> 오브젝트가 표현 가능한 최대 년도로 9999 값을 가지며,
+MINYEAR는 1 값을 가진다.
+<code>datetime</code> 모듈은 <code>date</code>, <code>datetime</code>, <code>datetime_CAPI</code>, <code>time</code>,
+<code>timedelta</code>, <code>timezone</code>, <code>tzinfo</code>와 같은 클래스를 포함하고 있다.</p>
+<h3>날짜와 시간 변경  —  replace()</h3>
+<p><code>datetime</code>에서 날짜나 시간 값을 변경하고 싶다면 <code>replace()</code> 메소드를 이용하면 된다.
+이때 메소드의 키워드 인자로 변경하고 싶은 항목의 이름과 값을 지정한다.</p>
+<pre class="line-numbers"><code class="language-python">import datetime as dt
+
+start_time = dt.datetime.now()
+# 월을 12, 일을 25로 변경
+new_time = start_time.replace(month = 12, day = 25)
+print(new_time)</code></pre>
+<pre class="termout">2026-12-25 07:01:25.880317</pre>
+<div class="listing-caption">코드 7.12: replace()로 날짜·시간 변경</div>
+<p>이 코드를 살펴보면 <code>start_time</code>이라는 변수를 생성하여 <code>datetime.datetime.now()</code> 값을 할당한다.
+그 후 <code>replace()</code> 메소드에 인자 값을 대입하여 <code>start_time</code>에 저장된 값의 시간을 변경한다.
+이때 메소드의 키워드 인자 <code>month</code>의 값으로 12를 지정하여 월을 12월로 변경하였다.
+마찬가지로 <code>day</code> 인자의 값은 25로 변경하였다.</p>
+<h3>날짜 연산  —  timedelta</h3>
+<p><code>timedelta</code> 클래스를 이용하면 날짜와 시간의 차이를 계산할 수 있다.
+이 클래스는 <code>+</code>, <code>-</code> 연산자를 이용하여 시간의 차이 연산을 할 수 있다.
+<code>timedelta</code>는 두 날짜(혹은 시간) 사이의 차이를 편리하게 표현하는 데에 사용되는 클래스이다.</p>
+<p>다음은 크리스마스까지 남은 날을 계산하는 예제이다.</p>
+<pre class="line-numbers"><code class="language-python">import datetime as dt
+
+today = dt.date.today()
+print(f'Today is {today.year}/{today.month}/{today.day}.')
+
+xMas = dt.datetime(2026, 12, 25)
+gap = xMas - dt.datetime.now()
+
+print(f'Christmas is {gap.days} days {gap.seconds // 3600} hours away.')</code></pre>
+<pre class="termout">Today is 2026/4/7.
+<p>Christmas is 261 days 15 hours away.</pre>
+<div class="listing-caption">코드 7.13: 크리스마스까지 남은 날 계산</div></p>
+<p>이 코드를 따라가 보면 <code>datetime</code> 모듈의 <code>date.today()</code> 메소드를 이용하여 오늘 날짜 값을
+<code>today</code>라는 변수에 대입한다.
+그리고 <code>today</code> 속성의 <code>year</code>, <code>month</code>, <code>day</code> 값을 각각 출력해 준다.
+다음으로 <code>datetime</code> 클래스의 생성자로 (2026, 12, 25)와 같은 인자를 넣어
+2026년 12월 25일 값을 가지는 클래스 <code>xMas</code>를 생성한다.
+그 후, <code>xMas</code>에서 오늘 날짜 <code>today</code>를 빼주면 크리스마스와 오늘 날짜 사이의 차이 값을 얻을 수 있다.
+이 차이값은 <code>timedelta</code> 클래스형으로 저장되며,
+이 클래스의 <code>days</code>와 <code>seconds</code> 속성을 이용하여 남은 날 수와 초를 얻을 수 있다.</p>
+<p>이를 이용하여 100일 후와 100일 전의 날짜도 구해보자.</p>
+<pre class="line-numbers"><code class="language-python">import datetime as dt
+
+print('Today =', dt.datetime.now())
+hundred = dt.timedelta(days = 100) # 100일
+
+plus100day = dt.datetime.now() + hundred
+print('100 days later =', plus100day)
+
+minus100day = dt.datetime.now() - hundred
+print('100 days ago =', minus100day)</code></pre>
+<pre class="termout">Today = 2026-04-07 10:32:49.474428
+<p>100 days later = 2026-07-16 10:32:49.600513</p>
+<p>100 days ago = 2025-12-28 10:32:49.667744</pre>
+<div class="listing-caption">코드 7.14: timedelta로 100일 전후 날짜 계산</div></p>
+<p><code>timedelta</code>는 위의 코드와 같이 <code>timedelta</code> 객체를 생성할 때 <code>days</code>라는 키워드 인자로 100을 대입한다.
+그러면 <code>hundred</code>는 100일의 <code>timedelta</code> 값을 갖게 된다.
+그런 다음에 현재 날짜 <code>now()</code>에 <code>hundred</code>를 더하고 뺀 후 각각 출력해 본다.</p>
+<div class="table-wrap"><div class="table-caption">표 7.2: timedelta 키워드 인자</div><table><tr><th><strong>나타내는 날짜</strong></th><th><strong>코드</strong></th></tr><tr><td>1주</td><td><code>datetime.timedelta(weeks = 1)</code></td></tr><tr><td>1일</td><td><code>datetime.timedelta(days = 1)</code></td></tr><tr><td>1시간</td><td><code>datetime.timedelta(hours = 1)</code></td></tr><tr><td>1분</td><td><code>datetime.timedelta(minutes = 1)</code></td></tr><tr><td>1초</td><td><code>datetime.timedelta(seconds = 1)</code></td></tr><tr><td>1밀리초</td><td><code>datetime.timedelta(milliseconds = 1)</code></td></tr><tr><td>1마이크로초</td><td><code>datetime.timedelta(microseconds = 1)</code></td></tr></table></div>
+<h3>날짜 포매팅  —  strftime</h3>
+<p><code>strftime()</code> 메소드를 사용하면 날짜와 시간을 원하는 형식의 문자열로 변환할 수 있다.
+이 기능은 <code>datetime</code>의 기능과 유사하다.</p>
+<div class="listing"><pre class="line-numbers"><code class="language-python">import datetime as dt
+
+now = dt.datetime.now()
+print(now.strftime('%Y-%m-%d')) # 2026-04-06
+print(now.strftime('%B %d, %Y')) # April 06, 2026
+print(now.strftime('%H:%M:%S')) # 14:30:25</code></pre><div class="listing-caption">코드 7.15: strftime()으로 날짜 문자열 포매팅</div></div>
+<p>주요 형식 지정자는 다음과 같다: <code>%Y</code>(4자리 연도), <code>%m</code>(월), <code>%d</code>(일),
+<code>%H</code>(시), <code>%M</code>(분), <code>%S</code>(초), <code>%A</code>(요일).</p>
+<div class="box note"><span class="chip">잠깐</span><span class="box-title">time 모듈</span><p><code>time</code> 모듈은 시간에 관련된 정보를 제공하는 모듈이다.
+서버용 시스템의 운영체제로 많이 사용되는 유닉스 시스템은 1970년 1월 1일 0시 0분 0초 협정 세계시(UTC)를
+시작 시간으로 해서 지금까지의 경과한 시간을 백만분의 1초 단위로 기록하고 저장하는 체계를 가지고 있다.
+이 시작 시간을 <strong>에폭</strong><sup class="term">epoch</sup>이라 하며,
+<code>time.time()</code> 함수는 에폭 이후 경과 시간을 초 단위 실수로 반환한다.
+또한 <code>time.sleep()</code> 함수는 일정한 시간 동안 현재 실행 중인 쓰레드를 일시 중지시키는 기능을 한다.
+이 함수들은 프로그램의 실행 시간 측정이나 지연 실행 등에 활용된다.</p></div>
+<h2 id="sec3">7.3 수학과 난수  —  math, random</h2>
+<p>프로그래밍에서 수학적 계산은 빠질 수 없는 핵심 요소이다.
+원의 넓이를 구하거나, 삼각함수를 계산하거나, 로그 값을 구하는 등의 작업은
+과학, 공학, 금융, 게임 등 거의 모든 분야에서 필요하다.
+또한 주사위를 던지거나, 카드를 섞거나, 로또 번호를 생성하는 것처럼
+무작위 결과가 필요한 상황도 매우 흔하다.
+파이썬의 <code>math</code> 모듈과 <code>random</code> 모듈은 이러한 수학 계산과 난수 생성 기능을 제공한다.</p>
+<h3>math 모듈</h3>
+<p><code>math</code> 모듈은 수학과 관련된 함수들이 있는 모듈이다.
+<code>math</code> 모듈에는 원주율 \(\pi\) 값, 자연상수 \(e\) 값 등이 정의되어 있다.
+뿐만 아니라 <code>ceil()</code>, <code>floor()</code>, <code>trunc()</code>, <code>fabs()</code>,
+<code>copysign(x, y)</code> 등의 수학과 관련된 함수들도 광장히 많이 포함되어 있다.
+이 함수들의 목록은 <code>dir()</code>이라고 하는 내장 함수를 이용하여 볼 수 있다.</p>
+<pre class="line-numbers"><code class="language-python">import math
+print(dir(math)) # math 모듈의 모든 속성과 메소드 나열</code></pre>
+<pre class="termout">['__doc__', '__loader__', '__name__', '__package__', '__spec__', 'acos',
+<p>'acosh', 'asin', 'asinh', 'atan', 'atan2', 'atanh', 'ceil', 'copysign',</p>
+<p>'cos', 'cosh', 'degrees', 'e', 'erf', 'erfc', 'exp', 'expm1', 'fabs',</p>
+<p>'factorial', 'floor', 'fmod', 'frexp', 'fsum', 'gamma', 'gcd', 'hypot',</p>
+<p>'inf', 'isclose', 'isfinite', 'isinf', 'isnan', 'ldexp', 'lgamma',</p>
+<p>'log', 'log10', 'log2', 'modf', 'nan', 'pi', 'pow', 'radians', 'sin',</p>
+<p>'sinh', 'sqrt', 'tan', 'tanh', 'tau', 'trunc']</pre>
+<div class="listing-caption">코드 7.16: math 모듈의 함수 목록 보기</div></p>
+<p>위의 결과는 앞에서 배운 <code>dir()</code> 함수를 이용하여 <code>math</code>의 사용 가능한 함수들의 목록을 나열한 것이다.
+이렇게 나타난 함수 중의 몇 개만 함께 활용해보자.</p>
+<div class="listing"><pre class="line-numbers"><code class="language-python">import math as m
+
+print(m.pi) # 3.141592653589793 -- 원주율 상수
+print(m.e) # 2.718281828459045 -- 자연상수 e
+print(m.pow(3, 3)) # 27.0 -- 3의 3제곱
+print(m.fabs(-99)) # 99.0 -- -99의 절대값
+print(m.ceil(2.1)) # 3 -- 2.1의 올림
+print(m.ceil(-2.1)) # -2 -- -2.1의 올림
+print(m.floor(2.1)) # 2 -- 2.1의 내림
+print(m.log(2.71828)) # 0.999999327... -- 자연로그
+print(m.log(100, 10)) # 2.0 -- 밑이 10인 로그
+print(m.sqrt(144)) # 12.0 -- 제곱근</code></pre><div class="listing-caption">코드 7.17: math 모듈의 상수와 주요 함수</div></div>
+<p>자주 사용하는 <code>math</code> 모듈의 함수들을 표로 정리하면 다음과 같다.</p>
+<div class="table-wrap"><div class="table-caption">표 7.3: math 모듈 주요 함수</div><table><tr><th><strong>함수</strong></th><th><strong>예시</strong></th><th><strong>설명</strong></th></tr><tr><td><code>sqrt(x)</code></td><td><code>sqrt(16)</code> \(\to\) 4.0</td><td>제곱근</td></tr><tr><td><code>pow(x, y)</code></td><td><code>pow(2, 3)</code> \(\to\) 8.0</td><td>거듭제곱</td></tr><tr><td><code>ceil(x)</code></td><td><code>ceil(3.2)</code> \(\to\) 4</td><td>올림</td></tr><tr><td><code>floor(x)</code></td><td><code>floor(3.8)</code> \(\to\) 3</td><td>내림</td></tr><tr><td><code>fabs(x)</code></td><td><code>fabs(-5)</code> \(\to\) 5.0</td><td>절대값</td></tr><tr><td><code>log(x)</code></td><td><code>log(m.e)</code> \(\to\) 1.0</td><td>자연로그</td></tr><tr><td><code>log(x, b)</code></td><td><code>log(100, 10)</code> \(\to\) 2.0</td><td>밑이 b인 로그</td></tr><tr><td><code>sin(x)</code></td><td><code>sin(m.pi/2)</code> \(\to\) 1.0</td><td>사인 (라디안)</td></tr><tr><td><code>radians(x)</code></td><td><code>radians(90)</code> \(\to\) 1.5707...</td><td>각도\(\to\)라디안 변환</td></tr><tr><td><code>degrees(x)</code></td><td><code>degrees(m.pi)</code> \(\to\) 180.0</td><td>라디안\(\to\)각도 변환</td></tr></table></div>
+<h4>삼각함수와 라디안</h4>
+<p><code>math</code> 모듈의 삼각함수를 사용할 때 주의해야 할 점이 있다.
+<code>sin()</code>, <code>cos()</code>, <code>tan()</code> 함수는 <strong>라디안</strong><sup class="term">radian</sup> 값을 인자로 사용한다.
+그런데 우리가 일상에서 사용하는 각도는 60분법의 일반각(이하 각도라고 표기함)이다.
+따라서 <code>sin()</code> 함수에 90을 넣으면 1이 나와야 하는데 0.8939… 의 값이 나오는 것을 볼 수 있다.
+그 이유는 파이썬에서 제공하는 삼각함수들이 라디안 각도를 인자 값으로 사용하기 때문이다.</p>
+<div class="listing"><pre class="line-numbers"><code class="language-python">import math as m
+
+print(m.sin(0.0)) # 0.0 -- 정상, sin(0) = 0
+print(m.sin(90.0)) # 0.8939... -- sin(90도)가 아님!</code></pre><div class="listing-caption">코드 7.18: sin()에 각도를 직접 넣었을 때의 오류</div></div>
+<p>따라서 60분법의 일반각 90도를 표기하고 싶다면 <code>math.pi/2.0</code>과 같은 라디안 표기로 변환해서
+사용해야만 한다.
+<code>radians()</code> 함수는 각도 값을 라디안으로 변환하고 <code>degrees()</code> 함수는 라디안을 각도 값으로 변환한다.</p>
+<div class="listing"><pre class="line-numbers"><code class="language-python">import math as m
+
+# pi/2를 직접 사용 -- 올바른 결과
+print(m.sin(m.pi/2.0)) # 1.0
+
+# 원주율 값
+print(m.pi) # 3.141592653589793
+
+# 90도를 라디안으로 변환한 후 sin 사용
+print(m.radians(90)) # 1.5707963267948966 (pi/2)
+print(m.sin(m.radians(90))) # 1.0 -- 올바른 결과!</code></pre><div class="listing-caption">코드 7.19: radians()로 각도를 라디안으로 변환</div></div>
+<p>이제 위의 코드를 수정하여 <code>m.sin()</code>의 입력 값으로 라디안 값을 넣으니 정확히 1.0이 나온다.
+<code>m.pi</code>는 \(\pi\)의 근사값이지만, CPython 내부에서 <code>sin(pi/2)</code>는 정확히 1.0을 반환하도록 처리된다.
+파이썬의 \(\pi\) 값은 <code>m.pi</code>를 통해 출력해 볼 수 있으며,
+<code>m.radians(90)</code>을 하게 되면 90도의 라디안 값을 출력한다.</p>
+<div class="box caution"><span class="chip">주의</span><p><code>math</code> 모듈의 삼각함수(<code>sin</code>, <code>cos</code>, <code>tan</code>)는 <strong>라디안</strong> 값을 인자로 사용한다.
+일반 각도(60분법)로 입력하면 잘못된 결과가 나온다.
+반드시 <code>math.radians()</code>로 변환한 후 사용하거나, <code>math.pi</code>를 이용하여 라디안 값을 직접 계산해야 한다.
+이것은 초보자가 가장 많이 하는 실수 중 하나이다.</p></div>
+<div class="box note"><span class="chip">잠깐</span><span class="box-title">파이썬과 C언어</span><p>C 프로그래밍 언어는 1972년 미국 벨 연구소의 데니스 리치에 의해서 개발된 프로그래밍 언어로 유닉스 운영체제의 핵심을 이룬다.
+이 언어는 1980년대 이후 컴퓨터 과학을 배우는 대부분의 대학에서 핵심적인 언어로 활용되어 왔으며,
+지금도 많은 개발자들이 이용하고 있다.
+파이썬 언어 역시 내부의 핵심 기능은 <strong>C 언어</strong>로 구성되어 있는데
+이 C 언어에는 <code>math.h</code>라는 헤드 파일과 표준 수학 라이브러리가 존재한다.
+파이썬의 <code>math</code> 모듈은 대부분 C 언어에 있는 표준 수학 라이브러리를 그대로 이용하고 있다.</p></div>
+<h3>random 모듈</h3>
+<p><code>random</code> 모듈은 임의의 수를 생성하는 기능을 제공한다.
+게임, 시뮬레이션, 데이터 샘플링, 암호 생성 등 다양한 분야에서 활용된다.
+"무작위"라는 개념은 프로그래밍에서 매우 중요한데,
+예를 들어 게임에서 적의 출현 위치를 매번 다르게 하거나,
+통계 분석에서 데이터를 무작위로 추출하는 작업 등에 반드시 필요하기 때문이다.</p>
+<div class="listing"><pre class="line-numbers"><code class="language-python">import random as rd
+
+print(rd.random()) # 0.0 이상 1.0 미만의 실수
+print(rd.randint(1, 6)) # 1 이상 6 이하의 정수 (주사위)
+print(rd.randrange(0, 10)) # 0 이상 9 이하의 정수</code></pre><div class="listing-caption">코드 7.20: random 모듈의 기본 난수 함수</div></div>
+<p><code>random()</code> 함수는 0.0 이상 1.0 미만의 실수를 반환하고,
+<code>randint(a, b)</code>는 a 이상 b <strong>이하</strong>의 정수를 반환한다.
+<code>randrange(a, b)</code>는 a 이상 b <strong>미만</strong>의 정수를 반환하는데,
+이 차이를 혼동하면 의도하지 않은 결과가 나올 수 있으므로 주의해야 한다.</p>
+<p>리스트와 함께 사용하면 더욱 유용하다.</p>
+<div class="listing"><pre class="line-numbers"><code class="language-python">import random as rd
+
+colors = ['red', 'blue', 'green', 'yellow', 'purple']
+print(rd.choice(colors)) # 리스트에서 무작위로 하나 선택
+
+rd.shuffle(colors) # 리스트를 무작위로 섞기 (원본 변경)
+print(colors) # 순서가 무작위로 바뀜
+
+print(rd.sample(colors, 3)) # 3개를 비복원 추출</code></pre><div class="listing-caption">코드 7.21: choice, shuffle, sample로 리스트 다루기</div></div>
+<p><code>choice()</code> 함수는 리스트에서 하나를 무작위로 선택하고,
+<code>shuffle()</code> 함수는 리스트의 순서를 무작위로 섞는다(원본이 변경된다는 점에 주의).
+<code>sample()</code> 함수는 지정한 개수만큼 비복원 추출한다.
+비복원 추출이란 한 번 선택된 항목은 다시 선택되지 않는다는 의미이다.</p>
+<div class="table-wrap"><div class="table-caption">표 7.4: random 모듈 주요 함수</div><table><tr><th><strong>함수</strong></th><th><strong>설명</strong></th></tr><tr><td><code>random()</code></td><td>0.0 이상 1.0 미만의 실수 반환</td></tr><tr><td><code>randint(a, b)</code></td><td>a 이상 b 이하의 정수 반환</td></tr><tr><td><code>randrange(a, b)</code></td><td>a 이상 b 미만의 정수 반환</td></tr><tr><td><code>choice(seq)</code></td><td>시퀀스에서 무작위로 하나 선택</td></tr><tr><td><code>shuffle(seq)</code></td><td>시퀀스를 무작위로 섞음 (원본 변경)</td></tr><tr><td><code>sample(seq, k)</code></td><td>시퀀스에서 k개를 비복원 추출</td></tr></table></div>
+<p>다음은 <code>random</code> 모듈을 활용한 간단한 로또 번호 생성기이다.
+1부터 45까지의 숫자 중 6개를 비복원 추출하여 정렬한 결과를 출력한다.</p>
+<pre class="line-numbers"><code class="language-python">import random as rd
+
+lotto = rd.sample(range(1, 46), 6) # 1~45 중 6개 선택
+lotto.sort()
+print('This week lotto numbers:', lotto)</code></pre>
+<pre class="termout">This week lotto numbers: [3, 11, 22, 28, 34, 41]</pre>
+<div class="listing-caption">코드 7.22: 로또 번호 생성기</div>
+<p>이 프로그램을 실행할 때마다 다른 번호가 나오는 것을 확인할 수 있다.
+<code>range(1, 46)</code>은 1부터 45까지의 숫자 범위를 만들고,
+<code>sample()</code> 함수가 그 중 6개를 중복 없이 선택한다.
+<code>sort()</code> 메소드로 오름차순 정렬하면 실제 로또 번호와 같은 형태로 출력된다.</p>
+<div class="box keypoint"><span class="chip">요점</span><p><code>math</code> 모듈로 수학 함수와 상수(\(\pi\), \(e\))를 사용하고,
+<code>random</code> 모듈로 난수를 생성하거나 리스트에서 무작위 선택을 할 수 있다.
+삼각함수는 라디안 값을 인자로 사용하므로 <code>radians()</code>로 변환 후 사용해야 한다.
+<code>randint()</code>와 <code>randrange()</code>의 범위 차이(이하 vs 미만)에 주의한다.</p></div>
+<h2 id="sec4">7.4 외부 패키지 설치  —  pip</h2>
+<p>파이썬 표준 라이브러리만으로도 많은 작업을 수행할 수 있지만,
+전 세계 개발자들이 만든 수많은 <strong>외부 패키지</strong><sup class="term">external package</sup>를 활용하면
+더욱 강력한 프로그래밍이 가능해진다.
+데이터 분석을 위한 <code>pandas</code>, 웹 개발을 위한 <code>flask</code>,
+인공지능을 위한 <code>tensorflow</code> 등이 대표적인 외부 패키지이다.</p>
+<p>이러한 패키지들은 <strong>PyPI</strong><sup class="term">Python Package Index</sup>라는 중앙 저장소에 등록되어 있으며,
+현재 50만 개 이상의 패키지가 등록되어 있다.
+<code>pip</code>이라는 도구를 이용하면 이 방대한 생태계의 패키지를 쉽게 설치하고 관리할 수 있다.
+이것은 마치 스마트폰의 앱스토어에서 필요한 앱을 검색하고 설치하는 것과 비슷하다.</p>
+<h3>pip 명령어</h3>
+<p><code>pip</code>은 파이썬 패키지를 설치하고 관리하는 명령줄 도구이다.
+파이썬을 설치하면 함께 제공된다.
+터미널(명령 프롬프트)에서 다음과 같이 사용한다.</p>
+<pre class="pyout">pip install package_name # 패키지 설치
+pip uninstall package_name # 패키지 제거
+pip list # 설치된 패키지 목록 보기
+pip install --upgrade package # 최신 버전으로 업그레이드</pre>
+<p>예를 들어 데이터 분석에 많이 쓰이는 <code>numpy</code> 패키지를 설치하려면 다음과 같이 입력한다.</p>
+<pre class="pyout">pip install numpy</pre>
+<div class="box note"><span class="chip">잠깐</span><span class="box-title"><code>externally-managed-environment</code> 오류가 난다면</span><p>최근 파이썬 배포판(예: Homebrew, Ubuntu 24.04 이상)에서는 시스템 파이썬에 직접 <code>pip install</code>을 실행하면 <code>error: externally-managed-environment</code> 오류가 발생한다.
+이는 시스템 파이썬을 보호하기 위한 정책(PEP 668)이며, 오류가 아니다.
+이런 경우 아래처럼 <strong>가상환경</strong><sup class="term">virtual environment</sup>을 먼저 만들어 활성화한 뒤 그 안에서 <code>pip install</code>을 실행하면 된다. 가상환경의 자세한 설명은 이 절 뒤쪽 <strong>가상환경</strong> 항목에서 다룬다.</p>
+<pre class="pyout">python3 -m venv myenv # 가상환경 생성
+source myenv/bin/activate # macOS/Linux
+myenv\Scripts\activate # Windows
+pip install numpy # 가상환경 안에 설치</pre></div>
+<figure class="fig">
+<img class="tikz" src="img/fig/ch07/ch07_fig03.svg" alt="figure">
+<p><figcaption>그림 7.3: pip 패키지 설치 과정</figcaption></figure></p>
+<p>그림 7.3은 <code>pip</code>을 통한 패키지 설치와 사용의 전체 흐름을 보여 준다. <code>pip install</code> 명령은 PyPI 저장소에서 패키지를 검색하여 설치하며, 설치가 완료되면 파이썬 코드에서 바로 <code>import</code>하여 사용할 수 있다.
+다음은 <code>numpy</code>를 이용한 간단한 배열 연산 예제이다.</p>
+<div class="listing"><pre class="line-numbers"><code class="language-python">import numpy as np
+
+a = np.array([1, 2, 3, 4, 5])
+print(a * 2) # [2 4 6 8 10] -- 요소별 곱셈
+print(a.mean()) # 3.0 -- 평균
+print(a.sum()) # 15 -- 합계</code></pre><div class="listing-caption">코드 7.23: numpy 배열 연산의 간결함</div></div>
+<p><code>numpy</code>는 과학 기술 분야에서 표준으로 사용되는 패키지로,
+일반 파이썬 리스트보다 훨씬 빠른 배열 연산을 지원한다.
+위 코드에서 <code>a * 2</code>는 배열의 모든 요소에 2를 곱하는 연산으로,
+<code>for</code> 문 없이도 간결하게 표현할 수 있다는 것이 큰 장점이다.</p>
+<h3>주요 외부 패키지</h3>
+<p>파이썬 생태계에는 다양한 분야에서 활용할 수 있는 유명한 패키지들이 있다.
+다음 표는 분야별로 가장 널리 사용되는 패키지를 정리한 것이다.</p>
+<div class="table-wrap"><div class="table-caption">표 7.5: 주요 외부 패키지</div><table><tr><th><strong>패키지</strong></th><th><strong>용도</strong></th></tr><tr><td><code>numpy</code></td><td>수치 계산과 배열 처리</td></tr><tr><td><code>pandas</code></td><td>데이터 분석</td></tr><tr><td><code>matplotlib</code></td><td>그래프와 시각화</td></tr><tr><td><code>requests</code></td><td>웹 요청 처리</td></tr><tr><td><code>flask</code></td><td>웹 애플리케이션 개발</td></tr><tr><td><code>Pillow</code></td><td>이미지 처리</td></tr></table></div>
+<p>이 패키지들은 각 분야의 사실상의 표준(de facto standard)으로 자리 잡았다.
+예를 들어, 데이터 과학자의 거의 모든 작업은 <code>numpy</code>와 <code>pandas</code>로 시작되며,
+시각화에는 <code>matplotlib</code>이 가장 기본적인 도구로 사용된다.
+이러한 외부 패키지들 덕분에 파이썬은 특히 데이터 분석과 인공지능 분야에서
+가장 인기 있는 프로그래밍 언어로 자리매김하게 되었다.</p>
+<h3>가상환경</h3>
+<p>여러 프로젝트를 진행하다 보면 프로젝트마다 필요한 패키지와 버전이 다를 수 있다.
+예를 들어, A 프로젝트는 <code>numpy</code> 1.24 버전을 사용하고, B 프로젝트는 1.26 버전이 필요할 수 있다.
+이 두 버전을 하나의 파이썬 환경에 동시에 설치할 수는 없으므로 충돌이 발생하게 된다.</p>
+<p>이때 <strong>가상환경</strong><sup class="term">virtual environment</sup>을 사용하면
+프로젝트별로 독립적인 패키지 환경을 만들 수 있다.
+가상환경은 각 프로젝트에 전용 "작업 공간"을 만들어 주는 것과 같다.</p>
+<pre class="pyout">python -m venv myenv # myenv라는 이름의 가상환경 생성
+source myenv/bin/activate # 가상환경 활성화 (macOS/Linux)
+myenv\Scripts\activate # 가상환경 활성화 (Windows)
+deactivate # 가상환경 비활성화</pre>
+<p>가상환경을 활성화한 상태에서 <code>pip install</code>을 실행하면 패키지가 해당 가상환경에만 설치된다.
+따라서 다른 프로젝트에 영향을 주지 않으며, 프로젝트가 끝나면 가상환경 폴더를 삭제하면
+깔끔하게 정리된다.
+실무 프로젝트에서는 가상환경 사용이 거의 필수적이므로, 이 개념을 잘 익혀 두는 것이 좋다.</p>
+<h2 id="sec5">7.5 정규표현식  —  re</h2>
+<p>문자열을 다루다 보면 "이메일 형식이 올바른지", "숫자만 추출하고 싶다", "전화번호 표기를 통일하고 싶다"와 같은 <strong>패턴 기반 처리</strong>가 자주 필요하다.
+앞서 배운 문자열 메소드(<code>find()</code>, <code>replace()</code>, <code>split()</code>)만으로도 간단한 작업은 가능하지만, "숫자 11자리", "@ 기호 앞뒤로 어떤 문자든"과 같은 <strong>규칙</strong>을 표현하려면 한계가 있다.</p>
+<p>이때 사용하는 것이 <strong>정규표현식</strong><sup class="term">regular expression, regex</sup>이다.
+정규표현식은 문자열의 패턴을 기호로 기술하는 작은 언어로, 거의 모든 프로그래밍 언어가 지원하는 표준 도구이다.
+파이썬에서는 표준 라이브러리의 <code>re</code> 모듈로 사용한다.</p>
+<h3>re 모듈의 핵심 함수</h3>
+<p><code>re</code> 모듈에서 가장 자주 쓰는 네 가지 함수는 <code>match()</code>, <code>search()</code>, <code>findall()</code>, <code>sub()</code>이다.
+<code>match()</code>는 문자열의 <strong>시작</strong>이 패턴과 일치하는지 검사하고, <code>search()</code>는 문자열 <strong>어디든</strong> 패턴이 등장하는지 검사한다.
+<code>findall()</code>은 일치하는 모든 부분을 리스트로 반환하며, <code>sub()</code>은 일치하는 부분을 다른 문자열로 치환한다.</p>
+<pre class="line-numbers"><code class="language-python">import re
+
+text = 'My phone is 010-1234-5678 and home is 02-555-7777.'
+
+m = re.search(r'\d{2,3}-\d{3,4}-\d{4}', text)
+print(m.group()) # 처음 일치한 부분 문자열
+
+nums = re.findall(r'\d{2,3}-\d{3,4}-\d{4}', text)
+print(nums) # 일치한 모든 부분의 리스트
+
+cleaned = re.sub(r'\d', '*', text) # 모든 숫자를 *로 치환
+print(cleaned)</code></pre>
+<pre class="termout">010-1234-5678
+<p>{}['010-1234-5678', '02-555-7777']</p>
+<p>My phone is ***-****-**** and home is **-***-****.</pre>
+<div class="listing-caption">코드 7.24: search, findall, sub로 전화번호 처리</div></p>
+<p>문자열 앞에 붙은 <code>r</code>은 <strong>원시 문자열</strong><sup class="term">raw string</sup>을 뜻하는 표시로, 백슬래시를 그대로 둔다.
+정규표현식에는 백슬래시가 자주 등장하므로 항상 <code>r'\dots'</code> 형태로 쓰는 것이 관례이다.</p>
+<h3>자주 쓰는 메타문자</h3>
+<p>정규표현식에서 의미가 부여된 특수 기호를 <strong>메타문자</strong><sup class="term">metacharacter</sup>라고 한다.
+처음에는 외울 것이 많아 보이지만, 다음 표의 8~ 10개만 익혀도 실무 패턴 대부분을 작성할 수 있다.</p>
+<div class="table-wrap"><div class="table-caption">표 7.6: 자주 쓰는 정규표현식 메타문자</div><table><tr><th><strong>기호</strong></th><th><strong>의미</strong></th><th><strong>예시</strong></th></tr><tr><td><code>.</code></td><td>줄바꿈을 제외한 임의의 문자 1개</td><td><code>a.c</code> → abc, a1c</td></tr><tr><td><code> d</code></td><td>숫자 1개 (<code>[0-9]</code>와 동일)</td><td><code> d{4}</code> → 1234</td></tr><tr><td><code> w</code></td><td>단어 문자 1개 (영문/숫자/_)</td><td><code> w+</code> → hello_1</td></tr><tr><td><code> s</code></td><td>공백 문자 1개 (스페이스/탭/줄바꿈)</td><td><code>a sb</code> → a b</td></tr><tr><td><code>*</code></td><td>0번 이상 반복</td><td><code>ab*</code> → a, ab, abb</td></tr><tr><td><code>+</code></td><td>1번 이상 반복</td><td><code>ab+</code> → ab, abb</td></tr><tr><td><code>?</code></td><td>0번 또는 1번 (있어도 되고 없어도 됨)</td><td><code>colou?r</code> → color, colour</td></tr><tr><td><code>{n}</code></td><td>정확히 n번 반복</td><td><code> d{3}</code> → 123</td></tr><tr><td><code>[\dots]</code></td><td>대괄호 안의 문자 중 하나</td><td><code>[aeiou]</code> → 모음 1개</td></tr><tr><td><code>\textasciicircum, $</code></td><td>문자열의 시작, 끝</td><td><code>\textasciicircum Hello</code> → 시작 문자열</td></tr></table></div>
+<p>표 7.6의 기호를 조합하면 다양한 패턴을 만들 수 있다.
+예를 들어 <code> d{2,3}- d{3,4}- d{4}</code>는 "2~ 3자리 숫자, 하이픈, 3~ 4자리 숫자, 하이픈, 4자리 숫자"라는 전화번호 패턴을 의미한다.</p>
+<h3>실용 예제  —  이메일 추출과 검증</h3>
+<p>긴 문장에서 이메일 주소만 골라내고, 입력된 이메일이 올바른 형식인지 검사하는 코드를 살펴보자.</p>
+<pre class="line-numbers"><code class="language-python">import re
+
+text = 'Contact: alice@example.com, bob.smith@univ.ac.kr, not_an_email@'
+emails = re.findall(r'[\w.]+@[\w.]+\.[a-zA-Z]+', text)
+print(emails)
+
+def is_valid_email(s):
+ pattern = r'^[\w.]+@[\w.]+\.[a-zA-Z]{2,}$'
+ return re.match(pattern, s) is not None
+
+print(is_valid_email('alice@example.com'))
+print(is_valid_email('not_an_email@'))</code></pre>
+<pre class="termout">['alice@example.com', 'bob.smith@univ.ac.kr']
+<p>True</p>
+<p>False</pre>
+<div class="listing-caption">코드 7.25: 이메일 주소 추출과 형식 검증</div></p>
+<p><code>[ w.]+@[ w.]+\.[a-zA-Z]+</code> 패턴은 "단어 문자 또는 점이 하나 이상, <code>@</code> 기호, 단어 문자 또는 점이 하나 이상, 점, 영문자 하나 이상"을 의미한다.
+검증 함수에서는 추가로 <code>\textasciicircum</code>과 <code>$</code>을 붙여 <strong>문자열 전체</strong>가 패턴과 일치하는지 확인한다.
+이러한 패턴은 11장에서 다루는 비정형 데이터 정리에서도 매우 유용하게 쓰인다.</p>
+<div class="box keypoint"><span class="chip">요점</span><ul>
+<li>정규표현식은 문자열 패턴을 기호로 기술하는 작은 언어이며, 파이썬에서는 <code>re</code> 모듈로 사용한다.</li>
+<li><code>re.search()</code>는 문자열 어디든, <code>re.match()</code>는 시작 부분의 일치를 검사하고, <code>re.findall()</code>은 모든 일치를 리스트로, <code>re.sub()</code>은 치환 결과를 반환한다.</li>
+<li><code> d</code>, <code> w</code>, <code> s</code>, <code>*</code>, <code>+</code>, <code>?</code>, <code>{n}</code> 등 핵심 메타문자 몇 개만 익혀도 대부분의 실용 패턴을 작성할 수 있다.</li>
+<li>패턴 문자열은 항상 <code>r'\dots'</code> 형태의 원시 문자열로 작성하는 것이 관례이다.</li>
+</ul></div>
+<div class="box caution"><span class="chip">주의</span><p>정규표현식은 강력한 도구이지만 복잡해지면 읽기가 매우 어려워진다.
+패턴이 한 줄을 넘어가면 <code>re.VERBOSE</code> 옵션으로 주석을 달거나, 여러 단계로 나누어 처리하는 것이 좋다.
+또한 사용자 입력의 검증에서 너무 엄격한 패턴은 정상 입력까지 거부할 수 있으므로, 실제 서비스에서는 표준 라이브러리(<code>email.utils</code> 등)나 검증된 패턴을 사용하는 것이 안전하다.</p></div>
+<p><span id="labs"></span><div class="box lab"><div class="lab-title">실습을 통한 7 장 개념 정리</div><ol>
+<li><code>datetime</code> 모듈을 사용하여 오늘의 날짜와 시간을 오전/오후 표기와 함께 출력하시오.
+<p><pre class="line-numbers"><code class="language-python">from datetime import datetime
+now = datetime.now()
+print(f'오늘의 날짜 : {now.year}년 {now.month}월 {now.day}일')
+ampm = '오전' if now.hour &lt; 12 else '오후'
+h = now.hour if now.hour &lt;= 12 else now.hour - 12
+if h == 0:
+    h = 12
+print(f'현재시간 : {ampm} {h}시 {now.minute}분 {now.second}초')</code></pre></li>
+<li>자신의 생일을 비교 대상 날짜로 설정하여, 다가오는 자신의 생일까지 남은 날짜를 출력해 보자.</p>
+<p><pre class="line-numbers"><code class="language-python">from datetime import date
+today = date.today()
+bday  = date(today.year, 5, 15)   # 자신의 생일로 변경
+if bday &lt; today:
+    bday = date(today.year + 1, 5, 15)
+remaining = (bday - today).days
+print(f'내 생일까지 {remaining}일 남았습니다')</code></pre></li>
+<li>자신의 출생 연도·월·일을 입력받아, 오늘까지 살아온 총 일수와 태어난 요일을 출력하시오. (힌트: <code>strftime('%A')</code>로 영문 요일명을 얻을 수 있다.)</p>
+<p><pre class="line-numbers"><code class="language-python">from datetime import date
+y = int(input('출생 연도: '))
+m = int(input('출생 월: '))
+d = int(input('출생 일: '))
+born  = date(y, m, d)
+days  = (date.today() - born).days
+print(f'태어난 지 {days}일 지났습니다.')
+print(f'태어난 요일: {born.strftime("%A")}')</code></pre></li>
+<li><code>timedelta</code> 클래스를 이용하여 처음 사귄 연도·월·일을 입력받으면 100일 기념일을 출력하는 프로그램을 작성하시오.</p>
+<p><pre class="line-numbers"><code class="language-python">from datetime import date, timedelta
+y = int(input('시작 연도: '))
+m = int(input('시작 월: '))
+d = int(input('시작 일: '))
+start = date(y, m, d)
+print('100일 기념일 :', start + timedelta(days=100))</code></pre></li>
+<li><code>re</code> 모듈을 사용하여 한 문장 안에 섞여 있는 숫자들을 모두 추출하고, 그 합계를 구하여 출력하시오. (힌트: <code>re.findall(r' d+', text)</code>)</p>
+<p><pre class="line-numbers"><code class="language-python">import re
+text = 'I bought 3 apples, 5 pears, 12 oranges for 8400 won.'
+nums = re.findall(r'\d+', text)
+total = 0
+for n in nums:
+    total += int(n)
+print('Found:', nums)
+print('Sum  :', total)</code></pre></li>
+<li>가위바위보 게임을 만들어 보자. 사용자가 가위·바위·보 중 하나를 입력하면 컴퓨터가 <code>random.choice()</code>로 무작위 선택을 하고, 승패를 판정하여 출력하시오.</p>
+<p><pre class="line-numbers"><code class="language-python">import random
+choices = ['가위', '바위', '보']
+user = input('가위/바위/보: ').strip()
+cpu  = random.choice(choices)
+print(f'컴퓨터: {cpu}')
+win_pairs = {('가위','보'), ('바위','가위'), ('보','바위')}
+if user == cpu:
+    print('비김')
+elif (user, cpu) in win_pairs:
+    print('이김')
+else:
+    print('짐')</code></pre></li>
+</ol></p></div></p>
+<div class="box summary" id="summary"><div class="box-head">7장 요약</div><ul>
+<li><code>from 모듈 import 이름</code>으로 특정 요소만 직접 가져올 수 있고, <code>import 모듈 as 별칭</code>으로 짧은 별칭을 지정할 수 있다. <code>dir()</code> 함수를 사용하면 모듈이 제공하는 클래스, 함수, 속성의 목록을 확인할 수 있다.</li>
+<li>파이썬은 <code>datetime</code>, <code>math</code>, <code>random</code>, <code>os</code>, <code>sys</code>, <code>json</code>, <code>time</code> 등 풍부한 <strong>표준 라이브러리</strong>를 제공한다.</li>
+<li><code>datetime</code> 모듈의 <code>datetime.now()</code>로 현재 날짜와 시간을 얻고, <code>date.today()</code>로 오늘 날짜를 얻는다. <code>.year</code>, <code>.month</code>, <code>.day</code>, <code>.hour</code>, <code>.minute</code>, <code>.second</code> 속성으로 각 구성요소에 접근한다.</li>
+<li><code>replace()</code> 메소드로 날짜/시간의 특정 항목을 변경할 수 있으며, <code>timedelta</code>로 날짜 간 차이를 계산하거나 날짜를 더하고 뺄 수 있다. <code>strftime()</code> 메소드로 날짜를 원하는 문자열 형식으로 변환할 수 있다(예: <code>'%Y-%m-%d'</code>).</li>
+<li><code>math</code> 모듈은 <code>sqrt()</code>(제곱근), <code>pow()</code>(거듭제곱), <code>ceil()</code>(올림), <code>floor()</code>(내림), 삼각함수(<code>sin</code>, <code>cos</code>) 등의 수학 함수와 <code>pi</code>, <code>e</code> 상수를 제공한다.</li>
+<li><code>random</code> 모듈은 <code>random()</code>(0~1 실수), <code>randint(a, b)</code>(a~ b 정수), <code>randrange()</code>, <code>choice()</code>(무작위 선택), <code>shuffle()</code>(섞기), <code>sample()</code>(비복원 추출) 기능을 제공한다.</li>
+<li><code>pip</code>은 파이썬 패키지를 설치·관리하는 명령줄 도구이며, <code>pip install 패키지이름</code>으로 <strong>PyPI</strong>에 등록된 외부 패키지를 설치할 수 있다.</li>
+<li><code>numpy</code>(수치 계산), <code>pandas</code>(데이터 분석), <code>matplotlib</code>(시각화), <code>requests</code>(웹 요청), <code>flask</code>(웹 개발), <code>Pillow</code>(이미지 처리) 등이 대표적인 외부 패키지이다.</li>
+<li><strong>가상환경</strong>(<code>python -m venv 이름</code>)을 사용하면 프로젝트별로 독립적인 패키지 환경을 관리할 수 있어 버전 충돌을 방지한다.</li>
+<li><code>re</code> 모듈의 <strong>정규표현식</strong>은 문자열의 패턴을 기호로 기술하는 작은 언어이다. <code>re.search()</code>, <code>re.findall()</code>, <code>re.sub()</code>로 패턴 검색·추출·치환을 수행하며, <code> d</code>, <code> w</code>, <code>*</code>, <code>+</code>, <code>?</code>, <code>{n}</code> 등 핵심 메타문자 몇 개로 다양한 패턴을 표현할 수 있다.</li>
+</ul></div>
+<div class="box exercise" id="exercises"><div class="box-head">7장 연습문제</div><ol>
+<li><span class="diff"><span class="d2">★★</span></span>  <code>datetime</code> 모듈을 사용하여 오늘의 날짜와 현재 시간을 다음과 같은 형식으로 출력하는 프로그램을 작성하시오.
+<code>hour</code> 값이 12 미만이면 "오전", 12 이상이면 "오후"로 표시한다.
+<p><pre class="pyout">Today's date: April 6, 2026
+Current time: PM 2:30:15</pre></li>
+<li><span class="diff"><span class="d2">★★</span></span>  <code>datetime</code> 모듈의 <code>timedelta</code> 클래스를 사용하여, 사용자로부터 연도, 월, 일을 입력받아
+그 날짜로부터 1000일 후의 날짜를 출력하는 프로그램을 작성하시오.</p>
+<p><pre class="pyout">Enter year: 2026
+Enter month: 4
+Enter day: 6
+Date after 1000 days: January 1, 2029</pre></li>
+<li><span class="diff"><span class="d2">★★</span></span>  <code>math</code> 모듈을 사용하여 사용자로부터 반지름을 입력받고, 원의 넓이와 둘레를 계산하여 출력하는 프로그램을 작성하시오.
+원의 넓이는 \(\pi r^2\), 둘레는 \(2\pi r\)이다. 결과는 소수점 둘째 자리까지 출력한다.</li>
+<li><span class="diff"><span class="d3">★★★</span></span>  <code>random</code> 모듈을 사용하여 "숫자 맞추기 게임"을 작성하시오. 1부터 100 사이의 임의의 수를 생성한 후,
+사용자가 숫자를 입력하면 "더 큽니다" 또는 "더 작습니다"라는 힌트를 주고,
+정답을 맞추면 시도 횟수와 함께 "정답입니다!"를 출력한다.</li>
+<li><span class="diff"><span class="d3">★★★</span></span>  다음 기능을 가진 프로그램을 작성하시오.
+<code>random</code> 모듈로 가위(1), 바위(2), 보(3) 중 하나를 컴퓨터가 선택하고,
+사용자로부터 입력을 받아 승패를 판정하는 가위바위보 게임이다.
+3판 2선승제로 구현한다.</li>
+<li><span class="diff"><span class="d1">★</span></span>  <code>math</code> 모듈의 <code>sqrt()</code>, <code>pow()</code>, <code>ceil()</code>, <code>floor()</code> 함수를 각각 사용하여 다음을 계산하시오.
+<ol type="a">
+<li>\(\sqrt{144}\)</li>
+<li>\(2^{16}\)</li>
+<li>\(3.2\)의 올림 값</li>
+<li>\(7.8\)의 내림 값</li>
+</ol></li>
+<li><span class="diff"><span class="d2">★★</span></span>  <code>random</code> 모듈의 <code>sample()</code> 함수를 이용하여 1부터 45까지의 수 중에서 중복 없이 6개의 수를 뽑아 오름차순으로 출력하는 로또 번호 생성기를 작성하시오.</li>
+<li><span class="diff"><span class="d2">★★</span></span>  다음 코드의 출력 결과를 쓰시오.
+<pre class="line-numbers"><code class="language-python">from datetime import date, timedelta
+
+d1 = date(2026, 1, 1)
+d2 = date(2026, 12, 31)
+diff = d2 - d1
+print(diff.days)
+print(d1 + timedelta(days=100))</code></pre></li>
+<li><span class="diff"><span class="d1">★</span></span>  <code>pip</code> 명령어를 이용하여 다음 작업을 수행하는 명령을 각각 쓰시오.
+<ol type="a">
+<li><code>requests</code> 패키지를 설치하는 명령</li>
+<li>현재 설치된 모든 패키지 목록을 확인하는 명령</li>
+<li><code>numpy</code> 패키지를 최신 버전으로 업그레이드하는 명령</li>
+</ol></li>
+<li><span class="diff"><span class="d3">★★★</span></span>  <code>datetime</code> 모듈을 이용하여 사용자의 생년월일을 입력받고, 오늘까지 살아온 일수와 다음 생일까지 남은 일수를 출력하는 프로그램을 작성하시오.
+(힌트: <code>date.today()</code>와 <code>timedelta</code> 활용)</li>
+<li><span class="diff"><span class="d2">★★</span></span>  <code>random.shuffle()</code> 함수를 이용하여 리스트 <code>['A', 'B', 'C', 'D', 'E']</code>의 원소를 무작위로 섞은 뒤 출력하시오.
+이 기능을 활용하여 5명의 발표 순서를 무작위로 정하는 프로그램을 작성하시오.</li>
+<li><span class="diff"><span class="d1">★</span></span>  <code>import math as m</code>과 <code>from math import sqrt</code>의 차이를 설명하고, 각각의 방식으로 \(\sqrt{2}\)를 계산하는 코드를 작성하시오.</li>
+</ol></p></div>
+<div class="pager-row"><a class="pager prev" href="ch06.html">&larr; 6장</a><a class="pager next" href="ch08.html">8장 &rarr;</a></div>
+</main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+</body>
+</html>
