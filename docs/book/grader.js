@@ -319,10 +319,18 @@
       if (head) head.appendChild(score);
 
       function refreshScore() {
-        var passed = spec.problems.filter(function (p) {
-          return state[p.n] && state[p.n].p === 'pass';
-        }).length;
-        score.textContent = '자동 채점 ' + passed + '/' + total + ' 통과';
+        var passed = 0, tried = 0;
+        spec.problems.forEach(function (p) {
+          var st = state[p.n];
+          if (st && st.p) {
+            tried++;
+            if (st.p === 'pass') passed++;
+          }
+        });
+        // 전체(자동 채점 대상) 중 통과 비율로 100점 만점 환산
+        var pts = total ? Math.round(100 * passed / total) : 0;
+        score.textContent = '전체 문제: ' + total + '개 / 푼 문제: ' + tried +
+          '개 / 통과한 문제 ' + passed + '개 : ' + pts + '점';
         score.classList.toggle('all', passed === total);
       }
       function onGraded(n, st) {

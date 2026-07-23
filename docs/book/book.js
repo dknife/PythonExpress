@@ -30,6 +30,19 @@
   });
 })();
 
+// ---- 1.6) 접힌 박스(details)로의 앵커 이동 시 자동 펼침 ----
+// 사이드바에서 "연습문제"를 누르면 접힌 상태로 이동해 보이지 않는 문제 방지
+(function () {
+  function openTarget() {
+    var id = location.hash.replace('#', '');
+    if (!id) return;
+    var el = document.getElementById(id);
+    if (el && el.tagName === 'DETAILS') el.open = true;
+  }
+  window.addEventListener('hashchange', openTarget);
+  openTarget();
+})();
+
 // ---- 2) 그림 클릭 → 별도 창 확대 ----
 (function () {
   var imgs = document.querySelectorAll(

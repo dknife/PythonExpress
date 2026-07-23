@@ -692,7 +692,7 @@ print(f'Speedup      : {t_py / t_np:.1f}x')</code></pre>
 <li>배열 슬라이싱은 파이썬 리스트와 동일한 <code>[start:end:step]</code> 문법을 사용하며, 2차원 배열에서는 <code>[행, 열]</code> 형태로 특정 행이나 열에 접근한다.</li>
 <li><code>max()</code>, <code>min()</code>, <code>mean()</code>, <code>sum()</code>, <code>std()</code> 등의 통계 메소드와 <code>flatten()</code>(1차원 변환), <code>reshape()</code>(형상 변경) 등의 배열 변환 메소드를 제공한다.</li>
 </ul></div>
-<div class="box exercise" id="exercises"><div class="box-head">11장 연습문제</div><ol>
+<details class="box exercise" id="exercises"><summary class="box-head">11장 연습문제</summary><div class="ex-body"><ol>
 <li class="ex-item" data-ex="1"><span class="diff"><span class="d1">★</span></span>  두 수의 차를 구하는 함수 <code>sub()</code>을 (1) 일반 함수로, (2) 람다 함수로 각각 작성하시오.
 <code>sub(200, 100)</code>을 호출하여 <code>200 - 100 = 100</code>이 출력되도록 하시오.</li>
 <li class="ex-item" data-ex="2"><span class="diff"><span class="d2">★★</span></span>  정수 리스트 <code>n_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</code>에서 다음을 수행하시오.
@@ -734,7 +734,7 @@ print(a.sum(axis=1))</code></pre></li>
 <li class="ex-item" data-ex="12"><span class="diff"><span class="d3">★★★</span></span>  넘파이 배열 <code>a = np.array([1, 2, 3])</code>과 <code>b = np.array([[10], [20], [30]])</code>에 대해 <code>a + b</code>의 결과를 쓰고, 브로드캐스팅이 어떻게 적용되는지 설명하시오.</li>
 <li class="ex-item" data-ex="13"><span class="diff"><span class="d2">★★</span></span>  넘파이의 <code>np.random.seed(42)</code>를 설정한 뒤, 0과 1 사이의 난수 10개를 생성하고 평균과 표준편차를 출력하시오.
 또한 이 배열에서 0.5 이상인 원소만 추출하시오.</li>
-</ol></div>
+</ol></div></details>
 <div class="pager-row"><a class="pager prev" href="ch10.html">&larr; 10장</a><a class="pager next" href="ch12.html">12장 &rarr;</a></div>
 </main>
 </div>
