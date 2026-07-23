@@ -117,57 +117,71 @@
   // (예: 학점 A/C/F), 변하지 않는 부분은 프롬프트·라벨(형식)이다.
   // 핵심 정답이 모두 있으면 형식이 달라도 통과시키되, 다른 테스트의
   // 정답이 섞여 있으면(모든 경우를 다 출력하는 꼼수) 탈락시킨다.
+  // 토큰을 표준형으로: 숫자는 9유효숫자로 반올림해 "n:값" 형태로 통일
+  // (78.50 == 78.5, 31.400000000000002 == 31.4 로 취급)
+  function canonTok(t) {
+    if (/^[0-9]+(?:\.[0-9]+)?$/.test(t)) {
+      var f = parseFloat(t);
+      if (isFinite(f)) return 'n:' + parseFloat(f.toPrecision(9));
+    }
+    return t;
+  }
   function tokensOf(s) {
     var m = String(s || '').toLowerCase().match(/[a-z가-힣0-9_]+(?:\.[0-9]+)?/g);
-    return m || [];
+    return (m || []).map(canonTok);
   }
-  function tokenEq(a, b) {
-    if (a === b) return true;
-    var na = parseFloat(a), nb = parseFloat(b);
-    if (isFinite(na) && isFinite(nb) &&
-        /^[0-9.\-]+$/.test(a) && /^[0-9.\-]+$/.test(b)) {
-      return Math.abs(na - nb) <= Math.abs(nb) * 1e-9 + 1e-9;
-    }
-    return false;
+  function countMap(tokens) {
+    var m = {};
+    tokens.forEach(function (t) { m[t] = (m[t] || 0) + 1; });
+    return m;
   }
-  function hasToken(list, tok) {
-    return list.some(function (t) { return tokenEq(t, tok); });
-  }
-  // 각 테스트의 핵심 토큰(keys)과 금지 토큰(anti: 다른 테스트의 핵심) 계산
+  // 각 테스트의 핵심 토큰(keys)과 금지 토큰(anti) 계산 — 개수(멀티셋) 기반.
+  // 정답 값이 입력값과 같아도(예: 입력 5, -1 → 합 5, 개수 1) 입력 에코로
+  // 설명되는 횟수보다 "한 번 더" 나타나야 할 총 횟수(need)로 판정한다.
   function deriveTestKeys(tests) {
-    var tokLists = tests.map(function (t) { return tokensOf(t.expected); });
-    var keys = tests.map(function (t, i) {
-      var stdinToks = tokensOf(t.stdin || '');
-      if (tests.length >= 2) {
-        // 모든 테스트에 공통인 토큰 = 형식(템플릿), 나머지 = 정답 후보
-        return tokLists[i].filter(function (tok) {
-          var inAll = tokLists.every(function (lst) { return hasToken(lst, tok); });
-          return !inAll && !hasToken(stdinToks, tok);
-        });
-      }
-      // 테스트가 하나뿐이면 변별할 기준이 없으므로 숫자 토큰만 핵심으로 본다
-      return tokLists[i].filter(function (tok) {
-        return /^[0-9.\-]+$/.test(tok) && isFinite(parseFloat(tok)) &&
-               !hasToken(stdinToks, tok);
+    var expCnt = tests.map(function (t) { return countMap(tokensOf(t.expected)); });
+    var echoCnt = tests.map(function (t) { return countMap(tokensOf(t.stdin || '')); });
+    // 모든 테스트의 기대 출력에 등장하는 토큰 = 형식(프롬프트·라벨) 후보
+    var template = {};
+    if (tests.length >= 2) {
+      Object.keys(expCnt[0]).forEach(function (tok) {
+        if (expCnt.every(function (c) { return c[tok]; })) template[tok] = true;
       });
+    }
+    var keys = tests.map(function (t, i) {
+      var out = [];
+      Object.keys(expCnt[i]).forEach(function (tok) {
+        if (template[tok]) return;
+        if (tests.length < 2 && tok.indexOf('n:') !== 0) return; // 단일 테스트: 숫자만
+        var echo = echoCnt[i][tok] || 0;
+        if (expCnt[i][tok] > echo) {
+          out.push({ tok: tok, need: echo + (expCnt[i][tok] - echo) });
+        }
+      });
+      return out;
     });
     var anti = keys.map(function (k, i) {
+      var mine = {};
+      k.forEach(function (x) { mine[x.tok] = true; });
       var others = [];
       keys.forEach(function (k2, j) {
         if (j === i) return;
-        k2.forEach(function (tok) {
-          if (!hasToken(k, tok)) others.push(tok);
+        k2.forEach(function (x) {
+          if (!mine[x.tok] && others.indexOf(x.tok) < 0) others.push(x.tok);
         });
       });
       return others;
     });
-    return { keys: keys, anti: anti };
+    return { keys: keys, anti: anti, echo: echoCnt };
   }
-  function looseOk(gotText, keys, anti) {
+  function looseOk(gotText, keys, anti, echo) {
     if (!keys.length) return false;      // 핵심을 못 뽑으면 완전 일치만 인정
-    var got = tokensOf(gotText);
-    var allKeys = keys.every(function (tok) { return hasToken(got, tok); });
-    var noAnti = anti.every(function (tok) { return !hasToken(got, tok); });
+    var got = countMap(tokensOf(gotText));
+    var allKeys = keys.every(function (x) { return (got[x.tok] || 0) >= x.need; });
+    // 다른 테스트의 정답이 (자기 입력 에코로 설명되는 것 이상으로) 나타나면 탈락
+    var noAnti = anti.every(function (tok) {
+      return (got[tok] || 0) <= (echo[tok] || 0);
+    });
     return allKeys && noAnti;
   }
 
@@ -186,11 +200,14 @@
           var got = normOut(r.out);
           var exact = !r.err && got === normOut(t.expected);
           var loose = !exact && !r.err &&
-                      looseOk(got, derived.keys[i], derived.anti[i]);
+                      looseOk(got, derived.keys[i], derived.anti[i],
+                              derived.echo[i]);
           results.push({ i: i + 1, ok: exact || loose, loose: loose,
                          stdin: t.stdin || '',
                          expected: t.expected, got: r.out, err: r.err,
-                         keys: derived.keys[i] });
+                         keys: derived.keys[i].map(function (x) {
+                           return x.tok.replace(/^n:/, '');
+                         }) });
         });
       });
     });
