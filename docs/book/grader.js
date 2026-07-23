@@ -63,9 +63,39 @@
   }
 
   // ---- 채점기 ----
+  // 실수 근사 인정: 파이썬이 3.3333333333333335처럼 긴 실수를 출력해도
+  // 학생이 소수 둘째 자리 이상 적으면(3.33, 3.333, …) 맞는 것으로 본다.
+  // 정수는 자료형 이해를 확인하는 것이므로 정확히 일치해야 한다.
+  function numLenient(expTok, gotTok) {
+    if (expTok === gotTok) return true;
+    if (!/^-?[0-9]+\.[0-9]+$/.test(expTok)) return false;   // 기대값이 실수일 때만
+    if (!/^-?[0-9]+\.[0-9]+$/.test(gotTok)) return false;   // 답도 소수점 필수
+    var d = gotTok.match(/\.([0-9]+)$/)[1].length;
+    if (d < 2) return false;                                 // 최소 소수 둘째 자리
+    return Math.abs(parseFloat(gotTok) - parseFloat(expTok))
+           <= Math.pow(10, -d) + 1e-12;
+  }
+
   function gradeOutput(spec, val) {
-    var ok = normOut(val) === normOut(spec.expected);
-    return { pass: ok, detail: ok ? '' : '기대한 출력과 다릅니다. 공백·줄바꿈까지 확인해 보세요.' };
+    var exp = normOut(spec.expected), got = normOut(val);
+    if (exp === got) return { pass: true, detail: '' };
+    var el = exp.split('\n'), gl = got.split('\n');
+    var ok = el.length === gl.length && el.every(function (line, i) {
+      var et = line.trim().split(/\s+/), gt = gl[i].trim().split(/\s+/);
+      return et.length === gt.length && et.every(function (tok, j) {
+        return tok === gt[j] || numLenient(tok, gt[j]);
+      });
+    });
+    return {
+      pass: ok,
+      detail: ok ? '실수를 근사값으로 인정하여 통과'
+        : '기대한 출력과 다릅니다. 줄 수·공백까지 확인해 보세요. ' +
+          '(긴 실수는 소수 둘째 자리 이상 적으면 근사값으로 인정합니다)'
+    };
+  }
+
+  function shortTokEq(ansTok, gotTok) {
+    return ansTok === gotTok || numLenient(ansTok, gotTok);
   }
 
   function gradeShort(spec, val) {
@@ -78,13 +108,20 @@
       .split(/[\s,;()\/·]+/).filter(Boolean);
     var ans = spec.answers.map(function (a) { return String(a).toLowerCase(); });
     if (mode === 'any') {
-      var hit = toks.some(function (t) { return ans.indexOf(t) >= 0; });
+      var hit = toks.some(function (t) {
+        return ans.some(function (a) { return shortTokEq(a, t); });
+      });
       return { pass: hit, detail: '' };
     }
-    // set: 정답 집합과 정확히 일치해야 함
+    // set: 정답 집합과 정확히 일치해야 함 (실수는 근사값 인정)
     var uniq = toks.filter(function (t, i) { return toks.indexOf(t) === i; });
-    var okSet = uniq.length === ans.length &&
-      uniq.every(function (t) { return ans.indexOf(t) >= 0; });
+    var used = ans.map(function () { return false; });
+    var okSet = uniq.length === ans.length && uniq.every(function (t) {
+      for (var k = 0; k < ans.length; k++) {
+        if (!used[k] && shortTokEq(ans[k], t)) { used[k] = true; return true; }
+      }
+      return false;
+    });
     return {
       pass: okSet,
       detail: okSet ? '' : '정답 개수는 ' + ans.length + '개입니다. 쉼표로 구분해 적어 주세요.'
@@ -238,7 +275,8 @@
   // 단위 테스트용 노출 (페이지 동작에는 영향 없음)
   try {
     window._algjaLoose = { tokensOf: tokensOf, deriveTestKeys: deriveTestKeys,
-                           looseOk: looseOk };
+                           looseOk: looseOk, numLenient: numLenient,
+                           gradeOutput: gradeOutput, gradeShort: gradeShort };
   } catch (e) {}
 
   // ---- UI ----
