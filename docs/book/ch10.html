@@ -73,7 +73,7 @@
 <li>단어장, 데이터 정리, 시각화, 웹 앱 등 다양한 응용 사례를 실습할 수 있다.</li>
 <li>요구사항 분석부터 통합까지의 설계 과정을 경험할 수 있다.</li>
 </ul></div></details></div>
-<p>지금까지 우리는 변수와 자료형, 조건문과 반복문, 함수, 리스트와 딕셔너리, 파일 입출력, 클래스, 그리고 넘파이까지 파이썬의 핵심 개념을 단계적으로 배워 왔다.
+<p>지금까지 우리는 변수와 자료형, 조건문과 반복문, 함수, 리스트와 딕셔너리, 파일 입출력, 그리고 클래스까지 파이썬의 핵심 개념을 단계적으로 배워 왔다.
 이번 장에서는 그동안 배운 모든 지식을 종합하여 <strong>실제로 쓸 수 있는 프로그램</strong>을 직접 만들어 본다.</p>
 <p>프로그래밍을 배우는 것과 프로그램을 만드는 것은 다르다.
 문법을 아는 것만으로는 프로그램을 완성할 수 없다.
@@ -774,7 +774,7 @@ print(json.dumps(top, ensure_ascii=False, indent=4))</code></pre></li>
 </ol></p></div></p>
 <details class="box summary" id="summary"><summary class="box-head">10장 요약</summary><div class="sum-body"><ul>
 <li>이 장에서는 지금까지 배운 파이썬 지식을 종합하여 실제로 사용할 수 있는 네 가지 프로젝트를 구현하였다. 각 프로젝트는 요구사항 분석, 자료구조 설계, 함수 분리, 통합의 과정을 거쳐 완성하였다.</li>
-<li><strong>단어장 앱</strong>: <strong>딕셔너리</strong>로 영어 단어(키)와 한글 뜻(값)을 관리하였다. <code>json</code> 모듈의 <code>json.dump()</code>와 <code>json.load()</code>로 JSON 파일에 저장하고 불러오기하여 프로그램 종료 후에도 데이터가 유지되도록 하였으며, <code>random.choice()</code>로 퀴즈 기능을 구현하였다.</li>
+<li><strong>단어장 앱</strong>: <strong>딕셔너리</strong>로 영어 단어(키)와 한글 뜻(값)을 관리하였다. <code>json</code> 모듈의 <code>json.dump()</code>와 <code>json.load()</code>로 JSON 파일에 저장하고 불러오기하여 프로그램 종료 후에도 데이터가 유지되도록 하였으며, <code>random.shuffle()</code>로 단어 목록을 무작위로 섞어 퀴즈 기능을 구현하였다.</li>
 <li><strong>비정형 데이터 정리 자동화</strong>: 구분자와 형식이 제각각인 텍스트 파일을 <code>replace()</code>, <code>split()</code>, <code>strip()</code>, <code>isdigit()</code> 등의 문자열 메소드로 파싱하여 정형 CSV로 변환하였다. 이메일의 <code>@</code> 기호를 기준점으로 필드를 분리하고, 전화번호에서 숫자만 추출하여 형식을 통일하는 전처리 전략을 실습하였다.</li>
 <li><strong>프랙탈 그리기</strong>: 자기 자신을 호출하는 <strong>재귀 함수</strong>와 파이썬 내장 <code>turtle</code> 그래픽 라이브러리만으로 자연을 닮은 나무를 그렸다. 종료 조건과 재귀 호출이라는 두 요소가 어떻게 자기 닮은 도형을 만들어 내는지 확인하고, <code>depth</code>/<code>ANGLE</code>/<code>RATIO</code> 같은 매개변수 몇 개를 바꿔 같은 함수가 전혀 다른 모양을 그리는 것을 실험하였다. 같은 재귀 패턴을 코흐 눈송이에 그대로 적용하여 한 가지 아이디어가 다양한 프랙탈로 확장됨을 체험하였다.</li>
 <li><strong>웹 앱</strong>: <strong>Flask</strong> 웹 프레임워크를 사용하여 브라우저에서 동작하는 할 일 관리 앱을 구현하였다. <code>@app.route()</code>로 URL과 함수를 연결하고, <code>render_template()</code>로 HTML 템플릿에 파이썬 데이터를 전달하며, HTML 폼과 <code>request.form</code>으로 사용자 입력을 처리하는 방법을 익혔다.</li>
@@ -796,8 +796,8 @@ print(json.dumps(top, ensure_ascii=False, indent=4))</code></pre></li>
 <li class="ex-item" data-ex="5"><span class="diff"><span class="d3">★★★</span></span>  이 장에서 배운 개념들을 종합하여 <strong>자신만의 미니 앱</strong>을 하나 기획하고 구현하시오.
 (예: 일기장, 할 일 관리, 독서 기록, 운동 기록 등)
 메뉴 기반 구조, 파일 저장, 최소 3개 이상의 함수를 포함하도록 하시오.</li>
-<li class="ex-item" data-ex="6"><span class="diff"><span class="d1">★</span></span>  단어장 앱에 <strong>단어 검색</strong> 기능을 추가하시오.
-사용자가 영어 단어의 일부를 입력하면 해당 문자열이 포함된 모든 단어를 찾아 출력하는 기능을 구현하시오.
+<li class="ex-item" data-ex="6"><span class="diff"><span class="d1">★</span></span>  단어장 앱의 <code>search()</code> 메소드를 <strong>부분 일치 검색</strong> 기능으로 확장하시오.
+현재는 입력한 단어와 정확히 일치하는 경우에만 찾아 주지만, 사용자가 영어 단어의 일부만 입력해도 해당 문자열이 포함된 모든 단어를 찾아 출력하도록 수정하시오.
 (힌트: <code>in</code> 연산자 활용)</li>
 <li class="ex-item" data-ex="7"><span class="diff"><span class="d2">★★</span></span>  비정형 데이터 정리 프로그램을 수정하여 <strong>도시별 회원 수</strong>를 집계하고 출력하는 기능을 추가하시오.
 정리된 데이터에서 도시별로 몇 명이 있는지 딕셔너리로 집계하여 출력하시오.

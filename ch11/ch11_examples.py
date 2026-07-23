@@ -250,7 +250,7 @@ scores = np.array([
 ])
 boosted = scores + 5           # 브로드캐스팅
 print(boosted)
-print('학생별 평균 :', boosted.mean(axis=1))
+print('Average per student :', boosted.mean(axis=1))
 
 import numpy as np
 import time

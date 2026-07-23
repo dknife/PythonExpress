@@ -421,7 +421,7 @@ months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun']
 sales = [120, 135, 148, 162, 155, 178]
 
 plt.figure(figsize=(7, 4))
-plt.plot(months, sales, marker='o', color='\#2196F3',
+plt.plot(months, sales, marker='o', color='#2196F3',
     linewidth=2, label='Sales')
 plt.title('Monthly Sales Trend', fontsize=14)
 plt.xlabel('Month')
@@ -437,7 +437,7 @@ plt.show()</code></pre><div class="listing-caption">코드 12.12: 월별 매출 
 <code>figsize=(7, 4)</code>는 그래프 창의 크기를 가로 7인치, 세로 4인치로 설정한다.
 값이 클수록 그래프가 크게 그려진다.
 <code>marker='o'</code>는 각 데이터 점에 원형 마커를 표시하여 개별 값을 구분할 수 있게 한다.
-마커를 <code>'s'</code>로 바꾸면 사각형, <code>'\^{}</code>로 바꾸면 삼각형이 된다.
+마커를 <code>'s'</code>로 바꾸면 사각형, <code>'\^{}'</code>로 바꾸면 삼각형이 된다.
 <code>color='#2196F3'</code>는 선의 색상을 지정하며, HTML 색상 코드를 사용한다.
 <code>linewidth=2</code>는 선의 굵기를 2포인트로 설정한다.
 <code>grid(True, alpha=0.3)</code>은 격자선을 표시하되 투명도를 0.3으로 하여 은은하게 보이도록 한다.
@@ -454,7 +454,7 @@ import matplotlib.pyplot as plt
 scores = np.random.normal(70, 10, 200)
 
 plt.figure(figsize=(7, 4))
-plt.hist(scores, bins=15, color='\#4CAF50', edgecolor='white',
+plt.hist(scores, bins=15, color='#4CAF50', edgecolor='white',
     alpha=0.8)
 plt.title('Exam Score Distribution', fontsize=14)
 plt.xlabel('Score')
@@ -485,7 +485,7 @@ study_hours = np.random.uniform(1, 10, 30)
 scores = study_hours * 8 + np.random.normal(0, 5, 30) + 20
 
 plt.figure(figsize=(7, 4))
-plt.scatter(study_hours, scores, color='\#FF5722', alpha=0.7,
+plt.scatter(study_hours, scores, color='#FF5722', alpha=0.7,
     edgecolors='black', linewidth=0.5)
 plt.title('Study Hours and Score Relation', fontsize=14)
 plt.xlabel('Study Hours')

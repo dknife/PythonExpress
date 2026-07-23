@@ -741,7 +741,7 @@ Hello!</pre>
 <div class="listing-caption">코드 9.18: 덕 타이핑으로 상속 없이 공통 처리</div>
 <p><code>Duck</code>과 <code>Person</code>은 아무런 상속 관계가 없지만 같은 <code>speak()</code> 메소드를 가지므로 한 루프에서 함께 처리된다.
 이러한 유연성은 파이썬의 큰 장점 중 하나이지만, 반대로 "이 객체에 정말 <code>speak()</code>이 있는가?"를 컴파일 시점에 검사하지 못하므로 실행 중에 <code>AttributeError</code>가 발생할 위험도 있다.
-대규모 프로젝트에서는 <strong class="term-ko">타입 힌트</strong><sup class="term">type hint</sup>나 추상 클래스(<code>abc.ABC</code>)로 이러한 위험을 줄인다..</p>
+대규모 프로젝트에서는 <strong class="term-ko">타입 힌트</strong><sup class="term">type hint</sup>나 추상 클래스(<code>abc.ABC</code>)로 이러한 위험을 줄인다.</p>
 <div class="box keypoint"><span class="chip">요점</span><ul>
 <li><code>super().__init__(\dots)</code>으로 부모 생성자를 호출하면 부모가 초기화하던 속성을 그대로 활용하면서 자식만의 속성을 덧붙일 수 있다.</li>
 <li><code>super().메소드명()</code>으로 부모의 동작을 <strong>확장</strong>하는 형태의 메소드 오버라이딩이 가능하다.</li>

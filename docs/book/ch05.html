@@ -239,7 +239,7 @@ No.1: China
 No.2: India
 No.3: Nepal</pre>
 <div class="listing-caption">코드 5.13: enumerate()로 인덱스와 값 함께 얻기</div>
-<p><code>enumerate(nations)</code>는 각 원소에 대해 <code>(인덱스, 값)</code> 형태의 쌍을 차례로 생성한다. 반복 변수를 <code>i, nation</code>처럼 두 개로 지정하면 인덱스는 <code>i</code>에, 값은 <code>nation</code>에 대입된다. <code>enumerate()</code>를 사용하지 않고 별도의 카운터 변수를 만들어 관리하는 것보다 훨씬 간결하고 파이썬다운(Pythonic) 코드이다. 파이썬다운 코드 작성법에 대해서는 Luciano Ramalho의 『Fluent Python』에서 깊이 있게 다루고 있다.</p>
+<p><code>enumerate(nations)</code>는 각 원소에 대해 <code>(인덱스, 값)</code> 형태의 쌍을 차례로 생성한다. 반복 변수를 <code>i, nation</code>처럼 두 개로 지정하면 인덱스는 <code>i</code>에, 값은 <code>nation</code>에 대입된다. <code>enumerate()</code>를 사용하지 않고 별도의 카운터 변수를 만들어 관리하는 것보다 훨씬 간결하고 파이썬다운(Pythonic) 코드이다.</p>
 <h3>리스트에 요소 추가/삭제</h3>
 <p>리스트는 생성 후에도 원소를 자유롭게 추가하거나 삭제할 수 있는 <strong>가변</strong>(mutable) 자료형이다. 이 특성 덕분에 프로그램 실행 중에 데이터를 동적으로 관리할 수 있다. 원소를 추가하고 삭제하는 세 가지 주요 방법을 알아보자.</p>
 <figure class="fig">
@@ -354,6 +354,9 @@ print(a[::-1]) # 역순으로 추출</code></pre>
 <div class="table-wrap"><div class="table-caption">표 5.2: 슬라이싱 패턴 정리</div><table><tr><th><strong>패턴</strong></th><th><strong>의미</strong></th></tr><tr><td><code>a[start:end]</code></td><td><code>start</code>부터 <code>end-1</code>까지</td></tr><tr><td><code>a[:end]</code></td><td>처음부터 <code>end-1</code>까지</td></tr><tr><td><code>a[start:]</code></td><td><code>start</code>부터 끝까지</td></tr><tr><td><code>a[::step]</code></td><td>전체에서 <code>step</code> 간격으로</td></tr><tr><td><code>a[::-1]</code></td><td>전체를 역순으로</td></tr></table></div>
 <p>슬라이싱에서 초보자가 자주 실수하는 점은 <code>end</code> 인덱스가 결과에 포함되지 않는다는 것이다. 예를 들어 <code>a[2:5]</code>는 인덱스 2, 3, 4의 원소만 가져오고, 인덱스 5의 원소는 포함되지 않는다. 이 규칙이 처음에는 어색하게 느껴질 수 있지만, <code>a[:3]</code>이 "처음부터 3개"를, <code>a[3:6]</code>이 "3번부터 3개"를 의미하는 등 "개수를 쉽게 계산할 수 있다"는 장점이 있어 익숙해지면 매우 편리하다.</p>
 <div class="box keypoint"><span class="chip">요점</span><p>리스트 메소드 중 <code>sort()</code>는 원본을 정렬하고, <code>append()</code>와 <code>extend()</code>는 추가 방식이 다르다. 슬라이싱 <code>[start:end:step]</code>으로 리스트의 부분을 추출할 수 있으며, <code>end</code> 인덱스의 원소는 포함되지 않는다. <code>step</code>이 음수이면 역순으로 추출한다.</p></div>
+<div class="box note"><span class="chip">잠깐</span><span class="box-title">더 읽을거리</span><ul>
+<li>『Fluent Python』(Luciano Ramalho) — 시퀀스와 슬라이싱을 비롯해 파이썬다운(Pythonic) 코드 작성법을 깊이 있게 다루는 중급서</li>
+</ul></div>
 <p><span id="labs"></span><div class="box lab"><div class="lab-title">실습을 통한 5 장 개념 정리</div><ol>
 <li>5명의 학생 점수를 리스트에 저장하고, <code>max()</code>, <code>min()</code>, <code>sum()</code>, <code>len()</code>을 활용하여 최고점·최저점·합계·평균을 출력하시오.
 <p><pre class="line-numbers"><code class="language-python">scores = [85, 90, 78, 92, 88]
@@ -375,8 +378,9 @@ for n in nums:
 print(evens)         # [10, 42]</code></pre></li>
 <li>리스트 <code>colors = ['red', 'green', 'blue', 'yellow']</code>를 역순으로 출력하시오. (슬라이싱 <code>[::-1]</code> 또는 <code>reverse()</code> 활용)</p>
 <p><pre class="line-numbers"><code class="language-python">colors = ['red', 'green', 'blue', 'yellow']
-print(colors[::-1])          # 슬라이싱 이용
-print(list(reversed(colors)))  # reversed() 함수 이용</code></pre></li>
+print(colors[::-1])   # 슬라이싱 이용
+colors.reverse()      # reverse() 메소드 이용 (원본이 뒤집힘)
+print(colors)</code></pre></li>
 <li>리스트의 모든 원소 평균을 구하는 함수 <code>list_avg(lst)</code>를 작성하시오. 빈 리스트가 전달되면 0을 반환하도록 한다.</p>
 <p><pre class="line-numbers"><code class="language-python">def list_avg(lst):
     if len(lst) == 0:

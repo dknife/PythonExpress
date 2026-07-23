@@ -112,9 +112,9 @@ total = sum(lst)
 
 s1 = 'Hello'
 s2 = "Python"
-s3 = "'You can write
+s3 = '''You can write
 multi-line
-strings."'
+strings.'''
 print(s3)
 
 s = 'Python'
@@ -188,7 +188,7 @@ print(s.replace('Java', 'Python'))
 
 last_name  = 'Hong'
 first_name = 'Gildong'
-print(f'제 이름은 {last_name} {first_name}입니다.')
+print(f'My name is {last_name} {first_name}.')
 
 x1 = 1
 y1 = 2

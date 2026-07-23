@@ -102,7 +102,7 @@ print(students[2024003])</code></pre>
 Kang Gamchan</pre>
 <div class="listing-caption">코드 6.2: 정수 키를 사용하는 딕셔너리</div>
 <p>리스트에서 <code>students[0]</code>처럼 인덱스(위치)로 접근하는 것과 비교하면, 딕셔너리에서 <code>students\allowbreak[2024001]</code>처럼 학번(키)으로 접근하는 것이 훨씬 직관적이다.
-이것이 딕셔너리의 핵심적인 장점이다. 딕셔너리의 내부 구현과 효율성에 대해서는 David Beazley의 『Python Cookbook』에서 상세히 설명하고 있다.</p>
+이것이 딕셔너리의 핵심적인 장점이다.</p>
 <h3>항목 추가, 수정, 삭제</h3>
 <p>딕셔너리는 생성 후에도 항목을 자유롭게 추가하고, 기존 항목의 값을 수정하고, 항목을 삭제할 수 있다. 추가와 수정 모두 <code>딕셔너리[키] = 값</code> 형태의 동일한 문법을 사용한다. 해당 키가 존재하지 않으면 새 항목이 추가되고, 이미 존재하면 값이 수정된다.</p>
 <pre class="line-numbers"><code class="language-python">person = {'name': 'Hong Gildong', 'age': 26, 'weight': 82}
@@ -315,7 +315,7 @@ True</pre>
 <p>"어떤 자료형을 사용할까?"라는 질문에 대한 답은 데이터의 특성에 따라 달라진다. 핵심적인 판단 기준을 정리하면 다음과 같다.</p>
 <p><strong>순서가 있고 변경이 필요한 데이터</strong>에는 리스트가 적합하다. 학생 점수 목록, 장바구니 상품 목록처럼 원소를 추가하거나 삭제하는 작업이 빈번한 경우에 해당한다. 가장 범용적인 자료형이므로 확신이 서지 않을 때는 리스트를 기본으로 선택하면 된다.</p>
 <p><strong>변경하면 안 되는 고정 데이터</strong>에는 튜플을 사용한다. 좌표 (x, y), 함수의 다중 반환값, 요일 이름 등이 대표적이다. 불변이라는 특성이 데이터의 안전성을 보장해 주므로, "이 데이터는 절대 바뀌면 안 된다"는 의도를 코드에 명시적으로 표현할 수 있다.</p>
-<p><strong>키로 값을 빠르게 조회해야 하는 데이터</strong>에는 딕셔너리가 적합하다. 학번으로 학생 이름을 찾거나, 상품명으로 가격을 조회하는 것처럼 "이름표로 물건을 찾는" 패턴에 해당한다. 딕셔너리는 키를 이용한 조회 속도가 매우 빠르므로 대량의 데이터에서도 효율적이다. 이러한 자료구조의 시간 복잡도에 대해서는 Thomas Cormen 외의 『Introduction to Algorithms』에서 체계적으로 설명하고 있다.</p>
+<p><strong>키로 값을 빠르게 조회해야 하는 데이터</strong>에는 딕셔너리가 적합하다. 학번으로 학생 이름을 찾거나, 상품명으로 가격을 조회하는 것처럼 "이름표로 물건을 찾는" 패턴에 해당한다. 딕셔너리는 키를 이용한 조회 속도가 매우 빠르므로 대량의 데이터에서도 효율적이다.</p>
 <p><strong>중복 없는 항목의 모음</strong>에는 집합을 사용한다. 출석한 학생 명단, 고유 태그 목록, 이미 방문한 URL 목록 등이 해당한다. 집합 연산(합집합, 교집합 등)이 필요한 경우에도 집합이 최적의 선택이다.</p>
 <h3>자료형 간 변환</h3>
 <p><code>list()</code>, <code>tuple()</code>, <code>set()</code> 함수를 사용하면 자료형을 서로 변환할 수 있다. 이 변환 함수들은 "입력 데이터는 리스트인데, 중복을 제거하고 싶다"거나 "딕셔너리의 키를 리스트로 가져오고 싶다" 같은 상황에서 유용하다.</p>
@@ -368,13 +368,16 @@ print('Price range:', price_range)</code></pre>
 Discountable: {'apple', 'melon'}
 Price range: (3000, 6000)</pre>
 <div class="listing-caption">코드 6.16: 자료형을 조합한 과일 가게 프로그램</div>
-<p>이 프로그램에서 과일 가격 데이터는 "과일 이름으로 가격을 조회"하는 구조이므로 딕셔너리가 적합하다. 과일 이름의 순서 있는 목록이 필요할 때는 리스트로 변환했다. 할인 대상 과일 중 실제로 판매 중인 과일을 찾을 때는 집합의 교집합 연산을 활용했다. 그리고 가격 범위는 "한 번 결정되면 바뀌지 않는" 정보이므로 튜플에 저장했다. 이처럼 각 자료형의 특성을 이해하고 적절히 조합하면 명확하고 효율적인 프로그램을 작성할 수 있다. 파이썬 자료구조의 고급 활용에 대해 더 알고 싶다면 Luciano Ramalho의 『Fluent Python』과 David Beazley의 『Python Cookbook』을 추천한다. 또한 파이썬의 자료형 힌트를 활용한 안전한 프로그래밍은 PEP 484에서 소개하고 있다.</p>
+<p>이 프로그램에서 과일 가격 데이터는 "과일 이름으로 가격을 조회"하는 구조이므로 딕셔너리가 적합하다. 과일 이름의 순서 있는 목록이 필요할 때는 리스트로 변환했다. 할인 대상 과일 중 실제로 판매 중인 과일을 찾을 때는 집합의 교집합 연산을 활용했다. 그리고 가격 범위는 "한 번 결정되면 바뀌지 않는" 정보이므로 튜플에 저장했다. 이처럼 각 자료형의 특성을 이해하고 적절히 조합하면 명확하고 효율적인 프로그램을 작성할 수 있다. 파이썬의 자료형 힌트를 활용한 안전한 프로그래밍은 PEP 484에서 소개하고 있다.</p>
 <div class="box keypoint"><span class="chip">요점</span><p>리스트(변경 가능, 순서 있음), 튜플(변경 불가, 순서 있음), 딕셔너리(키-값 쌍), 집합(중복 불허, 순서 없음)의 특성을 정확히 이해하고, 데이터의 성격에 맞는 자료형을 선택해야 한다. <code>list()</code>, <code>tuple()</code>, <code>set()</code> 함수로 자료형을 상호 변환할 수 있으며, 실제 프로그램에서는 여러 자료형을 조합하여 사용하는 경우가 많다.</p></div>
+<div class="box note"><span class="chip">잠깐</span><span class="box-title">더 읽을거리</span><ul>
+<li>『Python Cookbook』(David Beazley, Brian K. Jones) — 딕셔너리, 집합 등 자료구조를 실전에서 활용하는 다양한 레시피를 담은 책</li>
+</ul></div>
 <p><span id="labs"></span><div class="box lab"><div class="lab-title">실습을 통한 6 장 개념 정리</div><ol>
-<li>과일 이름(키)과 가격(값)을 저장하는 딕셔너리 <code>fruits</code>를 만들고, <code>for</code> 문과 <code>items()</code>를 사용하여 "사과: 1500원" 형식으로 모든 항목을 출력하시오.
-<p><pre class="line-numbers"><code class="language-python">fruits = {'사과': 1500, '바나나': 800, '포도': 3000}
+<li>과일 이름(키)과 가격(값)을 저장하는 딕셔너리 <code>fruits</code>를 만들고, <code>for</code> 문과 <code>items()</code>를 사용하여 "apple: 1500 won" 형식으로 모든 항목을 출력하시오.
+<p><pre class="line-numbers"><code class="language-python">fruits = {'apple': 1500, 'banana': 800, 'grape': 3000}
 for name, price in fruits.items():
-    print(f'{name}: {price}원')</code></pre></li>
+    print(f'{name}: {price} won')</code></pre></li>
 <li>문자열 <code>'hello world'</code>의 각 문자가 몇 번 등장하는지 딕셔너리로 집계하시오. (힌트: <code>dict.get(ch, 0) + 1</code> 패턴 활용)</p>
 <p><pre class="line-numbers"><code class="language-python">s = 'hello world'
 count = {}
@@ -450,7 +453,7 @@ class_b = ['Bob', 'Diana', 'Frank', 'Grace', 'Charlie']</pre>
 <li class="ex-item" data-ex="4"><span class="diff"><span class="d3">★★★</span></span>  과일의 이름을 키, 가격을 값으로 가지는 딕셔너리를 생성하시오.
 과일은 apple(5000원), banana(4000원), grape(5300원), melon(6500원)이다.
 이 딕셔너리에서 가장 비싼 과일의 이름과 가격을 출력하시오.
-(힌트: <code>max()</code> 함수와 <code>values()</code> 메소드 활용)
+(힌트: <code>max(dic, key=dic.get)</code>으로 값이 가장 큰 키를 찾을 수 있다)
 <pre class="termout">Most expensive fruit: melon (6500 won)</pre></li>
 <li class="ex-item" data-ex="5"><span class="diff"><span class="d2">★★</span></span>  다음 코드의 실행 결과를 예측하시오.
 <p><pre class="line-numbers"><code class="language-python">data = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3]

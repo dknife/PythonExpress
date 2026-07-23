@@ -118,7 +118,7 @@ months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun']
 sales = [120, 135, 148, 162, 155, 178]
 
 plt.figure(figsize=(7, 4))
-plt.plot(months, sales, marker='o', color='\#2196F3',
+plt.plot(months, sales, marker='o', color='#2196F3',
     linewidth=2, label='Sales')
 plt.title('Monthly Sales Trend', fontsize=14)
 plt.xlabel('Month')
@@ -136,7 +136,7 @@ import matplotlib.pyplot as plt
 scores = np.random.normal(70, 10, 200)
 
 plt.figure(figsize=(7, 4))
-plt.hist(scores, bins=15, color='\#4CAF50', edgecolor='white',
+plt.hist(scores, bins=15, color='#4CAF50', edgecolor='white',
     alpha=0.8)
 plt.title('Exam Score Distribution', fontsize=14)
 plt.xlabel('Score')
@@ -156,7 +156,7 @@ study_hours = np.random.uniform(1, 10, 30)
 scores = study_hours * 8 + np.random.normal(0, 5, 30) + 20
 
 plt.figure(figsize=(7, 4))
-plt.scatter(study_hours, scores, color='\#FF5722', alpha=0.7,
+plt.scatter(study_hours, scores, color='#FF5722', alpha=0.7,
     edgecolors='black', linewidth=0.5)
 plt.title('Study Hours and Score Relation', fontsize=14)
 plt.xlabel('Study Hours')

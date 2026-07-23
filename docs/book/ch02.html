@@ -200,7 +200,7 @@ Area of rectangle : 50</pre>
 &gt;&gt;&gt; flag = True
 &gt;&gt;&gt; type(flag)
 &lt;class 'bool'&gt;</pre>
-<p>파이썬에서 정수형의 특별한 점은 <strong>정수 표현의 한계가 없다</strong>는 것이다. C나 Java와 같은 프로그래밍 언어는 정수의 크기가 4바이트 형으로 정해져 있어서 일정한 크기 이상의 정수는 표현할 수 없다. 이와 달리 파이썬은 아무리 큰 정수라도 정확하게 표현할 수 있다. 이 점이 파이썬의 또 다른 큰 장점이다.</p>
+<p>파이썬에서 정수형의 특별한 점은 <strong>정수 표현의 한계가 없다</strong>는 것이다. C나 Java와 같은 프로그래밍 언어의 기본 정수형은 크기가 4바이트 혹은 8바이트로 고정되어 있어서 일정한 범위 이상의 정수는 표현할 수 없다. 이와 달리 파이썬은 아무리 큰 정수라도 정확하게 표현할 수 있다. 이 점이 파이썬의 또 다른 큰 장점이다.</p>
 <h3>형 변환</h3>
 <p>서로 다른 자료형 사이의 변환이 필요할 때 <strong class="term-ko">형 변환</strong><sup class="term">type conversion</sup> 함수를 사용한다. <code>int()</code> 함수는 값을 정수로 변환하는데, 실수를 정수로 변환할 때는 소수점 이하를 버린다(반올림이 아님). <code>float()</code> 함수는 값을 실수로, <code>str()</code> 함수는 값을 문자열로 변환한다.</p>
 <pre class="pyout">&gt;&gt;&gt; int(3.7)
@@ -293,7 +293,7 @@ False</pre>
 <p>변수나 함수에 붙이는 이름을 <strong class="term-ko">식별자</strong><sup class="term">identifier</sup>라 한다. 프로그래밍 언어를 사용할 때 사용자가 정의하는 변수나 함수에 대해 서로 구별되는 이름을 부여해야 하는데 이 이름을 식별자라고 한다. 파이썬에서 식별자의 이름을 짓는데 반드시 지켜야 하는 규칙은 다음과 같다.</p>
 <p>첫째, 식별자의 이름은 영문자와 숫자, 밑줄 문자(<code>_</code>)로 이루어진다. 둘째, 중간에 공백이 들어가면 안 된다. 셋째, 첫 글자는 반드시 영문자나 밑줄 문자(<code>_</code>)로 시작해야만 한다. 숫자로 시작할 수 없다. 넷째, 대문자와 소문자는 구분된다. 따라서 <code>Count</code>와 <code>count</code>는 서로 다른 식별자이다. 다섯째, 식별자의 길이에 제한은 없다. 여섯째, <strong class="term-ko">키워드</strong><sup class="term">keyword</sup>는 식별자로 사용할 수 없다.</p>
 <p>변수를 잘 사용하기 위해서는 그 변수의 역할에 맞는 이름을 지어야 한다. 만일 <code>ijjxtx = 27</code>과 같이 자신만 이해할 수 있는 이름이나 아무 의미 없는 식별자를 변수명으로 사용하면 어떻게 될까? 작성할 당시에는 이 변수의 의미를 나름대로 파악할 수 있지만, 시간이 지나면 작성자 자신조차 이 변수를 왜 사용했는지 알 수 없게 된다. 그러나 이를 <code>age = 27</code>로 고쳐보자. 이 경우는 나이를 뜻하는 변수 <code>age</code>에 27세라는 나이 데이터를 저장하였다고 쉽게 이해할 수 있을 것이다.</p>
-<div class="box note"><span class="chip">잠깐</span><span class="box-title">파이썬의 식별자 이름 짓기 가이드라인</span><p>PEP 8 스타일 가이드에서는 파이썬의 변수와 함수 이름을 <code>my_variable</code>과 같이 밑줄 문자를 이어서 사용하도록 권장하고 있다. 식별자 이름을 지을 때는 단어와 단어 사이를 <code>walk_distance</code>처럼 밑줄문자로 연결하거나 <code>walkDistance</code>와 같이 이어지는 단어를 대문자로 시작하는 식별자도 가능하다. 이와 같은 표기법을 <strong class="term-ko">캠워드</strong><sup class="term">capword</sup> 표기법 혹은 <strong class="term-ko">낙타등</strong><sup class="term">camel case</sup> 표기법이라고 한다. 이 책에서는 <code>student_name</code>과 같이 밑줄문자를 사용한다.</p></div>
+<div class="box note"><span class="chip">잠깐</span><span class="box-title">파이썬의 식별자 이름 짓기 가이드라인</span><p>PEP 8 스타일 가이드에서는 파이썬의 변수와 함수 이름을 <code>my_variable</code>과 같이 밑줄 문자를 이어서 사용하도록 권장하고 있다. 식별자 이름을 지을 때는 단어와 단어 사이를 <code>walk_distance</code>처럼 밑줄문자로 연결하거나, <code>walkDistance</code>와 같이 첫 단어는 소문자로 시작하고 이어지는 단어의 첫 글자만 대문자로 쓰는 방법도 있다. 후자를 <strong class="term-ko">낙타등</strong><sup class="term">camel case</sup> 표기법이라고 한다. 한편 <code>StudentName</code>처럼 모든 단어의 첫 글자를 대문자로 쓰는 방식은 <strong class="term-ko">캡워드</strong><sup class="term">CapWords</sup> 표기법이라 하며, 파이썬에서는 주로 클래스 이름에 사용한다. 이 책에서는 <code>student_name</code>과 같이 밑줄문자를 사용한다.</p></div>
 <p>파이썬의 <strong>키워드</strong>는 이미 용도가 정해진 단어로, 변수 이름 등으로 사용할 수 없다. <code>False</code>, <code>True</code>, <code>None</code>, <code>and</code>, <code>or</code>, <code>not</code>, <code>if</code>, <code>else</code>, <code>elif</code>, <code>for</code>, <code>while</code>, <code>break</code>, <code>continue</code>, <code>def</code>, <code>class</code>, <code>import</code>, <code>return</code> 등이 있다. 이 키워드들의 사용법은 이 책에서 하나하나 설명할 예정이다.</p>
 <div class="box caution"><span class="chip">주의</span><p>파이썬 내장 함수의 이름(<code>sum</code>, <code>max</code>, <code>min</code>, <code>len</code>, <code>list</code> 등)도 변수 이름으로 사용하지 않는 것이 좋다. 이렇게 사용된 변수 이름은 파이썬에서 제공하는 내장함수의 이름과 중복되므로 사용하지 않도록 한다. 즉, 다음과 같이 <code>sum</code>이라는 변수를 사용한 후 <code>sum()</code> 내장함수를 호출하면 내장함수의 호출이 일어나지 않고 오류가 발생한다.</p>
 <pre class="pyout">&gt;&gt;&gt; sum = 100
@@ -304,12 +304,12 @@ TypeError: 'int' object is not callable</pre></div>
 <h2 id="sec4">2.4 문자열 다루기</h2>
 <p>프로그램에서 숫자만큼이나 자주 다루는 데이터가 바로 <strong class="term-ko">문자열</strong><sup class="term">string</sup>이다. 사용자의 이름, 주소, 이메일 등의 텍스트 정보를 처리하려면 문자열을 자유자재로 다룰 수 있어야 한다. 파이썬은 문자열을 매우 강력하고 편리하게 처리할 수 있는 기능을 제공하며, 이것이 파이썬이 텍스트 처리 분야에서 인기 있는 이유 중 하나이다.</p>
 <h3>문자열의 생성</h3>
-<p>문자열은 문자들의 나열로, 작은따옴표(<code>'</code>) 또는 큰따옴표(<code>"</code>)로 감싸서 생성한다. 어떤 따옴표를 사용하든 결과는 동일하지만, 시작과 끝에 같은 종류의 따옴표를 사용해야 한다. 여러 줄에 걸친 긴 문자열을 작성하고 싶을 때는 삼중 따옴표(<code>"'</code> 또는 <code>"""</code>)를 사용한다. 삼중 따옴표 안에서는 줄 바꿈이 그대로 유지된다.</p>
+<p>문자열은 문자들의 나열로, 작은따옴표(<code>'</code>) 또는 큰따옴표(<code>"</code>)로 감싸서 생성한다. 어떤 따옴표를 사용하든 결과는 동일하지만, 시작과 끝에 같은 종류의 따옴표를 사용해야 한다. 여러 줄에 걸친 긴 문자열을 작성하고 싶을 때는 삼중 따옴표(<code>'''</code> 또는 <code>"""</code>)를 사용한다. 삼중 따옴표 안에서는 줄 바꿈이 그대로 유지된다.</p>
 <pre class="pyout">&gt;&gt;&gt; s1 = 'Hello'
 &gt;&gt;&gt; s2 = "Python"
-&gt;&gt;&gt; s3 = "'You can write
+&gt;&gt;&gt; s3 = '''You can write
 ... multi-line
-... strings."'
+... strings.'''
 &gt;&gt;&gt; print(s3)
 You can write
 multi-line
@@ -443,10 +443,10 @@ print(s[6:])         # 'Python'</code></pre></li>
 <li><code>replace()</code> 메소드를 이용하여 문자열 <code>'I like Java'</code>를 <code>'I like Python'</code>으로 변경하여 출력하시오.</p>
 <p><pre class="line-numbers"><code class="language-python">s = 'I like Java'
 print(s.replace('Java', 'Python'))</code></pre></li>
-<li>성과 이름을 각각 변수에 저장한 뒤 f-string을 사용하여 "제 이름은 [성][이름]입니다." 형식으로 출력하시오.</p>
+<li>성과 이름을 각각 변수에 저장한 뒤 f-string을 사용하여 "My name is [성] [이름]." 형식으로 출력하시오.</p>
 <p><pre class="line-numbers"><code class="language-python">last_name  = 'Hong'
 first_name = 'Gildong'
-print(f'제 이름은 {last_name} {first_name}입니다.')</code></pre></li>
+print(f'My name is {last_name} {first_name}.')</code></pre></li>
 <li>두 점 \((x_1, y_1)\)과 \((x_2, y_2)\) 사이의 거리를 계산하여 출력하시오. 거리 공식 \(\sqrt{(x_2-x_1)^2 + (y_2-y_1)^2}\)를 그대로 옮기되, 제곱근은 거듭제곱 연산자 <code>** 0.5</code>를 사용한다.</p>
 <p><pre class="line-numbers"><code class="language-python">x1 = 1
 y1 = 2

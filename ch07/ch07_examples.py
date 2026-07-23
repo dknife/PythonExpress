@@ -33,7 +33,8 @@ import turtle as t # turtle -> t
 
 import datetime as dt
 start_time = dt.datetime.now()
-start_time.replace(month = 12, day = 25)
+xmas = start_time.replace(month=12, day=25)  # 반환값을 새 변수에 저장
+print(xmas)
 
 # ============================================================
 # 날짜와 시간 — datetime
@@ -44,7 +45,7 @@ import datetime
 
 # 현재 날짜와 시간
 print(datetime.datetime.now())
-# datetime.datetime(2025, 1, 2, 6, 57, 27, 904565)
+# 2025-01-02 06:57:27.904565
 
 # --- as 별칭으로 datetime 간결하게 쓰기 ---
 import datetime as dt # dt라는 별칭 사용
@@ -218,12 +219,12 @@ print(is_valid_email('not_an_email@'))
 
 from datetime import datetime
 now = datetime.now()
-print(f'오늘의 날짜 : {now.year}년 {now.month}월 {now.day}일')
-ampm = '오전' if now.hour < 12 else '오후'
+print(f"Today's date : {now.year}-{now.month}-{now.day}")
+ampm = 'AM' if now.hour < 12 else 'PM'
 h = now.hour if now.hour <= 12 else now.hour - 12
 if h == 0:
     h = 12
-print(f'현재시간 : {ampm} {h}시 {now.minute}분 {now.second}초')
+print(f'Current time : {ampm} {h}:{now.minute:02d}:{now.second:02d}')
 
 from datetime import date
 today = date.today()
@@ -231,23 +232,23 @@ bday  = date(today.year, 5, 15)   # 자신의 생일로 변경
 if bday < today:
     bday = date(today.year + 1, 5, 15)
 remaining = (bday - today).days
-print(f'내 생일까지 {remaining}일 남았습니다')
+print(f'{remaining} days left until my birthday.')
 
 from datetime import date
-y = int(input('출생 연도: '))
-m = int(input('출생 월: '))
-d = int(input('출생 일: '))
+y = int(input('Birth year : '))
+m = int(input('Birth month: '))
+d = int(input('Birth day  : '))
 born  = date(y, m, d)
 days  = (date.today() - born).days
-print(f'태어난 지 {days}일 지났습니다.')
-print(f'태어난 요일: {born.strftime("%A")}')
+print(f'{days} days have passed since you were born.')
+print(f'Day of the week you were born: {born.strftime("%A")}')
 
 from datetime import date, timedelta
-y = int(input('시작 연도: '))
-m = int(input('시작 월: '))
-d = int(input('시작 일: '))
+y = int(input('Start year : '))
+m = int(input('Start month: '))
+d = int(input('Start day  : '))
 start = date(y, m, d)
-print('100일 기념일 :', start + timedelta(days=100))
+print('100th-day anniversary :', start + timedelta(days=100))
 
 import re
 text = 'I bought 3 apples, 5 pears, 12 oranges for 8400 won.'
@@ -259,14 +260,14 @@ print('Found:', nums)
 print('Sum  :', total)
 
 import random
-choices = ['가위', '바위', '보']
-user = input('가위/바위/보: ').strip()
+choices = ['scissors', 'rock', 'paper']
+user = input('scissors/rock/paper: ').strip()
 cpu  = random.choice(choices)
-print(f'컴퓨터: {cpu}')
-win_pairs = {('가위','보'), ('바위','가위'), ('보','바위')}
+print(f'Computer: {cpu}')
+win_pairs = {('scissors','paper'), ('rock','scissors'), ('paper','rock')}
 if user == cpu:
-    print('비김')
+    print('Draw')
 elif (user, cpu) in win_pairs:
-    print('이김')
+    print('You win!')
 else:
-    print('짐')
+    print('You lose!')

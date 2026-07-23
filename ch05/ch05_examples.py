@@ -180,8 +180,9 @@ for n in nums:
 print(evens)         # [10, 42]
 
 colors = ['red', 'green', 'blue', 'yellow']
-print(colors[::-1])          # 슬라이싱 이용
-print(list(reversed(colors)))  # reversed() 함수 이용
+print(colors[::-1])   # 슬라이싱 이용
+colors.reverse()      # reverse() 메소드 이용 (원본이 뒤집힘)
+print(colors)
 
 def list_avg(lst):
     if len(lst) == 0:

@@ -206,14 +206,14 @@ b = int(input('b: '))
 try:
     print(f'{a} / {b} = {a / b}')
 except ZeroDivisionError:
-    print('0으로 나눌 수 없습니다')
+    print('Cannot divide by zero.')
 
 while True:
     try:
         n = int(input('Enter an integer: '))
         break
     except ValueError:
-        print('숫자만 입력하세요. 다시 시도하세요.')
+        print('Numbers only. Please try again.')
 print(f'{n} ** 2 = {n * n}')
 
 with open('message.txt', 'w', encoding='utf-8') as f:

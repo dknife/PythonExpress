@@ -161,9 +161,9 @@ print('Price range:', price_range)
 # 실습을 통한 6장 개념 정리
 # ============================================================
 
-fruits = {'사과': 1500, '바나나': 800, '포도': 3000}
+fruits = {'apple': 1500, 'banana': 800, 'grape': 3000}
 for name, price in fruits.items():
-    print(f'{name}: {price}원')
+    print(f'{name}: {price} won')
 
 s = 'hello world'
 count = {}

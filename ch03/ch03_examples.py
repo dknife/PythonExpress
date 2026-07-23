@@ -195,15 +195,15 @@ print()
 
 game_score = int(input('Enter game score: '))
 if game_score >= 1000:
-    print('고수입니다')
+    print('Expert level')
 else:
-    print('입문자입니다')
+    print('Beginner level')
 
 n = int(input('Enter an integer: '))
 if n % 2 == 0:
-    print('짝수입니다')
+    print('It is even.')
 else:
-    print('홀수입니다')
+    print('It is odd.')
 
 a = int(input('a: '))
 b = int(input('b: '))
