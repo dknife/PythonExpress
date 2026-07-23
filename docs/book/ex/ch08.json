@@ -61,11 +61,14 @@
           "문법 오류",
           "문법",
           "구문",
-          "syntax"
+          "syntax",
+          "신택스"
         ],
         [
           "예외",
-          "exception"
+          "exception",
+          "except",
+          "익셉션"
         ],
         [
           "실행",
