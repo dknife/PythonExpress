@@ -188,13 +188,13 @@ def clean_data(input_file, output_file):
     # CSV 파일로 저장
     fields = ['name', 'phone', 'email', 'city']
     with open(output_file, 'w', newline='',
-              encoding='utf-8-sig') as f:
+            encoding='utf-8-sig') as f:
         writer = csv.DictWriter(f, fieldnames=fields)
         writer.writeheader()
         writer.writerows(cleaned)
 
     print(f'Completed: {len(cleaned)} records saved '
-          f'to {output_file}')
+        f'to {output_file}')
     if errors:
         print(f'Warnings ({len(errors)} lines skipped):')
         for num, msg in errors:
@@ -398,7 +398,7 @@ sierpinski(t, 300, 5); turtle.done()
 
 def extract_lines(in_file, out_file, keyword):
     with open(in_file, 'r', encoding='utf-8') as fin, \
-         open(out_file, 'w', encoding='utf-8') as fout:
+            open(out_file, 'w', encoding='utf-8') as fout:
         for line in fin:
             if keyword in line:
                 fout.write(line)
@@ -408,11 +408,11 @@ extract_lines('log.txt', 'error_only.txt', 'ERROR')
 import json
 
 raw = '''[
-  {"name": "Alice", "score": 92},
-  {"name": "Bob",   "score": 75},
-  {"name": "Carol", "score": 88}
+    {"name": "Alice", "score": 92},
+    {"name": "Bob",   "score": 75},
+    {"name": "Carol", "score": 88}
 ]'''
 
 students = json.loads(raw)              # 문자열을 list[dict]로 변환
 top = [s for s in students if s['score'] >= 85]
-print(json.dumps(top, ensure_ascii=False, indent=2))
+print(json.dumps(top, ensure_ascii=False, indent=4))

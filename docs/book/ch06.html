@@ -349,7 +349,7 @@ print(list(person.items())) # (키, 값) 튜플의 리스트</code></pre>
 <p>네 가지 자료형을 활용한 종합 예제를 살펴보자. 이 예제에서는 딕셔너리로 과일 가격을 관리하고, 리스트로 과일 이름 목록을 만들고, 집합으로 할인 대상을 찾고, 튜플로 가격 범위를 저장한다. 하나의 프로그램 안에서 각 자료형이 자신의 강점에 맞는 역할을 담당하는 것을 확인할 수 있다.</p>
 <pre class="line-numbers"><code class="language-python"># 딕셔너리: 과일 가격
 fruits_dic = {'apple': 6000, 'melon': 3000,
-              'banana': 5000, 'orange': 4000}
+    'banana': 5000, 'orange': 4000}
 
 # 리스트: 모든 키를 리스트로
 fruit_names = list(fruits_dic.keys())
@@ -362,7 +362,7 @@ print('Discountable:', available_discount)
 
 # 튜플: 가격 범위 (불변)
 price_range = (min(fruits_dic.values()),
-               max(fruits_dic.values()))
+    max(fruits_dic.values()))
 print('Price range:', price_range)</code></pre>
 <pre class="termout">Fruit list: ['apple', 'melon', 'banana', 'orange']
 Discountable: {'apple', 'melon'}

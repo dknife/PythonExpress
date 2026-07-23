@@ -19,7 +19,7 @@ print(f'Mean: {s.mean():.1f}')
 # DataFrame: 2차원 표 형태 데이터
 data = {
     'name': ['Hong Gildong', 'Kim Cheolsu',
-             'Lee Younghee', 'Park Jimin'],
+        'Lee Younghee', 'Park Jimin'],
     'Korean': [85, 92, 78, 95],
     'English': [90, 88, 82, 91],
     'Math': [78, 95, 88, 87]
@@ -61,7 +61,7 @@ import numpy as np
 
 data = {
     'name': ['Hong Gildong', 'Kim Cheolsu', 'Lee Younghee',
-             'Park Jimin', 'Choi Suhyun'],
+        'Park Jimin', 'Choi Suhyun'],
     'year': [1, 2, 1, 3, 2],
     'Korean': [85, 92, np.nan, 95, 78],
     'English': [90, np.nan, 82, 91, 88],

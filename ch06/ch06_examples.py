@@ -141,7 +141,7 @@ print(list(person.items())) # (키, 값) 튜플의 리스트
 
 # 딕셔너리: 과일 가격
 fruits_dic = {'apple': 6000, 'melon': 3000,
-              'banana': 5000, 'orange': 4000}
+    'banana': 5000, 'orange': 4000}
 
 # 리스트: 모든 키를 리스트로
 fruit_names = list(fruits_dic.keys())
@@ -154,7 +154,7 @@ print('Discountable:', available_discount)
 
 # 튜플: 가격 범위 (불변)
 price_range = (min(fruits_dic.values()),
-               max(fruits_dic.values()))
+    max(fruits_dic.values()))
 print('Price range:', price_range)
 
 # ============================================================
