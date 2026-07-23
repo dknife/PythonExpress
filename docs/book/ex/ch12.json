@@ -1,0 +1,118 @@
+{
+  "chapter": 12,
+  "problems": [
+    {
+      "n": 1,
+      "type": "code",
+      "tests": [
+        {
+          "stdin": "",
+          "expected": "      city  population(10k)  area(km2)\n0    Seoul              970        605\n1    Busan              340        770\n2    Daegu              245        884\n3  Incheon              295       1063\n4  Gwangju              150        501\n       population(10k)    area(km2)\ncount         5.000000     5.000000\nmean        400.000000   764.600000\nstd         326.362528   222.646132\nmin         150.000000   501.000000\n25%         245.000000   605.000000\n50%         295.000000   770.000000\n75%         340.000000   884.000000\nmax         970.000000  1063.000000"
+        }
+      ]
+    },
+    {
+      "n": 2,
+      "type": "code",
+      "tests": [
+        {
+          "stdin": "",
+          "expected": "      city  population(10k)  area(km2)      인구밀도\n0    Seoul              970        605  1.603306\n1    Busan              340        770  0.441558\n4  Gwangju              150        501  0.299401\n3  Incheon              295       1063  0.277516\n2    Daegu              245        884  0.277149"
+        }
+      ]
+    },
+    {
+      "n": 3,
+      "type": "keyword",
+      "keywords": [
+        [
+          "결측값",
+          "결측치",
+          "nan",
+          "missing"
+        ],
+        [
+          "삭제",
+          "제거",
+          "dropna"
+        ],
+        [
+          "평균",
+          "대체",
+          "fillna",
+          "mean"
+        ],
+        [
+          "행 개수",
+          "행 수",
+          "데이터 개수",
+          "크기"
+        ]
+      ],
+      "pass_min": 3
+    },
+    {
+      "n": 5,
+      "type": "code",
+      "tests": [
+        {
+          "stdin": "",
+          "expected": "area(km2)\nTrue    400.0\nName: population(10k), dtype: float64"
+        }
+      ]
+    },
+    {
+      "n": 6,
+      "type": "keyword",
+      "keywords": [
+        [
+          "수집",
+          "read_csv"
+        ],
+        [
+          "정제",
+          "전처리",
+          "dropna",
+          "fillna"
+        ],
+        [
+          "시각화",
+          "그래프",
+          "plot",
+          "matplotlib"
+        ],
+        [
+          "의사결정",
+          "결정",
+          "예측"
+        ]
+      ],
+      "pass_min": 3
+    },
+    {
+      "n": 12,
+      "type": "keyword",
+      "keywords": [
+        [
+          "상관계수",
+          "상관 계수",
+          "corr",
+          "corrcoef"
+        ],
+        [
+          "음의 상관",
+          "음수",
+          "약한",
+          "-0.26"
+        ],
+        [
+          "상위",
+          "정렬",
+          "sort_values",
+          "nlargest"
+        ]
+      ],
+      "pass_min": 2
+    }
+  ]
+}

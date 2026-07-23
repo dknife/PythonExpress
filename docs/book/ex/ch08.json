@@ -1,0 +1,132 @@
+{
+  "chapter": 8,
+  "problems": [
+    {
+      "n": 1,
+      "type": "short",
+      "answers": [
+        "zerodivisionerror",
+        "valueerror",
+        "indexerror",
+        "typeerror",
+        "nameerror"
+      ],
+      "match": "set"
+    },
+    {
+      "n": 2,
+      "type": "code",
+      "tests": [
+        {
+          "stdin": "10\n4\n",
+          "expected": "Enter first number: 10\nEnter second number: 4\nResult: 2.5\n프로그램 종료"
+        },
+        {
+          "stdin": "7\n0\n",
+          "expected": "Enter first number: 7\nEnter second number: 0\nCannot divide by zero.\n프로그램 종료"
+        },
+        {
+          "stdin": "abc\n",
+          "expected": "Enter first number: abc\nInvalid input.\n프로그램 종료"
+        }
+      ]
+    },
+    {
+      "n": 3,
+      "type": "code",
+      "tests": [
+        {
+          "stdin": "Hong\n85\n90\n78\nKim\n92\n88\n95\n끝\n",
+          "expected": "Name: Hong\nKorean: 85\nEnglish: 90\nMath: 78\nName: Kim\nKorean: 92\nEnglish: 88\nMath: 95\nName: 끝\nstudents.txt saved."
+        }
+      ]
+    },
+    {
+      "n": 5,
+      "type": "code",
+      "tests": [
+        {
+          "stdin": "1\nhello python\n1\nfile handling\n2\n3\n",
+          "expected": "1) Write 2) Read 3) Exit: 1\nMemo: hello python\n1) Write 2) Read 3) Exit: 1\nMemo: file handling\n1) Write 2) Read 3) Exit: 2\nhello python\nfile handling\n1) Write 2) Read 3) Exit: 3"
+        }
+      ]
+    },
+    {
+      "n": 6,
+      "type": "keyword",
+      "keywords": [
+        [
+          "구문 오류",
+          "구문오류",
+          "문법 오류",
+          "문법",
+          "구문",
+          "syntax"
+        ],
+        [
+          "예외",
+          "exception"
+        ],
+        [
+          "실행",
+          "런타임",
+          "runtime"
+        ]
+      ],
+      "pass_min": 2
+    },
+    {
+      "n": 7,
+      "type": "code",
+      "tests": [
+        {
+          "stdin": "10\n",
+          "expected": "Enter a positive integer: 10\nYou entered: 10"
+        },
+        {
+          "stdin": "-5\n",
+          "expected": "Enter a positive integer: -5\nNegative number is not allowed."
+        }
+      ]
+    },
+    {
+      "n": 8,
+      "type": "code",
+      "tests": [
+        {
+          "stdin": "7\n",
+          "expected": "Enter a positive integer: 7\nYou entered: 7"
+        },
+        {
+          "stdin": "-3\n",
+          "expected": "Enter a positive integer: -3\nNegative number is not allowed."
+        }
+      ]
+    },
+    {
+      "n": 10,
+      "type": "code",
+      "tests": [
+        {
+          "stdin": "",
+          "expected": "Hong: 84.33\nKim: 91.67\nLee: 79.33"
+        }
+      ]
+    },
+    {
+      "n": 11,
+      "type": "output",
+      "expected": "A\nD"
+    },
+    {
+      "n": 12,
+      "type": "code",
+      "tests": [
+        {
+          "stdin": "Today was a good day\nI studied Python\nquit\n",
+          "expected": "Enter a sentence: Today was a good day\nEnter a sentence: I studied Python\nEnter a sentence: quit\nToday was a good day\nI studied Python\nTotal lines: 2"
+        }
+      ]
+    }
+  ]
+}

@@ -529,27 +529,27 @@ print(f'5! = {fact}')           # 120</code></pre></li>
 <li><code>abs()</code>, <code>max()</code>, <code>min()</code>, <code>sum()</code>, <code>len()</code>, <code>round()</code>, <code>sorted()</code>, <code>type()</code> 등의 <strong>내장 함수</strong>를 적극 활용하면 직접 구현해야 할 코드의 양을 크게 줄일 수 있다.</li>
 </ul></div>
 <div class="box exercise" id="exercises"><div class="box-head">4장 연습문제</div><ol>
-<li><span class="diff"><span class="d1">★</span></span>  두 개의 매개변수 <code>a</code>, <code>b</code>를 받아서 두 수의 곱을 반환하는 함수 <code>multiply(a, b)</code>를 작성하시오.
+<li class="ex-item" data-ex="1"><span class="diff"><span class="d1">★</span></span>  두 개의 매개변수 <code>a</code>, <code>b</code>를 받아서 두 수의 곱을 반환하는 함수 <code>multiply(a, b)</code>를 작성하시오.
 <code>multiply(4, 5)</code>를 호출한 결과가 다음과 같이 출력되도록 하여라.
 <pre class="termout">4 * 5 = 20</pre></li>
-<li><span class="diff"><span class="d2">★★</span></span>  원의 반지름 <code>radius</code>를 매개변수로 받아 원의 면적과 둘레를 동시에 반환하는 함수 <code>circle_info(radius)</code>를 작성하시오. (\(\pi = 3.14\)로 계산)
+<li class="ex-item" data-ex="2"><span class="diff"><span class="d2">★★</span></span>  원의 반지름 <code>radius</code>를 매개변수로 받아 원의 면적과 둘레를 동시에 반환하는 함수 <code>circle_info(radius)</code>를 작성하시오. (\(\pi = 3.14\)로 계산)
 <code>circle_info(10)</code>을 호출한 결과가 다음과 같이 출력되도록 하여라.
 <pre class="termout">Area of circle with radius 10 is 314.0, circumference is 62.8</pre></li>
-<li><span class="diff"><span class="d2">★★</span></span>  세 개의 정수를 매개변수로 받아 최댓값과 최솟값을 튜플로 반환하는 함수 <code>get_max_min(a, b, c)</code>를 작성하시오.
+<li class="ex-item" data-ex="3"><span class="diff"><span class="d2">★★</span></span>  세 개의 정수를 매개변수로 받아 최댓값과 최솟값을 튜플로 반환하는 함수 <code>get_max_min(a, b, c)</code>를 작성하시오.
 <code>get_max_min(3, 7, 1)</code> 호출 시 <code>Max: 7, Min: 1</code>이 출력되도록 하시오.</li>
-<li><span class="diff"><span class="d2">★★</span></span>  전역변수 <code>x = 10</code>이 있을 때, 함수 내부에서 <code>x = 20</code>으로 할당하면 전역변수가 변경되는지 설명하시오. <code>global</code> 키워드를 사용하면 어떻게 달라지는지 코드 예제를 들어 설명하시오.</li>
-<li><span class="diff"><span class="d2">★★</span></span>  기본값 매개변수를 활용하여, 인사말을 출력하는 함수 <code>greet(name, msg='Hello')</code>를 작성하시오.
+<li class="ex-item" data-ex="4"><span class="diff"><span class="d2">★★</span></span>  전역변수 <code>x = 10</code>이 있을 때, 함수 내부에서 <code>x = 20</code>으로 할당하면 전역변수가 변경되는지 설명하시오. <code>global</code> 키워드를 사용하면 어떻게 달라지는지 코드 예제를 들어 설명하시오.</li>
+<li class="ex-item" data-ex="5"><span class="diff"><span class="d2">★★</span></span>  기본값 매개변수를 활용하여, 인사말을 출력하는 함수 <code>greet(name, msg='Hello')</code>를 작성하시오.
 <code>greet('Alice')</code>는 <code>Hello, Alice!</code>를, <code>greet('Bob', 'Hi')</code>는 <code>Hi, Bob!</code>을 출력하도록 하시오.</li>
-<li><span class="diff"><span class="d2">★★</span></span>  세 개의 정수를 매개변수로 받아 최솟값, 최댓값, 평균을 반환하는 함수 <code>statistics(a, b, c)</code>를 작성하시오.
+<li class="ex-item" data-ex="6"><span class="diff"><span class="d2">★★</span></span>  세 개의 정수를 매개변수로 받아 최솟값, 최댓값, 평균을 반환하는 함수 <code>statistics(a, b, c)</code>를 작성하시오.
 <code>statistics(10, 30, 20)</code> 호출 시 다음과 같이 출력되도록 하시오.
 <pre class="termout">Min: 10, Max: 30, Avg: 20.0</pre></li>
-<li><span class="diff"><span class="d3">★★★</span></span>  정수 \(n\)을 매개변수로 받아 <strong>피보나치 수열</strong>의 (n)번째 항을 재귀적으로 계산하여 반환하는 함수 <code>fib(n)</code>을 작성하시오.
+<li class="ex-item" data-ex="7"><span class="diff"><span class="d3">★★★</span></span>  정수 \(n\)을 매개변수로 받아 <strong>피보나치 수열</strong>의 (n)번째 항을 재귀적으로 계산하여 반환하는 함수 <code>fib(n)</code>을 작성하시오.
 피보나치 수열은 <code>fib(0) = 0</code>, <code>fib(1) = 1</code>이며 (n ≥ 2)일 때 <code>fib(n) = fib(n-1) + fib(n-2)</code>로 정의된다. <code>fib(10)</code>의 결과가 (55)가 되도록 하시오.
 또한 이 함수를 (n = 30, 40)과 같이 큰 입력에 대해 호출했을 때 어떤 문제가 발생하는지 관찰하고, 그 원인이 무엇인지 분석하여 설명하시오 (어떤 부분 계산이 반복되는지, 호출 횟수가 (n)에 따라 어떻게 늘어나는지).</li>
-<li><span class="diff"><span class="d2">★★</span></span>  <code>input()</code> 함수를 사용하여 섭씨 온도를 입력받고, 화씨 온도로 변환하여 출력하는 프로그램을 작성하시오. 변환 공식은 \(F = C \times 9/5 + 32\)이다. 출력은 소수점 1자리까지 표시하시오.
+<li class="ex-item" data-ex="8"><span class="diff"><span class="d2">★★</span></span>  <code>input()</code> 함수를 사용하여 섭씨 온도를 입력받고, 화씨 온도로 변환하여 출력하는 프로그램을 작성하시오. 변환 공식은 \(F = C \times 9/5 + 32\)이다. 출력은 소수점 1자리까지 표시하시오.
 <pre class="termout">Enter Celsius: 36.5
 Fahrenheit: 97.7</pre></li>
-<li><span class="diff"><span class="d3">★★★</span></span>  다음 코드의 출력 결과를 쓰시오.
+<li class="ex-item" data-ex="9"><span class="diff"><span class="d3">★★★</span></span>  다음 코드의 출력 결과를 쓰시오.
 <pre class="line-numbers"><code class="language-python">def outer(x):
     def inner(y):
         return x + y
@@ -557,16 +557,16 @@ Fahrenheit: 97.7</pre></li>
 
 print(outer(5))
 print(outer(20))</code></pre></li>
-<li><span class="diff"><span class="d3">★★★</span></span>  f-string을 활용하여 1부터 5까지의 정수에 대해 다음과 같이 정렬된 표를 출력하는 프로그램을 작성하시오.
+<li class="ex-item" data-ex="10"><span class="diff"><span class="d3">★★★</span></span>  f-string을 활용하여 1부터 5까지의 정수에 대해 다음과 같이 정렬된 표를 출력하는 프로그램을 작성하시오.
 <pre class="pyout">  1 |   1 |     1
   2 |   4 |     8
   3 |   9 |    27
   4 |  16 |    64
   5 |  25 |   125</pre></li>
-<li><span class="diff"><span class="d3">★★★</span></span>  가변 인자(<code>*args</code>)를 사용하여 전달받은 모든 수의 합과 평균을 출력하는 함수 <code>calc_stats()</code>를 작성하시오.
+<li class="ex-item" data-ex="11"><span class="diff"><span class="d3">★★★</span></span>  가변 인자(<code>*args</code>)를 사용하여 전달받은 모든 수의 합과 평균을 출력하는 함수 <code>calc_stats()</code>를 작성하시오.
 <code>calc_stats(10, 20, 30, 40)</code>을 호출하면 다음과 같이 출력되도록 하시오.
 <pre class="termout">Sum: 100, Average: 25.0</pre></li>
-<li><span class="diff"><span class="d2">★★</span></span>  점수를 매개변수로 받아 학점을 반환하는 함수 <code>grade(score)</code>를 작성하시오.
+<li class="ex-item" data-ex="12"><span class="diff"><span class="d2">★★</span></span>  점수를 매개변수로 받아 학점을 반환하는 함수 <code>grade(score)</code>를 작성하시오.
 점수가 90 이상이면 <code>'A'</code>, 80 이상 90 미만이면 <code>'B'</code>, 70 이상 80 미만이면 <code>'C'</code>, 60 이상 70 미만이면 <code>'D'</code>, 그 외에는 <code>'F'</code>를 반환한다.
 사용자로부터 점수를 입력받아 학점을 출력하는 코드도 함께 작성하시오.
 <pre class="termout">Enter score: 87
@@ -579,5 +579,6 @@ Grade: B</pre></li>
 <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
 <script src="book.js"></script>
+<script src="grader.js"></script>
 </body>
 </html>

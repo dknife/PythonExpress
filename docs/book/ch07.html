@@ -631,34 +631,34 @@ else:
 <li><code>re</code> 모듈의 <strong>정규표현식</strong>은 문자열의 패턴을 기호로 기술하는 작은 언어이다. <code>re.search()</code>, <code>re.findall()</code>, <code>re.sub()</code>로 패턴 검색·추출·치환을 수행하며, <code> d</code>, <code> w</code>, <code>*</code>, <code>+</code>, <code>?</code>, <code>{n}</code> 등 핵심 메타문자 몇 개로 다양한 패턴을 표현할 수 있다.</li>
 </ul></div>
 <div class="box exercise" id="exercises"><div class="box-head">7장 연습문제</div><ol>
-<li><span class="diff"><span class="d2">★★</span></span>  <code>datetime</code> 모듈을 사용하여 오늘의 날짜와 현재 시간을 다음과 같은 형식으로 출력하는 프로그램을 작성하시오.
+<li class="ex-item" data-ex="1"><span class="diff"><span class="d2">★★</span></span>  <code>datetime</code> 모듈을 사용하여 오늘의 날짜와 현재 시간을 다음과 같은 형식으로 출력하는 프로그램을 작성하시오.
 <code>hour</code> 값이 12 미만이면 "오전", 12 이상이면 "오후"로 표시한다.
 <p><pre class="pyout">Today's date: April 6, 2026
 Current time: PM 2:30:15</pre></li>
-<li><span class="diff"><span class="d2">★★</span></span>  <code>datetime</code> 모듈의 <code>timedelta</code> 클래스를 사용하여, 사용자로부터 연도, 월, 일을 입력받아
+<li class="ex-item" data-ex="2"><span class="diff"><span class="d2">★★</span></span>  <code>datetime</code> 모듈의 <code>timedelta</code> 클래스를 사용하여, 사용자로부터 연도, 월, 일을 입력받아
 그 날짜로부터 1000일 후의 날짜를 출력하는 프로그램을 작성하시오.</p>
 <p><pre class="pyout">Enter year: 2026
 Enter month: 4
 Enter day: 6
-Date after 1000 days: January 1, 2029</pre></li>
-<li><span class="diff"><span class="d2">★★</span></span>  <code>math</code> 모듈을 사용하여 사용자로부터 반지름을 입력받고, 원의 넓이와 둘레를 계산하여 출력하는 프로그램을 작성하시오.
+Date after 1000 days: December 31, 2028</pre></li>
+<li class="ex-item" data-ex="3"><span class="diff"><span class="d2">★★</span></span>  <code>math</code> 모듈을 사용하여 사용자로부터 반지름을 입력받고, 원의 넓이와 둘레를 계산하여 출력하는 프로그램을 작성하시오.
 원의 넓이는 \(\pi r^2\), 둘레는 \(2\pi r\)이다. 결과는 소수점 둘째 자리까지 출력한다.</li>
-<li><span class="diff"><span class="d3">★★★</span></span>  <code>random</code> 모듈을 사용하여 "숫자 맞추기 게임"을 작성하시오. 1부터 100 사이의 임의의 수를 생성한 후,
+<li class="ex-item" data-ex="4"><span class="diff"><span class="d3">★★★</span></span>  <code>random</code> 모듈을 사용하여 "숫자 맞추기 게임"을 작성하시오. 1부터 100 사이의 임의의 수를 생성한 후,
 사용자가 숫자를 입력하면 "더 큽니다" 또는 "더 작습니다"라는 힌트를 주고,
 정답을 맞추면 시도 횟수와 함께 "정답입니다!"를 출력한다.</li>
-<li><span class="diff"><span class="d3">★★★</span></span>  다음 기능을 가진 프로그램을 작성하시오.
+<li class="ex-item" data-ex="5"><span class="diff"><span class="d3">★★★</span></span>  다음 기능을 가진 프로그램을 작성하시오.
 <code>random</code> 모듈로 가위(1), 바위(2), 보(3) 중 하나를 컴퓨터가 선택하고,
 사용자로부터 입력을 받아 승패를 판정하는 가위바위보 게임이다.
 3판 2선승제로 구현한다.</li>
-<li><span class="diff"><span class="d1">★</span></span>  <code>math</code> 모듈의 <code>sqrt()</code>, <code>pow()</code>, <code>ceil()</code>, <code>floor()</code> 함수를 각각 사용하여 다음을 계산하시오.
+<li class="ex-item" data-ex="6"><span class="diff"><span class="d1">★</span></span>  <code>math</code> 모듈의 <code>sqrt()</code>, <code>pow()</code>, <code>ceil()</code>, <code>floor()</code> 함수를 각각 사용하여 다음을 계산하시오.
 <ol type="a">
 <li>\(\sqrt{144}\)</li>
 <li>\(2^{16}\)</li>
 <li>\(3.2\)의 올림 값</li>
 <li>\(7.8\)의 내림 값</li>
 </ol></li>
-<li><span class="diff"><span class="d2">★★</span></span>  <code>random</code> 모듈의 <code>sample()</code> 함수를 이용하여 1부터 45까지의 수 중에서 중복 없이 6개의 수를 뽑아 오름차순으로 출력하는 로또 번호 생성기를 작성하시오.</li>
-<li><span class="diff"><span class="d2">★★</span></span>  다음 코드의 출력 결과를 쓰시오.
+<li class="ex-item" data-ex="7"><span class="diff"><span class="d2">★★</span></span>  <code>random</code> 모듈의 <code>sample()</code> 함수를 이용하여 1부터 45까지의 수 중에서 중복 없이 6개의 수를 뽑아 오름차순으로 출력하는 로또 번호 생성기를 작성하시오.</li>
+<li class="ex-item" data-ex="8"><span class="diff"><span class="d2">★★</span></span>  다음 코드의 출력 결과를 쓰시오.
 <pre class="line-numbers"><code class="language-python">from datetime import date, timedelta
 
 d1 = date(2026, 1, 1)
@@ -666,17 +666,17 @@ d2 = date(2026, 12, 31)
 diff = d2 - d1
 print(diff.days)
 print(d1 + timedelta(days=100))</code></pre></li>
-<li><span class="diff"><span class="d1">★</span></span>  <code>pip</code> 명령어를 이용하여 다음 작업을 수행하는 명령을 각각 쓰시오.
+<li class="ex-item" data-ex="9"><span class="diff"><span class="d1">★</span></span>  <code>pip</code> 명령어를 이용하여 다음 작업을 수행하는 명령을 각각 쓰시오.
 <ol type="a">
 <li><code>requests</code> 패키지를 설치하는 명령</li>
 <li>현재 설치된 모든 패키지 목록을 확인하는 명령</li>
 <li><code>numpy</code> 패키지를 최신 버전으로 업그레이드하는 명령</li>
 </ol></li>
-<li><span class="diff"><span class="d3">★★★</span></span>  <code>datetime</code> 모듈을 이용하여 사용자의 생년월일을 입력받고, 오늘까지 살아온 일수와 다음 생일까지 남은 일수를 출력하는 프로그램을 작성하시오.
+<li class="ex-item" data-ex="10"><span class="diff"><span class="d3">★★★</span></span>  <code>datetime</code> 모듈을 이용하여 사용자의 생년월일을 입력받고, 오늘까지 살아온 일수와 다음 생일까지 남은 일수를 출력하는 프로그램을 작성하시오.
 (힌트: <code>date.today()</code>와 <code>timedelta</code> 활용)</li>
-<li><span class="diff"><span class="d2">★★</span></span>  <code>random.shuffle()</code> 함수를 이용하여 리스트 <code>['A', 'B', 'C', 'D', 'E']</code>의 원소를 무작위로 섞은 뒤 출력하시오.
+<li class="ex-item" data-ex="11"><span class="diff"><span class="d2">★★</span></span>  <code>random.shuffle()</code> 함수를 이용하여 리스트 <code>['A', 'B', 'C', 'D', 'E']</code>의 원소를 무작위로 섞은 뒤 출력하시오.
 이 기능을 활용하여 5명의 발표 순서를 무작위로 정하는 프로그램을 작성하시오.</li>
-<li><span class="diff"><span class="d1">★</span></span>  <code>import math as m</code>과 <code>from math import sqrt</code>의 차이를 설명하고, 각각의 방식으로 \(\sqrt{2}\)를 계산하는 코드를 작성하시오.</li>
+<li class="ex-item" data-ex="12"><span class="diff"><span class="d1">★</span></span>  <code>import math as m</code>과 <code>from math import sqrt</code>의 차이를 설명하고, 각각의 방식으로 \(\sqrt{2}\)를 계산하는 코드를 작성하시오.</li>
 </ol></p></div>
 <div class="pager-row"><a class="pager prev" href="ch06.html">&larr; 6장</a><a class="pager next" href="ch08.html">8장 &rarr;</a></div>
 </main>
@@ -685,5 +685,6 @@ print(d1 + timedelta(days=100))</code></pre></li>
 <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
 <script src="book.js"></script>
+<script src="grader.js"></script>
 </body>
 </html>

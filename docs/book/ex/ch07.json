@@ -1,0 +1,68 @@
+{
+  "chapter": 7,
+  "problems": [
+    {
+      "n": 2,
+      "type": "code",
+      "tests": [
+        {
+          "stdin": "2026\n4\n6\n",
+          "expected": "Enter year: 2026\nEnter month: 4\nEnter day: 6\nDate after 1000 days: December 31, 2028"
+        },
+        {
+          "stdin": "2025\n1\n1\n",
+          "expected": "Enter year: 2025\nEnter month: 1\nEnter day: 1\nDate after 1000 days: September 28, 2027"
+        }
+      ]
+    },
+    {
+      "n": 3,
+      "type": "code",
+      "tests": [
+        {
+          "stdin": "5\n",
+          "expected": "Enter radius: 5\nArea: 78.54\nCircumference: 31.42"
+        },
+        {
+          "stdin": "2.5\n",
+          "expected": "Enter radius: 2.5\nArea: 19.63\nCircumference: 15.71"
+        }
+      ]
+    },
+    {
+      "n": 6,
+      "type": "code",
+      "tests": [
+        {
+          "stdin": "",
+          "expected": "12.0\n65536.0\n4\n7"
+        }
+      ]
+    },
+    {
+      "n": 8,
+      "type": "output",
+      "expected": "364\n2026-04-11"
+    },
+    {
+      "n": 9,
+      "type": "short",
+      "answers": [
+        "pip install requests",
+        "pip list",
+        "pip install --upgrade numpy"
+      ],
+      "match": "set"
+    },
+    {
+      "n": 12,
+      "type": "keyword",
+      "keywords": [
+        ["별칭", "alias", "as m"],
+        ["모듈 이름", "m.sqrt"],
+        ["직접", "함수 이름만", "sqrt(2)"]
+      ],
+      "pass_min": 2
+    }
+  ]
+}

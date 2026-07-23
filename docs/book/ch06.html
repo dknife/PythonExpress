@@ -428,18 +428,18 @@ print(sorted(set(a) | set(b)))   # [1, 2, 3, 4, 5, 6, 7]</code></pre></li>
 <li><code>list()</code>, <code>tuple()</code>, <code>set()</code>, <code>dict()</code> 함수로 자료형 간 변환이 가능하다.</li>
 </ul></div>
 <div class="box exercise" id="exercises"><div class="box-head">6장 연습문제</div><ol>
-<li><span class="diff"><span class="d2">★★</span></span>  다음과 같은 키-값의 항목을 가지는 <code>capital_dic</code> 딕셔너리를 생성하고, <code>for</code> 문을 사용하여 모든 항목을 출력하시오.
+<li class="ex-item" data-ex="1"><span class="diff"><span class="d2">★★</span></span>  다음과 같은 키-값의 항목을 가지는 <code>capital_dic</code> 딕셔너리를 생성하고, <code>for</code> 문을 사용하여 모든 항목을 출력하시오.
 <div class="center"><div class="table-wrap"><table><tr><th><strong>키(key)</strong></th><th><strong>값(value)</strong></th></tr><tr><td><code>'Korea'</code></td><td><code>'Seoul'</code></td></tr><tr><td><code>'China'</code></td><td><code>'Beijing'</code></td></tr><tr><td><code>'USA'</code></td><td><code>'Washington DC'</code></td></tr></table></div></div>
 <pre class="termout">The capital of Korea is Seoul.
 The capital of China is Beijing.
 The capital of USA is Washington DC.</pre></li>
-<li><span class="diff"><span class="d2">★★</span></span>  튜플 <code>t = (10, 20, 30, 40, 50)</code>에 대해 다음을 수행하시오.
+<li class="ex-item" data-ex="2"><span class="diff"><span class="d2">★★</span></span>  튜플 <code>t = (10, 20, 30, 40, 50)</code>에 대해 다음을 수행하시오.
 <ol type="a">
 <li>첫 번째 원소와 마지막 원소를 출력하시오.</li>
 <li>튜플의 원소를 리스트로 변환한 후, 원소 <code>60</code>을 추가하고 다시 튜플로 변환하여 출력하시오.</li>
 <li><code>a, b, c, d, e = t</code>와 같이 언패킹하여 <code>c</code>의 값을 출력하시오.</li>
 </ol></li>
-<li><span class="diff"><span class="d2">★★</span></span>  다음 두 리스트가 주어졌을 때, 집합 연산을 활용하여 요구 사항을 수행하시오.
+<li class="ex-item" data-ex="3"><span class="diff"><span class="d2">★★</span></span>  다음 두 리스트가 주어졌을 때, 집합 연산을 활용하여 요구 사항을 수행하시오.
 <pre class="pyout">class_a = ['Alice', 'Bob', 'Charlie', 'Diana', 'Eric']
 class_b = ['Bob', 'Diana', 'Frank', 'Grace', 'Charlie']</pre>
 <ol type="a">
@@ -447,21 +447,21 @@ class_b = ['Bob', 'Diana', 'Frank', 'Grace', 'Charlie']</pre>
 <li>두 반을 합친 전체 학생 명단 (합집합)</li>
 <li>A반에만 있는 학생 (차집합)</li>
 </ol></li>
-<li><span class="diff"><span class="d3">★★★</span></span>  과일의 이름을 키, 가격을 값으로 가지는 딕셔너리를 생성하시오.
+<li class="ex-item" data-ex="4"><span class="diff"><span class="d3">★★★</span></span>  과일의 이름을 키, 가격을 값으로 가지는 딕셔너리를 생성하시오.
 과일은 apple(5000원), banana(4000원), grape(5300원), melon(6500원)이다.
 이 딕셔너리에서 가장 비싼 과일의 이름과 가격을 출력하시오.
 (힌트: <code>max()</code> 함수와 <code>values()</code> 메소드 활용)
 <pre class="termout">Most expensive fruit: melon (6500 won)</pre></li>
-<li><span class="diff"><span class="d2">★★</span></span>  다음 코드의 실행 결과를 예측하시오.
+<li class="ex-item" data-ex="5"><span class="diff"><span class="d2">★★</span></span>  다음 코드의 실행 결과를 예측하시오.
 <p><pre class="line-numbers"><code class="language-python">data = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3]
 unique_sorted = sorted(set(data))
 result = tuple(unique_sorted)
 print(result)
 print(type(result))
 print(len(result))</code></pre></li>
-<li><span class="diff"><span class="d2">★★</span></span>  딕셔너리 축약 표현(dictionary comprehension)을 사용하여 1부터 5까지의 정수를 키로, 각 정수의 세제곱을 값으로 가지는 딕셔너리를 생성하여 출력하시오.
+<li class="ex-item" data-ex="6"><span class="diff"><span class="d2">★★</span></span>  딕셔너리 축약 표현(dictionary comprehension)을 사용하여 1부터 5까지의 정수를 키로, 각 정수의 세제곱을 값으로 가지는 딕셔너리를 생성하여 출력하시오.
 <pre class="pyout">{1: 1, 2: 8, 3: 27, 4: 64, 5: 125}</pre></li>
-<li><span class="diff"><span class="d3">★★★</span></span>  다음과 같은 중첩 딕셔너리가 주어졌을 때, 각 학생의 이름과 평균 점수를 출력하는 프로그램을 작성하시오.
+<li class="ex-item" data-ex="7"><span class="diff"><span class="d3">★★★</span></span>  다음과 같은 중첩 딕셔너리가 주어졌을 때, 각 학생의 이름과 평균 점수를 출력하는 프로그램을 작성하시오.
 <pre class="line-numbers"><code class="language-python">students = {
     'Hong': {'kor': 90, 'eng': 85, 'math': 78},
     'Kim': {'kor': 88, 'eng': 92, 'math': 95},
@@ -470,7 +470,7 @@ print(len(result))</code></pre></li>
 <pre class="termout">Hong: 84.3
 Kim: 91.7
 Lee: 80.0</pre></li>
-<li><span class="diff"><span class="d2">★★</span></span>  집합의 메소드를 이용하여 다음을 수행하시오.
+<li class="ex-item" data-ex="8"><span class="diff"><span class="d2">★★</span></span>  집합의 메소드를 이용하여 다음을 수행하시오.
 <ol type="a">
 <li>빈 집합을 만들고 <code>add()</code>로 10, 20, 30, 20을 추가한 뒤 결과를 출력하시오.</li>
 <li><code>discard()</code>와 <code>remove()</code>의 차이를 설명하시오.</li>
@@ -484,5 +484,6 @@ Lee: 80.0</pre></li>
 <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
 <script src="book.js"></script>
+<script src="grader.js"></script>
 </body>
 </html>

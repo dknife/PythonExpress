@@ -1,0 +1,16 @@
+{
+ "chapter": 10,
+ "problems": [
+  {
+   "n": 8,
+   "type": "keyword",
+   "keywords": [
+    ["딕셔너리", "json", "키"],
+    ["문자열", "파싱", "csv", "split"],
+    ["재귀", "turtle", "자기 자신"],
+    ["flask", "웹", "라우트", "서버"]
+   ],
+   "pass_min": 3
+  }
+ ]
+}

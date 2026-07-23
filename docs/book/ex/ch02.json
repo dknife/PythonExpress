@@ -1,0 +1,88 @@
+{
+  "chapter": 2,
+  "problems": [
+    {
+      "n": 1,
+      "type": "output",
+      "expected": "13\n3.3333333333333335\n3\n1\n1000"
+    },
+    {
+      "n": 2,
+      "type": "code",
+      "tests": [
+        {
+          "stdin": "Hong Gildong\n20\n",
+          "expected": "Enter your name: Hong Gildong\nEnter your age: 20\nHong Gildong is 20 years old."
+        },
+        {
+          "stdin": "Alice\n25\n",
+          "expected": "Enter your name: Alice\nEnter your age: 25\nAlice is 25 years old."
+        }
+      ]
+    },
+    {
+      "n": 3,
+      "type": "code",
+      "tests": [
+        {
+          "stdin": "5\n",
+          "expected": "Enter the radius: 5\nArea of circle: 78.5\nCircumference of circle: 31.400000000000002"
+        },
+        {
+          "stdin": "3\n",
+          "expected": "Enter the radius: 3\nArea of circle: 28.259999999999998\nCircumference of circle: 18.84"
+        }
+      ]
+    },
+    {
+      "n": 4,
+      "type": "short",
+      "answers": [
+        "b",
+        "c",
+        "e"
+      ],
+      "match": "set"
+    },
+    {
+      "n": 5,
+      "type": "output",
+      "expected": "H\nn\nPython\nHELLO PYTHON\nHello World"
+    },
+    {
+      "n": 6,
+      "type": "code",
+      "tests": [
+        {
+          "stdin": "",
+          "expected": "Alice's score is 95.68"
+        }
+      ]
+    },
+    {
+      "n": 7,
+      "type": "output",
+      "expected": "<class 'int'>\n<class 'float'>\n<class 'str'>\nValueError\n100.0"
+    },
+    {
+      "n": 8,
+      "type": "code",
+      "tests": [
+        {
+          "stdin": "",
+          "expected": "gram\nPro\ngnimmargorP"
+        }
+      ]
+    },
+    {
+      "n": 9,
+      "type": "code",
+      "tests": [
+        {
+          "stdin": "",
+          "expected": "Price:12500 / Qty:3 / Total:37500"
+        }
+      ]
+    }
+  ]
+}

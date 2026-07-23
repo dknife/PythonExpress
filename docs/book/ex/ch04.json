@@ -1,0 +1,143 @@
+{
+  "chapter": 4,
+  "problems": [
+    {
+      "n": 1,
+      "type": "code",
+      "tests": [
+        {
+          "stdin": "",
+          "expected": "4 * 5 = 20\n"
+        }
+      ]
+    },
+    {
+      "n": 2,
+      "type": "code",
+      "tests": [
+        {
+          "stdin": "",
+          "expected": "Area of circle with radius 10 is 314.0, circumference is 62.8\n"
+        }
+      ]
+    },
+    {
+      "n": 3,
+      "type": "code",
+      "tests": [
+        {
+          "stdin": "",
+          "expected": "Max: 7, Min: 1\n"
+        }
+      ]
+    },
+    {
+      "n": 4,
+      "type": "keyword",
+      "keywords": [
+        [
+          "지역변수",
+          "지역 변수",
+          "local"
+        ],
+        [
+          "전역변수",
+          "전역 변수",
+          "전역"
+        ],
+        [
+          "global",
+          "글로벌"
+        ]
+      ],
+      "pass_min": 2
+    },
+    {
+      "n": 5,
+      "type": "code",
+      "tests": [
+        {
+          "stdin": "",
+          "expected": "Hello, Alice!\nHi, Bob!\n"
+        }
+      ]
+    },
+    {
+      "n": 6,
+      "type": "code",
+      "tests": [
+        {
+          "stdin": "",
+          "expected": "Min: 10, Max: 30, Avg: 20.0\n"
+        }
+      ]
+    },
+    {
+      "n": 7,
+      "type": "code",
+      "tests": [
+        {
+          "stdin": "",
+          "expected": "55\n"
+        }
+      ]
+    },
+    {
+      "n": 8,
+      "type": "code",
+      "tests": [
+        {
+          "stdin": "36.5\n",
+          "expected": "Enter Celsius: 36.5\nFahrenheit: 97.7\n"
+        },
+        {
+          "stdin": "100\n",
+          "expected": "Enter Celsius: 100\nFahrenheit: 212.0\n"
+        }
+      ]
+    },
+    {
+      "n": 9,
+      "type": "output",
+      "expected": "15\n30\n"
+    },
+    {
+      "n": 10,
+      "type": "code",
+      "tests": [
+        {
+          "stdin": "",
+          "expected": "  1 |   1 |     1\n  2 |   4 |     8\n  3 |   9 |    27\n  4 |  16 |    64\n  5 |  25 |   125\n"
+        }
+      ]
+    },
+    {
+      "n": 11,
+      "type": "code",
+      "tests": [
+        {
+          "stdin": "",
+          "expected": "Sum: 100, Average: 25.0\n"
+        }
+      ]
+    },
+    {
+      "n": 12,
+      "type": "code",
+      "tests": [
+        {
+          "stdin": "87\n",
+          "expected": "Enter score: 87\nGrade: B\n"
+        },
+        {
+          "stdin": "92\n",
+          "expected": "Enter score: 92\nGrade: A\n"
+        },
+        {
+          "stdin": "55\n",
+          "expected": "Enter score: 55\nGrade: F\n"
+        }
+      ]
+    }
+  ]
+}

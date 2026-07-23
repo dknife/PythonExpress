@@ -632,34 +632,34 @@ print(f'Valid: {count}, Avg: {total / count}')</code></pre></li>
 <li><code>with open(...) as f:</code> 구문을 사용하면 블록이 끝날 때 파일이 <strong>자동으로 닫히므로</strong> <code>close()</code>를 따로 호출할 필요가 없다. 이 방식이 가장 안전하고 권장된다.</li>
 </ul></div>
 <div class="box exercise" id="exercises"><div class="box-head">8장 연습문제</div><ol>
-<li><span class="diff"><span class="d1">★</span></span>  다음 코드는 각각 어떤 예외를 발생시키는가? 예외 이름을 적으시오.
+<li class="ex-item" data-ex="1"><span class="diff"><span class="d1">★</span></span>  다음 코드는 각각 어떤 예외를 발생시키는가? 예외 이름을 적으시오.
 <p><pre class="line-numbers"><code class="language-python">a) print(10 / 0)
 b) int('hello')
 c) a = [1, 2, 3]; print(a[5])
 d) '10' + 5
 e) print(undefined_var)</code></pre></li>
-<li><span class="diff"><span class="d2">★★</span></span>  사용자로부터 두 정수를 입력받아 나눗셈을 수행하는 프로그램을 작성하시오.
+<li class="ex-item" data-ex="2"><span class="diff"><span class="d2">★★</span></span>  사용자로부터 두 정수를 입력받아 나눗셈을 수행하는 프로그램을 작성하시오.
 <code>try-except</code> 문을 사용하여 <code>ZeroDivisionError</code>와 <code>ValueError</code>를 각각 처리하고,
 정상 입력 시 <code>else</code> 절에서 결과를 출력하며, <code>finally</code> 절에서 "프로그램 종료"를 출력한다.</li>
-<li><span class="diff"><span class="d3">★★★</span></span>  사용자로부터 이름, 국어, 영어, 수학 성적을 반복적으로 입력받아 <code>students.txt</code> 파일에 저장하는 프로그램을 작성하시오.
+<li class="ex-item" data-ex="3"><span class="diff"><span class="d3">★★★</span></span>  사용자로부터 이름, 국어, 영어, 수학 성적을 반복적으로 입력받아 <code>students.txt</code> 파일에 저장하는 프로그램을 작성하시오.
 "끝"을 입력하면 입력을 종료한다. 저장 형식은 "이름,국어,영어,수학"이다.</li>
-<li><span class="diff"><span class="d3">★★★</span></span>  위 3번 문제에서 저장한 <code>students.txt</code> 파일을 읽어, 각 학생의 이름과 평균 점수를 출력하는 프로그램을 작성하시오.
+<li class="ex-item" data-ex="4"><span class="diff"><span class="d3">★★★</span></span>  위 3번 문제에서 저장한 <code>students.txt</code> 파일을 읽어, 각 학생의 이름과 평균 점수를 출력하는 프로그램을 작성하시오.
 파일이 존재하지 않을 경우 <code>FileNotFoundError</code>를 처리하여 적절한 오류 메시지를 출력한다.</li>
-<li><span class="diff"><span class="d3">★★★</span></span>  다음 기능을 가진 간단한 메모장 프로그램을 <code>with</code> 문을 사용하여 작성하시오.
+<li class="ex-item" data-ex="5"><span class="diff"><span class="d3">★★★</span></span>  다음 기능을 가진 간단한 메모장 프로그램을 <code>with</code> 문을 사용하여 작성하시오.
 <ul>
 <li>1번: 메모 쓰기  —  사용자가 입력한 내용을 <code>memo.txt</code>에 추가 모드(<code>'a'</code>)로 저장</li>
 <li>2번: 메모 읽기  —  <code>memo.txt</code>의 전체 내용을 화면에 출력</li>
 <li>3번: 종료</li>
 </ul></li>
-<li><span class="diff"><span class="d1">★</span></span>  구문 오류(Syntax Error)와 예외(Exception)의 차이점을 설명하고, 각각의 예시를 하나씩 드시오.</li>
-<li><span class="diff"><span class="d2">★★</span></span>  <code>raise</code> 문을 사용하여, 사용자로부터 양의 정수를 입력받아 음수가 입력되면 <code>ValueError</code>를 발생시키는 프로그램을 작성하시오.</li>
-<li><span class="diff"><span class="d3">★★★</span></span>  사용자 정의 예외 클래스 <code>NegativeNumberError</code>를 만들고, 사용자로부터 양의 정수를 입력받아 음수가 입력되면 이 예외를 발생시키는 프로그램을 작성하시오.</li>
-<li><span class="diff"><span class="d2">★★</span></span>  텍스트 파일 <code>source.txt</code>의 내용을 읽어 <code>copy.txt</code>에 복사하는 프로그램을 <code>with</code> 문을 사용하여 작성하시오. <code>source.txt</code>가 존재하지 않으면 적절한 오류 메시지를 출력하시오.</li>
-<li><span class="diff"><span class="d3">★★★</span></span>  다음 데이터를 <code>scores.csv</code> 파일에 저장하고, 다시 읽어서 각 학생의 이름과 평균 점수를 출력하는 프로그램을 작성하시오.
+<li class="ex-item" data-ex="6"><span class="diff"><span class="d1">★</span></span>  구문 오류(Syntax Error)와 예외(Exception)의 차이점을 설명하고, 각각의 예시를 하나씩 드시오.</li>
+<li class="ex-item" data-ex="7"><span class="diff"><span class="d2">★★</span></span>  <code>raise</code> 문을 사용하여, 사용자로부터 양의 정수를 입력받아 음수가 입력되면 <code>ValueError</code>를 발생시키는 프로그램을 작성하시오.</li>
+<li class="ex-item" data-ex="8"><span class="diff"><span class="d3">★★★</span></span>  사용자 정의 예외 클래스 <code>NegativeNumberError</code>를 만들고, 사용자로부터 양의 정수를 입력받아 음수가 입력되면 이 예외를 발생시키는 프로그램을 작성하시오.</li>
+<li class="ex-item" data-ex="9"><span class="diff"><span class="d2">★★</span></span>  텍스트 파일 <code>source.txt</code>의 내용을 읽어 <code>copy.txt</code>에 복사하는 프로그램을 <code>with</code> 문을 사용하여 작성하시오. <code>source.txt</code>가 존재하지 않으면 적절한 오류 메시지를 출력하시오.</li>
+<li class="ex-item" data-ex="10"><span class="diff"><span class="d3">★★★</span></span>  다음 데이터를 <code>scores.csv</code> 파일에 저장하고, 다시 읽어서 각 학생의 이름과 평균 점수를 출력하는 프로그램을 작성하시오.
 <pre class="pyout">Hong,85,90,78
 Kim,92,88,95
 Lee,76,82,80</pre></li>
-<li><span class="diff"><span class="d2">★★</span></span>  다음 코드의 출력 결과를 쓰시오.
+<li class="ex-item" data-ex="11"><span class="diff"><span class="d2">★★</span></span>  다음 코드의 출력 결과를 쓰시오.
 <pre class="line-numbers"><code class="language-python">try:
     x = int('abc')
 except ValueError:
@@ -670,7 +670,7 @@ else:
     print('C')
 finally:
     print('D')</code></pre></li>
-<li><span class="diff"><span class="d3">★★★</span></span>  <code>with</code> 문을 사용하여 사용자로부터 문장을 반복 입력받아 <code>diary.txt</code>에 저장하는 프로그램을 작성하시오.
+<li class="ex-item" data-ex="12"><span class="diff"><span class="d3">★★★</span></span>  <code>with</code> 문을 사용하여 사용자로부터 문장을 반복 입력받아 <code>diary.txt</code>에 저장하는 프로그램을 작성하시오.
 "quit"을 입력하면 저장을 종료한다. 저장 완료 후 파일의 전체 내용과 총 줄 수를 출력하시오.</li>
 </ol></p></div>
 <div class="pager-row"><a class="pager prev" href="ch07.html">&larr; 7장</a><a class="pager next" href="ch09.html">9장 &rarr;</a></div>
@@ -680,5 +680,6 @@ finally:
 <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
 <script src="book.js"></script>
+<script src="grader.js"></script>
 </body>
 </html>

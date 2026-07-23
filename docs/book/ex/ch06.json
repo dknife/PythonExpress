@@ -1,0 +1,50 @@
+{
+  "chapter": 6,
+  "problems": [
+    {
+      "n": 1,
+      "type": "code",
+      "tests": [
+        {
+          "stdin": "",
+          "expected": "The capital of Korea is Seoul.\nThe capital of China is Beijing.\nThe capital of USA is Washington DC."
+        }
+      ]
+    },
+    {
+      "n": 4,
+      "type": "code",
+      "tests": [
+        {
+          "stdin": "",
+          "expected": "Most expensive fruit: melon (6500 won)"
+        }
+      ]
+    },
+    {
+      "n": 5,
+      "type": "output",
+      "expected": "(1, 2, 3, 4, 5, 6, 9)\n<class 'tuple'>\n7"
+    },
+    {
+      "n": 6,
+      "type": "code",
+      "tests": [
+        {
+          "stdin": "",
+          "expected": "{1: 1, 2: 8, 3: 27, 4: 64, 5: 125}"
+        }
+      ]
+    },
+    {
+      "n": 7,
+      "type": "code",
+      "tests": [
+        {
+          "stdin": "",
+          "expected": "Hong: 84.3\nKim: 91.7\nLee: 80.0"
+        }
+      ]
+    }
+  ]
+}

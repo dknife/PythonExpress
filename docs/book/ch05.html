@@ -418,18 +418,18 @@ print(items)        # [40, 50]</code></pre></li>
 <li>리스트는 중첩이 가능하여 2차원 리스트(<code>[[1, 2], [3, 4]]</code>)를 만들 수 있으며, 이를 통해 행렬이나 표 형태의 데이터를 표현할 수 있다.</li>
 </ul></div>
 <div class="box exercise" id="exercises"><div class="box-head">5장 연습문제</div><ol>
-<li><span class="diff"><span class="d2">★★</span></span>  1부터 10까지의 숫자 중 홀수만 원소로 가지는 <code>odd_list</code>를 생성하고, 이 리스트의 합계와 평균을 출력하시오.
+<li class="ex-item" data-ex="1"><span class="diff"><span class="d2">★★</span></span>  1부터 10까지의 숫자 중 홀수만 원소로 가지는 <code>odd_list</code>를 생성하고, 이 리스트의 합계와 평균을 출력하시오.
 (<code>sum()</code>, <code>len()</code> 내장함수 사용)
 <pre class="termout">Odd list: [1, 3, 5, 7, 9]
 Sum: 25, Average: 5.0</pre></li>
-<li><span class="diff"><span class="d2">★★</span></span>  다음 리스트가 주어졌을 때, 슬라이싱을 사용하여 각 결과를 출력하시오.
+<li class="ex-item" data-ex="2"><span class="diff"><span class="d2">★★</span></span>  다음 리스트가 주어졌을 때, 슬라이싱을 사용하여 각 결과를 출력하시오.
 <pre class="pyout">data = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]</pre>
 <ol type="a">
 <li>인덱스 2부터 6까지의 원소</li>
 <li>짝수 인덱스(0, 2, 4, ...)의 원소만</li>
 <li>리스트를 역순으로</li>
 </ol></li>
-<li><span class="diff"><span class="d2">★★</span></span>  5명의 학생 점수를 리스트로 입력받아 최고 점수, 최저 점수, 평균 점수를 출력하는 프로그램을 작성하시오.
+<li class="ex-item" data-ex="3"><span class="diff"><span class="d2">★★</span></span>  5명의 학생 점수를 리스트로 입력받아 최고 점수, 최저 점수, 평균 점수를 출력하는 프로그램을 작성하시오.
 (<code>for</code> 문과 <code>append()</code> 사용)
 <pre class="termout">Student 1 score: 85
 Student 2 score: 92
@@ -437,29 +437,29 @@ Student 3 score: 78
 Student 4 score: 95
 Student 5 score: 88
 Highest: 95, Lowest: 78, Average: 87.6</pre></li>
-<li><span class="diff"><span class="d2">★★</span></span>  문자열 <code>'Programming'</code>에 슬라이싱을 적용하여 다음 결과를 출력하시오.
+<li class="ex-item" data-ex="4"><span class="diff"><span class="d2">★★</span></span>  문자열 <code>'Programming'</code>에 슬라이싱을 적용하여 다음 결과를 출력하시오.
 <ol type="a">
 <li><code>'Pro'</code></li>
 <li><code>'gram'</code></li>
 <li><code>'gnimmargorP'</code> (역순)</li>
 </ol></li>
-<li><span class="diff"><span class="d1">★</span></span>  리스트 <code>[3, 1, 4, 1, 5, 9, 2, 6]</code>에서 <code>sort()</code> 메소드를 사용하여 오름차순, 내림차순으로 정렬한 결과를 각각 출력하시오.
+<li class="ex-item" data-ex="5"><span class="diff"><span class="d1">★</span></span>  리스트 <code>[3, 1, 4, 1, 5, 9, 2, 6]</code>에서 <code>sort()</code> 메소드를 사용하여 오름차순, 내림차순으로 정렬한 결과를 각각 출력하시오.
 또한 원소 <code>1</code>이 몇 개인지 <code>count()</code> 메소드로 확인하시오.</li>
-<li><span class="diff"><span class="d3">★★★</span></span>  다음 코드의 출력 결과를 쓰시오.
+<li class="ex-item" data-ex="6"><span class="diff"><span class="d3">★★★</span></span>  다음 코드의 출력 결과를 쓰시오.
 <pre class="pyout">a = [1, 2, 3, 4, 5]
 b = a[1:4]
 b[0] = 99
 print(a)
 print(b)</pre></li>
-<li><span class="diff"><span class="d2">★★</span></span>  빈 리스트 <code>nums</code>를 만들고, <code>for</code> 문과 <code>append()</code>를 사용하여 1부터 20까지의 정수 중 짝수만 리스트에 추가하시오.
+<li class="ex-item" data-ex="7"><span class="diff"><span class="d2">★★</span></span>  빈 리스트 <code>nums</code>를 만들고, <code>for</code> 문과 <code>append()</code>를 사용하여 1부터 20까지의 정수 중 짝수만 리스트에 추가하시오.
 완성된 리스트와 리스트의 합계를 출력하시오.</li>
-<li><span class="diff"><span class="d2">★★</span></span>  리스트 <code>fruits = ['apple', 'banana', 'cherry', 'date', 'elderberry']</code>에 대해 <code>enumerate()</code>를 사용하여 다음과 같이 출력하시오.
+<li class="ex-item" data-ex="8"><span class="diff"><span class="d2">★★</span></span>  리스트 <code>fruits = ['apple', 'banana', 'cherry', 'date', 'elderberry']</code>에 대해 <code>enumerate()</code>를 사용하여 다음과 같이 출력하시오.
 <pre class="pyout">1. apple
 2. banana
 3. cherry
 4. date
 5. elderberry</pre></li>
-<li><span class="diff"><span class="d1">★</span></span>  두 개의 리스트 <code>a = [10, 20, 30]</code>과 <code>b = [40, 50]</code>에 대해 다음 연산의 결과를 쓰시오.
+<li class="ex-item" data-ex="9"><span class="diff"><span class="d1">★</span></span>  두 개의 리스트 <code>a = [10, 20, 30]</code>과 <code>b = [40, 50]</code>에 대해 다음 연산의 결과를 쓰시오.
 <ol type="a">
 <li><code>a + b</code></li>
 <li><code>a * 2</code></li>
@@ -474,5 +474,6 @@ print(b)</pre></li>
 <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
 <script src="book.js"></script>
+<script src="grader.js"></script>
 </body>
 </html>

@@ -487,7 +487,7 @@ print(f'"{s}" is palindrome? {s == s[::-1]}')</code></pre></li>
 <li><strong>f-string</strong>(<code>f'...{변수}...'</code>)을 사용하면 문자열 안에 변수 값이나 수식을 간편하게 삽입할 수 있으며, 최근 파이썬에서 가장 권장되는 포매팅 방법이다.</li>
 </ul></div>
 <div class="box exercise" id="exercises"><div class="box-head">2장 연습문제</div><ol>
-<li><span class="diff"><span class="d1">★</span></span>  다음 코드의 출력 결과를 쓰시오.
+<li class="ex-item" data-ex="1"><span class="diff"><span class="d1">★</span></span>  다음 코드의 출력 결과를 쓰시오.
 <pre class="termout">x = 10
 y = 3
 print(x + y)
@@ -495,16 +495,16 @@ print(x / y)
 print(x // y)
 print(x % y)
 print(x ** y)</pre></li>
-<li><span class="diff"><span class="d1">★</span></span>  사용자로부터 이름과 나이를 입력받아 다음과 같이 출력하는 프로그램을 작성하시오.
+<li class="ex-item" data-ex="2"><span class="diff"><span class="d1">★</span></span>  사용자로부터 이름과 나이를 입력받아 다음과 같이 출력하는 프로그램을 작성하시오.
 <pre class="termout">Enter your name: Hong Gildong
 Enter your age: 20
 Hong Gildong is 20 years old.</pre></li>
-<li><span class="diff"><span class="d2">★★</span></span>  사용자로부터 원의 반지름을 입력받아 원의 면적과 둘레를 계산하여 출력하는 프로그램을 작성하시오.
+<li class="ex-item" data-ex="3"><span class="diff"><span class="d2">★★</span></span>  사용자로부터 원의 반지름을 입력받아 원의 면적과 둘레를 계산하여 출력하는 프로그램을 작성하시오.
 (원주율은 3.14로 계산한다.)
 <pre class="termout">Enter the radius: 5
 Area of circle: 78.5
 Circumference of circle: 31.400000000000002</pre></li>
-<li><span class="diff"><span class="d1">★</span></span>  다음 식별자 중 파이썬에서 사용할 수 없는 것을 모두 고르고 이유를 설명하시오.
+<li class="ex-item" data-ex="4"><span class="diff"><span class="d1">★</span></span>  다음 식별자 중 파이썬에서 사용할 수 없는 것을 모두 고르고 이유를 설명하시오.
 <ol type="a">
 <li><code>my_var</code></li>
 <li><code>1st_name</code></li>
@@ -513,17 +513,17 @@ Circumference of circle: 31.400000000000002</pre></li>
 <li><code>my list</code></li>
 <li><code>_count</code></li>
 </ol></li>
-<li><span class="diff"><span class="d2">★★</span></span>  다음 코드의 출력 결과를 쓰시오.
+<li class="ex-item" data-ex="5"><span class="diff"><span class="d2">★★</span></span>  다음 코드의 출력 결과를 쓰시오.
 <pre class="termout">s = 'Hello Python'
 print(s[0])
 print(s[-1])
 print(s[6:12])
 print(s.upper())
 print(s.replace('Python', 'World'))</pre></li>
-<li><span class="diff"><span class="d2">★★</span></span>  f-string을 사용하여 변수 <code>name = 'Alice'</code>, <code>score = 95.678</code>일 때 다음과 같이 출력하는 코드를 작성하시오.
+<li class="ex-item" data-ex="6"><span class="diff"><span class="d2">★★</span></span>  f-string을 사용하여 변수 <code>name = 'Alice'</code>, <code>score = 95.678</code>일 때 다음과 같이 출력하는 코드를 작성하시오.
 <pre class="termout">Alice's score is 95.68</pre>
 (힌트: <code>:.2f</code> 서식 지정자 사용)</li>
-<li><span class="diff"><span class="d2">★★</span></span>  다음 코드의 출력 결과를 쓰시오. 오류가 발생하면 오류의 종류를 적으시오.
+<li class="ex-item" data-ex="7"><span class="diff"><span class="d2">★★</span></span>  다음 코드의 출력 결과를 쓰시오. 오류가 발생하면 오류의 종류를 적으시오.
 <ol type="a">
 <li><code>print(type(10))</code></li>
 <li><code>print(type(3.14))</code></li>
@@ -531,14 +531,14 @@ print(s.replace('Python', 'World'))</pre></li>
 <li><code>print(int('3.14'))</code></li>
 <li><code>print(float('100'))</code></li>
 </ol></li>
-<li><span class="diff"><span class="d2">★★</span></span>  문자열 <code>s = 'Programming'</code>에 대해 슬라이싱을 사용하여 다음 결과를 각각 출력하는 코드를 작성하시오.
+<li class="ex-item" data-ex="8"><span class="diff"><span class="d2">★★</span></span>  문자열 <code>s = 'Programming'</code>에 대해 슬라이싱을 사용하여 다음 결과를 각각 출력하는 코드를 작성하시오.
 <ol type="a">
 <li><code>'gram'</code></li>
 <li><code>'Pro'</code></li>
 <li><code>'gnimmargorP'</code> (역순)</li>
 </ol>
 (힌트: <code>s[start:end]</code> 또는 <code>s[::step]</code> 활용)</li>
-<li><span class="diff"><span class="d2">★★</span></span>  변수 <code>price = 12500</code>과 <code>qty = 3</code>이 주어졌을 때, <code>print()</code> 함수의 <code>sep</code>과 <code>end</code> 인자를 활용하여 다음과 같이 한 줄로 출력하는 코드를 작성하시오.
+<li class="ex-item" data-ex="9"><span class="diff"><span class="d2">★★</span></span>  변수 <code>price = 12500</code>과 <code>qty = 3</code>이 주어졌을 때, <code>print()</code> 함수의 <code>sep</code>과 <code>end</code> 인자를 활용하여 다음과 같이 한 줄로 출력하는 코드를 작성하시오.
 <pre class="termout">Price:12500 / Qty:3 / Total:37500</pre></li>
 </ol></div>
 <div class="pager-row"><a class="pager prev" href="ch01.html">&larr; 1장</a><a class="pager next" href="ch03.html">3장 &rarr;</a></div>
@@ -548,5 +548,6 @@ print(s.replace('Python', 'World'))</pre></li>
 <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
 <script src="book.js"></script>
+<script src="grader.js"></script>
 </body>
 </html>
