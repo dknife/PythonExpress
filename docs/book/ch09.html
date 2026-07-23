@@ -806,7 +806,7 @@ class Car:
 c = Car('Hyundai', 'Sonata', 2020)
 c.info()</code></pre></li>
 </ol></p></div></p>
-<div class="box summary" id="summary"><div class="box-head">9장 요약</div><ul>
+<details class="box summary" id="summary"><summary class="box-head">9장 요약</summary><div class="sum-body"><ul>
 <li><strong>객체</strong>(object)는 <strong>속성</strong>(데이터)과 <strong>메소드</strong>(동작)를 모아 놓은 집합체이다. 파이썬의 모든 데이터(정수, 문자열, 리스트 등)는 객체이며, <code>type()</code> 함수로 자료형(클래스)을, <code>id()</code> 함수로 고유 식별자를 확인할 수 있다.</li>
 <li><strong>클래스</strong>(class)는 객체를 만들기 위한 설계도이며, <code>class</code> 키워드로 정의한다. <strong>인스턴스</strong>(instance)는 클래스로부터 만들어진 실제 객체이다.</li>
 <li><code>__init__()</code> <strong>생성자</strong>는 인스턴스가 생성될 때 자동으로 호출되며, 인스턴스 변수를 초기화하는 역할을 한다. 기본값 매개변수를 사용하면 인자 생략 시 기본값이 적용되어 유연한 객체 생성이 가능하다.</li>
@@ -817,7 +817,7 @@ c.info()</code></pre></li>
 <li><strong>상속</strong>(inheritance)은 부모 클래스의 속성과 메소드를 자식 클래스에서 물려받아 재사용하는 기능이며, <code>class 자식(부모):</code> 형태로 선언한다. <strong>메소드 오버라이딩</strong>(overriding)은 자식 클래스에서 부모 클래스의 메소드를 같은 이름으로 재정의하여 다른 동작을 구현하는 것이다.</li>
 <li><code>super().__init__(\dots)</code>으로 부모 생성자를 호출하면 부모가 초기화하던 속성을 그대로 활용하면서 자식만의 속성을 추가할 수 있다.</li>
 <li><strong>다형성</strong>(polymorphism)은 같은 이름의 메소드가 객체 종류에 따라 다른 동작을 수행하는 성질이며, 호출하는 쪽 코드를 수정하지 않고 새 클래스를 추가할 수 있어 확장성이 높다. 파이썬은 상속 관계 없이도 같은 메소드 이름만으로 다형성을 허용하는 <strong>덕 타이핑</strong>(duck typing)을 지원한다.</li>
-</ul></div>
+</ul></div></details>
 <details class="box exercise" id="exercises"><summary class="box-head">9장 연습문제</summary><div class="ex-body"><ol>
 <li class="ex-item" data-ex="1"><span class="diff"><span class="d1">★</span></span>  다음 용어를 간략히 정의하시오.
 <ol type="a">

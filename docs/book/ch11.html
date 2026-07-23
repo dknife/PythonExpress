@@ -680,7 +680,7 @@ print(f'Speedup      : {t_py / t_np:.1f}x')</code></pre>
 <p>같은 결과를 만드는데도 넘파이는 한 줄의 <strong>벡터화 연산</strong>으로 모든 원소를 C 수준에서 한꺼번에 처리하므로, 파이썬 인터프리터가 원소를 하나씩 돌리는 리스트 컴프리헨션보다 수십 배 빠르다.
 이 차이는 데이터의 크기가 커질수록 더 커진다  —  머신러닝·과학 계산에서 넘파이가 사실상 표준이 된 이유이다.</li>
 </ol></p></div></p>
-<div class="box summary" id="summary"><div class="box-head">11장 요약</div><ul>
+<details class="box summary" id="summary"><summary class="box-head">11장 요약</summary><div class="sum-body"><ul>
 <li><strong>람다 함수</strong>는 <code>lambda 매개변수: 표현식</code> 형태의 이름 없는 간단한 함수로, 한 줄로 표현할 수 있는 일회성 연산에 적합하다.</li>
 <li><code>filter(함수, 반복 가능 객체)</code> 함수는 조건에 맞는 요소만 걸러내어 반환하고, <code>map(함수, 반복 가능 객체)</code> 함수는 각 요소에 함수를 적용한 결과를 반환한다. 람다 함수와 함께 사용하면 간결하게 작성할 수 있다.</li>
 <li><strong>리스트 축약 표현</strong>(list comprehension) <code>[표현식 for x in 리스트 if 조건]</code>은 <code>filter()</code>와 <code>map()</code>의 기능을 더 간결하고 직관적으로 대체하며, 파이썬에서 가장 많이 사용되는 관용적 표현이다.</li>
@@ -691,7 +691,7 @@ print(f'Speedup      : {t_py / t_np:.1f}x')</code></pre>
 <li><strong>불리언 인덱싱</strong>은 조건식을 배열에 적용하여 <code>True</code>에 해당하는 원소만 추출하는 기법으로, 조건에 맞는 데이터를 간결하게 필터링할 수 있다.</li>
 <li>배열 슬라이싱은 파이썬 리스트와 동일한 <code>[start:end:step]</code> 문법을 사용하며, 2차원 배열에서는 <code>[행, 열]</code> 형태로 특정 행이나 열에 접근한다.</li>
 <li><code>max()</code>, <code>min()</code>, <code>mean()</code>, <code>sum()</code>, <code>std()</code> 등의 통계 메소드와 <code>flatten()</code>(1차원 변환), <code>reshape()</code>(형상 변경) 등의 배열 변환 메소드를 제공한다.</li>
-</ul></div>
+</ul></div></details>
 <details class="box exercise" id="exercises"><summary class="box-head">11장 연습문제</summary><div class="ex-body"><ol>
 <li class="ex-item" data-ex="1"><span class="diff"><span class="d1">★</span></span>  두 수의 차를 구하는 함수 <code>sub()</code>을 (1) 일반 함수로, (2) 람다 함수로 각각 작성하시오.
 <code>sub(200, 100)</code>을 호출하여 <code>200 - 100 = 100</code>이 출력되도록 하시오.</li>

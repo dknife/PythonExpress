@@ -772,7 +772,7 @@ students = json.loads(raw)              # 문자열을 list[dict]로 변환
 top = [s for s in students if s['score'] &gt;= 85]
 print(json.dumps(top, ensure_ascii=False, indent=4))</code></pre></li>
 </ol></p></div></p>
-<div class="box summary" id="summary"><div class="box-head">10장 요약</div><ul>
+<details class="box summary" id="summary"><summary class="box-head">10장 요약</summary><div class="sum-body"><ul>
 <li>이 장에서는 지금까지 배운 파이썬 지식을 종합하여 실제로 사용할 수 있는 네 가지 프로젝트를 구현하였다. 각 프로젝트는 요구사항 분석, 자료구조 설계, 함수 분리, 통합의 과정을 거쳐 완성하였다.</li>
 <li><strong>단어장 앱</strong>: <strong>딕셔너리</strong>로 영어 단어(키)와 한글 뜻(값)을 관리하였다. <code>json</code> 모듈의 <code>json.dump()</code>와 <code>json.load()</code>로 JSON 파일에 저장하고 불러오기하여 프로그램 종료 후에도 데이터가 유지되도록 하였으며, <code>random.choice()</code>로 퀴즈 기능을 구현하였다.</li>
 <li><strong>비정형 데이터 정리 자동화</strong>: 구분자와 형식이 제각각인 텍스트 파일을 <code>replace()</code>, <code>split()</code>, <code>strip()</code>, <code>isdigit()</code> 등의 문자열 메소드로 파싱하여 정형 CSV로 변환하였다. 이메일의 <code>@</code> 기호를 기준점으로 필드를 분리하고, 전화번호에서 숫자만 추출하여 형식을 통일하는 전처리 전략을 실습하였다.</li>
@@ -781,7 +781,7 @@ print(json.dumps(top, ensure_ascii=False, indent=4))</code></pre></li>
 <li>웹의 요청-응답 구조를 이해하고, 클라이언트(브라우저)와 서버(Flask) 사이의 데이터 흐름을 실습하였다.</li>
 <li>각 프로젝트에서 <strong>함수 분리</strong>(하나의 함수가 하나의 기능만 담당)와 <strong>메뉴 기반 반복문</strong> 구조를 공통으로 적용하여 구조적이고 유지 보수하기 쉬운 프로그램을 설계하는 방법을 배웠다.</li>
 <li>네 프로젝트를 통해 딕셔너리·파일 입출력, 문자열 파싱, 재귀와 turtle 그래픽, 웹 프레임워크 활용이라는 파이썬의 다양한 응용 역량을 실습하였으며, 실전 프로그래밍의 설계 과정을 체험하였다.</li>
-</ul></div>
+</ul></div></details>
 <details class="box exercise" id="exercises"><summary class="box-head">10장 연습문제</summary><div class="ex-body"><ol>
 <li class="ex-item" data-ex="1"><span class="diff"><span class="d3">★★★</span></span>  단어장 앱에 <strong>오답 노트</strong> 기능을 추가하시오.
 퀴즈에서 틀린 단어를 별도의 리스트에 기록하고, 오답 단어만 따로 퀴즈를 출제하는 기능을 구현하시오.</li>

@@ -619,7 +619,7 @@ with open('scores.txt', 'r', encoding='utf-8') as f:
 
 print(f'Valid: {count}, Avg: {total / count}')</code></pre></li>
 </ol></p></div></p>
-<div class="box summary" id="summary"><div class="box-head">8장 요약</div><ul>
+<details class="box summary" id="summary"><summary class="box-head">8장 요약</summary><div class="sum-body"><ul>
 <li>파이썬에서 발생하는 오류는 크게 <strong>구문 오류</strong>(Syntax Error)와 <strong>예외</strong>(Exception)로 나뉜다. 구문 오류는 파이썬 문법을 지키지 않았을 때 발생하며, 프로그램이 실행되기 전에 발견된다.</li>
 <li><strong>예외</strong>는 문법적으로 올바르지만 실행 도중 발생하는 오류이다. <code>ZeroDivisionError</code>(0으로 나누기), <code>ValueError</code>(부적절한 값), <code>IndexError</code>(범위 초과), <code>TypeError</code>(자료형 불일치), <code>KeyError</code>(없는 키), <code>FileNotFoundError</code>(없는 파일) 등이 있다.</li>
 <li>예외가 발생하면 파이썬 인터프리터는 <strong>역추적</strong>(traceback) 정보를 출력하여 오류의 위치와 종류를 알려 준다. 이 정보를 활용하면 오류의 원인을 빠르게 파악할 수 있다.</li>
@@ -630,7 +630,7 @@ print(f'Valid: {count}, Avg: {total / count}')</code></pre></li>
 <li><code>open()</code> 함수의 모드: <code>'r'</code>(읽기, 기본값), <code>'w'</code>(쓰기, 기존 내용 덮어씀), <code>'a'</code>(추가, 파일 끝에 덧붙임), <code>'r+'</code>(읽기+쓰기).</li>
 <li>파일 읽기 메소드: <code>read()</code>(전체 읽기), <code>readline()</code>(한 줄 읽기), <code>readlines()</code>(모든 줄을 리스트로). 쓰기: <code>write()</code>, <code>writelines()</code>.</li>
 <li><code>with open(...) as f:</code> 구문을 사용하면 블록이 끝날 때 파일이 <strong>자동으로 닫히므로</strong> <code>close()</code>를 따로 호출할 필요가 없다. 이 방식이 가장 안전하고 권장된다.</li>
-</ul></div>
+</ul></div></details>
 <details class="box exercise" id="exercises"><summary class="box-head">8장 연습문제</summary><div class="ex-body"><ol>
 <li class="ex-item" data-ex="1"><span class="diff"><span class="d1">★</span></span>  다음 코드는 각각 어떤 예외를 발생시키는가? 예외 이름을 적으시오.
 <p><pre class="line-numbers"><code class="language-python">a) print(10 / 0)

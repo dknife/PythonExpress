@@ -618,7 +618,7 @@ elif (user, cpu) in win_pairs:
 else:
     print('짐')</code></pre></li>
 </ol></p></div></p>
-<div class="box summary" id="summary"><div class="box-head">7장 요약</div><ul>
+<details class="box summary" id="summary"><summary class="box-head">7장 요약</summary><div class="sum-body"><ul>
 <li><code>from 모듈 import 이름</code>으로 특정 요소만 직접 가져올 수 있고, <code>import 모듈 as 별칭</code>으로 짧은 별칭을 지정할 수 있다. <code>dir()</code> 함수를 사용하면 모듈이 제공하는 클래스, 함수, 속성의 목록을 확인할 수 있다.</li>
 <li>파이썬은 <code>datetime</code>, <code>math</code>, <code>random</code>, <code>os</code>, <code>sys</code>, <code>json</code>, <code>time</code> 등 풍부한 <strong>표준 라이브러리</strong>를 제공한다.</li>
 <li><code>datetime</code> 모듈의 <code>datetime.now()</code>로 현재 날짜와 시간을 얻고, <code>date.today()</code>로 오늘 날짜를 얻는다. <code>.year</code>, <code>.month</code>, <code>.day</code>, <code>.hour</code>, <code>.minute</code>, <code>.second</code> 속성으로 각 구성요소에 접근한다.</li>
@@ -629,7 +629,7 @@ else:
 <li><code>numpy</code>(수치 계산), <code>pandas</code>(데이터 분석), <code>matplotlib</code>(시각화), <code>requests</code>(웹 요청), <code>flask</code>(웹 개발), <code>Pillow</code>(이미지 처리) 등이 대표적인 외부 패키지이다.</li>
 <li><strong>가상환경</strong>(<code>python -m venv 이름</code>)을 사용하면 프로젝트별로 독립적인 패키지 환경을 관리할 수 있어 버전 충돌을 방지한다.</li>
 <li><code>re</code> 모듈의 <strong>정규표현식</strong>은 문자열의 패턴을 기호로 기술하는 작은 언어이다. <code>re.search()</code>, <code>re.findall()</code>, <code>re.sub()</code>로 패턴 검색·추출·치환을 수행하며, <code> d</code>, <code> w</code>, <code>*</code>, <code>+</code>, <code>?</code>, <code>{n}</code> 등 핵심 메타문자 몇 개로 다양한 패턴을 표현할 수 있다.</li>
-</ul></div>
+</ul></div></details>
 <details class="box exercise" id="exercises"><summary class="box-head">7장 연습문제</summary><div class="ex-body"><ol>
 <li class="ex-item" data-ex="1"><span class="diff"><span class="d2">★★</span></span>  <code>datetime</code> 모듈을 사용하여 오늘의 날짜와 현재 시간을 다음과 같은 형식으로 출력하는 프로그램을 작성하시오.
 <code>hour</code> 값이 12 미만이면 "오전", 12 이상이면 "오후"로 표시한다.

@@ -749,7 +749,7 @@ y_pred = [1, 0, 1, 0, 0, 1, 1, 0, 1, 1]
 print(classification_report(y_true, y_pred, 
                                         target_names=['Negative', 'Positive']))</code></pre></li>
 </ol></p></div></p>
-<div class="box summary" id="summary"><div class="box-head">12장 요약</div><ul>
+<details class="box summary" id="summary"><summary class="box-head">12장 요약</summary><div class="sum-body"><ul>
 <li><strong>데이터 과학</strong>은 데이터로부터 유용한 지식과 통찰을 추출하는 학문으로, 데이터 수집 \(\rightarrow\) 정리 \(\rightarrow\) 분석 \(\rightarrow\) 시각화 \(\rightarrow\) 의사결정의 5단계 워크플로우로 이루어진다. 파이썬은 NumPy, pandas, matplotlib, scikit-learn 등 풍부한 라이브러리 생태계 덕분에 데이터 과학의 핵심 도구로 자리잡았다.</li>
 <li><strong>판다스</strong>(pandas)의 <code>Series</code>는 인덱스가 있는 1차원 배열이고, <code>DataFrame</code>은 여러 Series가 열로 묶인 2차원 표 구조이다. <code>pd.read_csv()</code>로 CSV 파일을 DataFrame으로 읽고, <code>df.to_csv()</code>로 저장할 수 있다.</li>
 <li><strong>탐색적 데이터 분석</strong>(EDA)에는 <code>head()</code>/<code>tail()</code>(처음/끝 확인), <code>shape</code>(행·열 수), <code>info()</code>(데이터 타입), <code>describe()</code>(통계 요약)를 활용한다.</li>
@@ -758,7 +758,7 @@ print(classification_report(y_true, y_pred,
 <li><code>groupby('열이름').집계함수()</code>로 그룹별 합계, 평균, 개수 등을 계산할 수 있으며, 이는 부서별·지역별 통계를 내는 데 핵심적으로 사용된다.</li>
 <li><strong>matplotlib</strong>를 이용하면 선 그래프(<code>plot</code>, 시계열), 막대 그래프(<code>bar</code>, 범주 비교), 히스토그램(<code>hist</code>, 분포), 산점도(<code>scatter</code>, 관계), 원형 그래프(<code>pie</code>, 비율) 등 다양한 시각화가 가능하다.</li>
 <li><strong>머신러닝</strong>은 데이터를 기반으로 패턴을 학습하고 예측하는 기술이며, <strong>지도학습</strong>은 정답(레이블)이 있는 데이터로 학습한다. <strong>특성</strong>(feature)은 입력 변수, <strong>레이블</strong>(label)은 예측 대상이다.</li>
-</ul></div>
+</ul></div></details>
 <details class="box exercise" id="exercises"><summary class="box-head">12장 연습문제</summary><div class="ex-body"><ol>
 <li class="ex-item" data-ex="1"><span class="diff"><span class="d1">★</span></span>  다음 딕셔너리를 이용하여 pandas DataFrame을 생성하고, <code>head()</code>, <code>describe()</code>를 호출하여 데이터를 탐색하시오.
 <p><pre class="line-numbers"><code class="language-python">data = {

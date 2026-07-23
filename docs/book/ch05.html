@@ -405,7 +405,7 @@ print(items)        # [30, 40, 50]
 items.remove(30)
 print(items)        # [40, 50]</code></pre></li>
 </ol></p></div></p>
-<div class="box summary" id="summary"><div class="box-head">5장 요약</div><ul>
+<details class="box summary" id="summary"><summary class="box-head">5장 요약</summary><div class="sum-body"><ul>
 <li><strong>리스트</strong>는 대괄호 <code>[ ]</code>로 생성하며, 여러 자료형의 값을 하나의 변수에 순서대로 저장할 수 있는 가변(mutable) 자료형이다. 빈 리스트는 <code>[]</code>로 생성한다.</li>
 <li>리스트의 <strong>인덱스</strong>는 0부터 시작하며, 음수 인덱스(<code>-1</code>, <code>-2</code>, ...)로 뒤에서부터 접근할 수 있다. 범위를 벗어난 인덱스를 사용하면 <code>IndexError</code>가 발생한다.</li>
 <li>리스트는 <code>+</code>(연결)와 <code>*</code>(반복) 연산을 지원하며, <code>in</code>/<code>not in</code> <strong>멤버 연산자</strong>로 특정 값이 리스트에 포함되어 있는지 확인할 수 있다.</li>
@@ -416,7 +416,7 @@ print(items)        # [40, 50]</code></pre></li>
 <li><strong>슬라이싱</strong> <code>[start:end:step]</code>으로 리스트나 문자열의 부분을 추출할 수 있다. 시작 인덱스는 포함하고 끝 인덱스는 포함하지 않는다. 간격이 음수이면 역방향으로 추출한다.</li>
 <li>빈 리스트를 만든 뒤 반복문에서 <code>append()</code>로 원소를 추가하는 패턴은 사용자 입력을 수집하거나 조건에 맞는 데이터를 모을 때 자주 사용되는 기본 패턴이다.</li>
 <li>리스트는 중첩이 가능하여 2차원 리스트(<code>[[1, 2], [3, 4]]</code>)를 만들 수 있으며, 이를 통해 행렬이나 표 형태의 데이터를 표현할 수 있다.</li>
-</ul></div>
+</ul></div></details>
 <details class="box exercise" id="exercises"><summary class="box-head">5장 연습문제</summary><div class="ex-body"><ol>
 <li class="ex-item" data-ex="1"><span class="diff"><span class="d2">★★</span></span>  1부터 10까지의 숫자 중 홀수만 원소로 가지는 <code>odd_list</code>를 생성하고, 이 리스트의 합계와 평균을 출력하시오.
 (<code>sum()</code>, <code>len()</code> 내장함수 사용)

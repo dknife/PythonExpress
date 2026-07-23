@@ -311,6 +311,33 @@ details.box.exercise > summary:focus-visible {
 }
 .ex-body { margin-top: 0.85rem; }
 .ex-body > :last-child { margin-bottom: 0; }
+/* 장 요약도 접어 두고 제목을 눌러 펼친다 */
+details.box.summary > summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex; align-items: center; gap: 0.55rem;
+  margin-bottom: 0;
+  transition: color 0.3s ease;
+}
+details.box.summary > summary::-webkit-details-marker { display: none; }
+details.box.summary > summary::after {
+  content: '';
+  width: 0.42em; height: 0.42em;
+  margin-left: auto;
+  border-right: 2px solid var(--text-light);
+  border-bottom: 2px solid var(--text-light);
+  transform: rotate(45deg) translate(-0.12em, -0.12em);
+  transition: transform 0.3s var(--ease);
+}
+details.box.summary[open] > summary::after {
+  transform: rotate(225deg) translate(-0.12em, -0.12em);
+}
+details.box.summary > summary:hover { color: var(--accent); }
+details.box.summary > summary:focus-visible {
+  outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px;
+}
+.sum-body { margin-top: 0.85rem; }
+.sum-body > :last-child { margin-bottom: 0; }
 .box .box-head {
   font-weight: 800; color: var(--text); font-size: 1.08rem;
   margin-bottom: 0.8rem; letter-spacing: -0.01em;
