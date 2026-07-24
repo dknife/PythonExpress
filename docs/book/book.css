@@ -490,6 +490,28 @@ dialog.runner::backdrop { background: rgba(20,20,20,0.55); backdrop-filter: blur
   box-shadow: inset 3px 0 0 var(--accent);
 }
 .runner-stdin-wrap { border-bottom: 1px solid var(--border); }
+/* 가상 파일 — 코드가 읽을 파일을 실행 전에 만들어 두는 편집 상자 */
+.runner-files-wrap { border-bottom: 1px solid var(--border); }
+.runner-files { padding: 0.5rem 1.1rem 0.8rem; }
+.vfile + .vfile { margin-top: 0.6rem; }
+.vfile-name {
+  display: inline-block; margin-bottom: 0.25rem;
+  font-family: 'D2Coding', Consolas, 'JetBrains Mono', monospace;
+  font-size: 0.76rem; font-weight: 700; color: var(--text-2);
+  background: var(--bg-2); border-radius: 5px; padding: 0.12rem 0.55rem;
+}
+.vfile-body {
+  display: block; width: 100%; resize: vertical;
+  font-family: 'D2Coding', Consolas, 'JetBrains Mono', monospace;
+  font-size: 0.8rem; line-height: 1.5;
+  color: var(--text); background: var(--bg);
+  border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 0.5rem 0.7rem; tab-size: 4;
+}
+.vfile-body:focus {
+  outline: none; background: var(--white);
+  border-color: var(--accent);
+}
 .runner-label {
   display: block; padding: 0.6rem 1.1rem 0;
   font-size: 0.76rem; font-weight: 700; color: var(--text-2);

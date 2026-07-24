@@ -150,6 +150,56 @@ window.algjaRunner = (function () {
      'Flask는 웹 서버를 띄워 포트를 여는 프로그램이라 브라우저 안에서는 동작하지 않습니다.']
   ];
 
+  // ---- 가상 파일 ----
+  // 파일을 읽는 예제는 실제 파일이 없어 브라우저에서 실패한다. 코드가 읽는
+  // 파일 이름을 찾아 '가상 파일' 상자를 보여 주고, 실행 전에 그 내용을
+  // Pyodide의 메모리 파일시스템에 만들어 둔다. 아래는 책 예제가 읽는
+  // 파일들의 기본 내용 -- 본문에 실린 데이터와 일치시킨다.
+  var VFILE_DEFAULTS = {
+    'hello.txt': 'Hello World!\nPython file I/O\n',
+    'numbers.txt': '10\n20\n30\n40\n50\n',
+    'members_raw.txt':
+      'Hong Gildong / 010-1234-5678 / hong@email.com / Seoul\n' +
+      'Kim Yusin 010.9876.5432 kim_ys@company.co.kr Busan\n' +
+      'Lee Sunsin, 010 1111 2222, lee@navy.kr, Yeosu\n' +
+      ' Kang Gamchan (010)3333-4444 kang@goryeo.com Kaesong\n' +
+      'Jang Yeongshil / 010-5555-6666 / jang@joseon.kr / Seoul\n' +
+      'Yulgok 010.7777.8888 yulgok@edu.kr Paju\n' +
+      'Shin Saimdang, 01022223333, shin@art.com, Gangneung\n' +
+      'Sejong 010-9999-0000 sejong@hangul.kr Seoul\n',
+    'log.txt':
+      '2026-07-24 09:12:01 INFO  Server started\n' +
+      '2026-07-24 09:12:35 ERROR Connection lost\n' +
+      '2026-07-24 09:13:02 INFO  Retry attempt 1\n' +
+      '2026-07-24 09:13:40 ERROR Disk full\n' +
+      '2026-07-24 09:14:11 INFO  Service recovered\n'
+  };
+
+  // 코드에서 "미리 만들어 둘 파일" 이름을 찾는다.
+  //  - 일부러 없는 파일을 여는 오류 예제(nonexistent 등)는 제외
+  //  - 예제가 스스로 먼저 쓰는(w/a) 파일은 만들 필요가 없어 제외
+  //  - 그 밖에는 기본 내용이 있거나 open()으로 직접 여는 파일만 포함
+  function detectVFiles(code) {
+    var out = [], seen = {};
+    var re = /['"]([\w.\-]+\.(?:txt|csv|json|log|dat|md))['"]/g;
+    var m;
+    while ((m = re.exec(code))) {
+      var name = m[1];
+      if (seen[name]) continue;
+      seen[name] = true;
+      if (/nonexist|no_such|not_found/i.test(name)) continue;
+      var q = name.replace(/\./g, '\\.');
+      var anyOpen = code.search(
+        new RegExp("open\\(\\s*['\"]" + q + "['\"]\\s*[,)]"));
+      var writeOpen = code.search(
+        new RegExp("open\\(\\s*['\"]" + q + "['\"]\\s*,\\s*['\"][wax]"));
+      if (writeOpen !== -1 && writeOpen <= anyOpen) continue;
+      if (!(name in VFILE_DEFAULTS) && anyOpen === -1) continue;
+      out.push(name);
+    }
+    return out;
+  }
+
   var dlg = null, ui = {}, worker = null, timer = null, original = '';
   // 워커는 창을 닫아도 살려 둔다 -- 파이썬을 한 번만 올리기 위해서다.
   // ready: 파이썬이 이미 올라와 있는가, busy: 지금 실행 중인가
@@ -173,6 +223,12 @@ window.algjaRunner = (function () {
         '<textarea id="algja-stdin" class="runner-stdin" rows="2" ' +
           'spellcheck="false"></textarea>' +
       '</div>' +
+      '<div class="runner-files-wrap" hidden>' +
+        '<label class="runner-label">가상 파일' +
+        '<span> — 코드가 읽을 파일을 실행 전에 만들어 둡니다. ' +
+        '내용은 고쳐도 됩니다</span></label>' +
+        '<div class="runner-files"></div>' +
+      '</div>' +
       '<div class="runner-bar">' +
         '<button type="button" class="runner-run">실행</button>' +
         '<button type="button" class="runner-stop" hidden>중지</button>' +
@@ -186,6 +242,8 @@ window.algjaRunner = (function () {
     ui.code = dlg.querySelector('.runner-code');
     ui.stdinWrap = dlg.querySelector('.runner-stdin-wrap');
     ui.stdin = dlg.querySelector('.runner-stdin');
+    ui.filesWrap = dlg.querySelector('.runner-files-wrap');
+    ui.files = dlg.querySelector('.runner-files');
     ui.run = dlg.querySelector('.runner-run');
     ui.stop = dlg.querySelector('.runner-stop');
     ui.reset = dlg.querySelector('.runner-reset');
@@ -208,6 +266,7 @@ window.algjaRunner = (function () {
     ui.reset.addEventListener('click', function () {
       ui.code.value = original;
       syncStdinBox();
+      syncFilesBox();
       ui.code.focus();
     });
 
@@ -223,11 +282,55 @@ window.algjaRunner = (function () {
         run();
       }
     });
-    ui.code.addEventListener('input', syncStdinBox);
+    ui.code.addEventListener('input', function () {
+      syncStdinBox();
+      syncFilesBox();
+    });
   }
 
   function syncStdinBox() {
     ui.stdinWrap.hidden = !/\binput\s*\(/.test(ui.code.value);
+  }
+
+  // 감지된 파일 목록에 맞춰 항목을 더하고 빼되,
+  // 이미 있는 항목은 그대로 두어 사용자가 고친 내용을 지킨다
+  function syncFilesBox() {
+    var names = detectVFiles(ui.code.value);
+    var have = {};
+    ui.files.querySelectorAll('.vfile').forEach(function (el) {
+      var n = el.getAttribute('data-name');
+      if (names.indexOf(n) === -1) el.remove();
+      else have[n] = true;
+    });
+    names.forEach(function (n) {
+      if (have[n]) return;
+      var item = document.createElement('div');
+      item.className = 'vfile';
+      item.setAttribute('data-name', n);
+      var label = document.createElement('div');
+      label.className = 'vfile-name';
+      label.textContent = n;
+      var ta = document.createElement('textarea');
+      ta.className = 'vfile-body';
+      ta.rows = 3;
+      ta.spellcheck = false;
+      ta.value = VFILE_DEFAULTS[n] || '';
+      item.appendChild(label);
+      item.appendChild(ta);
+      ui.files.appendChild(item);
+    });
+    ui.filesWrap.hidden = !names.length;
+  }
+
+  function collectVFiles() {
+    var out = [];
+    ui.files.querySelectorAll('.vfile').forEach(function (el) {
+      out.push({
+        name: el.getAttribute('data-name'),
+        content: el.querySelector('textarea').value
+      });
+    });
+    return out;
   }
 
   function setStatus(msg) { ui.status.textContent = msg || ''; }
@@ -518,7 +621,9 @@ window.algjaRunner = (function () {
     setStatus(ready ? '실행 중…' : '준비 중…');
 
     startedAt = Date.now();
-    ensureWorker().postMessage({ code: code, stdin: ui.stdin.value });
+    ensureWorker().postMessage({
+      code: code, stdin: ui.stdin.value, files: collectVFiles()
+    });
 
     timer = setTimeout(function () {
       abortRun();
@@ -540,6 +645,8 @@ window.algjaRunner = (function () {
     ui.figs.innerHTML = '';
     setStatus('');
     syncStdinBox();
+    ui.files.innerHTML = '';   // 새 코드를 열 때는 가상 파일도 기본값부터
+    syncFilesBox();
     dlg.showModal();
     ui.code.focus();
     ui.code.setSelectionRange(0, 0);

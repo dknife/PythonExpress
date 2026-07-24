@@ -397,6 +397,7 @@ async function ensurePyodide() {
 self.onmessage = async function (ev) {
   var code = ev.data.code || '';
   var stdin = ev.data.stdin || '';
+  var files = ev.data.files || [];
   var ns = null;
   // 메시지를 받았다는 신호. 이게 안 오면 창 쪽에서 워커를 되살린다.
   post('ack', '');
@@ -423,6 +424,17 @@ self.onmessage = async function (ev) {
     p.globals.set('_algja_stdin_text', stdin);
     p.runPython('_algja_stdin(_algja_stdin_text)');
     p.runPython('_algja_turtle_reset()');
+
+    // 가상 파일 -- 코드가 읽을 파일을 메모리 파일시스템에 만들어 둔다.
+    // 문자열은 UTF-8로 기록되며, 파일은 워커가 사는 동안 유지된다.
+    files.forEach(function (f) {
+      try {
+        p.FS.writeFile(f.name, f.content);
+      } catch (e) {
+        post('err', '가상 파일 ' + f.name + ' 생성 실패: ' +
+          (e.message || e) + '\n');
+      }
+    });
 
     // 실행할 때마다 빈 이름공간을 준다.
     // __name__을 "__main__"으로 두어야 if __name__ == "__main__": 블록이 돈다.
