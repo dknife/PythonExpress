@@ -1,0 +1,6 @@
+{
+ "6kag99": "def greet(name, greeting='Hello'):\n    print(f'{greeting}, {name}!')\n\n",
+ "1hkgetd": "import pandas as pd\n\ndata = {\n    'name': ['Hong', 'Kim', 'Lee', 'Park', 'Choi'],\n    'kor' : [85, 90, 78, 92, 88],\n    'eng' : [80, 95, 82, 70, 88],\n    'math': [90, 85, 88, 95, 92],\n}\ndf = pd.DataFrame(data)\nprint(df.head())\nprint(df.describe())\n\n",
+ "42hfxc": "import pandas as pd\n\ndata = {\n    'name': ['Hong', 'Kim', 'Lee', 'Park', 'Choi'],\n    'kor' : [85, 90, 78, 92, 88],\n    'eng' : [80, 95, 82, 70, 88],\n    'math': [90, 85, 88, 95, 92],\n}\ndf = pd.DataFrame(data)\nprint(df.head())\nprint(df.describe())\n\n",
+ "1iifhnr": "import pandas as pd\n"
+}

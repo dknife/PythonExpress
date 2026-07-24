@@ -147,7 +147,12 @@ window.algjaRunner = (function () {
     [/^\s*(?:import|from)\s+tkinter\b/m, 'tkinter',
      'tkinter GUI는 운영체제의 창이 필요해 브라우저 안에서는 동작하지 않습니다.'],
     [/^\s*(?:import|from)\s+flask\b/mi, 'Flask',
-     'Flask는 웹 서버를 띄워 포트를 여는 프로그램이라 브라우저 안에서는 동작하지 않습니다.']
+     'Flask는 웹 서버를 띄워 포트를 여는 프로그램이라 브라우저 안에서는 동작하지 않습니다.'],
+    // import flask 없이 라우트만 추가하는 연속 예제 (코드 10.7)
+    [/^\s*@app\.route\b/m, 'Flask',
+     '이 코드는 Flask 웹 앱 코드입니다. app 객체는 직전 코드(첫 번째 Flask 앱)에서 ' +
+     '만들어지며, Flask는 웹 서버를 띄워 포트를 여는 프로그램이라 브라우저 안에서는 ' +
+     '동작하지 않습니다.']
   ];
 
   // ---- 가상 파일 ----
@@ -209,6 +214,24 @@ window.algjaRunner = (function () {
     .then(function (r) { return r.ok ? r.json() : null; })
     .then(function (d) { stdinDefaults = d; })
     .catch(function () { /* 없으면 빈 상자로 동작 */ });
+
+  // ---- 실행 준비 코드 ----
+  // 앞 리스팅에 이어지는 연속 예제(예: 코드 4.7)는 단독으로 돌 수 없다.
+  // run-preludes.json(코드 해시 → 준비 코드, WebBook/gen_run_preludes.py로
+  // 생성)에서 찾아, 실행 창을 열 때 준비 코드를 앞에 붙여 보여 준다.
+  var runPreludes = null;
+  fetch('run-preludes.json')
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (d) { runPreludes = d; })
+    .catch(function () { /* 없으면 원본 코드 그대로 동작 */ });
+
+  // 문법 틀·의사코드 블록(코드 4.1, 7.1 등)의 해시 목록.
+  // 실행하면 개념 코드라는 안내만 출력한다. 코드를 고치면 정상 실행된다.
+  var conceptCodes = null;
+  fetch('concept-codes.json')
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (d) { conceptCodes = d; })
+    .catch(function () { /* 없으면 일반 코드처럼 실행을 시도한다 */ });
 
   // stdin-defaults.json의 키와 같은 djb2-xor 해시 (gen_stdin_defaults.py 참고)
   function codeKey(s) {
@@ -623,6 +646,26 @@ window.algjaRunner = (function () {
     ui.out.textContent = '';
     ui.figs.innerHTML = '';
 
+    // 문법 틀·의사코드 -- 실행 대상이 아닌 개념 코드는 안내만 출력한다
+    if (conceptCodes && conceptCodes.indexOf(codeKey(code)) !== -1) {
+      append('warn',
+        '이 코드는 실행을 위한 것이 아니라, 설명을 돕는 개념 코드입니다. ' +
+        '실행되지 않습니다.\n');
+      setStatus('설명용 개념 코드');
+      return;
+    }
+
+    // 코랩 전용 코드(구글 드라이브 마운트) -- 브라우저 파이썬에는 google.colab
+    // 모듈이 없다. 실제 실행 대신 책에 제시된 출력을 그대로 보여 준다.
+    if (/^\s*(?:from|import)\s+google\.colab\b/m.test(code)) {
+      append(null, 'Mounted at /content/drive\n');
+      append('warn',
+        '\n이 코드는 코랩에서 실행되는 코드로, 변경하여 테스트하는 것이 ' +
+        '지원되지 않습니다.\n');
+      setStatus('코랩 전용 코드 — 제시된 출력 표시');
+      return;
+    }
+
     for (var i = 0; i < UNSUPPORTED.length; i++) {
       if (UNSUPPORTED[i][0].test(code)) {
         append('warn',
@@ -658,6 +701,9 @@ window.algjaRunner = (function () {
     if (!dlg) build();
     if (busy) abortRun();
     stopTurtle();
+    // 연속 예제면 앞 리스팅의 준비 코드를 붙여서 연다
+    var pre = runPreludes && runPreludes[codeKey(code)];
+    if (pre) code = pre + code;
     original = code;
     ui.code.value = code;
     ui.out.textContent = '';
