@@ -200,6 +200,25 @@ window.algjaRunner = (function () {
     return out;
   }
 
+  // ---- 예시 입력값 ----
+  // input() 예제는 대화형 입력이 불가능해 '입력값' 상자로 미리 받는다.
+  // 예제마다 어울리는 예시 입력을 stdin-defaults.json(코드 해시 → 입력값,
+  // WebBook/gen_stdin_defaults.py로 생성)에서 읽어 상자를 미리 채워 준다.
+  var stdinDefaults = null;
+  fetch('stdin-defaults.json')
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (d) { stdinDefaults = d; })
+    .catch(function () { /* 없으면 빈 상자로 동작 */ });
+
+  // stdin-defaults.json의 키와 같은 djb2-xor 해시 (gen_stdin_defaults.py 참고)
+  function codeKey(s) {
+    var h = 5381;
+    for (var i = 0; i < s.length; i++) {
+      h = (Math.imul(h, 33) ^ s.charCodeAt(i)) >>> 0;
+    }
+    return h.toString(36);
+  }
+
   var dlg = null, ui = {}, worker = null, timer = null, original = '';
   // 워커는 창을 닫아도 살려 둔다 -- 파이썬을 한 번만 올리기 위해서다.
   // ready: 파이썬이 이미 올라와 있는가, busy: 지금 실행 중인가
@@ -644,6 +663,8 @@ window.algjaRunner = (function () {
     ui.out.textContent = '';
     ui.figs.innerHTML = '';
     setStatus('');
+    // 이 예제에 맞는 예시 입력이 있으면 미리 채워 바로 실행할 수 있게 한다
+    ui.stdin.value = (stdinDefaults && stdinDefaults[codeKey(code)]) || '';
     syncStdinBox();
     ui.files.innerHTML = '';   // 새 코드를 열 때는 가상 파일도 기본값부터
     syncFilesBox();
