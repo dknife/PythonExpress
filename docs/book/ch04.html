@@ -190,8 +190,8 @@ print(average(70, 85, 95, 100)) # 인자 4개</code></pre>
 <div class="listing-caption">코드 4.8: 가변 개수의 인자 받기</div>
 <p><code>average()</code> 함수는 호출 시 전달된 모든 점수를 <code>scores</code>라는 튜플로 받는다. 인자가 3개든 4개든 자유롭게 호출할 수 있고, 함수 내부에서는 일반 튜플처럼 <code>sum()</code>, <code>len()</code> 등으로 다룰 수 있다.</p>
 <p>별표 두 개(<code>**</code>)를 붙이면 <strong>키워드 인자</strong>들을 <strong>딕셔너리</strong>로 묶어 받는다. 관례적으로 <code>**kwargs</code>라는 이름을 사용한다.</p>
-<pre class="line-numbers"><code class="language-python">def make_profile(**info): # 키워드 인자를 딕셔너리로 받음
-    for key, value in info.items():
+<pre class="line-numbers"><code class="language-python">def make_profile(**kwargs): # 키워드 인자를 딕셔너리로 받음
+    for key, value in kwargs.items():
         print(f'{key}: {value}')
 
 make_profile(name='Alice', age=20, job='Designer')</code></pre>
@@ -199,7 +199,7 @@ make_profile(name='Alice', age=20, job='Designer')</code></pre>
 age: 20
 job: Designer</pre>
 <div class="listing-caption">코드 4.9: 딕셔너리 형태의 키워드 인자 받기</div>
-<p><code>make_profile()</code>은 호출 시 어떤 키워드 인자가 와도 모두 <code>info</code> 딕셔너리에 담아 처리한다. 한 함수에서 <code>*args</code>와 <code>**kwargs</code>를 같이 쓸 수도 있는데, 이때 순서는 <code>def f(필수, *args, **kwargs):</code>로 고정된다. 가변 인자는 <code>print()</code>의 여러 출력값 처리, 라이브러리의 옵션 전달 등 파이썬 곳곳에서 매우 폭넓게 사용된다.</p>
+<p><code>make_profile()</code>은 호출 시 어떤 키워드 인자가 와도 모두 <code>kwargs</code> 딕셔너리에 담아 처리한다. 한 함수에서 <code>*args</code>와 <code>**kwargs</code>를 같이 쓸 수도 있는데, 이때 순서는 <code>def f(필수, *args, **kwargs):</code>로 고정된다. 가변 인자는 <code>print()</code>의 여러 출력값 처리, 라이브러리의 옵션 전달 등 파이썬 곳곳에서 매우 폭넓게 사용된다.</p>
 <h3>return을 이용한 반환값</h3>
 <p>지금까지의 함수들은 결과를 화면에 직접 출력했다. 그러나 실제 프로그래밍에서는 함수가 계산한 결과를 "돌려받아" 다른 계산에 활용하는 경우가 훨씬 많다. 이때 사용하는 것이 <code>return</code> 키워드이다.</p>
 <p>함수를 자판기에 비유해 보자. 동전(인자)을 넣고 버튼을 누르면, 자판기(함수)는 내부에서 음료를 만들어 완성된 음료(반환값)를 배출구로 내보낸다. <code>return</code>은 바로 이 "배출구" 역할을 한다.</p>

@@ -196,6 +196,8 @@ pre.pyout, pre.termout {
   border: none; border-radius: var(--radius);
   padding: 0.85rem 1.1rem; font-size: 0.84rem; overflow-x: auto;
 }
+/* 오류 출력(pyerr) — 어두운 배경 위에서 읽히는 밝은 빨강 */
+pre.pyout.pyerr { color: #F87171; }
 /* 어두운 터미널 배경 위에서는 안쪽 요소도 밝은 글자색을 물려받게 한다
    (본문 색 #313131이 새어 들어오면 검은 바탕에서 글자가 보이지 않는다) */
 pre.pyout *, pre.termout * {

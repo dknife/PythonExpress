@@ -211,7 +211,7 @@ Hello World!</pre>
 <pre class="pyout">&gt;&gt;&gt; print("Hello World!")
 Hello World!</pre>
 <p>주의할 점은 <code>print('Hello World!")</code>와 같이 작은따옴표로 시작해서 큰따옴표로 끝나거나, 반대의 경우에는 잘못된 명령으로 인식해서 오류가 발생한다는 것이다. 이때 파이썬 인터프리터는 다음과 같은 오류 메시지를 출력한다. 문자열을 따옴표로 시작해서 따옴표로 닫았지만, 시작은 작은따옴표, 끝은 큰따옴표로 했기 때문에 작은따옴표로 시작한 문자열이 끝나지 않았다고 판단하기 때문이다.</p>
-<pre class="pyout">&gt;&gt;&gt; print('Hello World!")
+<pre class="pyout pyerr">&gt;&gt;&gt; print('Hello World!")
 ...
 SyntaxError: incomplete input</pre>
 <p>파이썬 대화창은 오류가 날 때 오류가 발생한 문장과 함께 오류의 내용을 출력해 준다. 위의 오류는 <code>SyntaxError: incomplete input</code>이다. 우리말로 해석하자면 구문 오류(Syntax Error)가 발생하였으며, "완전하지 않은 입력이 나타났다"라는 의미이다. 다소 축약된 그리고 익숙하지 않은 용어가 등장하기 때문에 처음 파이썬을 접하는 개발자들은 당황할 수 있다. 그러나 그 위의 줄에 분홍색 문자가 오류가 발생한 곳을 정확하게 알려주므로 당황하지 않아도 된다. 앞으로도 이러한 오류를 수없이 만나면서 프로그래밍 실력이 늘게 될 것이다. 오류에 친숙해지도록 하자.</p>
@@ -270,7 +270,7 @@ Let us start programming!</pre>
 print('Age:', 20)
 print('Hobby:', 'Reading')</code></pre></li>
 <li>대화식 모드에서 <code>print()</code> 함수 앞에 의도적으로 공백을 넣어 실행해 보자. 어떤 오류가 발생하는지 오류 메시지를 읽어 보자.</p>
-<p><pre class="pyout">&gt;&gt;&gt;   print('Hello')
+<p><pre class="pyout pyerr">&gt;&gt;&gt;   print('Hello')
   File "&lt;stdin&gt;", line 1
     print('Hello')
 IndentationError: unexpected indent</pre></li>
