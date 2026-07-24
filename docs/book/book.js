@@ -7,6 +7,7 @@
   var targets = document.querySelectorAll(
     '.content figure.fig, .content .box, .content .listing, ' +
     '.content .table-wrap, .content pre.line-numbers, ' +
+    '.content .filecode-wrap, ' +
     '.content pre.pyout, .content pre.termout, .cover-wrap');
   targets.forEach(function (el) { el.classList.add('reveal'); });
   var io = new IntersectionObserver(function (entries) {
@@ -79,7 +80,10 @@
     '<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" ' +
     'stroke="none"><polygon points="6 3 21 12 6 21"></polygon></svg>';
 
-  document.querySelectorAll('.content pre.line-numbers').forEach(function (pre) {
+  // 파일 소스(pre.filecode: HTML 템플릿 등)는 실행 대상이 아니라 복사만 붙인다
+  document.querySelectorAll(
+    '.content pre.line-numbers, .content pre.filecode'
+  ).forEach(function (pre) {
     var codeEl = pre.querySelector('code');
     if (!codeEl) return;
     var wrap = document.createElement('div');
@@ -90,15 +94,17 @@
     bar.className = 'code-actions';
     wrap.appendChild(bar);
 
-    var runBtn = document.createElement('button');
-    runBtn.className = 'copy-btn run-btn';
-    runBtn.type = 'button';
-    runBtn.title = '이 코드를 창에서 고쳐 가며 실행해 봅니다';
-    runBtn.innerHTML = RUN_ICON + '<span>실행</span>';
-    bar.appendChild(runBtn);
-    runBtn.addEventListener('click', function () {
-      window.algjaRunner.open(codeEl.textContent.replace(/\n$/, ''));
-    });
+    if (!pre.classList.contains('filecode')) {
+      var runBtn = document.createElement('button');
+      runBtn.className = 'copy-btn run-btn';
+      runBtn.type = 'button';
+      runBtn.title = '이 코드를 창에서 고쳐 가며 실행해 봅니다';
+      runBtn.innerHTML = RUN_ICON + '<span>실행</span>';
+      bar.appendChild(runBtn);
+      runBtn.addEventListener('click', function () {
+        window.algjaRunner.open(codeEl.textContent.replace(/\n$/, ''));
+      });
+    }
 
     var btn = document.createElement('button');
     btn.className = 'copy-btn';
