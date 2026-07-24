@@ -501,6 +501,7 @@ print(p.stem) # 'scores'
 print(p.parent) # PosixPath('data')
 
 # 한 줄로 읽고 쓰기
+p.parent.mkdir(exist_ok=True) # data 디렉토리가 없으면 생성
 p.write_text('hello', encoding='utf-8')
 text = p.read_text(encoding='utf-8')</code></pre>
 <div class="listing-caption">코드 8.16: <code>pathlib</code>의 <code>Path</code> 객체 사용하기</div></p>
