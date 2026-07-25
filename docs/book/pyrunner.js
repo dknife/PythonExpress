@@ -55,6 +55,50 @@ var PRELUDE = [
   '    mod.close("all")',
   '    return out',
   '',
+  'def _algja_fs_snapshot():',
+  '    import os',
+  '    snap = {}',
+  '    for root, dirs, files in os.walk("."):',
+  '        dirs[:] = [d for d in dirs if not d.startswith(".")]',
+  '        for f in files:',
+  '            p = os.path.normpath(os.path.join(root, f))',
+  '            try:',
+  '                st = os.stat(p)',
+  '                snap[p] = (st.st_mtime_ns, st.st_size)',
+  '            except OSError:',
+  '                pass',
+  '    return snap',
+  '',
+  '_algja_fs_before = {}',
+  '',
+  'def _algja_fs_mark():',
+  '    global _algja_fs_before',
+  '    _algja_fs_before = _algja_fs_snapshot()',
+  '',
+  'def _algja_fs_diff():',
+  '    """실행으로 생성·변경된 파일 목록을 JSON으로 돌려준다."""',
+  '    import json, os',
+  '    out = []',
+  '    now = _algja_fs_snapshot()',
+  '    for p in sorted(now):',
+  '        if _algja_fs_before.get(p) == now[p]:',
+  '            continue',
+  '        item = {"name": p}',
+  '        size = now[p][1]',
+  '        try:',
+  '            with open(p, "rb") as f:',
+  '                data = f.read(20000)',
+  '            text = data.decode("utf-8-sig")',
+  '            if size > 20000:',
+  '                text += "\\n... (이하 생략 -- 총 %d바이트)" % size',
+  '            item["content"] = text',
+  '        except UnicodeDecodeError:',
+  '            item["binary"] = size',
+  '        except OSError as e:',
+  '            item["content"] = "(읽기 실패: %s)" % e',
+  '        out.append(item)',
+  '    return json.dumps(out)',
+  '',
   'def _algja_turtle_reset():',
   '    m = sys.modules.get("turtle")',
   '    if m is not None and getattr(m, "_algja", False):',
@@ -435,6 +479,8 @@ self.onmessage = async function (ev) {
           (e.message || e) + '\n');
       }
     });
+    // 실행 전 파일시스템 스냅샷 -- 실행 후 생성·변경 파일을 찾기 위함
+    p.runPython('_algja_fs_mark()');
 
     // 실행할 때마다 빈 이름공간을 준다.
     // __name__을 "__main__"으로 두어야 if __name__ == "__main__": 블록이 돈다.
@@ -450,14 +496,18 @@ self.onmessage = async function (ev) {
     post('figs', list);
     var tj = p.runPython('_algja_turtle_dump()');
     if (tj) post('turtle', tj);
+    var gf = p.runPython('_algja_fs_diff()');
+    if (gf && gf !== '[]') post('gfiles', gf);
     post('done', '');
   } catch (err) {
     post('err', (err && err.message ? err.message : String(err)) + '\n');
-    // 오류가 났어도 그 전까지 그린 터틀 그림은 보여 준다
+    // 오류가 났어도 그 전까지 그린 터틀 그림·생성된 파일은 보여 준다
     try {
       if (py) {
         var tj2 = py.runPython('_algja_turtle_dump()');
         if (tj2) post('turtle', tj2);
+        var gf2 = py.runPython('_algja_fs_diff()');
+        if (gf2 && gf2 !== '[]') post('gfiles', gf2);
       }
     } catch (e2) {}
     post('done', '');

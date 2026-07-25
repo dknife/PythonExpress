@@ -596,6 +596,22 @@ dialog.runner::backdrop { background: rgba(20,20,20,0.55); backdrop-filter: blur
   text-align: center; font-size: 0.74rem; color: var(--text-light);
   margin: 0.4rem 0 0.2rem;
 }
+/* 실행으로 생성·변경된 파일 — 실행 결과 아래 파일명 + 내용 */
+.gen-files { margin-top: 0.4rem; }
+.gen-files-head {
+  font-size: 0.78rem; font-weight: 700; color: var(--text-2);
+  margin-bottom: 0.5rem;
+}
+.gen-file + .gen-file { margin-top: 0.6rem; }
+.gen-file-body {
+  margin: 0; padding: 0.55rem 0.8rem;
+  font-family: 'D2Coding', Consolas, 'JetBrains Mono', monospace;
+  font-size: 0.8rem; line-height: 1.5;
+  color: var(--text); background: var(--white);
+  border: 1px solid var(--border); border-radius: var(--radius);
+  white-space: pre-wrap; word-break: break-word;
+  max-height: 14rem; overflow-y: auto;
+}
 @media (max-width: 640px) {
   dialog.runner { width: 100vw; max-height: 100vh; border-radius: 0; }
   .runner-hint { display: none; }
