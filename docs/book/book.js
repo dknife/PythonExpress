@@ -324,9 +324,10 @@ window.algjaRunner = (function () {
           '</form>' +
         '</div>' +
         '<div class="web-routes"></div>' +
-        // allow-scripts로 링크·폼 가로채기 스크립트를 돌리되 allow-same-origin은
-        // 주지 않는다 -> iframe은 부모 페이지·쿠키에 접근할 수 없다(안전).
-        '<iframe class="web-view" sandbox="allow-scripts allow-forms" ' +
+        // allow-scripts로 가로채기 스크립트만 돌린다. allow-same-origin·allow-forms는
+        // 주지 않아 iframe이 부모·쿠키에 접근하거나 폼을 실제 전송할 수 없다(안전).
+        // 링크·폼은 renderFlaskResponse에서 data-*로 바꿔 navigation을 제거한다.
+        '<iframe class="web-view" sandbox="allow-scripts" ' +
           'title="Flask 앱 미리 보기"></iframe>' +
         '<div class="web-note">미니 브라우저 — 실제 서버가 아니라 ' +
           '시뮬레이터입니다. 내 컴퓨터의 파이썬에서는 별도의 웹 서버가 뜹니다.' +
@@ -518,22 +519,49 @@ window.algjaRunner = (function () {
     var res;
     try { res = JSON.parse(json); } catch (e) { return; }
     if (res.path) ui.webAddr.value = res.path;
-    // 폼 제출·링크 클릭을 가로채 다시 워커로 보내는 브리지 스크립트를 주입한다
-    var bridge =
-      '<base href="about:blank">' +
+
+    // 돌아온 HTML에서 링크·폼의 네비게이션을 없앤다. 샌드박스 iframe은
+    // href/action이 남아 있으면 우리 핸들러를 거치지 않고 곧장 이동해 버려
+    // 화면이 갱신되지 않는다. 목적지를 data-*로 옮기고 클릭만 가로채
+    // 부모(→워커)로 넘긴다.
+    var doc = new DOMParser().parseFromString(res.body || '', 'text/html');
+    doc.querySelectorAll('a[href]').forEach(function (a) {
+      var href = a.getAttribute('href');
+      if (/^(https?:|mailto:|#)/i.test(href)) { a.setAttribute('target', '_blank'); return; }
+      a.setAttribute('data-href', href);
+      a.removeAttribute('href');
+    });
+    doc.querySelectorAll('form').forEach(function (f) {
+      f.setAttribute('data-action', f.getAttribute('action') || res.path || '/');
+      f.setAttribute('data-method', (f.getAttribute('method') || 'GET').toUpperCase());
+      f.removeAttribute('action');
+      f.removeAttribute('method');
+    });
+    var bodyHtml = doc.body ? doc.body.innerHTML : (res.body || '');
+
+    var head =
       '<style>body{font-family:system-ui,-apple-system,sans-serif;' +
-      'margin:14px;color:#222;line-height:1.5}a{color:#c85f32}' +
-      'button,input{font:inherit}</style>' +
-      '<scr' + 'ipt>document.addEventListener("click",function(e){' +
-      'var a=e.target.closest("a");if(!a)return;e.preventDefault();' +
-      'parent.postMessage({algjaFlask:{method:"GET",' +
-      'path:a.getAttribute("href")}},"*");});' +
-      'document.addEventListener("submit",function(e){e.preventDefault();' +
-      'var f=e.target,d={};new FormData(f).forEach(function(v,k){d[k]=v;});' +
-      'parent.postMessage({algjaFlask:{method:(f.method||"GET").toUpperCase(),' +
-      'path:f.getAttribute("action")||location.pathname,data:d}},"*");});' +
+      'margin:14px;color:#222;line-height:1.5}a[data-href]{color:#c85f32;' +
+      'cursor:pointer;text-decoration:underline}button,input{font:inherit}</style>';
+    // 링크·폼 버튼 클릭과 Enter 키를 잡아 요청을 부모로 보낸다 (navigation 없음)
+    var bridge =
+      '<scr' + 'ipt>' +
+      'function send(m,p,d){parent.postMessage({algjaFlask:{method:m,path:p,' +
+      'data:d||{}}},"*");}' +
+      'function sub(f){var d={};new FormData(f).forEach(function(v,k){d[k]=v;});' +
+      'send(f.getAttribute("data-method")||"GET",f.getAttribute("data-action")||"/",d);}' +
+      'document.addEventListener("click",function(e){' +
+      'var a=e.target.closest("[data-href]");' +
+      'if(a){e.preventDefault();send("GET",a.getAttribute("data-href"));return;}' +
+      'var b=e.target.closest("button,input[type=submit]");' +
+      'if(b&&b.type!=="reset"){var f=b.closest("form");' +
+      'if(f){e.preventDefault();sub(f);}}' +
+      '});' +
+      'document.addEventListener("keydown",function(e){' +
+      'if(e.key==="Enter"&&e.target.form){e.preventDefault();sub(e.target.form);}' +
+      '});' +
       '</scr' + 'ipt>';
-    ui.webView.srcdoc = bridge + (res.body || '');
+    ui.webView.srcdoc = head + bodyHtml + bridge;
     setStatus('완료 — ' + (res.status || 200) + ' ' + (res.path || ''));
   }
 
