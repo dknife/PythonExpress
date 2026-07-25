@@ -489,6 +489,10 @@ dialog.runner {
      스크롤할 수 있게 한다. 없으면 아래쪽 iframe이 잘려 안 보인다. */
   overflow-y: auto;
 }
+/* flex가 자식을 줄여 창 안에 억지로 맞추면(특히 미니 브라우저 iframe이
+   64px로 찌그러짐) 넘칠 게 없어 스크롤이 안 생긴다. 자식이 제 높이를
+   유지하도록 shrink를 막아, 넘칠 때 위 overflow-y로 스크롤되게 한다. */
+dialog.runner > * { flex-shrink: 0; }
 dialog.runner[open] { display: flex; }
 dialog.runner::backdrop { background: rgba(20,20,20,0.55); backdrop-filter: blur(3px); }
 .runner-head {
