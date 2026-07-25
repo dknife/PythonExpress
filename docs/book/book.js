@@ -149,16 +149,12 @@
 // 여기서 캔버스에 거북이 애니메이션으로 재생한다(시뮬레이터).
 window.algjaRunner = (function () {
   var RUN_TIMEOUT_MS = 20000;
+  // Flask는 처음 실행 때 휠을 내려받아 준비 시간이 더 걸리므로 별도 상한을 둔다
+  var FLASK_TIMEOUT_MS = 45000;
+  var FLASK_RE = /^\s*(?:from|import)\s+flask\b/mi;
   var UNSUPPORTED = [
     [/^\s*(?:import|from)\s+tkinter\b/m, 'tkinter',
-     'tkinter GUI는 운영체제의 창이 필요해 브라우저 안에서는 동작하지 않습니다.'],
-    [/^\s*(?:import|from)\s+flask\b/mi, 'Flask',
-     'Flask는 웹 서버를 띄워 포트를 여는 프로그램이라 브라우저 안에서는 동작하지 않습니다.'],
-    // import flask 없이 라우트만 추가하는 연속 예제 (코드 10.7)
-    [/^\s*@app\.route\b/m, 'Flask',
-     '이 코드는 Flask 웹 앱 코드입니다. app 객체는 직전 코드(첫 번째 Flask 앱)에서 ' +
-     '만들어지며, Flask는 웹 서버를 띄워 포트를 여는 프로그램이라 브라우저 안에서는 ' +
-     '동작하지 않습니다.']
+     'tkinter GUI는 운영체제의 창이 필요해 브라우저 안에서는 동작하지 않습니다.']
   ];
 
   // ---- 가상 파일 ----
@@ -183,7 +179,22 @@ window.algjaRunner = (function () {
       '2026-07-24 09:12:35 ERROR Connection lost\n' +
       '2026-07-24 09:13:02 INFO  Retry attempt 1\n' +
       '2026-07-24 09:13:40 ERROR Disk full\n' +
-      '2026-07-24 09:14:11 INFO  Service recovered\n'
+      '2026-07-24 09:14:11 INFO  Service recovered\n',
+    // Flask render_template() 예제가 읽는 HTML 템플릿 (본문 filecode와 동일)
+    'templates/index.html':
+      '<!DOCTYPE html>\n<html>\n<head><title>To-Do List</title></head>\n' +
+      '<body>\n    <h1>To-Do List</h1>\n    <ul>\n' +
+      '        {% for task in tasks %}\n        <li>{{ task }}</li>\n' +
+      '        {% endfor %}\n    </ul>\n</body>\n</html>\n',
+    'templates/todo.html':
+      '<!DOCTYPE html>\n<html>\n<head><title>To-Do App</title></head>\n' +
+      '<body>\n    <h1>To-Do List ({{ tasks|length }} items)</h1>\n' +
+      '    <form action="/add" method="post">\n' +
+      '        <input type="text" name="task" placeholder="Enter a task">\n' +
+      '        <button type="submit">Add</button>\n    </form>\n    <ul>\n' +
+      '        {% for task in tasks %}\n        <li>{{ task }}\n' +
+      '            <a href="/delete/{{ loop.index0 }}">[X]</a>\n' +
+      '        </li>\n        {% endfor %}\n    </ul>\n</body>\n</html>\n'
   };
 
   // 코드에서 "미리 만들어 둘 파일" 이름을 찾는다.
@@ -207,6 +218,14 @@ window.algjaRunner = (function () {
       if (writeOpen !== -1 && writeOpen <= anyOpen) continue;
       if (!(name in VFILE_DEFAULTS) && anyOpen === -1) continue;
       out.push(name);
+    }
+    // Flask render_template('X.html') → templates/X.html 을 함께 제공한다
+    var tre = /render_template\(\s*['"]([\w.\-]+\.html)['"]/g;
+    while ((m = tre.exec(code))) {
+      var tpath = 'templates/' + m[1];
+      if (seen[tpath] || !(tpath in VFILE_DEFAULTS)) continue;
+      seen[tpath] = true;
+      out.push(tpath);
     }
     return out;
   }
@@ -292,7 +311,27 @@ window.algjaRunner = (function () {
         '<span class="runner-status"></span>' +
       '</div>' +
       '<pre class="runner-out" aria-live="polite"></pre>' +
-      '<div class="runner-figs"></div>';
+      '<div class="runner-figs"></div>' +
+      '<div class="runner-web" hidden>' +
+        '<div class="runner-web-head">' +
+          '<span class="web-dot"></span><span class="web-dot"></span>' +
+          '<span class="web-dot"></span>' +
+          '<form class="web-addr-form">' +
+            '<span class="web-host">127.0.0.1:5000</span>' +
+            '<input class="web-addr" spellcheck="false" value="/" ' +
+              'aria-label="접속 경로">' +
+            '<button type="submit" class="web-go">이동</button>' +
+          '</form>' +
+        '</div>' +
+        '<div class="web-routes"></div>' +
+        // allow-scripts로 링크·폼 가로채기 스크립트를 돌리되 allow-same-origin은
+        // 주지 않는다 -> iframe은 부모 페이지·쿠키에 접근할 수 없다(안전).
+        '<iframe class="web-view" sandbox="allow-scripts allow-forms" ' +
+          'title="Flask 앱 미리 보기"></iframe>' +
+        '<div class="web-note">미니 브라우저 — 실제 서버가 아니라 ' +
+          '시뮬레이터입니다. 내 컴퓨터의 파이썬에서는 별도의 웹 서버가 뜹니다.' +
+        '</div>' +
+      '</div>';
     document.body.appendChild(dlg);
 
     ui.code = dlg.querySelector('.runner-code');
@@ -306,6 +345,16 @@ window.algjaRunner = (function () {
     ui.status = dlg.querySelector('.runner-status');
     ui.out = dlg.querySelector('.runner-out');
     ui.figs = dlg.querySelector('.runner-figs');
+    ui.web = dlg.querySelector('.runner-web');
+    ui.webForm = dlg.querySelector('.web-addr-form');
+    ui.webAddr = dlg.querySelector('.web-addr');
+    ui.webRoutes = dlg.querySelector('.web-routes');
+    ui.webView = dlg.querySelector('.web-view');
+
+    ui.webForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      flaskNavigate({ method: 'GET', path: ui.webAddr.value.trim() || '/' });
+    });
 
     dlg.querySelector('.runner-close').addEventListener('click', close);
     // 창을 닫을 때는 돌고 있는 것만 끊는다. 놀고 있는 워커는 그대로 두어야
@@ -313,6 +362,7 @@ window.algjaRunner = (function () {
     dlg.addEventListener('close', function () {
       if (busy) abortRun();
       stopTurtle();
+      stopFlask();
     });
     ui.run.addEventListener('click', run);
     ui.stop.addEventListener('click', function () {
@@ -420,6 +470,88 @@ window.algjaRunner = (function () {
       wrap.appendChild(item);
     });
     ui.figs.appendChild(wrap);
+  }
+
+  // ---- Flask 미니 브라우저 ----
+  // 워커가 앱을 잡아 두면, 여기서 경로를 입력받아 test_client로 요청을 보내고
+  // 돌아온 HTML을 샌드박스 iframe에 렌더링한다. 실제 서버·포트는 없다.
+  var flaskReady = false;
+
+  function showFlask(json) {
+    var data;
+    try { data = JSON.parse(json); } catch (e) { return; }
+    var routes = data.routes || [];
+    flaskReady = true;
+    ui.web.hidden = false;
+
+    // 라우트 목록을 클릭 가능한 칩으로 (동적 인자 <name>은 예시값으로 치환)
+    ui.webRoutes.innerHTML = '';
+    var lead = document.createElement('span');
+    lead.className = 'web-routes-lead';
+    lead.textContent = '경로:';
+    ui.webRoutes.appendChild(lead);
+    routes.forEach(function (r) {
+      if (r.methods.indexOf('GET') === -1) return;
+      var demo = r.rule.replace(/<[^>]*?([^:>]+)>/g, function (_, name) {
+        return name === 'name' ? 'Python' : '1';
+      });
+      var chip = document.createElement('button');
+      chip.type = 'button';
+      chip.className = 'web-route';
+      chip.textContent = demo;
+      chip.addEventListener('click', function () {
+        ui.webAddr.value = demo;
+        flaskNavigate({ method: 'GET', path: demo });
+      });
+      ui.webRoutes.appendChild(chip);
+    });
+    flaskNavigate({ method: 'GET', path: ui.webAddr.value.trim() || '/' });
+  }
+
+  function flaskNavigate(req) {
+    if (!flaskReady || !worker) return;
+    setStatus('요청 중… ' + (req.method || 'GET') + ' ' + req.path);
+    worker.postMessage({ flaskReq: req });
+  }
+
+  function renderFlaskResponse(json) {
+    var res;
+    try { res = JSON.parse(json); } catch (e) { return; }
+    if (res.path) ui.webAddr.value = res.path;
+    // 폼 제출·링크 클릭을 가로채 다시 워커로 보내는 브리지 스크립트를 주입한다
+    var bridge =
+      '<base href="about:blank">' +
+      '<style>body{font-family:system-ui,-apple-system,sans-serif;' +
+      'margin:14px;color:#222;line-height:1.5}a{color:#c85f32}' +
+      'button,input{font:inherit}</style>' +
+      '<scr' + 'ipt>document.addEventListener("click",function(e){' +
+      'var a=e.target.closest("a");if(!a)return;e.preventDefault();' +
+      'parent.postMessage({algjaFlask:{method:"GET",' +
+      'path:a.getAttribute("href")}},"*");});' +
+      'document.addEventListener("submit",function(e){e.preventDefault();' +
+      'var f=e.target,d={};new FormData(f).forEach(function(v,k){d[k]=v;});' +
+      'parent.postMessage({algjaFlask:{method:(f.method||"GET").toUpperCase(),' +
+      'path:f.getAttribute("action")||location.pathname,data:d}},"*");});' +
+      '</scr' + 'ipt>';
+    ui.webView.srcdoc = bridge + (res.body || '');
+    setStatus('완료 — ' + (res.status || 200) + ' ' + (res.path || ''));
+  }
+
+  // iframe 안에서 올라오는 링크·폼 메시지를 받아 다시 요청으로 넘긴다
+  window.addEventListener('message', function (e) {
+    if (e.data && e.data.algjaFlask && dlg && dlg.open) {
+      flaskNavigate(e.data.algjaFlask);
+    }
+  });
+
+  function stopFlask() {
+    flaskReady = false;
+    if (ui.web) {
+      ui.web.hidden = true;
+      ui.webView.srcdoc = '';
+      ui.webRoutes.innerHTML = '';
+      ui.webAddr.value = '/';
+    }
   }
 
   // ---- 터틀 그래픽 시뮬레이터 (재생기) ----
@@ -643,6 +775,7 @@ window.algjaRunner = (function () {
   function abortRun() {
     if (worker) { worker.terminate(); worker = null; }
     ready = false;
+    flaskReady = false;   // 워커가 죽으면 잡아 둔 Flask 앱도 사라진다
     endRun();
   }
 
@@ -668,11 +801,15 @@ window.algjaRunner = (function () {
         renderTurtle(m);
       } else if (t === 'gfiles') {
         renderGenFiles(m);
+      } else if (t === 'flask') {
+        showFlask(m);
+      } else if (t === 'flaskres') {
+        renderFlaskResponse(m);
       } else if (t === 'done') {
         var secs = ((Date.now() - startedAt) / 1000).toFixed(1);
         ready = true;
         endRun();
-        if (!ui.out.textContent && !ui.figs.childNodes.length) {
+        if (!ui.out.textContent && !ui.figs.childNodes.length && ui.web.hidden) {
           append('muted', '(출력 없음)\n');
         }
         setStatus('완료 — ' + secs + '초');
@@ -690,6 +827,7 @@ window.algjaRunner = (function () {
     if (busy) return;
     var code = ui.code.value;
     stopTurtle();
+    stopFlask();
     ui.out.textContent = '';
     ui.figs.innerHTML = '';
 
@@ -737,20 +875,22 @@ window.algjaRunner = (function () {
       code: code, stdin: ui.stdin.value, files: collectVFiles()
     });
 
+    var limit = FLASK_RE.test(code) ? FLASK_TIMEOUT_MS : RUN_TIMEOUT_MS;
     timer = setTimeout(function () {
       abortRun();
       append('warn',
-        '\n실행이 ' + (RUN_TIMEOUT_MS / 1000) + '초를 넘겨 중지했습니다. ' +
+        '\n실행이 ' + (limit / 1000) + '초를 넘겨 중지했습니다. ' +
         '끝나지 않는 반복문이 있는지 확인해 보세요.\n' +
         '(멈추려면 파이썬을 내려야 해서 다음 실행은 준비 시간이 다시 걸립니다)\n');
       setStatus('시간 초과로 중지');
-    }, RUN_TIMEOUT_MS);
+    }, limit);
   }
 
   function open(code) {
     if (!dlg) build();
     if (busy) abortRun();
     stopTurtle();
+    stopFlask();
     // 연속 예제면 앞 리스팅의 준비 코드를 붙여서 연다
     var pre = runPreludes && runPreludes[codeKey(code)];
     if (pre) code = pre + code;

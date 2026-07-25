@@ -99,6 +99,73 @@ var PRELUDE = [
   '        out.append(item)',
   '    return json.dumps(out)',
   '',
+  '# ---- Flask 시뮬레이터 ----',
+  '# 진짜 서버(소켓)는 브라우저에서 열 수 없다. 대신 Flask.run()을 가로채',
+  '# 앱 객체를 보관하고, 미니 브라우저의 요청을 test_client()로 처리한다.',
+  'def _algja_flask_patch():',
+  '    import flask',
+  '    if getattr(flask, "_algja_patched", False):',
+  '        return',
+  '    _orig_init = flask.Flask.__init__',
+  '    def _init(self, *a, **k):',
+  '        _orig_init(self, *a, **k)',
+  '        flask._algja_app = self',
+  '    flask.Flask.__init__ = _init',
+  '    def _run(self, *a, **k):',
+  '        flask._algja_app = self',
+  '        print(" * Serving Flask app %r (시뮬레이터)" % self.name)',
+  '        print(" * Running on http://127.0.0.1:5000")',
+  '        print("   (아래 미니 브라우저에서 접속해 보세요)")',
+  '    flask.Flask.run = _run',
+  '    flask._algja_patched = True',
+  '',
+  'def _algja_flask_reset():',
+  '    m = sys.modules.get("flask")',
+  '    if m is not None and hasattr(m, "_algja_app"):',
+  '        m._algja_app = None',
+  '',
+  'def _algja_flask_dump():',
+  '    import json',
+  '    m = sys.modules.get("flask")',
+  '    app = getattr(m, "_algja_app", None) if m else None',
+  '    if app is None:',
+  '        return ""',
+  '    routes = []',
+  '    for r in app.url_map.iter_rules():',
+  '        if r.endpoint == "static":',
+  '            continue',
+  '        methods = sorted(x for x in r.methods if x not in ("HEAD", "OPTIONS"))',
+  '        routes.append({"rule": str(r), "methods": methods})',
+  '    routes.sort(key=lambda x: x["rule"])',
+  '    return json.dumps({"routes": routes})',
+  '',
+  'def _algja_flask_request(req_json):',
+  '    import json',
+  '    m = sys.modules.get("flask")',
+  '    app = getattr(m, "_algja_app", None) if m else None',
+  '    if app is None:',
+  '        return json.dumps({"status": 0, "body":',
+  '            "<p>Flask 앱이 없습니다. 먼저 코드를 다시 실행해 주세요.</p>",',
+  '            "path": "/"})',
+  '    req = json.loads(req_json)',
+  '    client = app.test_client()',
+  '    method = req.get("method", "GET").upper()',
+  '    path = req.get("path", "/") or "/"',
+  '    if not path.startswith("/"):',
+  '        path = "/" + path',
+  '    try:',
+  '        if method == "POST":',
+  '            res = client.post(path, data=req.get("data") or {},',
+  '                              follow_redirects=True)',
+  '        else:',
+  '            res = client.get(path, follow_redirects=True)',
+  '        return json.dumps({"status": res.status_code,',
+  '                           "body": res.get_data(as_text=True),',
+  '                           "path": res.request.path})',
+  '    except Exception as e:',
+  '        return json.dumps({"status": 500, "body":',
+  '            "<pre>%s</pre>" % str(e), "path": path})',
+  '',
   'def _algja_turtle_reset():',
   '    m = sys.modules.get("turtle")',
   '    if m is not None and getattr(m, "_algja", False):',
@@ -439,6 +506,20 @@ async function ensurePyodide() {
 }
 
 self.onmessage = async function (ev) {
+  // 미니 브라우저의 Flask 요청 -- 코드 실행이 아니라 보관된 앱에 요청을 넣는다
+  if (ev.data.flaskReq) {
+    try {
+      var pf = await ensurePyodide();
+      pf.globals.set('_algja_req_json', JSON.stringify(ev.data.flaskReq));
+      post('flaskres', pf.runPython('_algja_flask_request(_algja_req_json)'));
+    } catch (e) {
+      post('flaskres', JSON.stringify({
+        status: 500, body: '<pre>' + (e.message || e) + '</pre>', path: '/'
+      }));
+    }
+    return;
+  }
+
   var code = ev.data.code || '';
   var stdin = ev.data.stdin || '';
   var files = ev.data.files || [];
@@ -450,6 +531,24 @@ self.onmessage = async function (ev) {
 
     post('status', '필요한 패키지를 확인하는 중…');
     await p.loadPackagesFromImports(code);
+
+    // Flask는 순수 파이썬이라 브라우저에서도 import된다. 배포판에 없으면
+    // micropip으로 PyPI에서 받아 온 뒤, run()을 가로채는 패치를 적용한다.
+    if (/^\s*(?:from|import)\s+flask\b/mi.test(code)) {
+      post('status', 'Flask를 준비하는 중…');
+      try {
+        await p.loadPackage('micropip');
+        await p.runPythonAsync([
+          'import importlib.util',
+          'if importlib.util.find_spec("flask") is None:',
+          '    import micropip',
+          '    await micropip.install("flask")'
+        ].join('\n'));
+        p.runPython('_algja_flask_patch()');
+      } catch (e) {
+        post('err', 'Flask 준비 실패: ' + (e.message || e) + '\n');
+      }
+    }
 
     // matplotlib은 화면이 없으므로 Agg로 그린 뒤 PNG로 뽑아 보여 준다.
     // (plt.show()는 Agg에서 아무 일도 하지 않는다)
@@ -468,11 +567,18 @@ self.onmessage = async function (ev) {
     p.globals.set('_algja_stdin_text', stdin);
     p.runPython('_algja_stdin(_algja_stdin_text)');
     p.runPython('_algja_turtle_reset()');
+    p.runPython('_algja_flask_reset()');
 
     // 가상 파일 -- 코드가 읽을 파일을 메모리 파일시스템에 만들어 둔다.
     // 문자열은 UTF-8로 기록되며, 파일은 워커가 사는 동안 유지된다.
     files.forEach(function (f) {
       try {
+        // templates/index.html 처럼 하위 폴더가 있으면 먼저 만든다
+        var parts = f.name.split('/');
+        for (var i = 1; i < parts.length; i++) {
+          var dir = parts.slice(0, i).join('/');
+          try { p.FS.mkdir(dir); } catch (e) { /* 이미 있으면 무시 */ }
+        }
         p.FS.writeFile(f.name, f.content);
       } catch (e) {
         post('err', '가상 파일 ' + f.name + ' 생성 실패: ' +
@@ -498,6 +604,8 @@ self.onmessage = async function (ev) {
     if (tj) post('turtle', tj);
     var gf = p.runPython('_algja_fs_diff()');
     if (gf && gf !== '[]') post('gfiles', gf);
+    var fk = p.runPython('_algja_flask_dump()');
+    if (fk) post('flask', fk);
     post('done', '');
   } catch (err) {
     post('err', (err && err.message ? err.message : String(err)) + '\n');

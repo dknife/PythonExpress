@@ -612,9 +612,72 @@ dialog.runner::backdrop { background: rgba(20,20,20,0.55); backdrop-filter: blur
   white-space: pre-wrap; word-break: break-word;
   max-height: 14rem; overflow-y: auto;
 }
+
+/* ---- Flask 미니 브라우저 ---- */
+.runner-web {
+  margin: 0.2rem 1.1rem 1rem;
+  border: 1px solid var(--border); border-radius: var(--radius-lg);
+  overflow: hidden; background: var(--white);
+}
+.runner-web-head {
+  display: flex; align-items: center; gap: 0.4rem;
+  padding: 0.5rem 0.75rem; background: var(--bg-2);
+  border-bottom: 1px solid var(--border);
+}
+.web-dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: #cfcfcf; flex: none;
+}
+.web-dot:nth-child(1) { background: #ff5f57; }
+.web-dot:nth-child(2) { background: #febc2e; }
+.web-dot:nth-child(3) { background: #28c840; }
+.web-addr-form {
+  display: flex; align-items: stretch; gap: 0; flex: 1;
+  margin-left: 0.5rem;
+  border: 1px solid var(--border); border-radius: 999px;
+  overflow: hidden; background: var(--white);
+}
+.web-host {
+  display: flex; align-items: center;
+  padding: 0.28rem 0.1rem 0.28rem 0.85rem;
+  font-family: 'D2Coding', Consolas, monospace;
+  font-size: 0.76rem; color: var(--text-light); white-space: nowrap;
+}
+.web-addr {
+  flex: 1; min-width: 0; border: none; outline: none; background: none;
+  font-family: 'D2Coding', Consolas, monospace;
+  font-size: 0.8rem; color: var(--text); padding: 0.28rem 0.5rem;
+}
+.web-go {
+  border: none; cursor: pointer; background: var(--accent); color: #fff;
+  font-size: 0.76rem; font-weight: 600; padding: 0 0.9rem;
+}
+.web-go:hover { background: #e14e1d; }
+.web-routes {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem;
+  padding: 0.55rem 0.75rem 0;
+}
+.web-routes-lead { font-size: 0.74rem; color: var(--text-light); }
+.web-route {
+  border: 1px solid var(--border); background: var(--bg);
+  border-radius: 999px; cursor: pointer;
+  font-family: 'D2Coding', Consolas, monospace;
+  font-size: 0.74rem; color: var(--cyan); padding: 0.12rem 0.6rem;
+}
+.web-route:hover { background: var(--cyan); color: #fff; border-color: var(--cyan); }
+.web-view {
+  display: block; width: 100%; height: 300px; border: none;
+  background: #fff; margin-top: 0.55rem;
+}
+.web-note {
+  padding: 0.4rem 0.75rem; font-size: 0.72rem; color: var(--text-light);
+  background: var(--bg); border-top: 1px solid var(--border);
+}
+
 @media (max-width: 640px) {
   dialog.runner { width: 100vw; max-height: 100vh; border-radius: 0; }
   .runner-hint { display: none; }
+  .web-host { display: none; }
 }
 
 /* ---- 연습문제 답안·자동 채점 ---- */
