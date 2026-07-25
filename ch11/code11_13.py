@@ -1,0 +1,8 @@
+# 알짜 파이썬 (강영민·박동규, 생능출판사) — 제11장 파이썬다운 코딩과 넘파이
+# 코드 11.13: map으로 제곱과 세제곱 구하기
+
+a = [1, 2, 3, 4, 5, 6, 7]
+square_a = list(map(lambda x: x**2, a))
+cubic_a = list(map(lambda x: x**3, a))
+print('square_a =', square_a)
+print('cubic_a =', cubic_a)
