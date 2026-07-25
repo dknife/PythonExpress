@@ -485,6 +485,9 @@ dialog.runner {
   background: var(--white); color: var(--text);
   box-shadow: 0 24px 60px rgba(0,0,0,0.28);
   flex-direction: column; gap: 0;
+  /* 결과(미니 브라우저·그래프·생성 파일)가 길어 92vh를 넘으면 창 전체를
+     스크롤할 수 있게 한다. 없으면 아래쪽 iframe이 잘려 안 보인다. */
+  overflow-y: auto;
 }
 dialog.runner[open] { display: flex; }
 dialog.runner::backdrop { background: rgba(20,20,20,0.55); backdrop-filter: blur(3px); }
@@ -569,8 +572,9 @@ dialog.runner::backdrop { background: rgba(20,20,20,0.55); backdrop-filter: blur
   font-family: 'D2Coding', Consolas, 'JetBrains Mono', monospace;
   font-size: 0.82rem; line-height: 1.5;
   white-space: pre-wrap; word-break: break-word;
-  min-height: 5rem; max-height: 32vh; overflow-y: auto;
-  flex: 1;
+  min-height: 3.5rem; max-height: 32vh; overflow-y: auto;
+  /* flex:1로 늘리지 않는다 -- 아래 미니 브라우저를 창 밖으로 밀어내던 원인 */
+  flex: none;
 }
 .runner-out .err { color: #FF9B84; }
 .runner-out .warn { color: var(--yellow); }

@@ -507,6 +507,10 @@ window.algjaRunner = (function () {
       ui.webRoutes.appendChild(chip);
     });
     flaskNavigate({ method: 'GET', path: ui.webAddr.value.trim() || '/' });
+    // 미니 브라우저가 창 아래쪽에 생기므로, 보이도록 스크롤해 준다
+    if (ui.web.scrollIntoView) {
+      ui.web.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
   }
 
   function flaskNavigate(req) {
