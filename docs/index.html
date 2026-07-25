@@ -132,34 +132,117 @@
     .btn.dark { background: var(--btn); color: #fff; }
     .btn.dark:hover { background: var(--btn-hover); }
 
-    /* ---- 핵심 특징 카드 (히어로 하단) ---- */
-    .feature-grid {
-      display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
-      margin-top: 3.2rem;
+    /* ---- 히어로 배경 소프트 그라디언트 ---- */
+    .hero { position: relative; z-index: 0; }
+    .hero::before {
+      content: ''; position: absolute; inset: -40px 0 0; z-index: -1;
+      background:
+        radial-gradient(680px 400px at 88% 8%, rgba(6,147,227,0.08), transparent 60%),
+        radial-gradient(600px 380px at 6% 0%, rgba(250,93,41,0.07), transparent 55%);
+      pointer-events: none;
     }
-    .feature-card {
-      background: var(--white); border-radius: var(--radius-lg);
-      padding: 1.6rem 1.7rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-      text-decoration: none; color: var(--text); display: block;
-      transition: transform 0.3s var(--ease), box-shadow 0.3s ease;
+
+    /* ---- 무설치 실습 환경 (다크 스포트라이트, 플래그십) ---- */
+    .lab {
+      position: relative; overflow: hidden;
+      padding: 5.5rem 2rem 5rem;
+      color: #e9eef6;
+      background:
+        radial-gradient(1100px 520px at 14% -10%, rgba(250,93,41,0.22), transparent 58%),
+        radial-gradient(920px 520px at 100% 6%, rgba(6,147,227,0.20), transparent 55%),
+        linear-gradient(165deg, #16294a 0%, #0e1626 100%);
     }
-    .feature-card:hover { transform: translateY(-5px); box-shadow: 0 10px 28px rgba(0,0,0,0.12); }
-    .feature-card .f-icon {
-      width: 42px; height: 42px; border-radius: 11px;
+    .lab-inner { max-width: 1300px; margin: 0 auto; }
+    .lab-head { max-width: 760px; margin-bottom: 2.6rem; }
+    .lab-eyebrow {
+      display: inline-flex; align-items: center; gap: 0.55rem;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: #ffb59a;
+      background: rgba(250,93,41,0.12);
+      border: 1px solid rgba(250,93,41,0.38);
+      padding: 0.34rem 0.9rem; border-radius: 999px;
+      margin-bottom: 1.3rem;
+    }
+    .lab-eyebrow::before {
+      content: ''; width: 7px; height: 7px; border-radius: 50%;
+      background: #ff7a4d; animation: labpulse 2s infinite;
+    }
+    @keyframes labpulse {
+      0% { box-shadow: 0 0 0 0 rgba(255,122,77,0.55); }
+      70% { box-shadow: 0 0 0 7px rgba(255,122,77,0); }
+      100% { box-shadow: 0 0 0 0 rgba(255,122,77,0); }
+    }
+    .lab-head h2 {
+      font-size: clamp(30px, 4.6vw, 52px); font-weight: 800;
+      letter-spacing: -0.035em; line-height: 1.08; color: #fff;
+    }
+    .lab-lead {
+      margin-top: 1.05rem; font-size: clamp(15px, 1.7vw, 18px);
+      color: rgba(233,238,246,0.78); line-height: 1.65;
+    }
+    .lab-lead strong { color: #fff; font-weight: 700; }
+    .lab-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .lab-card {
+      display: block; text-decoration: none; color: #e9eef6;
+      background: rgba(255,255,255,0.055);
+      border: 1px solid rgba(255,255,255,0.11);
+      border-radius: 18px; padding: 1.9rem 2rem;
+      transition: transform 0.35s var(--ease), background 0.35s ease,
+        border-color 0.35s ease;
+    }
+    .lab-card:hover {
+      transform: translateY(-6px);
+      background: rgba(255,255,255,0.09);
+      border-color: rgba(255,255,255,0.24);
+    }
+    .lab-ic {
+      width: 50px; height: 50px; border-radius: 14px;
       display: flex; align-items: center; justify-content: center;
-      font-size: 1.15rem; font-weight: 800; color: #fff;
-      margin-bottom: 0.9rem;
+      font-size: 1.4rem; margin-bottom: 1.15rem;
+      background: linear-gradient(135deg, var(--accent), #ff8a5c);
+      box-shadow: 0 8px 24px rgba(250,93,41,0.38);
     }
-    .feature-card:nth-child(1) .f-icon { background: var(--accent); }
-    .feature-card:nth-child(2) .f-icon { background: var(--mint); }
-    .feature-card:nth-child(3) .f-icon { background: var(--cyan); }
-    .feature-card:nth-child(4) .f-icon { background: var(--yellow); color: var(--text); }
-    .feature-card h3 {
-      font-size: 1.08rem; font-weight: 700; letter-spacing: -0.01em;
-      margin-bottom: 0.45rem;
+    .lab-card:nth-child(2) .lab-ic {
+      background: linear-gradient(135deg, #2bb673, #5fd3a4);
+      box-shadow: 0 8px 24px rgba(43,182,115,0.34);
     }
-    .feature-card p { font-size: 0.89rem; color: var(--text-light); }
+    .lab-card h3 {
+      font-size: 1.34rem; font-weight: 800; letter-spacing: -0.02em;
+      color: #fff; margin-bottom: 0.6rem;
+    }
+    .lab-card p { font-size: 0.95rem; color: rgba(233,238,246,0.76); line-height: 1.62; }
+    .lab-card b { color: #fff; font-weight: 700; }
+    .lab-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1.15rem; }
+    .lab-chips span {
+      font-size: 0.74rem; font-weight: 600;
+      font-family: 'D2Coding', Consolas, 'JetBrains Mono', monospace;
+      color: rgba(255,255,255,0.82);
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.13);
+      border-radius: 7px; padding: 0.2rem 0.6rem;
+    }
+    .lab-mini {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 20px;
+    }
+    .lab-mini-item {
+      display: flex; align-items: center; gap: 0.8rem;
+      text-decoration: none;
+      font-size: 0.92rem; color: rgba(233,238,246,0.82);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 12px; padding: 0.95rem 1.2rem;
+      transition: background 0.3s ease, border-color 0.3s ease;
+    }
+    .lab-mini-item:hover {
+      background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.18);
+    }
+    .lab-mini-item b { color: #fff; font-weight: 700; }
+    .lab-mini-ic {
+      flex: none; width: 30px; height: 30px; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.9rem; font-weight: 800; color: #16294a; background: #ffd27a;
+    }
+    .lab-mini-item:nth-child(2) .lab-mini-ic { background: #8fd6ff; }
 
     /* ---- wave divider ---- */
     .wave { display: block; width: 100%; height: 90px; }
@@ -298,15 +381,11 @@
     /* ---- responsive ---- */
     @media (max-width: 1024px) {
       .chapter-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 1200px) {
-      .feature-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 1024px) {
       .hero-cover { flex-basis: 300px; }
     }
-    @media (max-width: 700px) {
-      .feature-grid { grid-template-columns: 1fr; }
+    @media (max-width: 860px) {
+      .lab-grid, .lab-mini { grid-template-columns: 1fr; }
+      .lab { padding: 4rem 1.4rem; }
     }
     @media (max-width: 768px) {
       .header nav a:not(.gh) { display: none; }
@@ -324,10 +403,10 @@
 <header class="header">
   <a class="logo" href="#">알짜 <em>파이썬</em></a>
   <nav>
+    <a href="#lab">실습 환경</a>
     <a href="#reading">본문 읽기</a>
     <a href="#code">예제 코드</a>
     <a href="#plan">학습 계획</a>
-    <a href="references.html">참고문헌</a>
     <a class="gh" target="_blank" rel="noopener" href="https://github.com/dknife/PythonExpress">GitHub</a>
   </nav>
 </header>
@@ -340,13 +419,12 @@
       <h1>알짜<br><span class="accent">파이썬</span></h1>
       <p class="subtitle">핵심을 빠르게, 활용은 깊게 — 파이썬의 알짜만 골라 배우는 입문 코스</p>
       <p class="authors"><strong>강영민 · 박동규</strong> 지음 <span class="pub">| 생능출판사</span></p>
-      <p class="hero-punch">설치도 준비물도 없습니다. 지금 보고 있는 브라우저가 그대로
-        파이썬 실습실이 됩니다 — <em>읽고, 실행하고, 그리고, 채점받으세요.</em></p>
+      <p class="hero-punch">설치도, 회원가입도 없습니다. 지금 보고 있는 브라우저가
+        그대로 <em>파이썬 실습실</em>이 됩니다 — 읽고, 실행하고, 그려 보세요.</p>
       <div class="badges">
         <span class="badge">Python 3 · 4개 파트 12장</span>
-        <span class="badge">브라우저에서 바로 실행</span>
-        <span class="badge">터틀 그래픽 시뮬레이터</span>
-        <span class="badge">연습문제 자동 채점</span>
+        <span class="badge">무설치 실습 환경</span>
+        <span class="badge">자동 채점</span>
         <span class="badge">전체 무료 공개</span>
       </div>
       <div class="cta">
@@ -361,43 +439,59 @@
     </div>
   </div>
 
-  <!-- 핵심 특징 -->
-  <div class="feature-grid reveal">
-    <a class="feature-card" href="book/ch01.html">
-      <div class="f-icon">▶</div>
-      <h3>설치 0초, 진짜 파이썬 실행</h3>
-      <p>모든 예제 옆의 [실행] 버튼 하나면 끝. WebAssembly로 포팅된 진짜
-        CPython(Pyodide)이 브라우저 안에서 돌아갑니다. 코드를 마음껏 고쳐 가며
-        그 자리에서 실험하세요 — 넘파이·판다스 예제까지 그대로 됩니다.</p>
-    </a>
-    <a class="feature-card" href="book/ch10.html">
-      <div class="f-icon">🐢</div>
-      <h3>터틀 그래픽 시뮬레이터</h3>
-      <p>다른 웹 교재는 포기하는 turtle 그래픽도 여기서는 돌아갑니다. 거북이가
-        프랙탈 나무와 코흐 눈송이를 그려 나가는 과정이 애니메이션으로
-        재생됩니다. 10장에서 직접 실행해 보세요.</p>
-    </a>
-    <a class="feature-card" href="book/ch01.html#exercises">
-      <div class="f-icon">✓</div>
-      <h3>연습문제 자동 채점</h3>
-      <p>답을 입력하면 그 자리에서 즉시 채점 — 코드 문제는 실제로 실행해서
-        검사합니다. 풀이 기록은 서버 전송 없이 내 브라우저에만 남으니
-        부담 없이 도전하세요.</p>
-    </a>
-    <a class="feature-card" href="book/front.html">
-      <div class="f-icon">☰</div>
-      <h3>본문 전체 무료 공개</h3>
-      <p>종이책 12개 장 + 부록 3편이 전부 웹에 있습니다. 목차와 함께 읽는
-        전용 뷰어, 코드 복사 버튼, 예시 입력이 채워진 실행 창까지 —
-        지금 바로 1장을 열어 보세요.</p>
-    </a>
+  <div class="cta" style="margin-top:2.4rem">
+    <a class="btn primary" href="#lab" style="background:var(--btn)">실습 환경 살펴보기 ↓</a>
   </div>
 </div>
 
-<!-- 웨이브 디바이더 -->
-<svg class="wave" viewBox="0 0 1440 90" preserveAspectRatio="none">
-  <path d="M0,50 C240,90 480,10 720,40 C960,70 1200,20 1440,55 L1440,90 L0,90 Z"></path>
-</svg>
+<!-- 무설치 실습 환경 (플래그십 다크 스포트라이트) -->
+<section class="lab" id="lab">
+  <div class="lab-inner">
+    <div class="lab-head reveal">
+      <span class="lab-eyebrow">Live Coding · No Install</span>
+      <h2>설치가 필요 없는 실습 환경</h2>
+      <p class="lab-lead">
+        파이썬도, 회원가입도, 서버도 필요 없습니다. <strong>Pyodide로 진짜 파이썬을
+        브라우저에서 즉시 실행</strong>하고, <strong>Turtle·Flask 에뮬레이터로 그래픽과
+        웹 앱까지 그 자리에서 확인</strong>합니다. 다양한 실습을 클릭 한 번으로.
+      </p>
+    </div>
+
+    <div class="lab-grid">
+      <a class="lab-card reveal" href="book/ch01.html">
+        <div class="lab-ic">▶</div>
+        <h3>Pyodide 즉각 실행</h3>
+        <p>WebAssembly로 포팅된 <b>진짜 CPython</b>이 브라우저 안에서 돌아갑니다.
+          모든 예제 옆의 [실행] 버튼으로 코드를 고쳐 그 자리에서 다시 실행 —
+          <b>넘파이·판다스·사이킷런</b>까지 그대로 동작합니다.</p>
+        <div class="lab-chips">
+          <span>numpy</span><span>pandas</span><span>matplotlib</span><span>scikit-learn</span>
+        </div>
+      </a>
+      <a class="lab-card reveal" href="book/ch10.html">
+        <div class="lab-ic">🐢</div>
+        <h3>Turtle · Flask 에뮬레이터</h3>
+        <p>다른 웹 교재가 포기하는 영역까지. <b>거북이 그래픽</b>이 프랙탈을 그려
+          나가는 과정을 재생하고, <b>Flask 웹 앱</b>을 미니 브라우저에서 클릭하며
+          확인합니다. 파일 입출력·그래프 결과도 즉시 눈으로.</p>
+        <div class="lab-chips">
+          <span>turtle</span><span>flask</span><span>파일 입출력</span><span>matplotlib</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="lab-mini">
+      <a class="lab-mini-item reveal" href="book/ch01.html#exercises">
+        <span class="lab-mini-ic">✓</span>
+        <span><b>연습문제 자동 채점</b> — 코드 문제는 실제 실행으로 검사, 기록은 내 브라우저에만</span>
+      </a>
+      <a class="lab-mini-item reveal" href="book/front.html">
+        <span class="lab-mini-ic">∞</span>
+        <span><b>완전 무료 · 무설치</b> — 12장 + 부록 3편 전체 공개, 로그인도 서버도 없음</span>
+      </a>
+    </div>
+  </div>
+</section>
 
 <!-- 책 소개 -->
 <section class="section white about">
