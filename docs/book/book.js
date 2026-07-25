@@ -239,6 +239,14 @@ window.algjaRunner = (function () {
     .then(function (d) { conceptCodes = d; })
     .catch(function () { /* 없으면 일반 코드처럼 실행을 시도한다 */ });
 
+  // google.colab import 없이 코랩 환경(마운트된 드라이브 등)에 의존하는
+  // 연속 블록의 해시 → 책에 제시된 출력. 실행 대신 그 출력을 보여 준다.
+  var colabCodes = null;
+  fetch('colab-codes.json')
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (d) { colabCodes = d; })
+    .catch(function () { /* 없으면 일반 코드처럼 실행을 시도한다 */ });
+
   // stdin-defaults.json의 키와 같은 djb2-xor 해시 (gen_stdin_defaults.py 참고)
   function codeKey(s) {
     var h = 5381;
@@ -382,6 +390,37 @@ window.algjaRunner = (function () {
   }
 
   function setStatus(msg) { ui.status.textContent = msg || ''; }
+
+  // ---- 실행으로 생성·변경된 파일 표시 ----
+  // 워커가 실행 전후 파일시스템 스냅샷을 비교해 보낸 목록을
+  // 실행 결과 아래에 파일명 + 내용으로 보여 준다.
+  function renderGenFiles(json) {
+    var list;
+    try { list = JSON.parse(json); } catch (e) { return; }
+    if (!list.length) return;
+    var wrap = document.createElement('div');
+    wrap.className = 'gen-files';
+    var head = document.createElement('div');
+    head.className = 'gen-files-head';
+    head.textContent = '실행으로 생성·변경된 파일';
+    wrap.appendChild(head);
+    list.forEach(function (f) {
+      var item = document.createElement('div');
+      item.className = 'gen-file';
+      var label = document.createElement('div');
+      label.className = 'vfile-name';
+      label.textContent = f.name;
+      item.appendChild(label);
+      var pre = document.createElement('pre');
+      pre.className = 'gen-file-body';
+      pre.textContent = f.binary !== undefined
+        ? '(텍스트가 아닌 파일 — ' + f.binary + '바이트)'
+        : f.content;
+      item.appendChild(pre);
+      wrap.appendChild(item);
+    });
+    ui.figs.appendChild(wrap);
+  }
 
   // ---- 터틀 그래픽 시뮬레이터 (재생기) ----
   // 워커가 보낸 그리기 명령을 캔버스 두 장(그림 + 거북이 커서)에 재생한다.
@@ -627,6 +666,8 @@ window.algjaRunner = (function () {
         });
       } else if (t === 'turtle') {
         renderTurtle(m);
+      } else if (t === 'gfiles') {
+        renderGenFiles(m);
       } else if (t === 'done') {
         var secs = ((Date.now() - startedAt) / 1000).toFixed(1);
         ready = true;
@@ -661,10 +702,13 @@ window.algjaRunner = (function () {
       return;
     }
 
-    // 코랩 전용 코드(구글 드라이브 마운트) -- 브라우저 파이썬에는 google.colab
-    // 모듈이 없다. 실제 실행 대신 책에 제시된 출력을 그대로 보여 준다.
-    if (/^\s*(?:from|import)\s+google\.colab\b/m.test(code)) {
-      append(null, 'Mounted at /content/drive\n');
+    // 코랩 전용 코드(드라이브 마운트, 마운트된 드라이브를 읽는 연속 예제) --
+    // 브라우저에서는 돌 수 없다. 실행 대신 책에 제시된 출력을 그대로 보여 준다.
+    var colabOut = colabCodes ? colabCodes[codeKey(code)] : undefined;
+    if (colabOut !== undefined ||
+        /^\s*(?:from|import)\s+google\.colab\b/m.test(code)) {
+      append(null, (colabOut !== undefined
+        ? colabOut : 'Mounted at /content/drive') + '\n');
       append('warn',
         '\n이 코드는 코랩에서 실행되는 코드로, 변경하여 테스트하는 것이 ' +
         '지원되지 않습니다.\n');
