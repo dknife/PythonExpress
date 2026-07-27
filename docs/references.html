@@ -4,154 +4,205 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>참고문헌 — 알짜 파이썬</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
   <style>
+    /* 랜딩 페이지와 동일한 Sutera 디자인 시스템 */
     :root {
-      --deep-blue: #1a3a5c;
-      --accent-blue: #2c7be5;
-      --light-bg: #f7f9fc;
-      --card-bg: #ffffff;
-      --text: #2d3748;
-      --text-light: #718096;
-      --border: #e2e8f0;
+      --bg: #F8F8F8; --bg-2: #EDEDED; --white: #FFFFFF;
+      --text: #222222; --text-2: #313131; --text-light: #767676;
+      --accent: #FA5D29; --cyan: #0693E3; --mint: #7BDCB5; --yellow: #FFF083;
+      --border: #E4E4E4; --btn: #222222; --btn-hover: #383838;
+      --radius: 8px; --radius-lg: 16px; --ease: cubic-bezier(0.25, 1, 0.5, 1);
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
-      font-family: 'Pretendard', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
-      color: var(--text);
-      background: var(--light-bg);
-      line-height: 1.7;
+      font-family: 'Inter Tight', 'Pretendard', 'Noto Sans KR',
+        -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text); background: var(--bg); line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
     }
 
-    /* Header */
+    /* 고정 헤더 (랜딩과 동일) */
     .header {
-      background: linear-gradient(135deg, var(--deep-blue), #2c5282);
-      color: white;
-      padding: 2.5rem 2rem;
-      text-align: center;
+      position: fixed; top: 0; left: 0; right: 0; height: 54px;
+      display: flex; align-items: center; gap: 1.6rem; padding: 0 2rem;
+      background: rgba(248,248,248,0.92); backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border); z-index: 100;
     }
-    .header h1 { font-size: 2rem; margin-bottom: 0.3rem; }
-    .header p { opacity: 0.85; }
-    .header a { color: rgba(255,255,255,0.8); text-decoration: underline; }
+    .header .logo {
+      font-weight: 800; font-size: 1.05rem; letter-spacing: -0.02em;
+      color: var(--text); text-decoration: none;
+    }
+    .header .logo em { color: var(--accent); font-style: normal; }
+    .header nav { margin-left: auto; display: flex; gap: 1.4rem; align-items: center; }
+    .header nav a {
+      color: var(--text-2); text-decoration: none; font-size: 0.88rem;
+      font-weight: 500; transition: color 0.3s ease;
+    }
+    .header nav a:hover, .header nav a.current { color: var(--accent); }
+    .header nav a.current { font-weight: 700; }
+    .header nav a.gh {
+      background: var(--btn); color: #fff; padding: 0.35rem 1rem;
+      border-radius: var(--radius); transition: background 0.3s ease;
+    }
+    .header nav a.gh:hover { background: var(--btn-hover); color: #fff; }
 
-    .container { max-width: 960px; margin: 0 auto; padding: 0 1.5rem; }
+    /* 페이지 히어로 */
+    .page-hero {
+      padding: 120px 2rem 50px; position: relative; z-index: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .page-hero::before {
+      content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+      background:
+        radial-gradient(640px 360px at 88% 6%, rgba(6,147,227,0.08), transparent 60%),
+        radial-gradient(560px 340px at 6% 0%, rgba(250,93,41,0.07), transparent 55%);
+    }
+    .page-hero .inner { max-width: 1000px; margin: 0 auto; }
+    .page-hero .eyebrow {
+      font-size: 0.78rem; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 0.7rem;
+    }
+    .page-hero h1 {
+      font-size: clamp(34px, 6vw, 58px); font-weight: 800;
+      letter-spacing: -0.035em; line-height: 1.05; color: var(--text);
+    }
+    .page-hero .subtitle {
+      color: var(--text-light); font-size: clamp(15px, 1.8vw, 18px);
+      margin-top: 0.9rem; max-width: 640px;
+    }
+    .page-hero .back {
+      display: inline-block; margin-top: 1.5rem; font-size: 0.9rem;
+      font-weight: 600; color: var(--text-2); text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .page-hero .back:hover { color: var(--accent); }
 
-    /* Navigation */
+    .container { max-width: 1000px; margin: 0 auto; padding: 3rem 1.5rem 1rem; }
+
+    /* 카테고리 목차 */
     .toc {
-      background: var(--card-bg);
-      border-radius: 10px;
-      padding: 1.5rem;
-      margin: 2rem 0;
-      border: 1px solid var(--border);
+      background: var(--white); border-radius: var(--radius-lg);
+      padding: 1.7rem 1.9rem; margin-bottom: 3rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
     }
-    .toc h3 { color: var(--deep-blue); margin-bottom: 0.75rem; font-size: 1.1rem; }
-    .toc ul { list-style: none; display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.4rem; }
+    .toc h3 {
+      font-size: 0.82rem; font-weight: 800; text-transform: uppercase;
+      letter-spacing: 0.1em; color: var(--text); margin-bottom: 1.1rem;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .toc h3::before {
+      content: ''; width: 12px; height: 12px; border-radius: 3px; background: var(--accent);
+    }
+    .toc ul {
+      list-style: none; display: grid;
+      grid-template-columns: repeat(3, 1fr); gap: 0.5rem 1.4rem;
+    }
     .toc a {
-      color: var(--accent-blue);
-      text-decoration: none;
-      font-size: 0.9rem;
-      padding: 0.2rem 0;
-      display: block;
+      color: var(--text-2); text-decoration: none; font-size: 0.9rem;
+      font-weight: 500; padding: 0.3rem 0; display: flex; gap: 0.5rem;
+      border-bottom: 1px solid transparent; transition: color 0.25s ease;
     }
-    .toc a:hover { text-decoration: underline; }
-    .toc .cat-num {
-      display: inline-block;
-      width: 1.5em;
-      color: var(--text-light);
-      font-weight: 600;
-    }
+    .toc a:hover { color: var(--accent); }
+    .toc .cat-num { color: var(--accent); font-weight: 800; min-width: 1.5em; }
 
-    /* Category */
-    .category {
-      margin: 2.5rem 0;
-    }
+    /* 카테고리 섹션 */
+    .category { margin: 3rem 0; scroll-margin-top: 74px; }
     .category h2 {
-      font-size: 1.4rem;
-      color: var(--deep-blue);
-      padding-bottom: 0.5rem;
-      border-bottom: 3px solid var(--accent-blue);
-      margin-bottom: 1rem;
+      font-size: clamp(20px, 2.6vw, 28px); font-weight: 800;
+      letter-spacing: -0.02em; color: var(--text); margin-bottom: 0.5rem;
+    }
+    .category h2::after {
+      content: ''; display: block; width: 44px; height: 4px;
+      background: var(--accent); border-radius: 2px; margin-top: 0.6rem;
     }
     .category > p {
-      margin-bottom: 1.25rem;
-      font-size: 0.95rem;
-      color: var(--text-light);
+      margin: 0.9rem 0 1.6rem; font-size: 0.96rem; color: var(--text-light);
+      max-width: 780px;
     }
 
-    /* Reference card */
+    /* 참고문헌 카드 */
     .ref-card {
-      background: var(--card-bg);
-      border-radius: 8px;
-      padding: 1.25rem 1.5rem;
-      margin-bottom: 1rem;
-      border: 1px solid var(--border);
-      transition: box-shadow 0.2s;
+      background: var(--white); border-radius: var(--radius-lg);
+      padding: 1.35rem 1.6rem; margin-bottom: 1rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      transition: transform 0.3s var(--ease), box-shadow 0.3s ease;
     }
-    .ref-card:hover { box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    .ref-card:hover { transform: translateY(-3px); box-shadow: 0 10px 26px rgba(0,0,0,0.10); }
     .ref-card .ref-title {
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: var(--deep-blue);
-      margin-bottom: 0.25rem;
+      font-size: 1.06rem; font-weight: 700; letter-spacing: -0.01em;
+      color: var(--text); margin-bottom: 0.25rem;
     }
-    .ref-card .ref-authors {
-      font-size: 0.9rem;
-      color: var(--text-light);
-      margin-bottom: 0.4rem;
-    }
-    .ref-card .ref-meta {
-      font-size: 0.85rem;
-      color: var(--text-light);
-      margin-bottom: 0.5rem;
-    }
-    .ref-card .ref-meta span {
-      margin-right: 1rem;
-    }
+    .ref-card .ref-authors { font-size: 0.9rem; color: var(--text-light); margin-bottom: 0.5rem; }
+    .ref-card .ref-meta { font-size: 0.85rem; color: var(--text-light); margin-bottom: 0.6rem;
+      display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem; }
     .ref-card .ref-summary {
-      font-size: 0.9rem;
-      color: var(--text);
-      line-height: 1.6;
-      padding-top: 0.4rem;
-      border-top: 1px solid var(--border);
+      font-size: 0.92rem; color: var(--text-2); line-height: 1.65;
+      padding-top: 0.7rem; border-top: 1px solid var(--border);
+    }
+    .ref-card .ref-summary code {
+      font-family: 'D2Coding', Consolas, monospace; font-size: 0.86em;
+      background: var(--bg-2); padding: 0.05rem 0.35rem; border-radius: 4px;
     }
     .ref-card .ref-link {
-      display: inline-block;
-      margin-top: 0.4rem;
-      font-size: 0.85rem;
-      color: var(--accent-blue);
-      text-decoration: none;
+      display: inline-block; margin-top: 0.6rem; font-size: 0.86rem;
+      font-weight: 600; color: var(--accent); text-decoration: none;
     }
     .ref-card .ref-link:hover { text-decoration: underline; }
     .tag {
-      display: inline-block;
-      background: #edf2f7;
-      color: var(--text-light);
-      font-size: 0.75rem;
-      padding: 0.1rem 0.5rem;
-      border-radius: 4px;
-      margin-right: 0.3rem;
+      display: inline-block; font-size: 0.74rem; font-weight: 600;
+      color: var(--text-2); background: var(--bg-2);
+      padding: 0.18rem 0.6rem; border-radius: 20px;
     }
 
+    /* 다크 푸터 (랜딩과 동일) */
     footer {
-      background: var(--deep-blue);
-      color: rgba(255,255,255,0.7);
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.85rem;
-      margin-top: 3rem;
+      background: var(--btn); color: rgba(255,255,255,0.65);
+      padding: 3.4rem 2rem 2.6rem; font-size: 0.88rem; margin-top: 3.5rem;
     }
-    footer a { color: rgba(255,255,255,0.9); }
+    footer .inner { max-width: 1000px; margin: 0 auto; }
+    footer .foot-title {
+      color: #fff; font-weight: 800; font-size: 1.3rem;
+      letter-spacing: -0.02em; margin-bottom: 0.5rem;
+    }
+    footer .foot-title em { color: var(--accent); font-style: normal; }
+    footer a { color: rgba(255,255,255,0.85); text-decoration: none; transition: color 0.3s ease; }
+    footer a:hover { color: var(--accent); }
+    footer .foot-links { margin-top: 1rem; display: flex; gap: 1.4rem; }
 
+    @media (max-width: 900px) { .toc ul { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 768px) {
+      .header nav a:not(.gh):not(.current) { display: none; }
       .toc ul { grid-template-columns: 1fr; }
+      .page-hero { padding: 100px 1.2rem 40px; }
+      .container { padding: 2rem 1.2rem 1rem; }
     }
   </style>
 </head>
 <body>
 
-<div class="header">
-  <h1>참고문헌</h1>
-  <p>『알짜 파이썬』에서 인용한 참고문헌 목록</p>
-  <p style="margin-top:0.5rem;"><a href="index.html">&larr; 책 소개로 돌아가기</a></p>
+<header class="header">
+  <a class="logo" href="index.html">알짜 <em>파이썬</em></a>
+  <nav>
+    <a href="index.html#lab">실습 환경</a>
+    <a href="index.html#reading">본문 읽기</a>
+    <a href="index.html#code">예제 코드</a>
+    <a class="current" href="references.html">참고문헌</a>
+    <a class="gh" target="_blank" rel="noopener" href="https://github.com/dknife/PythonExpress">GitHub</a>
+  </nav>
+</header>
+
+<div class="page-hero">
+  <div class="inner">
+    <div class="eyebrow">Bibliography · 참고문헌</div>
+    <h1>참고문헌</h1>
+    <p class="subtitle">『알짜 파이썬』을 집필하며 참고한 100여 편의 자료입니다.
+      공식 문서부터 입문서·데이터 과학·온라인 학습 자료까지 서지 정보와 요약을 함께 담았습니다.</p>
+    <a class="back" href="index.html">← 책 소개로 돌아가기</a>
+  </div>
 </div>
 
 <div class="container">
@@ -1020,11 +1071,15 @@
 </div>
 
 <footer>
-  <p>&copy; 알짜 파이썬 &mdash; 생능출판사</p>
-  <p style="margin-top: 0.5rem;">
-    <a href="index.html">책 소개</a> &middot;
-    <a href="https://github.com/dknife/PythonExpress">GitHub</a>
-  </p>
+  <div class="inner">
+    <div class="foot-title">알짜 <em>파이썬</em></div>
+    <p>&copy; 알짜 파이썬 — 강영민 · 박동규 지음, 생능출판사. 본문과 예제 코드는 학습 목적으로 자유롭게 이용할 수 있습니다.</p>
+    <div class="foot-links">
+      <a href="index.html">책 소개</a>
+      <a href="book/front.html">본문 읽기</a>
+      <a target="_blank" rel="noopener" href="https://github.com/dknife/PythonExpress">GitHub</a>
+    </div>
+  </div>
 </footer>
 
 </body>
