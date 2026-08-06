@@ -262,7 +262,7 @@ print(f'{n}! = {fact}')</code></pre>
 5! = 120</pre>
 <div class="listing-caption">코드 3.12: for 반복문을 이용한 팩토리얼 계산  —  for_factorial.py</div>
 <h3>for-in 리스트/문자열 순회</h3>
-<p><code>for</code> 문은 <code>range()</code> 함수 외에도 리스트나 문자열 등의 시퀀스를 직접 순회할 수 있다. <code>for \dash{} in</code> 구문은 반복문 키워드 <code>for</code>와 <code>in</code> 사이에 계속 새롭게 할당할 변수 <code>n</code>을 선언하고 <code>in</code> 뒤에 리스트 자료형을 넣어 리스트를 차례대로 순회하는 실행이 가능하다. 리스트에 관한 상세한 설명은 뒤의 장에서 다루겠지만, 여기서는 기본적인 사용법만 이해하면 충분하다.</p>
+<p><code>for</code> 문은 <code>range()</code> 함수 외에도 리스트나 문자열 등의 시퀀스를 직접 순회할 수 있다. <code>for — in</code> 구문은 반복문 키워드 <code>for</code>와 <code>in</code> 사이에 계속 새롭게 할당할 변수 <code>n</code>을 선언하고 <code>in</code> 뒤에 리스트 자료형을 넣어 리스트를 차례대로 순회하는 실행이 가능하다. 리스트에 관한 상세한 설명은 뒤의 장에서 다루겠지만, 여기서는 기본적인 사용법만 이해하면 충분하다.</p>
 <pre class="line-numbers"><code class="language-python"># 리스트 순회
 fruits = ['apple', 'banana', 'grape']
 for fruit in fruits:
@@ -276,7 +276,7 @@ print()</code></pre>
 <pre class="termout">apple banana grape
 P y t h o n</pre>
 <div class="listing-caption">코드 3.13: 리스트와 문자열 순회</div>
-<p>리스트뿐만 아니라 문자열도 문자들의 열이므로 반복 가능하다. 문자열을 <code>for \dash{} in</code> 구문 뒤에 문자열을 위치시켜 문자 단위로 분리해 순회할 수 있다. 위의 예제에서 ‘Python’이라는 문자열은 <code>['P', 'y', 't', 'h', 'o', 'n']</code>이라는 반복가능 열이므로 각 문자가 하나씩 출력되는 것을 확인할 수 있다.</p>
+<p>리스트뿐만 아니라 문자열도 문자들의 열이므로 반복 가능하다. 문자열을 <code>for — in</code> 구문 뒤에 문자열을 위치시켜 문자 단위로 분리해 순회할 수 있다. 위의 예제에서 ‘Python’이라는 문자열은 <code>['P', 'y', 't', 'h', 'o', 'n']</code>이라는 반복가능 열이므로 각 문자가 하나씩 출력되는 것을 확인할 수 있다.</p>
 <h3>이중 for 루프</h3>
 <p><code>for</code> 문 안에 또 다른 <code>for</code> 문을 넣는 것을 <strong class="term-ko">이중 반복문</strong><sup class="term">nested loop</sup> 혹은 <strong>중첩 for 문</strong>이라 한다. 이중 반복문은 구구단 출력, 표 형태의 데이터 처리, 2차원 패턴 그리기 등에 자주 사용된다.</p>
 <p>구구단을 출력하는 프로그램을 만들어 보자. 우선 구구단의 구조에 대해 살펴보면, 2단에서 9단까지 있어 단은 <code>range(2, 10)</code>으로 표현할 수 있다. 그리고 각 단마다 단의 수에 1에서 9를 곱한 결과가 필요하다. 곱해지는 수는 <code>range(1, 10)</code>이 된다. 따라서 이를 구현하기 위해서는 <code>for</code> 문 안에 <code>for</code> 문을 다시 넣는 중첩 <code>for</code> 문이 필요하다.</p>

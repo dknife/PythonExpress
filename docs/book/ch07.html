@@ -115,7 +115,7 @@
 print(math.pi) # 3.141592653589793
 print(math.sqrt(16)) # 4.0</code></pre><div class="listing-caption">코드 7.2: math 모듈을 import해서 사용</div></div>
 <h3>from … import 문</h3>
-<p>모듈 전체가 아니라 특정 함수나 변수만 가져오고 싶을 때는 <code>from \ldots{} import</code> 구문을 사용한다.
+<p>모듈 전체가 아니라 특정 함수나 변수만 가져오고 싶을 때는 <code>from … import</code> 구문을 사용한다.
 이 방식을 쓰면 모듈 이름 없이 바로 함수를 호출할 수 있어 코드가 더 간결해진다.</p>
 <p><code>datetime.datetime.now()</code>와 같이 "[모듈 이름].[클래스 이름].[메소드 이름]()"을 점 연산자로
 구분해서 적는 것이 매우 번거롭기 때문에, <code>from [모듈 이름] import [클래스 이름]</code>이나
@@ -164,8 +164,8 @@ print(xmas)</code></pre>
 <p><figcaption>그림 7.1: 모듈 import 구조</figcaption></figure></p>
 <div class="box note"><span class="chip">잠깐</span><span class="box-title">import ~ as 문법</span><p>모듈 내에 있는 클래스나 메소드를 활용할 때 점으로 연결하는데, 모듈 이름이 너무 긴 경우 계속해서 이름을 써주는 것이 번거로울 수 있다.
 이때, <code>as</code>를 활용하여 모듈의 새 이름을 지정할 수 있다.
-<code>import \textasciitilde{} as</code>가 긴 모듈 이름을 간략하게 부르는 별명을 붙여주는 방법이라고 한다면,
-<code>from \textasciitilde{} import</code> 구문 역시 호출을 간단하게 하는 방법이다.
+<code>import ~ as</code>가 긴 모듈 이름을 간략하게 부르는 별명을 붙여주는 방법이라고 한다면,
+<code>from ~ import</code> 구문 역시 호출을 간단하게 하는 방법이다.
 두 방식의 차이를 이해하고 상황에 맞게 선택하는 것이 좋다.</p></div>
 <div class="box keypoint"><span class="chip">요점</span><p><code>import 모듈</code>은 모듈 전체를, <code>from 모듈 import 이름</code>은 특정 요소만 가져온다.
 <code>as</code>를 사용하면 모듈에 짧은 별칭을 붙여 코드를 간결하게 작성할 수 있다.
@@ -525,13 +525,13 @@ print(cleaned)</code></pre>
 My phone is ***-****-**** and home is **-***-****.</pre>
 <div class="listing-caption">코드 7.24: search, findall, sub로 전화번호 처리</div>
 <p>문자열 앞에 붙은 <code>r</code>은 <strong class="term-ko">원시 문자열</strong><sup class="term">raw string</sup>을 뜻하는 표시로, 백슬래시를 그대로 둔다.
-정규표현식에는 백슬래시가 자주 등장하므로 항상 <code>r'\dots'</code> 형태로 쓰는 것이 관례이다.</p>
+정규표현식에는 백슬래시가 자주 등장하므로 항상 <code>r'…'</code> 형태로 쓰는 것이 관례이다.</p>
 <h3>자주 쓰는 메타문자</h3>
 <p>정규표현식에서 의미가 부여된 특수 기호를 <strong class="term-ko">메타문자</strong><sup class="term">metacharacter</sup>라고 한다.
 처음에는 외울 것이 많아 보이지만, 다음 표의 8~ 10개만 익혀도 실무 패턴 대부분을 작성할 수 있다.</p>
-<div class="table-wrap"><div class="table-caption">표 7.6: 자주 쓰는 정규표현식 메타문자</div><table><tr><th><strong>기호</strong></th><th><strong>의미</strong></th><th><strong>예시</strong></th></tr><tr><td><code>.</code></td><td>줄바꿈을 제외한 임의의 문자 1개</td><td><code>a.c</code> → abc, a1c</td></tr><tr><td><code> d</code></td><td>숫자 1개 (<code>[0-9]</code>와 동일)</td><td><code> d{4}</code> → 1234</td></tr><tr><td><code> w</code></td><td>단어 문자 1개 (영문/숫자/_)</td><td><code> w+</code> → hello_1</td></tr><tr><td><code> s</code></td><td>공백 문자 1개 (스페이스/탭/줄바꿈)</td><td><code>a sb</code> → a b</td></tr><tr><td><code>*</code></td><td>0번 이상 반복</td><td><code>ab*</code> → a, ab, abb</td></tr><tr><td><code>+</code></td><td>1번 이상 반복</td><td><code>ab+</code> → ab, abb</td></tr><tr><td><code>?</code></td><td>0번 또는 1번 (있어도 되고 없어도 됨)</td><td><code>colou?r</code> → color, colour</td></tr><tr><td><code>{n}</code></td><td>정확히 n번 반복</td><td><code> d{3}</code> → 123</td></tr><tr><td><code>[\dots]</code></td><td>대괄호 안의 문자 중 하나</td><td><code>[aeiou]</code> → 모음 1개</td></tr><tr><td><code>\textasciicircum, $</code></td><td>문자열의 시작, 끝</td><td><code>\textasciicircum Hello</code> → 시작 문자열</td></tr></table></div>
+<div class="table-wrap"><div class="table-caption">표 7.6: 자주 쓰는 정규표현식 메타문자</div><table><tr><th><strong>기호</strong></th><th><strong>의미</strong></th><th><strong>예시</strong></th></tr><tr><td><code>.</code></td><td>줄바꿈을 제외한 임의의 문자 1개</td><td><code>a.c</code> → abc, a1c</td></tr><tr><td><code>\d</code></td><td>숫자 1개 (<code>[0-9]</code>와 동일)</td><td><code>\d{4}</code> → 1234</td></tr><tr><td><code>\w</code></td><td>단어 문자 1개 (영문/숫자/_)</td><td><code>\w+</code> → hello_1</td></tr><tr><td><code>\s</code></td><td>공백 문자 1개 (스페이스/탭/줄바꿈)</td><td><code>a\sb</code> → a b</td></tr><tr><td><code>*</code></td><td>0번 이상 반복</td><td><code>ab*</code> → a, ab, abb</td></tr><tr><td><code>+</code></td><td>1번 이상 반복</td><td><code>ab+</code> → ab, abb</td></tr><tr><td><code>?</code></td><td>0번 또는 1번 (있어도 되고 없어도 됨)</td><td><code>colou?r</code> → color, colour</td></tr><tr><td><code>{n}</code></td><td>정확히 n번 반복</td><td><code>\d{3}</code> → 123</td></tr><tr><td><code>[…]</code></td><td>대괄호 안의 문자 중 하나</td><td><code>[aeiou]</code> → 모음 1개</td></tr><tr><td><code>^, $</code></td><td>문자열의 시작, 끝</td><td><code>^Hello</code> → 시작 문자열</td></tr></table></div>
 <p>표 7.6의 기호를 조합하면 다양한 패턴을 만들 수 있다.
-예를 들어 <code> d{2,3}- d{3,4}- d{4}</code>는 "2~ 3자리 숫자, 하이픈, 3~ 4자리 숫자, 하이픈, 4자리 숫자"라는 전화번호 패턴을 의미한다.</p>
+예를 들어 <code>\d{2,3}-\d{3,4}-\d{4}</code>는 "2~ 3자리 숫자, 하이픈, 3~ 4자리 숫자, 하이픈, 4자리 숫자"라는 전화번호 패턴을 의미한다.</p>
 <h3>실용 예제  —  이메일 추출과 검증</h3>
 <p>긴 문장에서 이메일 주소만 골라내고, 입력된 이메일이 올바른 형식인지 검사하는 코드를 살펴보자.</p>
 <pre class="line-numbers"><code class="language-python">import re
@@ -550,14 +550,14 @@ print(is_valid_email('not_an_email@'))</code></pre>
 True
 False</pre>
 <div class="listing-caption">코드 7.25: 이메일 주소 추출과 형식 검증</div>
-<p><code>[ w.]+@[ w.]+\.[a-zA-Z]+</code> 패턴은 "단어 문자 또는 점이 하나 이상, <code>@</code> 기호, 단어 문자 또는 점이 하나 이상, 점, 영문자 하나 이상"을 의미한다.
-검증 함수에서는 추가로 <code>\textasciicircum</code>과 <code>$</code>을 붙여 <strong>문자열 전체</strong>가 패턴과 일치하는지 확인한다.
+<p><code>[\w.]+@[\w.]+\.[a-zA-Z]+</code> 패턴은 "단어 문자 또는 점이 하나 이상, <code>@</code> 기호, 단어 문자 또는 점이 하나 이상, 점, 영문자 하나 이상"을 의미한다.
+검증 함수에서는 추가로 <code>^</code>과 <code>$</code>을 붙여 <strong>문자열 전체</strong>가 패턴과 일치하는지 확인한다.
 이러한 패턴은 11장에서 다루는 비정형 데이터 정리에서도 매우 유용하게 쓰인다.</p>
 <div class="box keypoint"><span class="chip">요점</span><ul>
 <li>정규표현식은 문자열 패턴을 기호로 기술하는 작은 언어이며, 파이썬에서는 <code>re</code> 모듈로 사용한다.</li>
 <li><code>re.search()</code>는 문자열 어디든, <code>re.match()</code>는 시작 부분의 일치를 검사하고, <code>re.findall()</code>은 모든 일치를 리스트로, <code>re.sub()</code>은 치환 결과를 반환한다.</li>
-<li><code> d</code>, <code> w</code>, <code> s</code>, <code>*</code>, <code>+</code>, <code>?</code>, <code>{n}</code> 등 핵심 메타문자 몇 개만 익혀도 대부분의 실용 패턴을 작성할 수 있다.</li>
-<li>패턴 문자열은 항상 <code>r'\dots'</code> 형태의 원시 문자열로 작성하는 것이 관례이다.</li>
+<li><code>\d</code>, <code>\w</code>, <code>\s</code>, <code>*</code>, <code>+</code>, <code>?</code>, <code>{n}</code> 등 핵심 메타문자 몇 개만 익혀도 대부분의 실용 패턴을 작성할 수 있다.</li>
+<li>패턴 문자열은 항상 <code>r'…'</code> 형태의 원시 문자열로 작성하는 것이 관례이다.</li>
 </ul></div>
 <div class="box caution"><span class="chip">주의</span><p>정규표현식은 강력한 도구이지만 복잡해지면 읽기가 매우 어려워진다.
 패턴이 한 줄을 넘어가면 <code>re.VERBOSE</code> 옵션으로 주석을 달거나, 여러 단계로 나누어 처리하는 것이 좋다.
@@ -596,7 +596,7 @@ m = int(input('Start month: '))
 d = int(input('Start day  : '))
 start = date(y, m, d)
 print('100th-day anniversary :', start + timedelta(days=100))</code></pre></li>
-<li><code>re</code> 모듈을 사용하여 한 문장 안에 섞여 있는 숫자들을 모두 추출하고, 그 합계를 구하여 출력하시오. (힌트: <code>re.findall(r' d+', text)</code>)</p>
+<li><code>re</code> 모듈을 사용하여 한 문장 안에 섞여 있는 숫자들을 모두 추출하고, 그 합계를 구하여 출력하시오. (힌트: <code>re.findall(r'\d+', text)</code>)</p>
 <p><pre class="line-numbers"><code class="language-python">import re
 text = 'I bought 3 apples, 5 pears, 12 oranges for 8400 won.'
 nums = re.findall(r'\d+', text)
@@ -629,7 +629,7 @@ else:
 <li><code>pip</code>은 파이썬 패키지를 설치·관리하는 명령줄 도구이며, <code>pip install 패키지이름</code>으로 <strong>PyPI</strong>에 등록된 외부 패키지를 설치할 수 있다.</li>
 <li><code>numpy</code>(수치 계산), <code>pandas</code>(데이터 분석), <code>matplotlib</code>(시각화), <code>requests</code>(웹 요청), <code>flask</code>(웹 개발), <code>Pillow</code>(이미지 처리) 등이 대표적인 외부 패키지이다.</li>
 <li><strong>가상환경</strong>(<code>python -m venv 이름</code>)을 사용하면 프로젝트별로 독립적인 패키지 환경을 관리할 수 있어 버전 충돌을 방지한다.</li>
-<li><code>re</code> 모듈의 <strong>정규표현식</strong>은 문자열의 패턴을 기호로 기술하는 작은 언어이다. <code>re.search()</code>, <code>re.findall()</code>, <code>re.sub()</code>로 패턴 검색·추출·치환을 수행하며, <code> d</code>, <code> w</code>, <code>*</code>, <code>+</code>, <code>?</code>, <code>{n}</code> 등 핵심 메타문자 몇 개로 다양한 패턴을 표현할 수 있다.</li>
+<li><code>re</code> 모듈의 <strong>정규표현식</strong>은 문자열의 패턴을 기호로 기술하는 작은 언어이다. <code>re.search()</code>, <code>re.findall()</code>, <code>re.sub()</code>로 패턴 검색·추출·치환을 수행하며, <code>\d</code>, <code>\w</code>, <code>*</code>, <code>+</code>, <code>?</code>, <code>{n}</code> 등 핵심 메타문자 몇 개로 다양한 패턴을 표현할 수 있다.</li>
 </ul></div></details>
 <details class="box exercise" id="exercises"><summary class="box-head">7장 연습문제</summary><div class="ex-body"><ol>
 <li class="ex-item" data-ex="1"><span class="diff"><span class="d2">★★</span></span>  <code>datetime</code> 모듈을 사용하여 오늘의 날짜와 현재 시간을 다음과 같은 형식으로 출력하는 프로그램을 작성하시오.

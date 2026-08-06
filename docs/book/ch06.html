@@ -101,7 +101,7 @@ print(students[2024003])</code></pre>
 <pre class="termout">Lee Sunsin
 Kang Gamchan</pre>
 <div class="listing-caption">코드 6.2: 정수 키를 사용하는 딕셔너리</div>
-<p>리스트에서 <code>students[0]</code>처럼 인덱스(위치)로 접근하는 것과 비교하면, 딕셔너리에서 <code>students\allowbreak[2024001]</code>처럼 학번(키)으로 접근하는 것이 훨씬 직관적이다.
+<p>리스트에서 <code>students[0]</code>처럼 인덱스(위치)로 접근하는 것과 비교하면, 딕셔너리에서 <code>students[2024001]</code>처럼 학번(키)으로 접근하는 것이 훨씬 직관적이다.
 이것이 딕셔너리의 핵심적인 장점이다.</p>
 <h3>항목 추가, 수정, 삭제</h3>
 <p>딕셔너리는 생성 후에도 항목을 자유롭게 추가하고, 기존 항목의 값을 수정하고, 항목을 삭제할 수 있다. 추가와 수정 모두 <code>딕셔너리[키] = 값</code> 형태의 동일한 문법을 사용한다. 해당 키가 존재하지 않으면 새 항목이 추가되고, 이미 존재하면 값이 수정된다.</p>
@@ -280,7 +280,7 @@ Symmetric diff: {1, 2, 6, 7}</pre>
 <figure class="fig">
 <img class="tikz" src="img/fig/ch06/ch06_fig03.svg" alt="figure">
 <p><figcaption>그림 6.3: 집합 연산의 벤 다이어그램</figcaption></figure></p>
-<p>그림 6.3은 네 가지 집합 연산을 벤 다이어그램으로 보여 준다. 색칠된 영역이 각 연산의 결과를 나타낸다. 합집합(<code>|</code>)은 두 집합의 모든 원소를 합친 것이고, 교집합(<code>&amp;</code>)은 양쪽 모두에 있는 원소만 모은 것이다. 차집합(<code>-</code>)은 <code>A</code>에는 있지만 <code>B</code>에는 없는 원소를 구하고, 대칭 차집합(<code>\^</code>)은 한쪽에만 있는 원소를 모은 것이다.</p>
+<p>그림 6.3은 네 가지 집합 연산을 벤 다이어그램으로 보여 준다. 색칠된 영역이 각 연산의 결과를 나타낸다. 합집합(<code>|</code>)은 두 집합의 모든 원소를 합친 것이고, 교집합(<code>&amp;</code>)은 양쪽 모두에 있는 원소만 모은 것이다. 차집합(<code>-</code>)은 <code>A</code>에는 있지만 <code>B</code>에는 없는 원소를 구하고, 대칭 차집합(<code>^</code>)은 한쪽에만 있는 원소를 모은 것이다.</p>
 <p>이 연산들은 실제 프로그래밍에서도 자주 활용된다. 예를 들어 "A 수업과 B 수업을 모두 수강하는 학생"은 교집합, "A 수업만 수강하는 학생"은 차집합, "A 또는 B 중 하나라도 수강하는 학생"은 합집합으로 구할 수 있다.</p>
 <h3>집합의 메소드</h3>
 <p>집합에 원소를 추가하려면 <code>add()</code>, 삭제하려면 <code>remove()</code> 또는 <code>discard()</code>를 사용한다. <code>remove()</code>와 <code>discard()</code>의 차이는 존재하지 않는 원소를 삭제하려 할 때 <code>remove()</code>는 <code>KeyError</code>를 발생시키지만, <code>discard()</code>는 오류 없이 무시한다는 점이다.</p>
@@ -425,7 +425,7 @@ print(sorted(set(a) | set(b)))   # [1, 2, 3, 4, 5, 6, 7]</code></pre></li>
 <li><strong>튜플</strong>은 소괄호 <code>( )</code>로 생성하며, 한 번 만들면 값을 변경할 수 없는 <strong>불변</strong>(immutable) 자료형이다. 하나의 원소를 가진 튜플을 만들 때는 <code>(값,)</code>처럼 반드시 쉼표를 붙여야 한다.</li>
 <li>튜플의 <strong>패킹</strong>은 여러 값을 하나의 튜플로 묶는 것이고, <strong>언패킹</strong>은 튜플의 값을 개별 변수에 분리하는 것이다. <code>a, b = b, a</code>와 같은 변수 교환이 가능하며, 함수에서 <code>return a, b</code>처럼 여러 값을 반환하면 자동으로 튜플로 패킹된다.</li>
 <li><strong>집합</strong>(set)은 <code>{ }</code> 또는 <code>set()</code>으로 생성하며, <strong>중복을 허용하지 않고</strong> 원소의 <strong>순서가 없다</strong>. 빈 집합은 반드시 <code>set()</code>으로 만든다(<code>{}</code>는 빈 딕셔너리).</li>
-<li>집합은 합집합(<code>|</code>), 교집합(<code>&amp;</code>), 차집합(<code>-</code>), 대칭 차집합(<code>\^{}</code>) 등 수학의 집합 연산을 그대로 지원한다. 리스트에서 중복을 제거할 때 <code>list(set(리스트))</code> 패턴을 사용하면 간편하다.</li>
+<li>집합은 합집합(<code>|</code>), 교집합(<code>&amp;</code>), 차집합(<code>-</code>), 대칭 차집합(<code>^</code>) 등 수학의 집합 연산을 그대로 지원한다. 리스트에서 중복을 제거할 때 <code>list(set(리스트))</code> 패턴을 사용하면 간편하다.</li>
 <li>집합에 원소를 추가할 때는 <code>add()</code>, 삭제할 때는 <code>remove()</code>(없으면 오류) 또는 <code>discard()</code>(없으면 무시)를 사용한다.</li>
 <li>데이터의 특성에 따라 적절한 자료형을 선택한다: <strong>리스트</strong>(순서 있음, 변경 가능), <strong>튜플</strong>(순서 있음, 변경 불가), <strong>딕셔너리</strong>(키-값 쌍, 키 고유), <strong>집합</strong>(순서 없음, 중복 불허).</li>
 <li><code>list()</code>, <code>tuple()</code>, <code>set()</code>, <code>dict()</code> 함수로 자료형 간 변환이 가능하다.</li>

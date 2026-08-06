@@ -229,7 +229,7 @@ if __name__ == '__main__':
 <h3>생성자와 데이터 저장·불러오기</h3>
 <p><code>__init__()</code> 생성자는 파일명을 <code>self.filename</code> 속성으로 저장하고, 곧바로 <code>self.load()</code>를 호출하여 단어 딕셔너리를 속성 <code>self.words</code>에 초기화한다. 이렇게 하면 인스턴스가 만들어지는 즉시 사용할 준비가 완료된다.</p>
 <p><code>load()</code> 메소드는 JSON 파일이 존재하면 <code>json.load()</code>로 파일 내용을 읽어 <code>self.words</code>에 대입한다. 파일이 없으면 빈 딕셔너리를 대입하여 새로운 단어장을 시작한다. <code>save()</code> 메소드는 반대로 <code>self.words</code>의 내용을 JSON 파일로 저장한다.
-<code>json.dump()</code> 함수의 <code>ensure_ascii=\allowbreak False</code> 옵션은 한글이 유니코드 이스케이프 문자가 아닌 읽을 수 있는 한글 그대로 저장되도록 하며, <code>indent=2</code>는 들여쓰기를 적용하여 파일의 가독성을 높인다.</p>
+<code>json.dump()</code> 함수의 <code>ensure_ascii=False</code> 옵션은 한글이 유니코드 이스케이프 문자가 아닌 읽을 수 있는 한글 그대로 저장되도록 하며, <code>indent=2</code>는 들여쓰기를 적용하여 파일의 가독성을 높인다.</p>
 <h3>단어 추가와 검색</h3>
 <p><code>add()</code> 메소드는 <code>input()</code>으로 영어 단어를 입력받은 뒤, <code>in</code> 연산자로 <code>self.words</code>에 이미 존재하는지 확인한다.
 이때 <code>strip()</code>은 앞뒤 공백을 제거하고, <code>lower()</code>는 대소문자를 통일하여 "Apple"과 "apple"이 같은 단어로 처리되도록 만든다. 단어 인자를 함수 인자로 받지 않고 속성 <code>self.words</code>를 직접 수정한다는 점에 주목하자  —  이것이 객체지향 방식의 핵심 장점이다.</p>
@@ -638,7 +638,7 @@ if __name__ == '__main__':
 <li>브라우저가 <code>/</code> 같은 URL로 서버에 요청을 보낸다.</li>
 <li>Flask가 그 경로에 연결된 함수(<code>home()</code>)를 실행하고, 함수 안에서 <code>render_template('index.html', tasks=tasks)</code>을 호출한다.</li>
 <li>Flask는 프로젝트의 <code>templates/</code> 폴더에서 <code>index.html</code>을 찾아 읽는다.</li>
-<li>Jinja2 엔진이 파일 안의 <code>{{ \dots }}</code> — 변수, <code>{% \dots %}</code> — 제어문을 파이썬에서 넘겨준 값(<code>tasks</code>)으로 <strong>치환</strong>한다.</li>
+<li>Jinja2 엔진이 파일 안의 <code>{{ …}}</code> — 변수, <code>{% …%}</code> — 제어문을 파이썬에서 넘겨준 값(<code>tasks</code>)으로 <strong>치환</strong>한다.</li>
 <li>완성된 <strong>보통 HTML</strong> 문자열이 브라우저로 응답되어 화면에 그려진다.</li>
 </ol>
 즉 템플릿 파일 자체는 정적인 HTML 골격을 잡고, 변하는 부분만 파이썬이 채워 넣는 셈이다.

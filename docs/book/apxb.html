@@ -79,9 +79,9 @@
 <p>함수 안에서 같은 이름의 변수에 <strong>대입</strong>한 줄이 있어 파이썬이 그 변수를 <strong>지역 변수</strong>로 간주했지만, 그 줄보다 앞에서 값을 읽었을 때 발생한다. 함수 어디서든 <code>x = ...</code>이라고 적으면 파이썬은 <code>x</code>를 그 함수의 지역 변수로 처음부터 끝까지 취급한다. 전역 변수를 함수 안에서 변경하려면 함수 첫 줄에 <code>global x</code>를 적어야 한다.</p>
 <h2 id="sec3">B.3 타입·값 오류</h2>
 <h3><code>TypeError: unsupported operand type(s) for +: 'int' and 'str'</code></h3>
-<p>서로 다른 자료형을 직접 연산할 때 발생한다. <code>age = input('나이?')</code>처럼 입력받은 값은 <code>str</code>이므로, 숫자처럼 더하려면 <code>int(input(\dots{}))</code>로 명시적 형 변환을 해 주거나 f-string(<code>f'{age}살입니다'</code>)으로 문자열에 끼워 넣는다.</p>
+<p>서로 다른 자료형을 직접 연산할 때 발생한다. <code>age = input('나이?')</code>처럼 입력받은 값은 <code>str</code>이므로, 숫자처럼 더하려면 <code>int(input(…))</code>로 명시적 형 변환을 해 주거나 f-string(<code>f'{age}살입니다'</code>)으로 문자열에 끼워 넣는다.</p>
 <h3><code>TypeError: 'tuple' object does not support item assignment</code></h3>
-<p>튜플은 <strong class="term-ko">불변 객체</strong><sup class="term">immutable</sup>이므로 <code>t[0] = 5</code>처럼 항목을 바꿀 수 없다. 항목을 자주 바꿔야 하는 데이터라면 처음부터 리스트(<code>[\dots{}]</code>)를 사용한다. 한두 번 부분만 바꿔야 한다면 새 튜플을 만들어 다시 대입하는 방식을 쓴다(<code>t = (5,) + t[1:]</code>).</p>
+<p>튜플은 <strong class="term-ko">불변 객체</strong><sup class="term">immutable</sup>이므로 <code>t[0] = 5</code>처럼 항목을 바꿀 수 없다. 항목을 자주 바꿔야 하는 데이터라면 처음부터 리스트(<code>[…]</code>)를 사용한다. 한두 번 부분만 바꿔야 한다면 새 튜플을 만들어 다시 대입하는 방식을 쓴다(<code>t = (5,) + t[1:]</code>).</p>
 <h3><code>ValueError: invalid literal for int() with base 10: 'abc'</code></h3>
 <p>숫자가 아닌 문자열을 <code>int()</code>로 변환하려 할 때 발생한다. 사용자 입력에 자주 등장하는 오류이므로, 입력값을 먼저 <code>isdigit()</code>으로 검증하거나 <code>try-except ValueError</code>로 잡아 다시 입력받는 패턴이 안전하다.</p>
 <h2 id="sec4">B.4 인덱스·키 오류</h2>

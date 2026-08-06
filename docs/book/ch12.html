@@ -192,7 +192,7 @@ df.to_csv('scores.csv', index=False, encoding='utf-8-sig')
 df2 = pd.read_csv('scores.csv')
 print(df2)</code></pre><div class="listing-caption">코드 12.3: CSV 파일 읽기와 쓰기</div></div>
 <p><code>df.to_csv()</code>에서 <code>index=False</code>는 행 인덱스(0, 1, 2,...)를 파일에 쓰지 않도록 한다.
-<code>encoding=\allowbreak'utf-8-sig'</code>는 엑셀에서 파일을 열 때 한글이 깨지지 않도록 BOM을 추가한다.
+<code>encoding='utf-8-sig'</code>는 엑셀에서 파일을 열 때 한글이 깨지지 않도록 BOM을 추가한다.
 <code>pd.read_csv()</code>는 CSV 파일을 읽어 자동으로 DataFrame을 생성한다. 열 이름, 자료형 추론, 결측값 처리 등을 자동으로 수행해 주므로 매우 편리하다.</p>
 <h3>데이터 탐색</h3>
 <p>데이터를 불러온 후 가장 먼저 할 일은 데이터의 구조와 내용을 파악하는 것이다.
@@ -453,8 +453,8 @@ print(df[['name', 'average']])</code></pre>
 3  Park Jimin    93.00
 4  Choi Suhyun   86.00</pre>
 <div class="listing-caption">코드 12.10: 정렬과 평균 열 추가</div>
-<p><code>sort_values('Korean',\allowbreak{} ascending=\allowbreak{}False)</code>는 국어 점수를 기준으로 내림차순 정렬한다.
-<code>ascending=\allowbreak{}True</code>(기본값)이면 오름차순, <code>False</code>이면 내림차순이다.</p>
+<p><code>sort_values('Korean', ascending=False)</code>는 국어 점수를 기준으로 내림차순 정렬한다.
+<code>ascending=True</code>(기본값)이면 오름차순, <code>False</code>이면 내림차순이다.</p>
 <p><code>df[['Korean', 'English', 'Math']].mean(axis=1)</code>에서 <code>axis=1</code>은 행 방향(각 학생별)으로 평균을 구하라는 의미이다.
 <code>axis=0</code>이면 열 방향(각 과목별)으로 계산한다.
 여기서 중요한 점은 결측값이 자동으로 제외된다는 것이다.
@@ -537,7 +537,7 @@ plt.show()</code></pre><div class="listing-caption">코드 12.12: 월별 매출 
 <code>figsize=(7, 4)</code>는 그래프 창의 크기를 가로 7인치, 세로 4인치로 설정한다.
 값이 클수록 그래프가 크게 그려진다.
 <code>marker='o'</code>는 각 데이터 점에 원형 마커를 표시하여 개별 값을 구분할 수 있게 한다.
-마커를 <code>'s'</code>로 바꾸면 사각형, <code>'\^{}'</code>로 바꾸면 삼각형이 된다.
+마커를 <code>'s'</code>로 바꾸면 사각형, <code>'^'</code>로 바꾸면 삼각형이 된다.
 <code>color='#2196F3'</code>는 선의 색상을 지정하며, HTML 색상 코드를 사용한다.
 <code>linewidth=2</code>는 선의 굵기를 2포인트로 설정한다.
 <code>grid(True, alpha=0.3)</code>은 격자선을 표시하되 투명도를 0.3으로 하여 은은하게 보이도록 한다.
