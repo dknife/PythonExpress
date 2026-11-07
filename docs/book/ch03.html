@@ -87,7 +87,7 @@ print('num =', num)</code></pre>
 <pre class="termout">num = 100
 num = 200
 num = 300</pre>
-<div class="listing-caption">코드 3.1: 순차적 실행 구조를 이용한 변수의 덧셈  —  seq_test.py</div>
+<div class="listing-caption">코드 3.1: 순차적 실행 구조를 이용한 변수의 덧셈</div>
 <p>프로그램의 논리적인 구조는 도형과 화살표로 이루어진 그림으로 표현하기도 하는데, 이러한 그림을 <strong class="term-ko">흐름도</strong><sup class="term">flow chart</sup>라고 한다. 앞으로도 우리는 프로그램의 수행 절차와 과정을 흐름도를 이용하여 종종 표현할 것이다.</p>
 <p>그러나 프로그래밍 언어에서는 항상 순차적인 흐름만 있는 것은 아니다. 특정한 조건이 만족되는 경우에만 특정 명령어가 수행되도록 할 수도 있고 조건에 따라 서로 다른 일을 해야 할 때도 있다. 또한 같은 작업을 여러 번 반복해야 할 때도 있다. 이렇게 프로그램의 흐름을 제어하는 명령을 <strong class="term-ko">제어문</strong><sup class="term">control statement</sup>이라 한다.</p>
 <p>제어문에는 크게 두 가지 종류가 있다. 첫째는 <strong class="term-ko">조건문</strong><sup class="term">conditional statement</sup>으로, <code>if</code>, <code>if-else</code> 문과 같이 조건에 따라 실행할 코드를 선택하는 구문이다. 둘째는 <strong class="term-ko">반복문</strong><sup class="term">loop statement</sup>으로, <code>for</code>, <code>while</code> 문과 같이 특정 코드를 여러 번 반복 실행하는 구문이다. 그리고 <code>break</code>와 <code>continue</code>처럼 반복문의 흐름 자체를 변경하는 명령문도 있다. 이 장에서는 조건문과 반복문을 함께 살펴보자.</p>
@@ -107,7 +107,7 @@ num = 300</pre>
 if age &lt; 20:
     print('청소년 할인')</code></pre>
 <pre class="termout">청소년 할인</pre>
-<div class="listing-caption">코드 3.2: if 조건문을 이용한 출력  —  if_youth_discount.py</div>
+<div class="listing-caption">코드 3.2: if 조건문을 이용한 출력</div>
 <p><code>age</code> 값이 18이므로 <code>age &lt; 20</code> 조건식이 참(<code>True</code>)이 되어 <code>print('청소년 할인')</code> 문장이 실행된다. 반면, <code>age = 24</code>와 같이 <code>age</code> 값이 20 이상의 값이 되면 조건식이 거짓(<code>False</code>)이 되어 아무런 출력도 없다. 즉, 흐름도 상에서 <code>if</code> 문의 다음에 실행문이 있지만, 조건이 참(<code>True</code>)이 아니므로 이 블록을 건너뛰게 된다.</p>
 <figure class="fig">
 <img class="tikz" src="img/fig/ch03/ch03_fig02.svg" alt="figure">
@@ -148,14 +148,14 @@ else:
     print('오후입니다.')</code></pre>
 <pre class="termout">시각을 입력하세요: 10
 오전입니다.</pre>
-<div class="listing-caption">코드 3.5: if-else 문을 이용한 오전/오후 판별  —  if_else_hour_test.py</div>
+<div class="listing-caption">코드 3.5: if-else 문을 이용한 오전/오후 판별</div>
 <p>이 코드의 흐름은 <code>hour</code> 값이 12보다 작은지 검사하여 참인지 거짓인지에 따라 왼쪽 혹은 오른쪽 흐름을 선택하는 간단한 제어 흐름이 된다.</p>
 <p><code>if-else</code> 문의 다른 예로 임의의 정수가 음수인지 판단하는 프로그램을 작성할 수 있다. 임의의 정수가 0보다 작으면 음수이고 그렇지 않으면 음수가 아니다. 또한 짝수와 홀수를 판별하는 것도 <code>if-else</code> 문으로 표현하기에 적당하다. 짝수와 홀수 역시 배타적 관계에 있기 때문이다.</p>
 <div class="listing"><pre class="line-numbers"><code class="language-python">num = int(input('양의 정수를 입력하세요: '))
 if num % 2 == 0:
     print(num, ': 짝수입니다.')
 else:
-    print(num, ': 홀수입니다.')</code></pre><div class="listing-caption">코드 3.6: if-else 문을 이용한 짝수/홀수 판별  —  if_else_even_test.py</div></div>
+    print(num, ': 홀수입니다.')</code></pre><div class="listing-caption">코드 3.6: if-else 문을 이용한 짝수/홀수 판별</div></div>
 <h3>if-elif-else 문</h3>
 <p>세 가지 이상의 조건을 검사해야 할 때는 <code>elif</code>를 사용한다. <code>elif</code>는 "else if"를 줄인 것으로, 앞의 조건이 거짓일 때 새로운 조건을 검사한다.</p>
 <pre class="line-numbers"><code class="language-python">score = int(input('점수를 입력하세요: '))
@@ -172,7 +172,7 @@ else:
 print(f'학점: {grade}')</code></pre>
 <pre class="termout">점수를 입력하세요: 85
 학점: B</pre>
-<div class="listing-caption">코드 3.7: if-elif-else 조건문으로 학점 판정  —  grade_test.py</div>
+<div class="listing-caption">코드 3.7: if-elif-else 조건문으로 학점 판정</div>
 <p>위 코드에서 <code>score</code>가 85이면 첫 번째 조건 <code>score &gt;= 90</code>은 거짓이므로 건너뛰고, 두 번째 조건 <code>score &gt;= 80</code>이 참이므로 <code>grade = 'B'</code>가 실행된다. 나머지 <code>elif</code>와 <code>else</code>는 더 이상 검사하지 않고 건너뛴다. <code>elif</code>는 필요한 만큼 여러 번 사용할 수 있으며, <code>else</code>는 위의 어떤 조건도 만족하지 않을 때 실행된다.</p>
 <p>여기서 중요한 점은 <code>elif</code> 문의 조건을 검사하는 순서이다. 파이썬은 위에서 아래로 순서대로 조건을 검사하며, 처음으로 참이 되는 조건의 블록만 실행하고 나머지는 모두 건너뛴다. 따라서 조건의 순서를 잘 설계해야 올바른 결과를 얻을 수 있다.</p>
 <div class="box note"><span class="chip">잠깐</span><span class="box-title">한 줄로 쓰는 조건문  —  조건 표현식</span><p>간단한 <code>if-else</code>로 변수 하나에 값을 할당하는 경우, 파이썬은 <strong class="term-ko">조건 표현식</strong><sup class="term">conditional expression</sup>이라는 한 줄 문법을 제공한다. 다른 언어의 삼항 연산자(<code>?:</code>)에 해당한다.</p>
@@ -190,7 +190,7 @@ elif number % 3 == 0:
 elif number % 5 == 0:
     print(number, ': 5의 배수입니다.')
 else:
-    print(number, ': 3의 배수도 5의 배수도 아닙니다.')</code></pre><div class="listing-caption">코드 3.8: 논리 연산자를 활용한 복합 조건식  —  if_modulo2.py</div></div>
+    print(number, ': 3의 배수도 5의 배수도 아닙니다.')</code></pre><div class="listing-caption">코드 3.8: 논리 연산자를 활용한 복합 조건식</div></div>
 <p>조건문 안에 또 다른 조건문을 넣는 <strong>중첩 조건문</strong>도 가능하다. 편의상 바깥의 <code>if-else</code> 문을 <strong>외부 if-else 문</strong>이라 하고 <code>else</code> 문 내의 <code>if-else</code> 문을 <strong>내부 if-else 문</strong>이라 하자. 중첩 조건문은 여러 단계의 판단이 필요할 때 사용하지만, 너무 깊이 중첩하면 코드의 가독성이 떨어지므로 적절한 수준에서 사용하는 것이 좋다. 일반적으로 3단계 이상의 중첩은 피하고, <code>elif</code>를 활용하여 평탄한 구조로 작성하는 것이 권장된다.</p>
 <div class="listing"><pre class="line-numbers"><code class="language-python">age = int(input('나이를 입력하세요: '))
 if age &gt;= 20:
@@ -199,7 +199,7 @@ if age &gt;= 20:
     else:
         print('일반 성인')
 else:
-    print('미성년자')</code></pre><div class="listing-caption">코드 3.9: 중첩 조건문  —  nested_if.py</div></div>
+    print('미성년자')</code></pre><div class="listing-caption">코드 3.9: 중첩 조건문</div></div>
 <p>나이로 22세를 입력하면 외부 <code>if</code> 조건 <code>age &gt;= 20</code>을 만족하지만 내부 조건 <code>age &gt;= 65</code>는 만족하지 않으므로 <code>일반 성인</code>이 출력된다.</p>
 <pre class="termout">나이를 입력하세요: 22
 일반 성인</pre>
@@ -215,7 +215,7 @@ else:
 모두 환영합니다!!
 모두 환영합니다!!
 모두 환영합니다!!</pre>
-<div class="listing-caption">코드 3.10: for 문을 이용한 반복 출력  —  print_welcome_with_for.py</div>
+<div class="listing-caption">코드 3.10: for 문을 이용한 반복 출력</div>
 <p><code>range(5)</code>는 0부터 4까지의 정수열 <code>0, 1, 2, 3, 4</code>를 생성한다. <code>for</code> 문은 이 값들을 하나씩 제어변수 <code>i</code>에 할당하면서 들여쓰기 블록을 반복 실행한다. 위 코드에서는 <code>i</code>의 값을 사용하지 않고 단순히 5번 반복만 하고 있다. 만일 "모두 환영합니다!!"를 10번 반복하고자 한다면 <code>range()</code> 괄호 안의 값만 10으로 고쳐주면 된다.</p>
 <figure class="fig">
 <img class="tikz" src="img/fig/ch03/ch03_fig03.svg" alt="figure">
@@ -243,7 +243,7 @@ for i in range(1, 11):
     s = s + i
 print('1부터 10까지의 합:', s)</code></pre>
 <pre class="termout">1부터 10까지의 합: 55</pre>
-<div class="listing-caption">코드 3.11: 1부터 10까지의 합 구하기  —  for_sum_ex1.py</div>
+<div class="listing-caption">코드 3.11: 1부터 10까지의 합 구하기</div>
 <p>이 코드를 살펴보면 <code>s</code>에 <code>i</code> 값을 누적하여 더하는 코드가 있는데 이렇게 누적하려면 초기 할당값이 필요하다. 따라서 <code>s = 0</code>으로 선언하여 최초의 <code>s</code>에는 0을 할당한 뒤, <code>for</code> 루프가 수행될 때마다 증가하는 <code>i</code> 값을 누적하여 \(1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10\)을 구한다.</p>
 <p>이와 같은 누적 덧셈을 처음 접하는 독자들은 위의 코드가 쉽게 잘 이해되지 않을 수 있을 것이다. 이럴 때는 중간에 <code>i</code>와 <code>s</code> 값이 어떻게 변화하는가를 살펴보는 것이 동작이 제대로 이루어지는지 확인하는 데 도움이 된다.</p>
 <div class="box note"><span class="chip">잠깐</span><span class="box-title">반복문에서 초기화의 중요성</span><p>누적 연산에서는 누적 변수의 <strong>초기화</strong>가 매우 중요하다. 덧셈의 누적에서는 초기값을 0으로, 곱셈의 누적(예: 팩토리얼)에서는 초기값을 1로 설정해야 한다. 초기화를 잊으면 예상치 못한 결과가 나오거나 오류가 발생한다.</p></div>
@@ -260,7 +260,7 @@ for i in range(1, n+1):
 print(f'{n}! = {fact}')</code></pre>
 <pre class="termout">숫자를 입력하세요: 5
 5! = 120</pre>
-<div class="listing-caption">코드 3.12: for 반복문을 이용한 팩토리얼 계산  —  for_factorial.py</div>
+<div class="listing-caption">코드 3.12: for 반복문을 이용한 팩토리얼 계산</div>
 <h3>for-in 리스트/문자열 순회</h3>
 <p><code>for</code> 문은 <code>range()</code> 함수 외에도 리스트나 문자열 등의 시퀀스를 직접 순회할 수 있다. <code>for — in</code> 구문은 반복문 키워드 <code>for</code>와 <code>in</code> 사이에 계속 새롭게 할당할 변수 <code>n</code>을 선언하고 <code>in</code> 뒤에 리스트 자료형을 넣어 리스트를 차례대로 순회하는 실행이 가능하다. 리스트에 관한 상세한 설명은 뒤의 장에서 다루겠지만, 여기서는 기본적인 사용법만 이해하면 충분하다.</p>
 <pre class="line-numbers"><code class="language-python"># 리스트 순회
@@ -283,7 +283,7 @@ P y t h o n</pre>
 <div class="listing"><pre class="line-numbers"><code class="language-python">for i in range(2, 10):
     for j in range(1, 10):
         print(f'{i}*{j}={i*j:2d}', end=' ')
-    print()</code></pre><div class="listing-caption">코드 3.14: 이중 for 문으로 구구단 전체 출력  —  double_for.py</div></div>
+    print()</code></pre><div class="listing-caption">코드 3.14: 이중 for 문으로 구구단 전체 출력</div></div>
 <p>외부 <code>for</code> 루프가 한 번 실행될 때마다 내부 <code>for</code> 루프가 처음부터 끝까지 전부 실행된다. 따라서 전체 반복 횟수는 외부 루프의 횟수와 내부 루프의 횟수를 곱한 것이 된다. 위 코드에서는 외부 루프가 8번(2단 9단), 내부 루프가 9번(1 9)이므로 총 \(8 \times 9 = 72\)번의 곱셈과 출력이 수행된다.</p>
 <div class="box note"><span class="chip">잠깐</span><span class="box-title">팩토리얼과 파이썬의 정수 표현</span><p>팩토리얼을 구하는 코드에서 <code>n</code> 값을 50으로 바꾸면 65자리에 이르는 엄청나게 큰 수가 출력된다. C나 Java와 같은 프로그래밍 언어의 기본 정수형은 크기가 4바이트 혹은 8바이트로 고정되어 있어서 일정한 범위 이상의 정수는 표현할 수 없다. 이와 달리 <strong>파이썬은 정수 표현의 한계가 없다</strong>. 이 점이 파이썬의 또 다른 큰 장점이다.</p></div>
 <h2 id="sec4">3.4 while 반복문과 흐름 제어</h2>
@@ -299,7 +299,7 @@ while i &lt;= 5:
     i += 1
 print()</code></pre>
 <pre class="termout">1 2 3 4 5</pre>
-<div class="listing-caption">코드 3.15: while 문의 기본 사용  —  while_basic.py</div>
+<div class="listing-caption">코드 3.15: while 문의 기본 사용</div>
 <p><code>while</code> 문은 먼저 조건식 <code>i &lt;= 5</code>를 검사한다. 조건이 참이면 블록을 실행하고 다시 조건을 검사하는 과정을 반복한다. <code>i</code>가 6이 되면 조건이 거짓이 되어 반복이 종료된다. 여기서 중요한 점은 블록 안에서 <code>i += 1</code>을 통해 제어변수를 직접 변경해야 한다는 것이다. <code>for</code> 문에서는 제어변수가 자동으로 변경되지만, <code>while</code> 문에서는 프로그래머가 직접 변경해야 한다.</p>
 <figure class="fig">
 <img class="tikz" src="img/fig/ch03/ch03_fig04.svg" alt="figure">
@@ -318,7 +318,7 @@ while num != 0:
 if count &gt; 0:
     print(f'합계: {total}, 평균: {total/count:.1f}')
 else:
-    print('입력된 숫자가 없습니다.')</code></pre><div class="listing-caption">코드 3.16: 사용자 입력을 이용한 while 문  —  while_input.py</div></div>
+    print('입력된 숫자가 없습니다.')</code></pre><div class="listing-caption">코드 3.16: 사용자 입력을 이용한 while 문</div></div>
 <p>이 프로그램에서 <code>while</code> 문의 조건식은 <code>num != 0</code>이다. 사용자가 0이 아닌 숫자를 입력하는 동안 반복이 계속되며, 0을 입력하면 조건이 거짓이 되어 반복이 종료된다. 이처럼 특정 값을 입력하면 반복을 종료하는 값을 <strong class="term-ko">센티넬</strong><sup class="term">sentinel</sup> 값이라고 한다.</p>
 <h3>for 문과 while 문의 비교</h3>
 <p>두 반복문의 사용 상황을 비교하면 다음과 같다. <code>for</code> 문은 반복 횟수가 정해져 있을 때 사용하며 제어변수가 자동으로 변경된다. 대표적으로 <code>for i in range(10):</code>과 같은 형태로 사용한다. <code>while</code> 문은 조건이 만족되는 동안 반복할 때 사용하며 제어변수를 직접 변경해야 한다. 대표적으로 <code>while i &lt; 10:</code>과 같은 형태로 사용한다.</p>
@@ -340,7 +340,7 @@ print()
 print('반복을 종료합니다.')</code></pre>
 <pre class="termout">1 2 3 4 5
 반복을 종료합니다.</pre>
-<div class="listing-caption">코드 3.17: break 문으로 반복 중단  —  break_test.py</div>
+<div class="listing-caption">코드 3.17: break 문으로 반복 중단</div>
 <p><code>i</code>가 6이 되면 <code>break</code>가 실행되어 <code>for</code> 문 전체를 빠져나간다. 따라서 6부터 10까지는 출력되지 않는다. <code>break</code>는 주로 특정 조건이 발생했을 때 더 이상 반복할 필요가 없는 경우에 사용한다. 예를 들어, 리스트에서 원하는 값을 찾았을 때 나머지 값들을 계속 검사할 필요가 없으므로 <code>break</code>로 빠져나올 수 있다.</p>
 <h3>continue 문</h3>
 <p><code>continue</code> 문은 현재 반복의 나머지 코드를 건너뛰고 다음 반복으로 넘어가는 명령이다. <code>break</code>가 반복문 자체를 종료하는 것과 달리, <code>continue</code>는 현재 반복만 건너뛰고 반복문은 계속 진행된다.</p>
@@ -350,7 +350,7 @@ print('반복을 종료합니다.')</code></pre>
     print(i, end=' ')
 print()</code></pre>
 <pre class="termout">1 3 5 7 9</pre>
-<div class="listing-caption">코드 3.18: continue 문으로 홀수만 출력  —  continue_test.py</div>
+<div class="listing-caption">코드 3.18: continue 문으로 홀수만 출력</div>
 <p><code>i</code>가 짝수일 때 <code>continue</code>가 실행되어 <code>print(i)</code> 문을 건너뛰고 다음 반복으로 넘어간다. 따라서 홀수만 출력된다. <code>continue</code>는 반복문 안에서 특정 조건에 해당하는 경우를 건너뛰고 싶을 때 유용하다.</p>
 <h3>반복문과 조건문의 조합</h3>
 <p>반복문과 조건문을 조합하면 더 강력한 프로그램을 작성할 수 있다. 사실 대부분의 실용적인 프로그램은 반복문 안에 조건문이 포함된 구조를 가지고 있다. 다음은 1부터 100까지의 정수 중에서 짝수의 합과 홀수의 합을 각각 구하는 프로그램이다.</p>
@@ -365,7 +365,7 @@ print(f'짝수의 합: {even_sum}')
 print(f'홀수의 합: {odd_sum}')</code></pre>
 <pre class="termout">짝수의 합: 2550
 홀수의 합: 2500</pre>
-<div class="listing-caption">코드 3.19: 반복문과 조건문을 조합한 짝수/홀수 합  —  even_odd_sum.py</div>
+<div class="listing-caption">코드 3.19: 반복문과 조건문을 조합한 짝수/홀수 합</div>
 <p>이 프로그램은 <code>for</code> 반복문으로 1부터 100까지 순회하면서, 각 숫자가 짝수인지 홀수인지를 <code>if-else</code> 조건문으로 판별하여 해당하는 변수에 누적한다. 이처럼 반복문과 조건문을 조합하면 데이터를 분류하고, 필터링하고, 집계하는 다양한 처리가 가능하다.</p>
 <p>반복문 안에서 <code>break</code>와 조건문을 함께 사용하는 것도 매우 일반적이다. 예를 들어, 사용자가 특정 명령어를 입력하면 프로그램을 종료하는 기능은 <code>while True:</code> 무한 루프와 <code>break</code>의 조합으로 구현할 수 있다.</p>
 <div class="listing"><pre class="line-numbers"><code class="language-python">while True:
