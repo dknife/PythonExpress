@@ -5,11 +5,11 @@ import pandas as pd
 
 # DataFrame: 2차원 표 형태 데이터
 data = {
-    'name': ['Hong Gildong', 'Kim Cheolsu',
-        'Lee Younghee', 'Park Jimin'],
-    'Korean': [85, 92, 78, 95],
-    'English': [90, 88, 82, 91],
-    'Math': [78, 95, 88, 87]
+    '이름': ['홍길동', '김철수',
+        '이영희', '박지민'],
+    '국어': [85, 92, 78, 95],
+    '영어': [90, 88, 82, 91],
+    '수학': [78, 95, 88, 87]
 }
 df = pd.DataFrame(data)
 print(df)

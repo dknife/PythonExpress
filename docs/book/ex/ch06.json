@@ -7,7 +7,7 @@
       "tests": [
         {
           "stdin": "",
-          "expected": "The capital of Korea is Seoul.\nThe capital of China is Beijing.\nThe capital of USA is Washington DC."
+          "expected": "한국의 수도는 서울입니다.\n중국의 수도는 베이징입니다.\n미국의 수도는 워싱턴 DC입니다."
         }
       ]
     },
@@ -17,7 +17,7 @@
       "tests": [
         {
           "stdin": "",
-          "expected": "Most expensive fruit: melon (6500 won)"
+          "expected": "가장 비싼 과일: 멜론 (6500원)"
         }
       ]
     },
@@ -42,7 +42,7 @@
       "tests": [
         {
           "stdin": "",
-          "expected": "Hong: 84.3\nKim: 91.7\nLee: 80.0"
+          "expected": "홍길동: 84.3\n김유신: 91.7\n이순신: 80.0"
         }
       ]
     }

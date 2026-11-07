@@ -164,7 +164,9 @@
     return t;
   }
   function tokensOf(s) {
-    var m = String(s || '').toLowerCase().match(/[a-z가-힣0-9_]+(?:\.[0-9]+)?/g);
+    // 숫자로 시작하면 숫자만 떼어 낸다: 6500원 -> 6500, 원 / 2028년 -> 2028, 년
+    var m = String(s || '').toLowerCase()
+      .match(/[0-9]+(?:\.[0-9]+)?|[a-z가-힣_][a-z가-힣0-9_]*(?:\.[0-9]+)?/g);
     return (m || []).map(canonTok);
   }
   function countMap(tokens) {

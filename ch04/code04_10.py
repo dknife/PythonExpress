@@ -5,4 +5,4 @@ def get_sum(a, b):
     return a + b
 
 result = get_sum(100, 200)
-print('Sum of two numbers:', result)
+print('두 수의 합:', result)

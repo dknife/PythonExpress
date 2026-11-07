@@ -2,8 +2,8 @@
 # 코드 8.4: try-except로 나눗셈 오류 처리
 
 try:
-    a, b = input('Enter two numbers: ').split()
+    a, b = input('두 수를 입력하세요: ').split()
     result = int(a) / int(b)
     print('{}/{} = {}'.format(a, b, result))
 except:
-    print('Please check if the numbers are correct.')
+    print('수가 정확한지 확인하세요.')

@@ -6,16 +6,16 @@ import numpy as np
 
 # 코드 12.6의 df 준비
 df = pd.DataFrame({
-    'name': ['Hong Gildong', 'Kim Cheolsu', 'Lee Younghee',
-        'Park Jimin', 'Choi Suhyun'],
-    'year': [1, 2, 1, 3, 2],
-    'Korean': [85, 92, np.nan, 95, 78],
-    'English': [90, np.nan, 82, 91, 88],
-    'Math': [78, 95, 88, np.nan, 92]
+    '이름': ['홍길동', '김철수', '이영희',
+        '박지민', '최수현'],
+    '학년': [1, 2, 1, 3, 2],
+    '국어': [85, 92, np.nan, 95, 78],
+    '영어': [90, np.nan, 82, 91, 88],
+    '수학': [78, 95, 88, np.nan, 92]
 })
 
 # 학년별 국어 점수 평균
-print(df.groupby('year')['Korean'].mean())
+print(df.groupby('학년')['국어'].mean())
 
 # 학년별 모든 수치형 열의 평균
-print(df.groupby('year')[['Korean', 'English', 'Math']].mean())
+print(df.groupby('학년')[['국어', '영어', '수학']].mean())

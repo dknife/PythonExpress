@@ -5,21 +5,21 @@ class Animal:
     def __init__(self, name):
         self.name = name
     def speak(self):
-        print(f'{self.name} makes a sound.')
+        print(f'{self.name}: 소리를 냅니다.')
 
 class Dog(Animal):
     def speak(self):
-        print(f'{self.name}: Woof!')
+        print(f'{self.name}: 멍멍!')
 
 class Cat(Animal):
     def speak(self):
-        print(f'{self.name}: Meow~')
+        print(f'{self.name}: 야옹~')
 
 class Cow(Animal):
     def speak(self):
-        print(f'{self.name}: Moo~')
+        print(f'{self.name}: 음매~')
 
 # 같은 인터페이스로 모든 동물을 동일하게 처리
-animals = [Dog('Baduk'), Cat('Nabi'), Cow('Worky')]
+animals = [Dog('바둑'), Cat('나비'), Cow('누렁이')]
 for a in animals:
     a.speak()

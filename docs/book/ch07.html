@@ -254,14 +254,14 @@ print(new_time)</code></pre>
 <pre class="line-numbers"><code class="language-python">import datetime as dt
 
 today = dt.date.today()
-print(f'Today is {today.year}/{today.month}/{today.day}.')
+print(f'오늘은 {today.year}년 {today.month}월 {today.day}일입니다.')
 
 xMas = dt.datetime(2026, 12, 25)
 gap = xMas - dt.datetime.now()
 
-print(f'Christmas is {gap.days} days {gap.seconds // 3600} hours away.')</code></pre>
-<pre class="termout">Today is 2026/4/7.
-Christmas is 261 days 15 hours away.</pre>
+print(f'크리스마스까지 {gap.days}일 {gap.seconds // 3600}시간 남았습니다.')</code></pre>
+<pre class="termout">오늘은 2026년 4월 7일입니다.
+크리스마스까지 261일 15시간 남았습니다.</pre>
 <div class="listing-caption">코드 7.13: 크리스마스까지 남은 날 계산</div>
 <p>이 코드를 따라가 보면 <code>datetime</code> 모듈의 <code>date.today()</code> 메소드를 이용하여 오늘 날짜 값을
 <code>today</code>라는 변수에 대입한다.
@@ -274,17 +274,17 @@ Christmas is 261 days 15 hours away.</pre>
 <p>이를 이용하여 100일 후와 100일 전의 날짜도 구해보자.</p>
 <pre class="line-numbers"><code class="language-python">import datetime as dt
 
-print('Today =', dt.datetime.now())
+print('오늘:', dt.datetime.now())
 hundred = dt.timedelta(days = 100) # 100일
 
 plus100day = dt.datetime.now() + hundred
-print('100 days later =', plus100day)
+print('100일 후:', plus100day)
 
 minus100day = dt.datetime.now() - hundred
-print('100 days ago =', minus100day)</code></pre>
-<pre class="termout">Today = 2026-04-07 10:32:49.474428
-100 days later = 2026-07-16 10:32:49.600513
-100 days ago = 2025-12-28 10:32:49.667744</pre>
+print('100일 전:', minus100day)</code></pre>
+<pre class="termout">오늘: 2026-04-07 10:32:49.474428
+100일 후: 2026-07-16 10:32:49.600513
+100일 전: 2025-12-28 10:32:49.667744</pre>
 <div class="listing-caption">코드 7.14: timedelta로 100일 전후 날짜 계산</div>
 <p><code>timedelta</code>는 위의 코드와 같이 <code>timedelta</code> 객체를 생성할 때 <code>days</code>라는 키워드 인자로 100을 대입한다.
 그러면 <code>hundred</code>는 100일의 <code>timedelta</code> 값을 갖게 된다.
@@ -403,7 +403,7 @@ print(rd.randrange(0, 10)) # 0 이상 9 이하의 정수</code></pre><div class=
 <p>리스트와 함께 사용하면 더욱 유용하다.</p>
 <div class="listing"><pre class="line-numbers"><code class="language-python">import random as rd
 
-colors = ['red', 'blue', 'green', 'yellow', 'purple']
+colors = ['빨강', '파랑', '초록', '노랑', '보라']
 print(rd.choice(colors)) # 리스트에서 무작위로 하나 선택
 
 rd.shuffle(colors) # 리스트를 무작위로 섞기 (원본 변경)
@@ -421,8 +421,8 @@ print(rd.sample(colors, 3)) # 3개를 비복원 추출</code></pre><div class="l
 
 lotto = rd.sample(range(1, 46), 6) # 1~45 중 6개 선택
 lotto.sort()
-print('This week lotto numbers:', lotto)</code></pre>
-<pre class="termout">This week lotto numbers: [3, 11, 22, 28, 34, 41]</pre>
+print('이번 주 로또 번호:', lotto)</code></pre>
+<pre class="termout">이번 주 로또 번호: [3, 11, 22, 28, 34, 41]</pre>
 <div class="listing-caption">코드 7.22: 로또 번호 생성기</div>
 <p>이 프로그램을 실행할 때마다 다른 번호가 나오는 것을 확인할 수 있다.
 <code>range(1, 46)</code>은 1부터 45까지의 숫자 범위를 만들고,
@@ -510,7 +510,7 @@ deactivate # 가상환경 비활성화</pre>
 <code>findall()</code>은 일치하는 모든 부분을 리스트로 반환하며, <code>sub()</code>은 일치하는 부분을 다른 문자열로 치환한다.</p>
 <pre class="line-numbers"><code class="language-python">import re
 
-text = 'My phone is 010-1234-5678 and home is 02-555-7777.'
+text = '내 휴대폰은 010-1234-5678이고 집 전화는 02-555-7777입니다.'
 
 m = re.search(r'\d{2,3}-\d{3,4}-\d{4}', text)
 print(m.group()) # 처음 일치한 부분 문자열
@@ -522,7 +522,7 @@ cleaned = re.sub(r'\d', '*', text) # 모든 숫자를 *로 치환
 print(cleaned)</code></pre>
 <pre class="termout">010-1234-5678
 {}['010-1234-5678', '02-555-7777']
-My phone is ***-****-**** and home is **-***-****.</pre>
+내 휴대폰은 ***-****-****이고 집 전화는 **-***-****입니다.</pre>
 <div class="listing-caption">코드 7.24: search, findall, sub로 전화번호 처리</div>
 <p>문자열 앞에 붙은 <code>r</code>은 <strong class="term-ko">원시 문자열</strong><sup class="term">raw string</sup>을 뜻하는 표시로, 백슬래시를 그대로 둔다.
 정규표현식에는 백슬래시가 자주 등장하므로 항상 <code>r'…'</code> 형태로 쓰는 것이 관례이다.</p>
@@ -536,7 +536,7 @@ My phone is ***-****-**** and home is **-***-****.</pre>
 <p>긴 문장에서 이메일 주소만 골라내고, 입력된 이메일이 올바른 형식인지 검사하는 코드를 살펴보자.</p>
 <pre class="line-numbers"><code class="language-python">import re
 
-text = 'Contact: alice@example.com, bob.smith@univ.ac.kr, not_an_email@'
+text = '연락처: alice@example.com, bob.smith@univ.ac.kr, not_an_email@'
 emails = re.findall(r'[\w.]+@[\w.]+\.[a-zA-Z]+', text)
 print(emails)
 
@@ -566,12 +566,12 @@ False</pre>
 <li><code>datetime</code> 모듈을 사용하여 오늘의 날짜와 시간을 오전/오후 표기와 함께 출력하시오.
 <p><pre class="line-numbers"><code class="language-python">from datetime import datetime
 now = datetime.now()
-print(f"Today's date : {now.year}-{now.month}-{now.day}")
-ampm = 'AM' if now.hour &lt; 12 else 'PM'
+print(f"오늘 날짜: {now.year}-{now.month}-{now.day}")
+ampm = '오전' if now.hour &lt; 12 else '오후'
 h = now.hour if now.hour &lt;= 12 else now.hour - 12
 if h == 0:
     h = 12
-print(f'Current time : {ampm} {h}:{now.minute:02d}:{now.second:02d}')</code></pre></li>
+print(f'현재 시각: {ampm} {h}:{now.minute:02d}:{now.second:02d}')</code></pre></li>
 <li>자신의 생일을 비교 대상 날짜로 설정하여, 다가오는 자신의 생일까지 남은 날짜를 출력해 보자.</p>
 <p><pre class="line-numbers"><code class="language-python">from datetime import date
 today = date.today()
@@ -579,45 +579,45 @@ bday  = date(today.year, 5, 15)   # 자신의 생일로 변경
 if bday &lt; today:
     bday = date(today.year + 1, 5, 15)
 remaining = (bday - today).days
-print(f'{remaining} days left until my birthday.')</code></pre></li>
+print(f'내 생일까지 {remaining}일 남았습니다.')</code></pre></li>
 <li>자신의 출생 연도·월·일을 입력받아, 오늘까지 살아온 총 일수와 태어난 요일을 출력하시오. (힌트: <code>strftime('%A')</code>로 영문 요일명을 얻을 수 있다.)</p>
 <p><pre class="line-numbers"><code class="language-python">from datetime import date
-y = int(input('Birth year : '))
-m = int(input('Birth month: '))
-d = int(input('Birth day  : '))
+y = int(input('출생 연도를 입력하세요: '))
+m = int(input('출생 월을 입력하세요: '))
+d = int(input('출생 일을 입력하세요: '))
 born  = date(y, m, d)
 days  = (date.today() - born).days
-print(f'{days} days have passed since you were born.')
-print(f'Day of the week you were born: {born.strftime("%A")}')</code></pre></li>
+print(f'태어난 지 {days}일이 지났습니다.')
+print(f'태어난 요일: {born.strftime("%A")}')</code></pre></li>
 <li><code>timedelta</code> 클래스를 이용하여 처음 사귄 연도·월·일을 입력받으면 100일 기념일을 출력하는 프로그램을 작성하시오.</p>
 <p><pre class="line-numbers"><code class="language-python">from datetime import date, timedelta
-y = int(input('Start year : '))
-m = int(input('Start month: '))
-d = int(input('Start day  : '))
+y = int(input('시작 연도를 입력하세요: '))
+m = int(input('시작 월을 입력하세요: '))
+d = int(input('시작 일을 입력하세요: '))
 start = date(y, m, d)
-print('100th-day anniversary :', start + timedelta(days=100))</code></pre></li>
+print('100일 기념일:', start + timedelta(days=100))</code></pre></li>
 <li><code>re</code> 모듈을 사용하여 한 문장 안에 섞여 있는 숫자들을 모두 추출하고, 그 합계를 구하여 출력하시오. (힌트: <code>re.findall(r'\d+', text)</code>)</p>
 <p><pre class="line-numbers"><code class="language-python">import re
-text = 'I bought 3 apples, 5 pears, 12 oranges for 8400 won.'
+text = '사과 3개, 배 5개, 오렌지 12개를 8400원에 샀습니다.'
 nums = re.findall(r'\d+', text)
 total = 0
 for n in nums:
     total += int(n)
-print('Found:', nums)
-print('Sum  :', total)</code></pre></li>
-<li>가위바위보 게임을 만들어 보자. 사용자가 가위(scissors)·바위(rock)·보(paper) 중 하나를 영어로 입력하면 컴퓨터가 <code>random.choice()</code>로 무작위 선택을 하고, 승패를 판정하여 출력하시오.</p>
+print('찾은 숫자:', nums)
+print('합계:', total)</code></pre></li>
+<li>가위바위보 게임을 만들어 보자. 사용자가 가위·바위·보 중 하나를 입력하면 컴퓨터가 <code>random.choice()</code>로 무작위 선택을 하고, 승패를 판정하여 출력하시오.</p>
 <p><pre class="line-numbers"><code class="language-python">import random
-choices = ['scissors', 'rock', 'paper']
-user = input('scissors/rock/paper: ').strip()
+choices = ['가위', '바위', '보']
+user = input('가위, 바위, 보 중 하나를 입력하세요: ').strip()
 cpu  = random.choice(choices)
-print(f'Computer: {cpu}')
-win_pairs = {('scissors','paper'), ('rock','scissors'), ('paper','rock')}
+print(f'컴퓨터: {cpu}')
+win_pairs = {('가위','보'), ('바위','가위'), ('보','바위')}
 if user == cpu:
-    print('Draw')
+    print('비겼습니다.')
 elif (user, cpu) in win_pairs:
-    print('You win!')
+    print('이겼습니다!')
 else:
-    print('You lose!')</code></pre></li>
+    print('졌습니다!')</code></pre></li>
 </ol></p></div></p>
 <details class="box summary" id="summary"><summary class="box-head">7장 요약</summary><div class="sum-body"><ul>
 <li><code>from 모듈 import 이름</code>으로 특정 요소만 직접 가져올 수 있고, <code>import 모듈 as 별칭</code>으로 짧은 별칭을 지정할 수 있다. <code>dir()</code> 함수를 사용하면 모듈이 제공하는 클래스, 함수, 속성의 목록을 확인할 수 있다.</li>
@@ -634,14 +634,14 @@ else:
 <details class="box exercise" id="exercises"><summary class="box-head">7장 연습문제</summary><div class="ex-body"><ol>
 <li class="ex-item" data-ex="1"><span class="diff"><span class="d2">★★</span></span>  <code>datetime</code> 모듈을 사용하여 오늘의 날짜와 현재 시간을 다음과 같은 형식으로 출력하는 프로그램을 작성하시오.
 <code>hour</code> 값이 12 미만이면 "오전", 12 이상이면 "오후"로 표시한다.
-<p><pre class="pyout">Today's date: April 6, 2026
-Current time: PM 2:30:15</pre></li>
+<p><pre class="pyout">오늘 날짜: 2026년 4월 6일
+현재 시각: 오후 2:30:15</pre></li>
 <li class="ex-item" data-ex="2"><span class="diff"><span class="d2">★★</span></span>  <code>datetime</code> 모듈의 <code>timedelta</code> 클래스를 사용하여, 사용자로부터 연도, 월, 일을 입력받아
 그 날짜로부터 1000일 후의 날짜를 출력하는 프로그램을 작성하시오.</p>
-<p><pre class="pyout">Enter year: 2026
-Enter month: 4
-Enter day: 6
-Date after 1000 days: December 31, 2028</pre></li>
+<p><pre class="pyout">연도를 입력하세요: 2026
+월을 입력하세요: 4
+일을 입력하세요: 6
+1000일 후의 날짜: 2028년 12월 31일</pre></li>
 <li class="ex-item" data-ex="3"><span class="diff"><span class="d2">★★</span></span>  <code>math</code> 모듈을 사용하여 사용자로부터 반지름을 입력받고, 원의 넓이와 둘레를 계산하여 출력하는 프로그램을 작성하시오.
 원의 넓이는 \(\pi r^2\), 둘레는 \(2\pi r\)이다. 결과는 소수점 둘째 자리까지 출력한다.</li>
 <li class="ex-item" data-ex="4"><span class="diff"><span class="d3">★★★</span></span>  <code>random</code> 모듈을 사용하여 "숫자 맞추기 게임"을 작성하시오. 1부터 100 사이의 임의의 수를 생성한 후,

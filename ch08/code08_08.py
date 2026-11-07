@@ -2,13 +2,13 @@
 # 코드 8.8: else로 정상 실행 결과 출력
 
 try:
-    a, b = input('Enter two numbers: ').split()
+    a, b = input('두 수를 입력하세요: ').split()
     result = int(a) / int(b)
 except ZeroDivisionError:
-    print('Error: cannot divide by zero.')
+    print('오류: 0으로 나눌 수 없습니다.')
 except ValueError:
-    print('Error: please enter integers.')
+    print('오류: 정수를 입력하세요.')
 except:
-    print('Error: enter two numbers like 10 2.')
+    print('오류: 10 2처럼 두 수를 입력하세요.')
 else: # 예외가 없을 때만 실행
     print('{} / {} = {}'.format(a, b, result))

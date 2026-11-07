@@ -5,12 +5,12 @@ import pandas as pd
 import numpy as np
 
 data = {
-    'name': ['Hong Gildong', 'Kim Cheolsu', 'Lee Younghee',
-        'Park Jimin', 'Choi Suhyun'],
-    'year': [1, 2, 1, 3, 2],
-    'Korean': [85, 92, np.nan, 95, 78],
-    'English': [90, np.nan, 82, 91, 88],
-    'Math': [78, 95, 88, np.nan, 92]
+    '이름': ['홍길동', '김철수', '이영희',
+        '박지민', '최수현'],
+    '학년': [1, 2, 1, 3, 2],
+    '국어': [85, 92, np.nan, 95, 78],
+    '영어': [90, np.nan, 82, 91, 88],
+    '수학': [78, 95, 88, np.nan, 92]
 }
 df = pd.DataFrame(data)
 print(df)

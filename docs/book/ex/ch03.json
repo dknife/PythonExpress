@@ -4,7 +4,7 @@
     {
       "n": 1,
       "type": "output",
-      "expected": "multiple of 3"
+      "expected": "3의 배수"
     },
     {
       "n": 2,
@@ -12,15 +12,15 @@
       "tests": [
         {
           "stdin": "95\n",
-          "expected": "Enter score: 95\nGrade: A"
+          "expected": "점수를 입력하세요: 95\n학점: A"
         },
         {
           "stdin": "72\n",
-          "expected": "Enter score: 72\nGrade: C"
+          "expected": "점수를 입력하세요: 72\n학점: C"
         },
         {
           "stdin": "45\n",
-          "expected": "Enter score: 45\nGrade: F"
+          "expected": "점수를 입력하세요: 45\n학점: F"
         }
       ]
     },
@@ -45,11 +45,11 @@
       "tests": [
         {
           "stdin": "10\n20\n30\n0\n",
-          "expected": "Enter a positive integer: 10\nEnter a positive integer: 20\nEnter a positive integer: 30\nEnter a positive integer: 0\nSum: 60\nCount: 3"
+          "expected": "양의 정수를 입력하세요: 10\n양의 정수를 입력하세요: 20\n양의 정수를 입력하세요: 30\n양의 정수를 입력하세요: 0\n합계: 60\n개수: 3"
         },
         {
           "stdin": "5\n-1\n",
-          "expected": "Enter a positive integer: 5\nEnter a positive integer: -1\nSum: 5\nCount: 1"
+          "expected": "양의 정수를 입력하세요: 5\n양의 정수를 입력하세요: -1\n합계: 5\n개수: 1"
         }
       ]
     },
@@ -106,15 +106,15 @@
       "tests": [
         {
           "stdin": "170\n65\n",
-          "expected": "Height(cm): 170\nWeight(kg): 65\nBMI: 22.5\n정상"
+          "expected": "키(cm): 170\n몸무게(kg): 65\nBMI: 22.5\n정상"
         },
         {
           "stdin": "160\n45\n",
-          "expected": "Height(cm): 160\nWeight(kg): 45\nBMI: 17.6\n저체중"
+          "expected": "키(cm): 160\n몸무게(kg): 45\nBMI: 17.6\n저체중"
         },
         {
           "stdin": "175\n90\n",
-          "expected": "Height(cm): 175\nWeight(kg): 90\nBMI: 29.4\n과체중"
+          "expected": "키(cm): 175\n몸무게(kg): 90\nBMI: 29.4\n과체중"
         }
       ]
     },
@@ -134,11 +134,11 @@
       "tests": [
         {
           "stdin": "5\n",
-          "expected": "Enter n: 5\n120"
+          "expected": "n을 입력하세요: 5\n120"
         },
         {
           "stdin": "10\n",
-          "expected": "Enter n: 10\n3628800"
+          "expected": "n을 입력하세요: 10\n3628800"
         }
       ]
     },
@@ -158,11 +158,11 @@
       "tests": [
         {
           "stdin": "10\n",
-          "expected": "Enter n: 10\nEven sum: 30\nOdd sum: 25"
+          "expected": "n을 입력하세요: 10\n짝수의 합: 30\n홀수의 합: 25"
         },
         {
           "stdin": "7\n",
-          "expected": "Enter n: 7\nEven sum: 12\nOdd sum: 16"
+          "expected": "n을 입력하세요: 7\n짝수의 합: 12\n홀수의 합: 16"
         }
       ]
     },
@@ -171,12 +171,12 @@
       "type": "code",
       "tests": [
         {
-          "stdin": "10\n20\n30\nquit\n",
-          "expected": "Enter an integer (or quit): 10\nEnter an integer (or quit): 20\nEnter an integer (or quit): 30\nEnter an integer (or quit): quit\nSum: 60\nAverage: 20.0"
+          "stdin": "10\n20\n30\n종료\n",
+          "expected": "정수를 입력하세요(끝내려면 종료): 10\n정수를 입력하세요(끝내려면 종료): 20\n정수를 입력하세요(끝내려면 종료): 30\n정수를 입력하세요(끝내려면 종료): 종료\n합계: 60\n평균: 20.0"
         },
         {
-          "stdin": "5\n7\nquit\n",
-          "expected": "Enter an integer (or quit): 5\nEnter an integer (or quit): 7\nEnter an integer (or quit): quit\nSum: 12\nAverage: 6.0"
+          "stdin": "5\n7\n종료\n",
+          "expected": "정수를 입력하세요(끝내려면 종료): 5\n정수를 입력하세요(끝내려면 종료): 7\n정수를 입력하세요(끝내려면 종료): 종료\n합계: 12\n평균: 6.0"
         }
       ]
     },
@@ -196,15 +196,15 @@
       "tests": [
         {
           "stdin": "2024\n",
-          "expected": "Enter year: 2024\nLeap year"
+          "expected": "연도를 입력하세요: 2024\n윤년입니다."
         },
         {
           "stdin": "1900\n",
-          "expected": "Enter year: 1900\nNot a leap year"
+          "expected": "연도를 입력하세요: 1900\n윤년이 아닙니다."
         },
         {
           "stdin": "2000\n",
-          "expected": "Enter year: 2000\nLeap year"
+          "expected": "연도를 입력하세요: 2000\n윤년입니다."
         }
       ]
     }

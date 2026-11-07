@@ -4,9 +4,9 @@
 import datetime as dt
 
 today = dt.date.today()
-print(f'Today is {today.year}/{today.month}/{today.day}.')
+print(f'오늘은 {today.year}년 {today.month}월 {today.day}일입니다.')
 
 xMas = dt.datetime(2026, 12, 25)
 gap = xMas - dt.datetime.now()
 
-print(f'Christmas is {gap.days} days {gap.seconds // 3600} hours away.')
+print(f'크리스마스까지 {gap.days}일 {gap.seconds // 3600}시간 남았습니다.')

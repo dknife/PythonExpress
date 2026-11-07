@@ -3,4 +3,4 @@
 
 n_list = [-30, 45, -5, -90, 20, 53, 77, -36]
 minus_list = list(filter(lambda x: x < 0, n_list))
-print('Negative list :', minus_list)
+print('음수 목록:', minus_list)

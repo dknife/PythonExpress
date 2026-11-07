@@ -1,6 +1,6 @@
 # 알짜 파이썬 (강영민·박동규, 생능출판사) — 제4장 함수와 입출력
 # 코드 4.18: int(input()) 패턴으로 정수 입력
 
-a = int(input('First integer: '))
-b = int(input('Second integer: '))
+a = int(input('첫 번째 정수를 입력하세요: '))
+b = int(input('두 번째 정수를 입력하세요: '))
 print(f'{a} + {b} = {a + b}')

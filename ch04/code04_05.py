@@ -3,7 +3,7 @@
 
 def print_sum(a, b):
     result = a + b
-    print('The sum of', a, 'and', b, 'is', result)
+    print(a, '+', b, '=', result)
 
 print_sum(10, 20)
 print_sum(100, 200)

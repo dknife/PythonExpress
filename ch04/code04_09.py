@@ -5,4 +5,4 @@ def make_profile(**kwargs): # 키워드 인자를 딕셔너리로 받음
     for key, value in kwargs.items():
         print(f'{key}: {value}')
 
-make_profile(name='Alice', age=20, job='Designer')
+make_profile(name='철수', age=20, job='디자이너')

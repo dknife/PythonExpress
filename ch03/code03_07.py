@@ -1,7 +1,7 @@
 # 알짜 파이썬 (강영민·박동규, 생능출판사) — 제3장 조건문과 반복문
 # 코드 3.7: if-elif-else 조건문으로 학점 판정  —  grade_test.py
 
-score = int(input('Enter score: '))
+score = int(input('점수를 입력하세요: '))
 if score >= 90:
     grade = 'A'
 elif score >= 80:
@@ -12,4 +12,4 @@ elif score >= 60:
     grade = 'D'
 else:
     grade = 'F'
-print(f'Grade: {grade}')
+print(f'학점: {grade}')

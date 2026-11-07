@@ -3,7 +3,7 @@
 
 import random as rd
 
-colors = ['red', 'blue', 'green', 'yellow', 'purple']
+colors = ['빨강', '파랑', '초록', '노랑', '보라']
 print(rd.choice(colors)) # 리스트에서 무작위로 하나 선택
 
 rd.shuffle(colors) # 리스트를 무작위로 섞기 (원본 변경)

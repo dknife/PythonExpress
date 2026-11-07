@@ -3,12 +3,12 @@
 
 @app.route('/')
 def home():
-    return '<h1>Home Page</h1><a href="/about">About</a>'
+    return '<h1>홈 페이지</h1><a href="/about">소개</a>'
 
 @app.route('/about')
 def about():
-    return '<h1>About</h1><p>This is a Flask web app.</p>'
+    return '<h1>소개</h1><p>Flask로 만든 웹 앱입니다.</p>'
 
 @app.route('/greet/<name>')
 def greet(name):
-    return f'<h1>Hello, {name}!</h1>'
+    return f'<h1>안녕하세요, {name}!</h1>'

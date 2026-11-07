@@ -6,4 +6,4 @@ def get_min_max(numbers):
 
 data = [45, 23, 78, 12, 67]
 minimum, maximum = get_min_max(data)
-print(f'Min: {minimum}, Max: {maximum}')
+print(f'최솟값: {minimum}, 최댓값: {maximum}')

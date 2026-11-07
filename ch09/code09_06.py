@@ -3,7 +3,7 @@
 
 class Cat:
     def meow(self): # Cat 클래스의 메소드
-        print('Meow meow~~~')
+        print('야옹 야옹~~~')
 
 nabi = Cat()
-nabi.meow() # Meow meow~~~
+nabi.meow() # 야옹 야옹~~~

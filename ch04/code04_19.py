@@ -7,6 +7,6 @@ def calc(a, b):
     print(f'{a} * {b} = {a * b}')
     print(f'{a} / {b} = {a / b:.2f}')
 
-x = int(input('Enter first number: '))
-y = int(input('Enter second number: '))
+x = int(input('첫 번째 수를 입력하세요: '))
+y = int(input('두 번째 수를 입력하세요: '))
 calc(x, y)

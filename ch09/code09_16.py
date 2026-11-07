@@ -7,7 +7,7 @@ class Animal:
         self.age = age
 
     def info(self):
-        print(f'{self.name} ({self.age} years old)')
+        print(f'{self.name} ({self.age}살)')
 
 class Dog(Animal):
     def __init__(self, name, age, breed):
@@ -16,7 +16,7 @@ class Dog(Animal):
 
     def info(self):
         super().info() # 부모의 info()를 확장
-        print(f' Breed: {self.breed}')
+        print(f' 품종: {self.breed}')
 
-baduk = Dog('Baduk', 3, 'Jindo')
+baduk = Dog('바둑', 3, '진돗개')
 baduk.info()

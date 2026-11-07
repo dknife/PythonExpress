@@ -3,20 +3,20 @@
 
 # 성적 데이터를 파일에 저장
 students = [
-    'Hong Gildong,85,90,78',
-    'Kim Cheolsu,92,88,95',
-    'Lee Younghee,76,82,89'
+    '홍길동,85,90,78',
+    '김철수,92,88,95',
+    '이영희,76,82,89'
 ]
 
-with open('scores.txt', 'w') as f:
+with open('scores.txt', 'w', encoding='utf-8') as f:
     for s in students:
         f.write(s + '\n')
 
 # 파일에서 성적을 읽어 평균 계산
-with open('scores.txt', 'r') as f:
+with open('scores.txt', 'r', encoding='utf-8') as f:
     for line in f:
         data = line.strip().split(',')
         name = data[0]
         scores = [int(x) for x in data[1:]]
         avg = sum(scores) / len(scores)
-        print(f'{name}: Average {avg:.1f}')
+        print(f'{name}: 평균 {avg:.1f}')

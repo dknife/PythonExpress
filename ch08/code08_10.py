@@ -2,15 +2,15 @@
 # 코드 8.10: raise로 입력값 검증하기
 
 def get_ans(ans):
-    if ans in ['yes', 'no']:
-        print('Valid input.')
+    if ans in ['예', '아니오']:
+        print('정상적인 입력입니다.')
     else:
-        raise ValueError('Please enter yes or no.')
+        raise ValueError('예/아니오를 입력하세요.')
 
 while True:
     try:
-        ans = input('Enter yes or no: ')
+        ans = input('예 또는 아니오를 입력하세요: ')
         get_ans(ans)
         break
     except Exception as e:
-        print('error:', e)
+        print('오류:', e)

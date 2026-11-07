@@ -19,9 +19,9 @@ b = model.intercept_
 new_hours = np.array([[4.5], [6.5], [10]])
 predictions = model.predict(new_hours)
 
-print('Predictions:')
+print('예측 결과:')
 for h, s in zip(new_hours.flatten(), predictions):
-    print(f' Study {h:.1f} hours -> {s:.1f} points')
+    print(f' {h:.1f}시간 -> {s:.1f}점')
 
 # 그래프: 산점도 + 회귀선
 plt.figure(figsize=(8, 5))

@@ -3,6 +3,6 @@
 
 try:
     b = 2 / 0
-    a = 1 + 'hundred'
+    a = 1 + '백'
 except Exception as e:
-    print('error :', e)
+    print('오류:', e)

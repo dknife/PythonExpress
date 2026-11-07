@@ -5,11 +5,11 @@ import pandas as pd
 
 # 코드 12.2의 df 준비
 df = pd.DataFrame({
-    'name': ['Hong Gildong', 'Kim Cheolsu',
-        'Lee Younghee', 'Park Jimin'],
-    'Korean': [85, 92, 78, 95],
-    'English': [90, 88, 82, 91],
-    'Math': [78, 95, 88, 87]
+    '이름': ['홍길동', '김철수',
+        '이영희', '박지민'],
+    '국어': [85, 92, 78, 95],
+    '영어': [90, 88, 82, 91],
+    '수학': [78, 95, 88, 87]
 })
 
 print(df.head(2)) # 처음 2행

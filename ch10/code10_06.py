@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return '<h1>Hello, Flask!</h1><p>My first web app.</p>'
+    return '<h1>Hello, Flask!</h1><p>나의 첫 웹 앱입니다.</p>'
 
 if __name__ == '__main__':
     app.run(debug=True)

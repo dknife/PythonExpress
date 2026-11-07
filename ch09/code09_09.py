@@ -18,16 +18,16 @@ class Student:
 
     def info(self):
         avg = self.average()
-        print(f'{self.name}({self.student_id}) - {self.major}, avg: {avg:.1f}')
+        print(f'{self.name}({self.student_id}) - {self.major}, 평균: {avg:.1f}')
 
 # 학생 객체를 생성하고 사용
-s1 = Student('Hong Gildong', '2026001', 'Computer Science')
+s1 = Student('홍길동', '2026001', '컴퓨터공학')
 s1.add_score(85)
 s1.add_score(92)
 s1.add_score(78)
-s1.info() # Hong Gildong(2026001) - Computer Science, avg: 85.0
+s1.info() # 홍길동(2026001) - 컴퓨터공학, 평균: 85.0
 
-s2 = Student('Kim Younghee', '2026002', 'Business')
+s2 = Student('김영희', '2026002', '경영학')
 s2.add_score(95)
 s2.add_score(88)
-s2.info() # Kim Younghee(2026002) - Business, avg: 91.5
+s2.info() # 김영희(2026002) - 경영학, 평균: 91.5

@@ -7,5 +7,5 @@ print('Hello World!)
 
 # if 문 뒤에 콜론 누락
 if True
-    print('hello')
+    print('안녕하세요')
 # SyntaxError: expected ':'

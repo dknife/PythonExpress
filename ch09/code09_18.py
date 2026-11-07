@@ -3,11 +3,11 @@
 
 class Duck:
     def speak(self):
-        print('Quack!')
+        print('꽥꽥!')
 
 class Person:
     def speak(self):
-        print('Hello!')
+        print('안녕하세요!')
 
 # 공통 부모는 없지만 둘 다 동일하게 처리 가능
 for obj in [Duck(), Person()]:

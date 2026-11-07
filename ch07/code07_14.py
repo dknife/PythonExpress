@@ -3,11 +3,11 @@
 
 import datetime as dt
 
-print('Today =', dt.datetime.now())
+print('오늘:', dt.datetime.now())
 hundred = dt.timedelta(days = 100) # 100일
 
 plus100day = dt.datetime.now() + hundred
-print('100 days later =', plus100day)
+print('100일 후:', plus100day)
 
 minus100day = dt.datetime.now() - hundred
-print('100 days ago =', minus100day)
+print('100일 전:', minus100day)

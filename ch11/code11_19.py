@@ -3,4 +3,4 @@
 
 # 리스트 축약 표현을 사용한 방법
 ages = [34, 39, 20, 18, 13, 54]
-print('Adult list :', [x for x in ages if x >= 19])
+print('성년 나이 목록:', [x for x in ages if x >= 19])

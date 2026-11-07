@@ -6,5 +6,5 @@ import numpy as np
 student_mid = np.array([70, 85, 90, 75]) # 중간시험 점수
 student_fin = np.array([90, 65, 70, 85]) # 기말시험 점수
 student_sum = student_mid + student_fin
-print('Total :', student_sum)
-print('Average :', student_sum / 2)
+print('합계:', student_sum)
+print('평균:', student_sum / 2)

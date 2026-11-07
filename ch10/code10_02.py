@@ -7,7 +7,7 @@ INPUT_FILE = 'members_raw.txt'
 OUTPUT_FILE = 'members.csv'
 
 def unify_separator(line):
-    """Replace / and, with | as a single separator."""
+    """구분자 /와 ,를 |로 통일한다."""
     line = line.replace('/', '|')
     line = line.replace(',', '|')
     if '|' not in line:
@@ -29,7 +29,7 @@ def unify_separator(line):
     return line
 
 def normalize_phone(phone):
-    """Normalize phone number to 010-XXXX-XXXX format."""
+    """전화번호를 010-XXXX-XXXX 형식으로 통일한다."""
     digits = ''
     for ch in phone:
         if ch.isdigit():
@@ -39,7 +39,7 @@ def normalize_phone(phone):
     return f'{digits[:3]}-{digits[3:7]}-{digits[7:]}'
 
 def clean_data(input_file, output_file):
-    """Read raw text, clean it, and write to CSV."""
+    """원본 텍스트를 읽어 정리한 뒤 CSV로 저장한다."""
     cleaned = []
     errors = []
 
@@ -51,41 +51,41 @@ def clean_data(input_file, output_file):
 
             unified = unify_separator(line)
             if unified is None:
-                errors.append((line_num, 'Cannot parse'))
+                errors.append((line_num, '분석할 수 없음'))
                 continue
 
             parts = unified.split('|')
             parts = [p.strip() for p in parts]
 
             if len(parts) != 4:
-                errors.append((line_num, 'Field count error'))
+                errors.append((line_num, '필드 개수 오류'))
                 continue
 
             name, phone, email, city = parts
             phone = normalize_phone(phone)
             if phone is None:
-                errors.append((line_num, 'Invalid phone'))
+                errors.append((line_num, '잘못된 전화번호'))
                 continue
 
             cleaned.append({
-                'name': name, 'phone': phone,
-                'email': email, 'city': city
+                '이름': name, '전화번호': phone,
+                '이메일': email, '도시': city
             })
 
     # CSV 파일로 저장
-    fields = ['name', 'phone', 'email', 'city']
+    fields = ['이름', '전화번호', '이메일', '도시']
     with open(output_file, 'w', newline='',
             encoding='utf-8-sig') as f:
         writer = csv.DictWriter(f, fieldnames=fields)
         writer.writeheader()
         writer.writerows(cleaned)
 
-    print(f'Completed: {len(cleaned)} records saved '
-        f'to {output_file}')
+    print(f'완료: {len(cleaned)}건을 '
+        f'{output_file}에 저장했습니다.')
     if errors:
-        print(f'Warnings ({len(errors)} lines skipped):')
+        print(f'경고 ({len(errors)}줄 건너뜀):')
         for num, msg in errors:
-            print(f'  Line {num}: {msg}')
+            print(f'  {num}번째 줄: {msg}')
 
 if __name__ == '__main__':
     clean_data(INPUT_FILE, OUTPUT_FILE)

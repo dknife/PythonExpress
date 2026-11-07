@@ -5,6 +5,6 @@ try:
     with open('nonexistent.txt', 'r') as f:
         content = f.read()
 except FileNotFoundError:
-    print('Error: File does not exist.')
+    print('오류: 파일이 없습니다.')
 except PermissionError:
-    print('Error: Permission denied.')
+    print('오류: 접근 권한이 없습니다.')

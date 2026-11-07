@@ -4,10 +4,10 @@
 list1 = [20, 10, 40, 50, 30]
 
 list1.sort() # 오름차순 정렬
-print('Ascending:', list1)
+print('오름차순:', list1)
 
 list1.sort(reverse=True) # 내림차순 정렬
-print('Descending:', list1)
+print('내림차순:', list1)
 
 list1.reverse() # 순서 뒤집기
-print('Reversed:', list1)
+print('뒤집기:', list1)

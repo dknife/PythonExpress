@@ -2,4 +2,4 @@
 # 코드 3.10: for 문을 이용한 반복 출력  —  print_welcome_with_for.py
 
 for i in range(5):
-    print('Welcome to everyone!!')
+    print('모두 환영합니다!!')

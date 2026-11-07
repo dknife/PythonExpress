@@ -18,6 +18,6 @@ start = time.time()
 result = np_arr ** 2
 np_time = time.time() - start
 
-print(f'List comprehension : {py_time:.4f} sec')
-print(f'NumPy vectorization: {np_time:.4f} sec')
-print(f'NumPy is {py_time/np_time:.1f}x faster')
+print(f'리스트 축약 표현: {py_time:.4f}초')
+print(f'넘파이 벡터화 연산: {np_time:.4f}초')
+print(f'넘파이가 {py_time/np_time:.1f}배 빠릅니다.')

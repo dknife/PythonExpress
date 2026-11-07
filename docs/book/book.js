@@ -166,35 +166,53 @@ window.algjaRunner = (function () {
     'hello.txt': 'Hello World!\nPython file I/O\n',
     'numbers.txt': '10\n20\n30\n40\n50\n',
     'members_raw.txt':
-      'Hong Gildong / 010-1234-5678 / hong@email.com / Seoul\n' +
-      'Kim Yusin 010.9876.5432 kim_ys@company.co.kr Busan\n' +
-      'Lee Sunsin, 010 1111 2222, lee@navy.kr, Yeosu\n' +
-      ' Kang Gamchan (010)3333-4444 kang@goryeo.com Kaesong\n' +
-      'Jang Yeongshil / 010-5555-6666 / jang@joseon.kr / Seoul\n' +
-      'Yulgok 010.7777.8888 yulgok@edu.kr Paju\n' +
-      'Shin Saimdang, 01022223333, shin@art.com, Gangneung\n' +
-      'Sejong 010-9999-0000 sejong@hangul.kr Seoul\n',
+      '홍길동 / 010-1234-5678 / hong@email.com / 서울\n' +
+      '김유신 010.9876.5432 kim_ys@company.co.kr 부산\n' +
+      '이순신, 010 1111 2222, lee@navy.kr, 여수\n' +
+      ' 강감찬 (010)3333-4444 kang@goryeo.com 개성\n' +
+      '장영실 / 010-5555-6666 / jang@joseon.kr / 서울\n' +
+      '율곡 이이 010.7777.8888 yulgok@edu.kr 파주\n' +
+      '신사임당, 01022223333, shin@art.com, 강릉\n' +
+      '세종 010-9999-0000 sejong@hangul.kr 서울\n',
     'log.txt':
-      '2026-07-24 09:12:01 INFO  Server started\n' +
-      '2026-07-24 09:12:35 ERROR Connection lost\n' +
-      '2026-07-24 09:13:02 INFO  Retry attempt 1\n' +
-      '2026-07-24 09:13:40 ERROR Disk full\n' +
-      '2026-07-24 09:14:11 INFO  Service recovered\n',
+      '2026-07-24 09:12:01 INFO  서버 시작\n' +
+      '2026-07-24 09:12:35 ERROR 연결 끊김\n' +
+      '2026-07-24 09:13:02 INFO  재시도 1회\n' +
+      '2026-07-24 09:13:40 ERROR 디스크 꽉 참\n' +
+      '2026-07-24 09:14:11 INFO  서비스 복구\n',
     // Flask render_template() 예제가 읽는 HTML 템플릿 (본문 filecode와 동일)
     'templates/index.html':
-      '<!DOCTYPE html>\n<html>\n<head><title>To-Do List</title></head>\n' +
-      '<body>\n    <h1>To-Do List</h1>\n    <ul>\n' +
-      '        {% for task in tasks %}\n        <li>{{ task }}</li>\n' +
-      '        {% endfor %}\n    </ul>\n</body>\n</html>\n',
+      '<!DOCTYPE html>\n' +
+      '<html>\n' +
+      '<head><title>할 일 목록</title></head>\n' +
+      '<body>\n' +
+      '    <h1>할 일 목록</h1>\n' +
+      '    <ul>\n' +
+      '        {% for task in tasks %}\n' +
+      '        <li>{{ task }}</li>\n' +
+      '        {% endfor %}\n' +
+      '    </ul>\n' +
+      '</body>\n' +
+      '</html>\n',
     'templates/todo.html':
-      '<!DOCTYPE html>\n<html>\n<head><title>To-Do App</title></head>\n' +
-      '<body>\n    <h1>To-Do List ({{ tasks|length }} items)</h1>\n' +
+      '<!DOCTYPE html>\n' +
+      '<html>\n' +
+      '<head><title>할 일 앱</title></head>\n' +
+      '<body>\n' +
+      '    <h1>할 일 목록 ({{ tasks|length }}개)</h1>\n' +
       '    <form action="/add" method="post">\n' +
-      '        <input type="text" name="task" placeholder="Enter a task">\n' +
-      '        <button type="submit">Add</button>\n    </form>\n    <ul>\n' +
-      '        {% for task in tasks %}\n        <li>{{ task }}\n' +
+      '        <input type="text" name="task" placeholder="할 일을 입력하세요">\n' +
+      '        <button type="submit">추가</button>\n' +
+      '    </form>\n' +
+      '    <ul>\n' +
+      '        {% for task in tasks %}\n' +
+      '        <li>{{ task }}\n' +
       '            <a href="/delete/{{ loop.index0 }}">[X]</a>\n' +
-      '        </li>\n        {% endfor %}\n    </ul>\n</body>\n</html>\n'
+      '        </li>\n' +
+      '        {% endfor %}\n' +
+      '    </ul>\n' +
+      '</body>\n' +
+      '</html>\n'
   };
 
   // 코드에서 "미리 만들어 둘 파일" 이름을 찾는다.

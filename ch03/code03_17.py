@@ -6,4 +6,4 @@ for i in range(1, 11):
         break
     print(i, end=' ')
 print()
-print('Loop ended')
+print('반복을 종료합니다.')

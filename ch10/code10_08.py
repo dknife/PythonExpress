@@ -5,7 +5,7 @@ from flask import Flask, render_template
 
 app = Flask(__name__)
 
-tasks = ['Buy groceries', 'Read Python book', 'Exercise']
+tasks = ['장보기', '파이썬 책 읽기', '운동하기']
 
 @app.route('/')
 def home():

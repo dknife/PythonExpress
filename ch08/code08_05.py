@@ -3,8 +3,8 @@
 
 try:
     b = 2 / 0
-    a = 1 + 'hundred'
+    a = 1 + '백'
 except ZeroDivisionError:
-    print('Division by zero error')
+    print('0으로 나누기 오류')
 except TypeError:
-    print('Unsupported operand type error')
+    print('지원되지 않는 피연산자 자료형 오류')

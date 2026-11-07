@@ -5,10 +5,10 @@
 my_list = [1, 2, 3, 2, 1]
 
 my_tuple = tuple(my_list)
-print('Tuple:', my_tuple)
+print('튜플:', my_tuple)
 
 my_set = set(my_list)
-print('Set:', my_set)
+print('집합:', my_set)
 
 back_to_list = list(my_set)
-print('List:', back_to_list)
+print('리스트:', back_to_list)

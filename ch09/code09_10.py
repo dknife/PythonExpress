@@ -9,12 +9,12 @@ class Dog:
         Dog.count += 1 # 객체가 생성될 때마다 1씩 증가
 
     def bark(self):
-        print(f'{self.name}: Woof woof~~!!')
+        print(f'{self.name}: 멍멍~~!!')
 
-d1 = Dog('Baduk')
-d2 = Dog('Choco')
-d3 = Dog('Jindol')
+d1 = Dog('바둑')
+d2 = Dog('초코')
+d3 = Dog('진돌')
 
-print(f'Number of dogs created: {Dog.count}') # 3
-d1.bark() # Baduk: Woof woof~~!!
-d2.bark() # Choco: Woof woof~~!!
+print(f'생성된 강아지 수: {Dog.count}') # 3
+d1.bark() # 바둑: 멍멍~~!!
+d2.bark() # 초코: 멍멍~~!!

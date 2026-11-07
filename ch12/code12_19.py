@@ -13,4 +13,4 @@ y = scores
 model = LinearRegression().fit(X, y)
 
 r2 = model.score(X, y)
-print(f'R-squared: {r2:.4f}')
+print(f'결정 계수: {r2:.4f}')

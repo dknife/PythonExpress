@@ -6,5 +6,5 @@ import numpy as np
 sal = np.array([300, 360, 400, 380]) # 사원 4명의 급여
 sal_bonus = sal + 100 # 각 급여에 상여금 100 더하기
 sal_inc = sal * 1.2 # 각 급여를 20% 인상
-print('After bonus:', sal_bonus)
-print('After 20% raise:', sal_inc)
+print('상여금 지급 후:', sal_bonus)
+print('20% 인상 후:', sal_inc)

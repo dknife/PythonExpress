@@ -13,11 +13,11 @@ class BankAccount:
     @balance.setter
     def balance(self, value): # 값을 대입할 때 호출됨
         if value < 0:
-            print('Balance cannot be negative.')
+            print('잔액은 음수가 될 수 없습니다.')
             return
         self.__balance = value
 
-acc = BankAccount('Hong Gildong', 100000)
+acc = BankAccount('홍길동', 100000)
 print(acc.balance) # 100000 -- 괄호 없이 접근
 acc.balance = 50000 # 세터가 실행되어 값을 검증
 print(acc.balance) # 50000

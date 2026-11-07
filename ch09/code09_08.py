@@ -8,12 +8,12 @@ class Cat:
         self.color = color # 인스턴스 변수
 
     def meow(self):
-        print(f'My name is {self.name}, color is {self.color}, meow~~')
+        print(f'내 이름은 {self.name}, 색깔은 {self.color}, 야옹~~')
 
-nabi = Cat('Nabi', 'black') # nabi 인스턴스
-nero = Cat('Nero', 'white') # nero 인스턴스
-mimi = Cat('Mimi', 'brown') # mimi 인스턴스
+nabi = Cat('나비', '검은색') # nabi 인스턴스
+nero = Cat('네로', '흰색') # nero 인스턴스
+mimi = Cat('미미', '갈색') # mimi 인스턴스
 
-nabi.meow() # My name is Nabi, color is black, meow~~
-nero.meow() # My name is Nero, color is white, meow~~
-mimi.meow() # My name is Mimi, color is brown, meow~~
+nabi.meow() # 내 이름은 나비, 색깔은 검은색, 야옹~~
+nero.meow() # 내 이름은 네로, 색깔은 흰색, 야옹~~
+mimi.meow() # 내 이름은 미미, 색깔은 갈색, 야옹~~

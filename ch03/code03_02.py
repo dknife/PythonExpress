@@ -3,4 +3,4 @@
 
 age = 18
 if age < 20:
-    print('Youth discount')
+    print('청소년 할인')

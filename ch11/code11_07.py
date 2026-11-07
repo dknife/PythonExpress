@@ -8,6 +8,6 @@ def adult_func(n): # 나이가 19 이상이면 True, 아니면 False
         return False
 
 ages = [34, 39, 20, 18, 13, 54]
-print('Adult list :')
+print('성년 나이 목록:')
 for a in filter(adult_func, ages): # filter() 함수로 필터링
     print(a, end = ' ')

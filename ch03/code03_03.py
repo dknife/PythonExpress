@@ -3,5 +3,5 @@
 
 age = 18
 if age < 20:
-    print('Youth discount')
-print('Welcome!')
+    print('청소년 할인')
+print('환영합니다!')

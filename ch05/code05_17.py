@@ -4,7 +4,7 @@
 names = [] # 빈 리스트 생성
 
 for i in range(3):
-    name = input(f'Name {i+1}: ')
+    name = input(f'{i+1}번째 이름을 입력하세요: ')
     names.append(name)
 
-print('Entered names:', names)
+print('입력한 이름:', names)

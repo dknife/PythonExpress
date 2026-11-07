@@ -8,4 +8,4 @@ for score in scores:
     total += score
 
 average = total / len(scores)
-print(f'Sum: {total}, Average: {average:.1f}')
+print(f'합계: {total}, 평균: {average:.1f}')

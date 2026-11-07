@@ -132,18 +132,18 @@ DataFrame은 여러 개의 Series가 열로 묶인 2차원 표 구조로, 엑셀
 
 # Series: 인덱스가 있는 1차원 데이터
 s = pd.Series([85, 92, 78, 88],
-    index=['Korean', 'English', 'Math', 'Science'])
+    index=['국어', '영어', '수학', '과학'])
 print(s)
-print(f'\nKorean score: {s["Korean"]}')
-print(f'Mean: {s.mean():.1f}')</code></pre>
-<pre class="termout">Korean 85
-English 92
-Math 78
-Science 88
+print(f'\n국어 점수: {s["국어"]}')
+print(f'평균: {s.mean():.1f}')</code></pre>
+<pre class="termout">국어    85
+영어    92
+수학    78
+과학    88
 dtype: int64
 &#160;
-Korean score: 85
-Mean: 85.8</pre>
+국어 점수: 85
+평균: 85.8</pre>
 <div class="listing-caption">코드 12.1: 인덱스가 있는 Series 만들기</div>
 <p>Series는 딕셔너리처럼 인덱스(이름)로 값에 접근할 수 있으며, 넘파이 배열처럼 <code>mean()</code>, <code>sum()</code> 등의 수학 연산도 지원한다.
 이제 여러 Series를 묶어 2차원 표 형태의 DataFrame을 만들어 보자.</p>
@@ -151,19 +151,19 @@ Mean: 85.8</pre>
 
 # DataFrame: 2차원 표 형태 데이터
 data = {
-    'name': ['Hong Gildong', 'Kim Cheolsu',
-        'Lee Younghee', 'Park Jimin'],
-    'Korean': [85, 92, 78, 95],
-    'English': [90, 88, 82, 91],
-    'Math': [78, 95, 88, 87]
+    '이름': ['홍길동', '김철수',
+        '이영희', '박지민'],
+    '국어': [85, 92, 78, 95],
+    '영어': [90, 88, 82, 91],
+    '수학': [78, 95, 88, 87]
 }
 df = pd.DataFrame(data)
 print(df)</code></pre>
-<pre class="termout">           name  Korean  English  Math
-0  Hong Gildong      85       90    78
-1  Kim Cheolsu       92       88    95
-2  Lee Younghee      78       82    88
-3  Park Jimin        95       91    87</pre>
+<pre class="termout">    이름  국어  영어  수학
+0  홍길동  85  90  78
+1  김철수  92  88  95
+2  이영희  78  82  88
+3  박지민  95  91  87</pre>
 <div class="listing-caption">코드 12.2: 딕셔너리로 DataFrame 만들기</div>
 <figure class="fig">
 <img class="tikz" src="img/fig/ch12/ch12_fig02.svg" alt="figure">
@@ -178,21 +178,21 @@ CSV(Comma-Separated Values) 파일은 데이터를 쉼표로 구분하여 저장
 
 # 코드 12.2의 df 준비
 df = pd.DataFrame({
-    'name': ['Hong Gildong', 'Kim Cheolsu',
-        'Lee Younghee', 'Park Jimin'],
-    'Korean': [85, 92, 78, 95],
-    'English': [90, 88, 82, 91],
-    'Math': [78, 95, 88, 87]
+    '이름': ['홍길동', '김철수',
+        '이영희', '박지민'],
+    '국어': [85, 92, 78, 95],
+    '영어': [90, 88, 82, 91],
+    '수학': [78, 95, 88, 87]
 })
 
 # DataFrame을 CSV 파일로 저장
 df.to_csv('scores.csv', index=False, encoding='utf-8-sig')
 
 # CSV 파일을 읽어 DataFrame 생성
-df2 = pd.read_csv('scores.csv')
+df2 = pd.read_csv('scores.csv', encoding='utf-8-sig')
 print(df2)</code></pre><div class="listing-caption">코드 12.3: CSV 파일 읽기와 쓰기</div></div>
 <p><code>df.to_csv()</code>에서 <code>index=False</code>는 행 인덱스(0, 1, 2,...)를 파일에 쓰지 않도록 한다.
-<code>encoding='utf-8-sig'</code>는 엑셀에서 파일을 열 때 한글이 깨지지 않도록 BOM을 추가한다.
+<code>encoding='utf-8-sig'</code>는 엑셀에서 파일을 열 때 한글이 깨지지 않도록 BOM을 추가하며, 읽을 때도 같은 인코딩을 지정한다.
 <code>pd.read_csv()</code>는 CSV 파일을 읽어 자동으로 DataFrame을 생성한다. 열 이름, 자료형 추론, 결측값 처리 등을 자동으로 수행해 주므로 매우 편리하다.</p>
 <h3>데이터 탐색</h3>
 <p>데이터를 불러온 후 가장 먼저 할 일은 데이터의 구조와 내용을 파악하는 것이다.
@@ -202,11 +202,11 @@ print(df2)</code></pre><div class="listing-caption">코드 12.3: CSV 파일 읽�
 
 # 코드 12.2의 df 준비
 df = pd.DataFrame({
-    'name': ['Hong Gildong', 'Kim Cheolsu',
-        'Lee Younghee', 'Park Jimin'],
-    'Korean': [85, 92, 78, 95],
-    'English': [90, 88, 82, 91],
-    'Math': [78, 95, 88, 87]
+    '이름': ['홍길동', '김철수',
+        '이영희', '박지민'],
+    '국어': [85, 92, 78, 95],
+    '영어': [90, 88, 82, 91],
+    '수학': [78, 95, 88, 87]
 })
 
 print(df.head(2)) # 처음 2행
@@ -214,18 +214,34 @@ print(df.tail(2)) # 마지막 2행
 print(df.shape) # (행 수, 열 수)
 print(df.info()) # 열의 타입과 결측값 정보
 print(df.describe()) # 수치형 열의 통계 요약</code></pre>
-<pre class="termout">           name  Korean  English  Math
-0  Hong Gildong      85       90    78
-1  Kim Cheolsu       92       88    95
-&#160;
+<pre class="termout">    이름  국어  영어  수학
+0  홍길동  85  90  78
+1  김철수  92  88  95
+    이름  국어  영어  수학
+2  이영희  78  82  88
+3  박지민  95  91  87
 (4, 4)
-&#160;
-        Korean  English     Math
-count  4.00     4.00     4.00
-mean  87.50    87.75    87.00
-std    7.59     3.86     7.07
-min   78.00    82.00    78.00
-max   95.00    91.00    95.00</pre>
+&lt;class 'pandas.DataFrame'&gt;
+RangeIndex: 4 entries, 0 to 3
+Data columns (total 4 columns):
+ #   Column  Non-Null Count  Dtype
+---  ------  --------------  -----
+ 0   이름      4 non-null      str
+ 1   국어      4 non-null      int64
+ 2   영어      4 non-null      int64
+ 3   수학      4 non-null      int64
+dtypes: int64(3), str(1)
+memory usage: 260.0 bytes
+None
+              국어         영어        수학
+count   4.000000   4.000000   4.00000
+mean   87.500000  87.750000  87.00000
+std     7.593857   4.031129   6.97615
+min    78.000000  82.000000  78.00000
+25%    83.250000  86.500000  84.75000
+50%    88.500000  89.000000  87.50000
+75%    92.750000  90.250000  89.75000
+max    95.000000  91.000000  95.00000</pre>
 <div class="listing-caption">코드 12.4: 탐색적 데이터 분석(EDA) 메소드</div>
 <p>각 메소드의 역할을 자세히 살펴보자.
 <code>head(n)</code>은 처음 n개의 행을 보여 주어 데이터의 형태를 빠르게 파악할 수 있다. 인자를 생략하면 기본 5행을 보여 준다.
@@ -239,42 +255,48 @@ max   95.00    91.00    95.00</pre>
 
 # 코드 12.2의 df 준비
 df = pd.DataFrame({
-    'name': ['Hong Gildong', 'Kim Cheolsu',
-        'Lee Younghee', 'Park Jimin'],
-    'Korean': [85, 92, 78, 95],
-    'English': [90, 88, 82, 91],
-    'Math': [78, 95, 88, 87]
+    '이름': ['홍길동', '김철수',
+        '이영희', '박지민'],
+    '국어': [85, 92, 78, 95],
+    '영어': [90, 88, 82, 91],
+    '수학': [78, 95, 88, 87]
 })
 
 # 열 선택
-print(df['name']) # 열 하나 -&gt; Series
-print(df[['name', 'Korean']]) # 열 여러 개 -&gt; DataFrame
+print(df['이름']) # 열 하나 -&gt; Series
+print(df[['이름', '국어']]) # 열 여러 개 -&gt; DataFrame
 
 # 행 선택
 print(df.loc[0]) # 레이블 인덱스 0의 행
 print(df.iloc[0:2]) # 위치 기반 행 선택 (0~1)
 
 # 조건 필터링
-print(df[df['Korean'] &gt;= 90]) # 국어 점수 90 이상인 학생</code></pre>
-<pre class="termout">0    Hong Gildong
-1    Kim Cheolsu
-2    Lee Younghee
-3    Park Jimin
-Name: name, dtype: object
-&#160;
-           name  Korean
-0  Hong Gildong      85
-1  Kim Cheolsu       92
-2  Lee Younghee      78
-3  Park Jimin        95
-&#160;
-           name  Korean  English  Math
-1  Kim Cheolsu       92       88    95
-3  Park Jimin        95       91    87</pre>
+print(df[df['국어'] &gt;= 90]) # 국어 점수 90 이상인 학생</code></pre>
+<pre class="termout">0    홍길동
+1    김철수
+2    이영희
+3    박지민
+Name: 이름, dtype: str
+    이름  국어
+0  홍길동  85
+1  김철수  92
+2  이영희  78
+3  박지민  95
+이름    홍길동
+국어     85
+영어     90
+수학     78
+Name: 0, dtype: object
+    이름  국어  영어  수학
+0  홍길동  85  90  78
+1  김철수  92  88  95
+    이름  국어  영어  수학
+1  김철수  92  88  95
+3  박지민  95  91  87</pre>
 <div class="listing-caption">코드 12.5: 열 선택, 행 선택, 조건 필터링</div>
-<p>열 선택에서 대괄호 하나(<code>df['name']</code>)를 사용하면 Series가 반환되고, 대괄호 두 개(<code>df[['name', 'Korean']]</code>)를 사용하면 DataFrame이 반환된다.
+<p>열 선택에서 대괄호 하나(<code>df['이름']</code>)를 사용하면 Series가 반환되고, 대괄호 두 개(<code>df[['이름', '국어']]</code>)를 사용하면 DataFrame이 반환된다.
 <code>loc</code>은 레이블(이름) 기반으로 행을 선택하고, <code>iloc</code>은 정수 위치 기반으로 행을 선택한다.
-조건 필터링 <code>df[df['Korean'] &gt;= 90]</code>은 넘파이의 불리언 인덱싱과 동일한 원리로, 조건을 만족하는 행만 추출한다.
+조건 필터링 <code>df[df['국어'] &gt;= 90]</code>은 넘파이의 불리언 인덱싱과 동일한 원리로, 조건을 만족하는 행만 추출한다.
 이 문법은 데이터 분석에서 "특정 조건을 만족하는 데이터만 보고 싶다"는 요구를 간결하게 표현할 수 있어 매우 빈번하게 사용된다.</p>
 <div class="box keypoint"><span class="chip">요점</span><ul>
 <li><strong>DataFrame</strong>은 행과 열로 이루어진 표 형태의 핵심 자료구조이다.</li>
@@ -295,24 +317,24 @@ Name: name, dtype: object
 import numpy as np
 
 data = {
-    'name': ['Hong Gildong', 'Kim Cheolsu', 'Lee Younghee',
-        'Park Jimin', 'Choi Suhyun'],
-    'year': [1, 2, 1, 3, 2],
-    'Korean': [85, 92, np.nan, 95, 78],
-    'English': [90, np.nan, 82, 91, 88],
-    'Math': [78, 95, 88, np.nan, 92]
+    '이름': ['홍길동', '김철수', '이영희',
+        '박지민', '최수현'],
+    '학년': [1, 2, 1, 3, 2],
+    '국어': [85, 92, np.nan, 95, 78],
+    '영어': [90, np.nan, 82, 91, 88],
+    '수학': [78, 95, 88, np.nan, 92]
 }
 df = pd.DataFrame(data)
 print(df)</code></pre>
-<pre class="termout">           name  year  Korean  English  Math
-0  Hong Gildong     1   85.0    90.0  78.0
-1  Kim Cheolsu      2   92.0     NaN  95.0
-2  Lee Younghee     1    NaN    82.0  88.0
-3  Park Jimin       3   95.0    91.0   NaN
-4  Choi Suhyun      2   78.0    88.0  92.0</pre>
+<pre class="termout">    이름  학년    국어    영어    수학
+0  홍길동   1  85.0  90.0  78.0
+1  김철수   2  92.0   NaN  95.0
+2  이영희   1   NaN  82.0  88.0
+3  박지민   3  95.0  91.0   NaN
+4  최수현   2  78.0  88.0  92.0</pre>
 <div class="listing-caption">코드 12.6: 결측값이 포함된 성적 DataFrame</div>
 <p>출력 결과에서 <code>NaN</code>(Not a Number)이 결측값을 나타낸다.
-Kim Cheolsu는 영어 점수가, Lee Younghee는 국어 점수가, Park Jimin은 수학 점수가 빠져 있다.
+김철수는 영어 점수가, 이영희는 국어 점수가, 박지민은 수학 점수가 빠져 있다.
 실제 데이터에서는 이보다 훨씬 많은 결측값이 존재하는 경우가 대부분이다.</p>
 <h3>결측값 확인과 처리</h3>
 <p>결측값을 처리하기 위해서는 먼저 어디에 얼마나 있는지 확인해야 한다.</p>
@@ -321,21 +343,21 @@ import numpy as np
 
 # 코드 12.6의 df 준비
 df = pd.DataFrame({
-    'name': ['Hong Gildong', 'Kim Cheolsu', 'Lee Younghee',
-        'Park Jimin', 'Choi Suhyun'],
-    'year': [1, 2, 1, 3, 2],
-    'Korean': [85, 92, np.nan, 95, 78],
-    'English': [90, np.nan, 82, 91, 88],
-    'Math': [78, 95, 88, np.nan, 92]
+    '이름': ['홍길동', '김철수', '이영희',
+        '박지민', '최수현'],
+    '학년': [1, 2, 1, 3, 2],
+    '국어': [85, 92, np.nan, 95, 78],
+    '영어': [90, np.nan, 82, 91, 88],
+    '수학': [78, 95, 88, np.nan, 92]
 })
 
 # 결측값 확인
 print(df.isnull().sum()) # 열별 결측값 개수</code></pre>
-<pre class="termout">name 0
-year 0
-Korean 1
-English 1
-Math 1
+<pre class="termout">이름    0
+학년    0
+국어    1
+영어    1
+수학    1
 dtype: int64</pre>
 <div class="listing-caption">코드 12.7: isnull().sum()으로 결측값 확인</div>
 <p><code>df.isnull()</code>은 각 셀이 결측값인지 여부를 <code>True</code>/<code>False</code>로 반환하고, <code>.sum()</code>은 각 열에서 <code>True</code>의 개수를 세어 결측값의 개수를 알려 준다.
@@ -350,21 +372,21 @@ import numpy as np
 
 # 코드 12.6의 df 준비
 df = pd.DataFrame({
-    'name': ['Hong Gildong', 'Kim Cheolsu', 'Lee Younghee',
-        'Park Jimin', 'Choi Suhyun'],
-    'year': [1, 2, 1, 3, 2],
-    'Korean': [85, 92, np.nan, 95, 78],
-    'English': [90, np.nan, 82, 91, 88],
-    'Math': [78, 95, 88, np.nan, 92]
+    '이름': ['홍길동', '김철수', '이영희',
+        '박지민', '최수현'],
+    '학년': [1, 2, 1, 3, 2],
+    '국어': [85, 92, np.nan, 95, 78],
+    '영어': [90, np.nan, 82, 91, 88],
+    '수학': [78, 95, 88, np.nan, 92]
 })
 
 df_dropped = df.dropna()
-print('dropna result:')
+print('dropna 결과:')
 print(df_dropped)</code></pre>
-<pre class="termout">dropna result:
-           name  year  Korean  English  Math
-0  Hong Gildong     1   85.0    90.0  78.0
-4  Choi Suhyun      2   78.0    88.0  92.0</pre>
+<pre class="termout">dropna 결과:
+    이름  학년    국어    영어    수학
+0  홍길동   1  85.0  90.0  78.0
+4  최수현   2  78.0  88.0  92.0</pre>
 <div class="listing-caption">코드 12.8: dropna()로 결측값 행 삭제</div>
 <p><code>dropna()</code>는 결측값이 하나라도 있는 행을 통째로 삭제한다.
 위 결과에서 5명 중 결측값이 없는 2명만 남은 것을 볼 수 있다.
@@ -376,44 +398,44 @@ import numpy as np
 
 # 코드 12.6의 df 준비
 df = pd.DataFrame({
-    'name': ['Hong Gildong', 'Kim Cheolsu', 'Lee Younghee',
-        'Park Jimin', 'Choi Suhyun'],
-    'year': [1, 2, 1, 3, 2],
-    'Korean': [85, 92, np.nan, 95, 78],
-    'English': [90, np.nan, 82, 91, 88],
-    'Math': [78, 95, 88, np.nan, 92]
+    '이름': ['홍길동', '김철수', '이영희',
+        '박지민', '최수현'],
+    '학년': [1, 2, 1, 3, 2],
+    '국어': [85, 92, np.nan, 95, 78],
+    '영어': [90, np.nan, 82, 91, 88],
+    '수학': [78, 95, 88, np.nan, 92]
 })
 
 # 0으로 채우기
 df_filled = df.fillna(0)
-print('fillna(0) result:')
+print('fillna(0) 결과:')
 print(df_filled)
 
 # 열 평균으로 채우기 (더 합리적)
 df_mean = df.copy()
-df_mean['Korean'] = df_mean['Korean'].fillna(
-    df_mean['Korean'].mean())
-df_mean['English'] = df_mean['English'].fillna(
-    df_mean['English'].mean())
-df_mean['Math'] = df_mean['Math'].fillna(
-    df_mean['Math'].mean())
-print('\nfillna(mean) result:')
+df_mean['국어'] = df_mean['국어'].fillna(
+    df_mean['국어'].mean())
+df_mean['영어'] = df_mean['영어'].fillna(
+    df_mean['영어'].mean())
+df_mean['수학'] = df_mean['수학'].fillna(
+    df_mean['수학'].mean())
+print('\nfillna(평균) 결과:')
 print(df_mean)</code></pre>
-<pre class="termout">fillna(0) result:
-           name  year  Korean  English  Math
-0  Hong Gildong     1   85.0    90.0  78.0
-1  Kim Cheolsu      2   92.0     0.0  95.0
-2  Lee Younghee     1    0.0    82.0  88.0
-3  Park Jimin       3   95.0    91.0   0.0
-4  Choi Suhyun      2   78.0    88.0  92.0
+<pre class="termout">fillna(0) 결과:
+    이름  학년    국어    영어    수학
+0  홍길동   1  85.0  90.0  78.0
+1  김철수   2  92.0   0.0  95.0
+2  이영희   1   0.0  82.0  88.0
+3  박지민   3  95.0  91.0   0.0
+4  최수현   2  78.0  88.0  92.0
 &#160;
-fillna(mean) result:
-           name  year  Korean  English  Math
-0  Hong Gildong     1   85.0    90.00  78.00
-1  Kim Cheolsu      2   92.0    87.75  95.00
-2  Lee Younghee     1   87.5    82.00  88.00
-3  Park Jimin       3   95.0    91.00  88.25
-4  Choi Suhyun      2   78.0    88.00  92.00</pre>
+fillna(평균) 결과:
+    이름  학년    국어     영어     수학
+0  홍길동   1  85.0  90.00  78.00
+1  김철수   2  92.0  87.75  95.00
+2  이영희   1  87.5  82.00  88.00
+3  박지민   3  95.0  91.00  88.25
+4  최수현   2  78.0  88.00  92.00</pre>
 <div class="listing-caption">코드 12.9: fillna()로 결측값 채우기</div>
 <p>0으로 채우는 것은 간단하지만, 성적 데이터에서 0은 "시험을 보지 않았다"가 아니라 "0점을 받았다"로 해석될 수 있으므로 주의해야 한다.
 평균으로 채우는 방법은 전체 통계에 미치는 영향을 최소화하면서 결측값을 처리할 수 있어 더 합리적인 경우가 많다.</p>
@@ -424,41 +446,40 @@ import numpy as np
 
 # 코드 12.6의 df 준비
 df = pd.DataFrame({
-    'name': ['Hong Gildong', 'Kim Cheolsu', 'Lee Younghee',
-        'Park Jimin', 'Choi Suhyun'],
-    'year': [1, 2, 1, 3, 2],
-    'Korean': [85, 92, np.nan, 95, 78],
-    'English': [90, np.nan, 82, 91, 88],
-    'Math': [78, 95, 88, np.nan, 92]
+    '이름': ['홍길동', '김철수', '이영희',
+        '박지민', '최수현'],
+    '학년': [1, 2, 1, 3, 2],
+    '국어': [85, 92, np.nan, 95, 78],
+    '영어': [90, np.nan, 82, 91, 88],
+    '수학': [78, 95, 88, np.nan, 92]
 })
 
 # 국어 점수 기준 내림차순 정렬
-df_sorted = df.sort_values('Korean', ascending=False)
+df_sorted = df.sort_values('국어', ascending=False)
 print(df_sorted)
 
 # 새 열 추가: 평균 점수 계산
-df['average'] = df[['Korean', 'English', 'Math']].mean(axis=1)
-print(df[['name', 'average']])</code></pre>
-<pre class="termout">           name  year  Korean  English  Math
-3  Park Jimin       3   95.0    91.0   NaN
-1  Kim Cheolsu      2   92.0     NaN  95.0
-0  Hong Gildong     1   85.0    90.0  78.0
-4  Choi Suhyun      2   78.0    88.0  92.0
-2  Lee Younghee     1    NaN    82.0  88.0
-&#160;
-           name  average
-0  Hong Gildong  84.33
-1  Kim Cheolsu   93.50
-2  Lee Younghee  85.00
-3  Park Jimin    93.00
-4  Choi Suhyun   86.00</pre>
+df['평균'] = df[['국어', '영어', '수학']].mean(axis=1)
+print(df[['이름', '평균']])</code></pre>
+<pre class="termout">    이름  학년    국어    영어    수학
+3  박지민   3  95.0  91.0   NaN
+1  김철수   2  92.0   NaN  95.0
+0  홍길동   1  85.0  90.0  78.0
+4  최수현   2  78.0  88.0  92.0
+2  이영희   1   NaN  82.0  88.0
+    이름         평균
+0  홍길동  84.333333
+1  김철수  93.500000
+2  이영희  85.000000
+3  박지민  93.000000
+4  최수현  86.000000</pre>
 <div class="listing-caption">코드 12.10: 정렬과 평균 열 추가</div>
-<p><code>sort_values('Korean', ascending=False)</code>는 국어 점수를 기준으로 내림차순 정렬한다.
+<p><code>sort_values('국어', ascending=False)</code>는 국어 점수를 기준으로 내림차순 정렬한다.
 <code>ascending=True</code>(기본값)이면 오름차순, <code>False</code>이면 내림차순이다.</p>
-<p><code>df[['Korean', 'English', 'Math']].mean(axis=1)</code>에서 <code>axis=1</code>은 행 방향(각 학생별)으로 평균을 구하라는 의미이다.
+<p><code>df[['국어', '영어', '수학']].mean(axis=1)</code>에서 <code>axis=1</code>은 행 방향(각 학생별)으로 평균을 구하라는 의미이다.
 <code>axis=0</code>이면 열 방향(각 과목별)으로 계산한다.
 여기서 중요한 점은 결측값이 자동으로 제외된다는 것이다.
-Kim Cheolsu의 경우 영어 점수가 없으므로 국어(92)와 수학(95)의 평균인 93.5가 계산된다.</p>
+김철수의 경우 영어 점수가 없으므로 국어(92)와 수학(95)의 평균인 93.5가 계산된다.</p>
 <h3>그룹별 집계: groupby()</h3>
 <p><code>groupby()</code>는 데이터 분석에서 가장 강력한 기능 중 하나이다.
 특정 열의 값을 기준으로 데이터를 그룹화하고, 각 그룹에 대해 집계 연산(합계, 평균, 개수 등)을 수행한다.
@@ -468,34 +489,33 @@ import numpy as np
 
 # 코드 12.6의 df 준비
 df = pd.DataFrame({
-    'name': ['Hong Gildong', 'Kim Cheolsu', 'Lee Younghee',
-        'Park Jimin', 'Choi Suhyun'],
-    'year': [1, 2, 1, 3, 2],
-    'Korean': [85, 92, np.nan, 95, 78],
-    'English': [90, np.nan, 82, 91, 88],
-    'Math': [78, 95, 88, np.nan, 92]
+    '이름': ['홍길동', '김철수', '이영희',
+        '박지민', '최수현'],
+    '학년': [1, 2, 1, 3, 2],
+    '국어': [85, 92, np.nan, 95, 78],
+    '영어': [90, np.nan, 82, 91, 88],
+    '수학': [78, 95, 88, np.nan, 92]
 })
 
 # 학년별 국어 점수 평균
-print(df.groupby('year')['Korean'].mean())
+print(df.groupby('학년')['국어'].mean())
 
 # 학년별 모든 수치형 열의 평균
-print(df.groupby('year')[['Korean', 'English', 'Math']].mean())</code></pre>
-<pre class="termout">year
+print(df.groupby('학년')[['국어', '영어', '수학']].mean())</code></pre>
+<pre class="termout">학년
 1    85.0
 2    85.0
 3    95.0
-Name: Korean, dtype: float64
-&#160;
-      Korean  English  Math
-year
-1    85.0    86.0   83.0
-2    85.0    88.0   93.5
-3    95.0    91.0    NaN</pre>
+Name: 국어, dtype: float64
+      국어    영어    수학
+학년
+1   85.0  86.0  83.0
+2   85.0  88.0  93.5
+3   95.0  91.0   NaN</pre>
 <div class="listing-caption">코드 12.11: groupby()로 학년별 평균 구하기</div>
-<p><code>groupby('year')</code>는 <strong class="term-ko">학년</strong><sup class="term">year</sup> 열의 값(1, 2, 3)을 기준으로 데이터를 세 개의 그룹으로 나눈다.
-그 뒤에 <code>['Korean'].mean()</code>을 붙이면 각 그룹에서 국어 점수의 평균을 계산한다.
-여러 열을 동시에 집계하려면 <code>[['Korean', 'English', 'Math']].mean()</code>처럼 열 이름 리스트를 전달한다.</p>
+<p><code>groupby('학년')</code>는 학년 열의 값(1, 2, 3)을 기준으로 데이터를 세 개의 그룹으로 나눈다.
+그 뒤에 <code>['국어'].mean()</code>을 붙이면 각 그룹에서 국어 점수의 평균을 계산한다.
+여러 열을 동시에 집계하려면 <code>[['국어', '영어', '수학']].mean()</code>처럼 열 이름 리스트를 전달한다.</p>
 <p>이 기능은 엑셀의 피벗 테이블과 유사한 역할을 하며, SQL의 <code>GROUP BY</code> 절에 해당한다.
 데이터 분석에서 "그룹별로 비교하기"는 가장 기본적이면서도 강력한 분석 기법이다.</p>
 <div class="box keypoint"><span class="chip">요점</span><ul>
@@ -512,6 +532,9 @@ year
 같은 평균 점수 85점이라도, 모든 과목이 균등한 85점인지, 국어 100점에 수학 70점인지는 그래프로 보면 한눈에 드러난다.
 이 절에서는 matplotlib을 이용한 다양한 그래프를 판다스 DataFrame과 연동하여 그려 본다.
 각 그래프 유형이 <strong>어떤 데이터에 적합한지</strong>, 그리고 각 매개변수가 <strong>그래프의 어떤 부분을 제어하는지</strong>를 자세히 설명한다.</p>
+<div class="box note"><span class="chip">잠깐</span><span class="box-title">차트 라벨을 영어로 쓴 이유</span><p>코랩과 기본 설치된 matplotlib에는 한글 폰트가 없어서, 그래프에 한글을 넣으면 글자가 네모로 깨진다.
+그래서 이 절과 다음 절의 그래프에서는 제목, 축 이름, 범례를 영어로 쓰고, 앞 절에서 홍길동이나 국어처럼 한글이던 자료도 그래프에 나타날 때는 Hong이나 Korean처럼 영어로 적는다.
+그래프에 한글을 쓰고 싶다면 한글 폰트를 설치하고 matplotlib에 그 폰트를 사용하도록 설정해야 한다.</p></div>
 <h3>선 그래프: 시간에 따른 변화</h3>
 <p>선 그래프는 시간에 따른 데이터의 변화를 보여 주는 데 가장 적합하다.
 월별 매출, 일별 기온, 연도별 인구 변화 등 <strong>시계열 데이터</strong>를 표현할 때 사용한다.</p>
@@ -704,8 +727,8 @@ model.fit(X, y)
 # 모델 파라미터
 a = model.coef_[0] # 기울기
 b = model.intercept_ # 절편
-print(f'Regression line: y = {a:.2f}x + {b:.2f}')</code></pre>
-<pre class="termout">Regression line: y = 7.23x + 22.92</pre>
+print(f'회귀선: y = {a:.2f}x + {b:.2f}')</code></pre>
+<pre class="termout">회귀선: y = 7.23x + 22.92</pre>
 <div class="listing-caption">코드 12.17: 선형 회귀 모델 학습</div>
 <p><code>model.fit(X, y)</code>가 학습의 핵심이다.
 이 한 줄 안에서 사이킷런은 데이터 점들과 직선 사이의 거리(오차)의 합이 최소가 되는 기울기와 절편을 찾는다.
@@ -733,9 +756,9 @@ b = model.intercept_
 new_hours = np.array([[4.5], [6.5], [10]])
 predictions = model.predict(new_hours)
 
-print('Predictions:')
+print('예측 결과:')
 for h, s in zip(new_hours.flatten(), predictions):
-    print(f' Study {h:.1f} hours -&gt; {s:.1f} points')
+    print(f' {h:.1f}시간 -&gt; {s:.1f}점')
 
 # 그래프: 산점도 + 회귀선
 plt.figure(figsize=(8, 5))
@@ -762,10 +785,10 @@ plt.grid(True, alpha=0.3)
 plt.xlim(0, 11)
 plt.ylim(20, 105)
 plt.show()</code></pre>
-<pre class="termout">Predictions:
-  Study 4.5 hours -&gt; 55.4 points
-  Study 6.5 hours -&gt; 69.9 points
-  Study 10.0 hours -&gt; 95.2 points</pre>
+<pre class="termout">예측 결과:
+ 4.5시간 -&gt; 55.4점
+ 6.5시간 -&gt; 69.9점
+ 10.0시간 -&gt; 95.2점</pre>
 <div class="listing-caption">코드 12.18: 예측과 회귀선 시각화</div>
 <figure class="fig">
 <img class="gfx" src="img/ch12/ch12_img07.png" alt="figure">
@@ -789,8 +812,8 @@ y = scores
 model = LinearRegression().fit(X, y)
 
 r2 = model.score(X, y)
-print(f'R-squared: {r2:.4f}')</code></pre>
-<pre class="termout">R-squared: 0.9510</pre>
+print(f'결정 계수: {r2:.4f}')</code></pre>
+<pre class="termout">결정 계수: 0.9510</pre>
 <div class="listing-caption">코드 12.19: 결정계수로 모델 정확도 평가</div>
 <p>\(R^2 = 0.9510\)은 이 직선이 데이터 변동의 약 95%를 설명한다는 뜻이다.
 공부 시간과 점수 사이에 매우 강한 선형 관계가 있음을 확인할 수 있다.</p>
@@ -818,18 +841,18 @@ print(f'R-squared: {r2:.4f}')</code></pre>
 <p><pre class="line-numbers"><code class="language-python">import pandas as pd
 
 data = {
-    'name': ['Hong', 'Kim', 'Lee', 'Park', 'Choi'],
-    'kor' : [85, 90, 78, 92, 88],
-    'eng' : [80, 95, 82, 70, 88],
-    'math': [90, 85, 88, 95, 92],
+    '이름': ['Hong', 'Kim', 'Lee', 'Park', 'Choi'], # 4번 그래프에 표시
+    '국어': [85, 90, 78, 92, 88],
+    '영어': [80, 95, 82, 70, 88],
+    '수학': [90, 85, 88, 95, 92],
 }
 df = pd.DataFrame(data)
 print(df.head())
 print(df.describe())</code></pre></li>
-<li>위 <code>DataFrame</code>에 "total"(세 과목 합)과 "avg"(평균) 컬럼을 추가하고, "avg" 기준 내림차순으로 정렬한 결과를 출력하시오.</p>
-<p><pre class="line-numbers"><code class="language-python">df['total'] = df['kor'] + df['eng'] + df['math']
-df['avg']   = df['total'] / 3
-print(df.sort_values('avg', ascending=False))</code></pre></li>
+<li>위 <code>DataFrame</code>에 "총점"(세 과목 합)과 "평균" 컬럼을 추가하고, "평균" 기준 내림차순으로 정렬한 결과를 출력하시오.</p>
+<p><pre class="line-numbers"><code class="language-python">df['총점'] = df['국어'] + df['영어'] + df['수학']
+df['평균'] = df['총점'] / 3
+print(df.sort_values('평균', ascending=False))</code></pre></li>
 <li>matplotlib으로 \(x = 0, 1, \dots, 9\)에 대해 \(y = x^2\)의 값을 선 그래프로 그리고, 제목과 축 라벨을 추가하시오.</p>
 <p><pre class="line-numbers"><code class="language-python">import matplotlib.pyplot as plt
 
@@ -845,9 +868,9 @@ plt.show()</code></pre></li>
 <li>1번의 <code>DataFrame</code>에서 국어와 영어 점수를 산점도로 그리되, 각 점 옆에 학생 이름을 표시하시오.</p>
 <p><pre class="line-numbers"><code class="language-python">import matplotlib.pyplot as plt
 
-plt.scatter(df['kor'], df['eng'])
-for i, name in enumerate(df['name']):
-    plt.annotate(name, (df['kor'][i] + 0.5, df['eng'][i] + 0.5))
+plt.scatter(df['국어'], df['영어'])
+for i, name in enumerate(df['이름']):
+    plt.annotate(name, (df['국어'][i] + 0.5, df['영어'][i] + 0.5))
 plt.xlabel('Korean'); plt.ylabel('English')
 plt.title('Korean vs English scores')
 plt.grid(True)
@@ -860,11 +883,11 @@ hours  = np.array([1, 2, 3, 4, 6, 7, 8]).reshape(-1, 1)
 scores = np.array([52, 58, 65, 70, 82, 87, 92])
 
 model = LinearRegression().fit(hours, scores)
-print(f'Slope     : {model.coef_[0]:.2f}')
-print(f'Intercept : {model.intercept_:.2f}')
+print(f'기울기: {model.coef_[0]:.2f}')
+print(f'절편: {model.intercept_:.2f}')
 
 pred = model.predict([[5]])
-print(f'5 hours -&gt; {pred[0]:.1f} points')</code></pre></li>
+print(f'5시간 -&gt; {pred[0]:.1f}점')</code></pre></li>
 <li>어떤 분류 모델이 10개 표본에 대해 <code>y_pred</code>처럼 예측하였다((1)=양성, (0)=음성). <code>y_true</code>와 비교하여 정확도·정밀도·재현율·F1 점수를 한 번에 출력해 보시오.</p>
 <p><pre class="line-numbers"><code class="language-python">from sklearn.metrics import classification_report
 
@@ -872,7 +895,7 @@ y_true = [1, 0, 1, 1, 0, 1, 0, 0, 1, 0]
 y_pred = [1, 0, 1, 0, 0, 1, 1, 0, 1, 1]
 
 print(classification_report(y_true, y_pred, 
-                                        target_names=['Negative', 'Positive']))</code></pre></li>
+                                        target_names=['음성', '양성']))</code></pre></li>
 </ol></p></div></p>
 <details class="box summary" id="summary"><summary class="box-head">12장 요약</summary><div class="sum-body"><ul>
 <li><strong>데이터 과학</strong>은 데이터로부터 유용한 지식과 통찰을 추출하는 학문으로, 데이터 수집 \(\rightarrow\) 정리 \(\rightarrow\) 분석 \(\rightarrow\) 시각화 \(\rightarrow\) 의사결정의 5단계 워크플로우로 이루어진다. 파이썬은 NumPy, pandas, matplotlib, scikit-learn 등 풍부한 라이브러리 생태계 덕분에 데이터 과학의 핵심 도구로 자리잡았다.</li>
@@ -887,9 +910,9 @@ print(classification_report(y_true, y_pred,
 <details class="box exercise" id="exercises"><summary class="box-head">12장 연습문제</summary><div class="ex-body"><ol>
 <li class="ex-item" data-ex="1"><span class="diff"><span class="d1">★</span></span>  다음 딕셔너리를 이용하여 pandas DataFrame을 생성하고, <code>head()</code>, <code>describe()</code>를 호출하여 데이터를 탐색하시오.
 <p><pre class="line-numbers"><code class="language-python">data = {
-    'city': ['Seoul', 'Busan', 'Daegu', 'Incheon', 'Gwangju'],
-    'population(10k)': [970, 340, 245, 295, 150],
-    'area(km2)': [605, 770, 884, 1063, 501]
+    '도시': ['서울', '부산', '대구', '인천', '광주'],
+    '인구(만명)': [970, 340, 245, 295, 150],
+    '면적(km2)': [605, 770, 884, 1063, 501]
 }</code></pre></li>
 <li class="ex-item" data-ex="2"><span class="diff"><span class="d2">★★</span></span>  위 DataFrame에 <code>'인구밀도'</code> 열을 추가하시오. (인구밀도 = 인구 / 면적)
 인구밀도를 기준으로 내림차순 정렬하여 출력하시오.</li>
@@ -897,8 +920,8 @@ print(classification_report(y_true, y_pred,
 두 결과의 차이를 비교하여 설명하시오.</p>
 <p><pre class="line-numbers"><code class="language-python">import numpy as np
 df = pd.DataFrame({
-    'name': ['A', 'B', 'C', 'D', 'E'],
-    'score': [85, np.nan, 72, np.nan, 90]
+    '이름': ['A', 'B', 'C', 'D', 'E'],
+    '점수': [85, np.nan, 72, np.nan, 90]
 })</code></pre></li>
 <li class="ex-item" data-ex="4"><span class="diff"><span class="d3">★★★</span></span>  scikit-learn의 <code>load_wine()</code> 데이터셋을 사용하여 와인 분류 모델을 만들어 보시오.
 <code>DecisionTreeClassifier</code>로 학습하고, 테스트 정확도를 출력하시오.
@@ -916,7 +939,7 @@ sales_B = [100, 110, 125, 140, 150, 165]</code></pre></li>
 users = [35, 25, 20, 12, 8]</code></pre></li>
 <li class="ex-item" data-ex="9"><span class="diff"><span class="d2">★★</span></span>  넘파이의 <code>np.random.randn(1000)</code>을 사용하여 정규분포 난수 1000개를 생성하고, 히스토그램(<code>bins=30</code>)으로 분포를 시각화하시오.</li>
 <li class="ex-item" data-ex="10"><span class="diff"><span class="d3">★★★</span></span>  pandas DataFrame에서 두 수치형 열의 관계를 <strong class="term-ko">산점도</strong><sup class="term">scatter plot</sup>로 시각화하시오.
-1번 문제의 도시 데이터에서 면적(x축)과 인구(y축)를 산점도로 그리고, 각 점 옆에 도시 이름을 표시하시오.</li>
+1번 문제의 도시 데이터에서 면적(x축)과 인구(y축)를 산점도로 그리고, 각 점 옆에 도시 이름을 영어(Seoul, Busan, Daegu, Incheon, Gwangju)로 표시하시오.</li>
 <li class="ex-item" data-ex="11"><span class="diff"><span class="d3">★★★</span></span>  <code>plt.subplots()</code>를 이용하여 2\(\times\)2 형태의 4개 서브플롯을 만들고,
 각각 선 그래프, 막대 그래프, 히스토그램, 산점도를 하나의 그림에 배치하시오. 전체 제목(<code>suptitle</code>)을 붙이시오.</li>
 <li class="ex-item" data-ex="12"><span class="diff"><span class="d2">★★</span></span>  1번 문제의 도시 데이터를 사용하여 다음을 수행하시오.

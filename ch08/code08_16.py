@@ -11,5 +11,5 @@ print(p.parent) # PosixPath('data')
 
 # 한 줄로 읽고 쓰기
 p.parent.mkdir(exist_ok=True) # data 디렉토리가 없으면 생성
-p.write_text('hello', encoding='utf-8')
+p.write_text('안녕하세요', encoding='utf-8')
 text = p.read_text(encoding='utf-8')

@@ -2,7 +2,7 @@
 # 코드 3.13: 리스트와 문자열 순회
 
 # 리스트 순회
-fruits = ['apple', 'banana', 'grape']
+fruits = ['사과', '바나나', '포도']
 for fruit in fruits:
     print(fruit, end=' ')
 print()

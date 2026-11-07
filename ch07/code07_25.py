@@ -3,7 +3,7 @@
 
 import re
 
-text = 'Contact: alice@example.com, bob.smith@univ.ac.kr, not_an_email@'
+text = '연락처: alice@example.com, bob.smith@univ.ac.kr, not_an_email@'
 emails = re.findall(r'[\w.]+@[\w.]+\.[a-zA-Z]+', text)
 print(emails)
 

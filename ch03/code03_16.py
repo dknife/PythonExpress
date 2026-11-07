@@ -3,12 +3,12 @@
 
 total = 0
 count = 0
-num = int(input('Enter a number (0 to quit): '))
+num = int(input('숫자를 입력하세요(종료는 0): '))
 while num != 0:
     total += num
     count += 1
-    num = int(input('Enter a number (0 to quit): '))
+    num = int(input('숫자를 입력하세요(종료는 0): '))
 if count > 0:
-    print(f'Sum: {total}, Average: {total/count:.1f}')
+    print(f'합계: {total}, 평균: {total/count:.1f}')
 else:
-    print('No numbers were entered.')
+    print('입력된 숫자가 없습니다.')

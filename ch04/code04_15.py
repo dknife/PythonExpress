@@ -5,7 +5,7 @@ x = 100 # 전역변수
 
 def change_x():
     x = 999 # 지역변수 (전역변수와 별개)
-    print('Inside function x:', x)
+    print('함수 안의 x:', x)
 
 change_x()
-print('Outside function x:', x) # 전역변수는 변하지 않음
+print('함수 밖의 x:', x) # 전역변수는 변하지 않음

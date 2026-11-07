@@ -5,13 +5,13 @@ def divide(x, y):
     try:
         result = x / y
     except ZeroDivisionError:
-        print('Division by zero error')
+        print('0으로 나누기 오류')
     else:
-        print('Result:', result)
+        print('결과:', result)
     finally:
-        print('Done')
+        print('완료')
 
-print('divide(100, 2) call:')
+print('divide(100, 2) 호출:')
 divide(100, 2)
-print('divide(100, 0) call:')
+print('divide(100, 0) 호출:')
 divide(100, 0)

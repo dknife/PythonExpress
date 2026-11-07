@@ -7,7 +7,7 @@ class Cat:
         self.color = color
 
     def __str__(self):
-        return f'Cat({self.name}, {self.color})'
+        return f'{self.color} 고양이 {self.name}'
 
-nabi = Cat('Nabi', 'black')
-print(nabi) # Cat(Nabi, black)
+nabi = Cat('나비', '검은색')
+print(nabi) # 검은색 고양이 나비

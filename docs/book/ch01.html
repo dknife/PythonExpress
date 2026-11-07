@@ -301,26 +301,26 @@ Let us start programming!</pre>
 </ul></div>
 <p><span id="labs"></span><div class="box lab"><div class="lab-title">실습을 통한 1 장 개념 정리</div><ol>
 <li>스크립트 파일 <code>myinfo.py</code>를 만들어서 자신의 이름, 나이, 취미를 각각 <code>print()</code> 함수로 출력하는 프로그램을 작성해 보자.
-<p><pre class="line-numbers"><code class="language-python">print('Name:', 'Hong Gildong')
-print('Age:', 20)
-print('Hobby:', 'Reading')</code></pre></li>
+<p><pre class="line-numbers"><code class="language-python">print('이름:', '홍길동')
+print('나이:', 20)
+print('취미:', '독서')</code></pre></li>
 <li>대화식 모드에서 <code>print()</code> 함수 앞에 의도적으로 공백을 넣어 실행해 보자. 어떤 오류가 발생하는지 오류 메시지를 읽어 보자.</p>
-<p><pre class="pyout pyerr">&gt;&gt;&gt;   print('Hello')
+<p><pre class="pyout pyerr">&gt;&gt;&gt;   print('안녕하세요')
   File "&lt;stdin&gt;", line 1
-    print('Hello')
+    print('안녕하세요')
 IndentationError: unexpected indent</pre></li>
 <li>대화식 모드에서 <code>type()</code> 함수를 이용하여 숫자, 소수, 문자열의 자료형이 각각 무엇으로 표시되는지 확인해 보자.</p>
 <p><pre class="pyout">&gt;&gt;&gt; print(type(10))
 &lt;class 'int'&gt;
 &gt;&gt;&gt; print(type(3.14))
 &lt;class 'float'&gt;
-&gt;&gt;&gt; print(type('hello'))
+&gt;&gt;&gt; print(type('안녕하세요'))
 &lt;class 'str'&gt;</pre></li>
 <li>스크립트 파일 <code>welcome.py</code>를 만들어 간단한 환영 메시지를 3줄로 출력하는 프로그램을 작성해 보자. 첫 줄은 인사말, 둘째 줄은 오늘의 날짜 안내, 셋째 줄은 격려의 문구를 자유롭게 작성하자.</p>
 <p><pre class="line-numbers"><code class="language-python">print('=' * 40)
-print('Welcome to Python programming!')
-print('Start your coding journey today.')
-print('Every expert was once a beginner.')
+print('파이썬 프로그래밍에 오신 것을 환영합니다!')
+print('오늘부터 코딩의 여정을 시작해 봅시다.')
+print('어떤 전문가도 처음에는 초보자였습니다.')
 print('=' * 40)</code></pre></li>
 </ol></p></div></p>
 <details class="box summary" id="summary"><summary class="box-head">1장 요약</summary><div class="sum-body"><ul>
@@ -347,18 +347,18 @@ print('=' * 40)</code></pre></li>
 <li class="ex-item" data-ex="3"><span class="diff"><span class="d1">★</span></span>  다음 코드를 대화식 모드에서 입력했을 때 출력 결과를 쓰시오.
 <pre class="pyout">&gt;&gt;&gt; print('Hello', 'Python', '!!')</pre></li>
 <li class="ex-item" data-ex="4"><span class="diff"><span class="d1">★</span></span>  다음 코드를 실행하면 오류가 발생한다. 오류의 원인을 설명하고 올바르게 수정하시오.
-<pre class="pyout">&gt;&gt;&gt; Print('Hello')</pre></li>
+<pre class="pyout">&gt;&gt;&gt; Print('안녕하세요')</pre></li>
 <li class="ex-item" data-ex="5"><span class="diff"><span class="d2">★★</span></span>  자신의 이름, 학과, 학번을 각 줄에 출력하는 스크립트 파일 <code>student_info.py</code>를 작성하시오.
-<pre class="termout">Name : Hong Gildong
-Department : Computer Engineering
-Student ID : 20250001</pre></li>
+<pre class="termout">이름: 홍길동
+학과: 컴퓨터공학과
+학번: 20250001</pre></li>
 <li class="ex-item" data-ex="6"><span class="diff"><span class="d2">★★</span></span>  대화식 실행 모드와 스크립트 실행 모드의 차이점을 3가지 이상 비교하여 설명하시오.</li>
 <li class="ex-item" data-ex="7"><span class="diff"><span class="d1">★</span></span>  다음 코드를 실행하면 오류가 발생한다. 오류의 종류를 쓰고 원인을 설명하시오.
 <pre class="pyout">&gt;&gt;&gt; print('Hello World!)</pre></li>
 <li class="ex-item" data-ex="8"><span class="diff"><span class="d2">★★</span></span>  다음 각 코드의 실행 결과를 쓰시오. 오류가 발생하면 오류의 종류를 적으시오.
 <ol type="a">
 <li><code>print(3 + 4 * 2)</code></li>
-<li><code>print('Hi' * 3)</code></li>
+<li><code>print('안녕' * 3)</code></li>
 <li><code>print(10 / 3)</code></li>
 <li><code>print(2 ** 8)</code></li>
 </ol></li>
@@ -371,8 +371,8 @@ Student ID : 20250001</pre></li>
 <li>파이썬은 대소문자를 한다.</li>
 </ol></li>
 <li class="ex-item" data-ex="11"><span class="diff"><span class="d1">★</span></span>  다음 코드의 출력 결과를 쓰시오.
-<pre class="pyout">&gt;&gt;&gt; print('Python\nProgramming')
-&gt;&gt;&gt; print('Name:\tHong')</pre></li>
+<pre class="pyout">&gt;&gt;&gt; print('파이썬\n프로그래밍')
+&gt;&gt;&gt; print('이름:\t홍길동')</pre></li>
 <li class="ex-item" data-ex="12"><span class="diff"><span class="d1">★</span></span>  대화식 모드에서 다음 수식을 입력했을 때의 결과를 각각 쓰시오.
 <ol type="a">
 <li><code>17 // 5</code></li>

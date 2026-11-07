@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
-<head><title>To-Do App</title></head>
+<head><title>할 일 앱</title></head>
 <body>
-    <h1>To-Do List ({{ tasks|length }} items)</h1>
+    <h1>할 일 목록 ({{ tasks|length }}개)</h1>
     <form action="/add" method="post">
-        <input type="text" name="task" placeholder="Enter a task">
-        <button type="submit">Add</button>
+        <input type="text" name="task" placeholder="할 일을 입력하세요">
+        <button type="submit">추가</button>
     </form>
     <ul>
         {% for task in tasks %}

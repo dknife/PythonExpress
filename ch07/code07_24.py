@@ -3,7 +3,7 @@
 
 import re
 
-text = 'My phone is 010-1234-5678 and home is 02-555-7777.'
+text = '내 휴대폰은 010-1234-5678이고 집 전화는 02-555-7777입니다.'
 
 m = re.search(r'\d{2,3}-\d{3,4}-\d{4}', text)
 print(m.group()) # 처음 일치한 부분 문자열

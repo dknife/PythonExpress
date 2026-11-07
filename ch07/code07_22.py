@@ -5,4 +5,4 @@ import random as rd
 
 lotto = rd.sample(range(1, 46), 6) # 1~45 중 6개 선택
 lotto.sort()
-print('This week lotto numbers:', lotto)
+print('이번 주 로또 번호:', lotto)

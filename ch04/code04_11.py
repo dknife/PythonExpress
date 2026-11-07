@@ -7,4 +7,4 @@ def get_root(a, b, c):
     return r1, r2 # 두 값을 반환
 
 result1, result2 = get_root(1, 2, -8)
-print('The roots are', result1, 'or', result2)
+print('방정식의 근:', result1, '또는', result2)

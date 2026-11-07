@@ -5,16 +5,16 @@ import pandas as pd
 
 # 코드 12.2의 df 준비
 df = pd.DataFrame({
-    'name': ['Hong Gildong', 'Kim Cheolsu',
-        'Lee Younghee', 'Park Jimin'],
-    'Korean': [85, 92, 78, 95],
-    'English': [90, 88, 82, 91],
-    'Math': [78, 95, 88, 87]
+    '이름': ['홍길동', '김철수',
+        '이영희', '박지민'],
+    '국어': [85, 92, 78, 95],
+    '영어': [90, 88, 82, 91],
+    '수학': [78, 95, 88, 87]
 })
 
 # DataFrame을 CSV 파일로 저장
 df.to_csv('scores.csv', index=False, encoding='utf-8-sig')
 
 # CSV 파일을 읽어 DataFrame 생성
-df2 = pd.read_csv('scores.csv')
+df2 = pd.read_csv('scores.csv', encoding='utf-8-sig')
 print(df2)

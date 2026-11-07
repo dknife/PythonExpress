@@ -5,7 +5,7 @@ import pandas as pd
 
 # Series: 인덱스가 있는 1차원 데이터
 s = pd.Series([85, 92, 78, 88],
-    index=['Korean', 'English', 'Math', 'Science'])
+    index=['국어', '영어', '수학', '과학'])
 print(s)
-print(f'\nKorean score: {s["Korean"]}')
-print(f'Mean: {s.mean():.1f}')
+print(f'\n국어 점수: {s["국어"]}')
+print(f'평균: {s.mean():.1f}')

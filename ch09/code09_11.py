@@ -9,21 +9,21 @@ class BankAccount:
     def deposit(self, amount):
         if amount > 0:
             self.__balance += amount
-            print(f'Deposited {amount}. Balance: {self.__balance}')
+            print(f'{amount}원을 입금했습니다. 잔액: {self.__balance}')
 
     def withdraw(self, amount):
         if 0 < amount <= self.__balance:
             self.__balance -= amount
-            print(f'Withdrew {amount}. Balance: {self.__balance}')
+            print(f'{amount}원을 출금했습니다. 잔액: {self.__balance}')
         else:
-            print('Insufficient balance.')
+            print('잔액이 부족합니다.')
 
     def get_balance(self):
         return self.__balance
 
-acc = BankAccount('Hong Gildong', 100000)
-acc.deposit(50000) # Deposited 50000. Balance: 150000
-acc.withdraw(30000) # Withdrew 30000. Balance: 120000
+acc = BankAccount('홍길동', 100000)
+acc.deposit(50000) # 50000원을 입금했습니다. 잔액: 150000
+acc.withdraw(30000) # 30000원을 출금했습니다. 잔액: 120000
 print(acc.get_balance()) # 120000
 
 # acc.__balance # AttributeError! 직접 접근 불가

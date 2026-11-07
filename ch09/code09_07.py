@@ -3,11 +3,11 @@
 
 class Cat:
     def meow(self):
-        print('Meow meow~~~')
+        print('야옹 야옹~~~')
 
 nabi = Cat()
-nabi.meow() # Meow meow~~~
+nabi.meow() # 야옹 야옹~~~
 nero = Cat()
-nero.meow() # Meow meow~~~
+nero.meow() # 야옹 야옹~~~
 mimi = Cat()
-mimi.meow() # Meow meow~~~
+mimi.meow() # 야옹 야옹~~~

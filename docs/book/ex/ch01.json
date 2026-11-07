@@ -122,7 +122,7 @@
    "tests": [
     {
      "stdin": "",
-     "expected": "Name : Hong Gildong\nDepartment : Computer Engineering\nStudent ID : 20250001\n"
+     "expected": "이름: 홍길동\n학과: 컴퓨터공학과\n학번: 20250001\n"
     }
    ]
   },
@@ -186,7 +186,7 @@
   {
    "n": 8,
    "type": "output",
-   "expected": "11\nHiHiHi\n3.3333333333333335\n256\n"
+   "expected": "11\n안녕안녕안녕\n3.3333333333333335\n256\n"
   },
   {
    "n": 9,
@@ -227,7 +227,7 @@
   {
    "n": 11,
    "type": "output",
-   "expected": "Python\nProgramming\nName:\tHong\n"
+   "expected": "파이썬\n프로그래밍\n이름:\t홍길동\n"
   },
   {
    "n": 12,

@@ -81,83 +81,83 @@
 <p>딕셔너리의 핵심 특성은 두 가지이다. 첫째, 키와 값이 하나의 쌍으로 묶여 있다. 둘째, 키를 이용하여 값을 조회하므로 키가 중복되면 안 된다.</p>
 <h3>딕셔너리 생성</h3>
 <p>딕셔너리는 중괄호 <code>{ }</code> 안에 <code>키: 값</code> 쌍을 쉼표로 구분하여 생성한다.</p>
-<pre class="line-numbers"><code class="language-python">person = {'name': 'Hong Gildong', 'age': 26, 'weight': 82}
-print(person['name'])
-print(person['age'])
-print(person['weight'])</code></pre>
-<pre class="termout">Hong Gildong
+<pre class="line-numbers"><code class="language-python">person = {'이름': '홍길동', '나이': 26, '몸무게': 82}
+print(person['이름'])
+print(person['나이'])
+print(person['몸무게'])</code></pre>
+<pre class="termout">홍길동
 26
 82</pre>
 <div class="listing-caption">코드 6.1: 딕셔너리 생성과 키로 값 조회</div>
-<p>위 코드에서 <code>person</code>이라는 딕셔너리는 세 개의 항목을 가지고 있다. <code>'name'</code>이라는 키에 <code>'Hong Gildong'</code>이라는 값이, <code>'age'</code>라는 키에 <code>26</code>이라는 값이, <code>'weight'</code>라는 키에 <code>82</code>라는 값이 연결되어 있다. <code>person['name']</code>처럼 대괄호 안에 키를 넣으면 해당 값을 조회할 수 있다.</p>
+<p>위 코드에서 <code>person</code>이라는 딕셔너리는 세 개의 항목을 가지고 있다. <code>'이름'</code>이라는 키에 <code>'홍길동'</code>이라는 값이, <code>'나이'</code>라는 키에 <code>26</code>이라는 값이, <code>'몸무게'</code>라는 키에 <code>82</code>라는 값이 연결되어 있다. <code>person['이름']</code>처럼 대괄호 안에 키를 넣으면 해당 값을 조회할 수 있다.</p>
 <figure class="fig">
 <img class="tikz" src="img/fig/ch06/ch06_fig01.svg" alt="figure">
 <p><figcaption>그림 6.1: 딕셔너리의 구조</figcaption></figure></p>
 <p>그림 6.1은 딕셔너리의 키-값 쌍 구조를 시각적으로 보여 준다. 각 항목은 키(key)와 값(value)의 쌍으로 이루어진다.</p>
 <p>딕셔너리의 키는 문자열뿐 아니라 정수도 사용할 수 있다. 학번을 키로, 이름을 값으로 가지는 딕셔너리를 만들어 보자.</p>
-<pre class="line-numbers"><code class="language-python">students = {2024001: 'Lee Sunsin', 2024002: 'Kim Yusin', 2024003: 'Kang Gamchan'}
+<pre class="line-numbers"><code class="language-python">students = {2024001: '이순신', 2024002: '김유신', 2024003: '강감찬'}
 print(students[2024001])
 print(students[2024003])</code></pre>
-<pre class="termout">Lee Sunsin
-Kang Gamchan</pre>
+<pre class="termout">이순신
+강감찬</pre>
 <div class="listing-caption">코드 6.2: 정수 키를 사용하는 딕셔너리</div>
 <p>리스트에서 <code>students[0]</code>처럼 인덱스(위치)로 접근하는 것과 비교하면, 딕셔너리에서 <code>students[2024001]</code>처럼 학번(키)으로 접근하는 것이 훨씬 직관적이다.
 이것이 딕셔너리의 핵심적인 장점이다.</p>
 <h3>항목 추가, 수정, 삭제</h3>
 <p>딕셔너리는 생성 후에도 항목을 자유롭게 추가하고, 기존 항목의 값을 수정하고, 항목을 삭제할 수 있다. 추가와 수정 모두 <code>딕셔너리[키] = 값</code> 형태의 동일한 문법을 사용한다. 해당 키가 존재하지 않으면 새 항목이 추가되고, 이미 존재하면 값이 수정된다.</p>
-<pre class="line-numbers"><code class="language-python">person = {'name': 'Hong Gildong', 'age': 26, 'weight': 82}
+<pre class="line-numbers"><code class="language-python">person = {'이름': '홍길동', '나이': 26, '몸무게': 82}
 
 # 항목 추가
-person['job'] = 'King of Yuldo'
+person['직업'] = '율도국 왕'
 print(person)
 
 # 항목 수정
-person['age'] = 27
+person['나이'] = 27
 print(person)
 
 # 항목 삭제
-del person['weight']
+del person['몸무게']
 print(person)</code></pre>
-<pre class="termout">{'name': 'Hong Gildong', 'age': 26, 'weight': 82, 'job': 'King of Yuldo'}
-{'name': 'Hong Gildong', 'age': 27, 'weight': 82, 'job': 'King of Yuldo'}
-{'name': 'Hong Gildong', 'age': 27, 'job': 'King of Yuldo'}</pre>
+<pre class="termout">{'이름': '홍길동', '나이': 26, '몸무게': 82, '직업': '율도국 왕'}
+{'이름': '홍길동', '나이': 27, '몸무게': 82, '직업': '율도국 왕'}
+{'이름': '홍길동', '나이': 27, '직업': '율도국 왕'}</pre>
 <div class="listing-caption">코드 6.3: 딕셔너리 항목의 추가·수정·삭제</div>
-<p>삭제는 리스트와 마찬가지로 <code>del</code> 키워드를 사용한다. <code>del person['weight']</code>는 키가 <code>'weight'</code>인 항목 전체(키와 값 모두)를 삭제한다.</p>
+<p>삭제는 리스트와 마찬가지로 <code>del</code> 키워드를 사용한다. <code>del person['몸무게']</code>는 키가 <code>'몸무게'</code>인 항목 전체(키와 값 모두)를 삭제한다.</p>
 <div class="box caution"><span class="chip">주의</span><p>존재하지 않는 키로 접근하면 <code>KeyError</code>가 발생한다.
 안전하게 값을 조회하려면 <code>get()</code> 메소드를 사용하자. <code>get()</code>은 키가 존재하면 값을 반환하고, 존재하지 않으면 오류 대신 <code>None</code>을 반환한다. 이 방법은 "키가 있을 수도 있고 없을 수도 있는" 상황에서 특히 유용하다.
-<pre class="pyout">print(person.get('hobby')) # 키가 없으면 None 반환
-print(person.get('name')) # 'Hong Gildong' 반환</pre></p></div>
+<pre class="pyout">print(person.get('취미')) # 키가 없으면 None 반환
+print(person.get('이름')) # '홍길동' 반환</pre></p></div>
 <h3>딕셔너리 메소드</h3>
 <p>딕셔너리는 키, 값, 또는 키-값 쌍을 조회하는 여러 메소드를 제공한다. 가장 자주 사용하는 메소드를 표로 정리하면 다음과 같다.</p>
 <div class="table-wrap"><div class="table-caption">표 6.1: 딕셔너리 주요 메소드</div><table><tr><th><strong>메소드</strong></th><th><strong>설명</strong></th></tr><tr><td><code>keys()</code></td><td>모든 키를 반환한다.</td></tr><tr><td><code>values()</code></td><td>모든 값을 반환한다.</td></tr><tr><td><code>items()</code></td><td>모든 항목을 (키, 값) 쌍으로 반환한다.</td></tr><tr><td><code>get(key)</code></td><td>키에 대한 값을 반환한다. 키가 없으면 <code>None</code>을 반환한다.</td></tr><tr><td><code>pop(key)</code></td><td>키에 대한 값을 반환하고 항목을 삭제한다.</td></tr><tr><td><code>clear()</code></td><td>딕셔너리의 모든 항목을 삭제한다.</td></tr></table></div>
-<pre class="line-numbers"><code class="language-python">person = {'name': 'Hong Gildong', 'age': 26, 'weight': 82}
+<pre class="line-numbers"><code class="language-python">person = {'이름': '홍길동', '나이': 26, '몸무게': 82}
 
 print(person.keys())
 print(person.values())
 print(person.items())</code></pre>
-<pre class="termout">dict_keys(['name', 'age', 'weight'])
-dict_values(['Hong Gildong', 26, 82])
-dict_items([('name', 'Hong Gildong'), ('age', 26), ('weight', 82)])</pre>
+<pre class="termout">dict_keys(['이름', '나이', '몸무게'])
+dict_values(['홍길동', 26, 82])
+dict_items([('이름', '홍길동'), ('나이', 26), ('몸무게', 82)])</pre>
 <div class="listing-caption">코드 6.4: keys(), values(), items() 메소드</div>
 <p><code>keys()</code>는 딕셔너리의 모든 키를, <code>values()</code>는 모든 값을, <code>items()</code>는 (키, 값) 쌍의 목록을 반환한다. 이 메소드들의 반환값은 <code>list()</code> 함수를 통해 리스트로 변환할 수도 있다.</p>
 <h3>for문으로 딕셔너리 순회</h3>
 <p>딕셔너리의 항목을 하나하나 처리하려면 <code>for</code> 문을 사용한다. 리스트의 <code>for</code> 문이 각 원소를 순회하듯, 딕셔너리의 <code>for</code> 문은 각 항목의 <strong>키</strong>를 순회한다는 특성이 있다.</p>
-<pre class="line-numbers"><code class="language-python">person = {'name': 'Hong Gildong', 'age': 26, 'weight': 82}
+<pre class="line-numbers"><code class="language-python">person = {'이름': '홍길동', '나이': 26, '몸무게': 82}
 
 for key in person:
     print(f'{key} : {person[key]}')</code></pre>
-<pre class="termout">name : Hong Gildong
-age : 26
-weight : 82</pre>
+<pre class="termout">이름 : 홍길동
+나이 : 26
+몸무게 : 82</pre>
 <div class="listing-caption">코드 6.5: for 문으로 딕셔너리 순회</div>
-<p><code>for key in person:</code>에서 반복 변수 <code>key</code>에는 차례로 <code>'name'</code>, <code>'age'</code>, <code>'weight'</code>가 대입된다. 그리고 <code>person[key]</code>를 통해 해당 키의 값을 꺼내어 출력한다.</p>
-<div class="box note"><span class="chip">잠깐</span><span class="box-title">in 연산자의 딕셔너리 동작</span><p>딕셔너리에서 <code>in</code> 연산자는 <strong>키</strong>를 대상으로 검사한다. 예를 들어 <code>'name' in person</code>은 <code>True</code>이지만, <code>'Hong Gildong' in person</code>은 <code>False</code>이다. 값이 아닌 키를 기준으로 검사한다는 점에 주의하자. 값의 존재 여부를 확인하려면 <code>'Hong Gildong' in person.values()</code>처럼 <code>values()</code> 메소드를 사용해야 한다.</p></div>
+<p><code>for key in person:</code>에서 반복 변수 <code>key</code>에는 차례로 <code>'이름'</code>, <code>'나이'</code>, <code>'몸무게'</code>가 대입된다. 그리고 <code>person[key]</code>를 통해 해당 키의 값을 꺼내어 출력한다.</p>
+<div class="box note"><span class="chip">잠깐</span><span class="box-title">in 연산자의 딕셔너리 동작</span><p>딕셔너리에서 <code>in</code> 연산자는 <strong>키</strong>를 대상으로 검사한다. 예를 들어 <code>'이름' in person</code>은 <code>True</code>이지만, <code>'홍길동' in person</code>은 <code>False</code>이다. 값이 아닌 키를 기준으로 검사한다는 점에 주의하자. 값의 존재 여부를 확인하려면 <code>'홍길동' in person.values()</code>처럼 <code>values()</code> 메소드를 사용해야 한다.</p></div>
 <h3>딕셔너리는 어떻게 빠를까?  —  해시의 개념</h3>
-<p>여기서 한 가지 자연스러운 의문이 든다. 리스트는 인덱스(정수 위치)를 알면 메모리 주소를 즉시 계산할 수 있어서 빠르게 값을 찾는다. 그런데 딕셔너리는 <code>'name'</code>, <code>2024001</code>처럼 임의의 키로 값을 찾는데, 어떻게 그렇게 빨리 찾아낼 수 있을까? 키와 값을 처음부터 끝까지 차례로 비교하는 것이라면, 항목이 많아질수록 점점 느려질 것이다. 그러나 실제로는 항목이 100개든 100만 개든 거의 일정한 속도로 값을 찾아낸다. 그 비결이 바로 <strong class="term-ko">해시</strong><sup class="term">hash</sup>이다.</p>
-<p>해시는 <strong>어떤 데이터를 입력하면 <strong>고정된 크기의 정수</strong>를 돌려주는 함수</strong>이다. 같은 입력은 항상 같은 정수가 나오고, 입력이 조금만 달라도 전혀 다른 정수가 나온다. 예를 들어 <code>hash('name')</code>을 호출하면 매번 동일한 큰 정수가 반환되고, <code>hash('age')</code>는 또 다른 정수를 반환한다. 이 정수를 <strong class="term-ko">해시값</strong><sup class="term">hash value</sup>이라고 부른다.</p>
-<p>딕셔너리는 내부적으로 큰 <strong>사물함 배열</strong>을 하나 가지고 있다고 상상하면 된다. 우리가 <code>person['name']</code>이라고 쓰면, 파이썬은 다음 과정을 거쳐 값을 찾는다.</p>
+<p>여기서 한 가지 자연스러운 의문이 든다. 리스트는 인덱스(정수 위치)를 알면 메모리 주소를 즉시 계산할 수 있어서 빠르게 값을 찾는다. 그런데 딕셔너리는 <code>'이름'</code>, <code>2024001</code>처럼 임의의 키로 값을 찾는데, 어떻게 그렇게 빨리 찾아낼 수 있을까? 키와 값을 처음부터 끝까지 차례로 비교하는 것이라면, 항목이 많아질수록 점점 느려질 것이다. 그러나 실제로는 항목이 100개든 100만 개든 거의 일정한 속도로 값을 찾아낸다. 그 비결이 바로 <strong class="term-ko">해시</strong><sup class="term">hash</sup>이다.</p>
+<p>해시는 <strong>어떤 데이터를 입력하면 <strong>고정된 크기의 정수</strong>를 돌려주는 함수</strong>이다. 같은 입력은 항상 같은 정수가 나오고, 입력이 조금만 달라도 전혀 다른 정수가 나온다. 예를 들어 <code>hash('이름')</code>을 호출하면 매번 동일한 큰 정수가 반환되고, <code>hash('나이')</code>는 또 다른 정수를 반환한다. 이 정수를 <strong class="term-ko">해시값</strong><sup class="term">hash value</sup>이라고 부른다.</p>
+<p>딕셔너리는 내부적으로 큰 <strong>사물함 배열</strong>을 하나 가지고 있다고 상상하면 된다. 우리가 <code>person['이름']</code>이라고 쓰면, 파이썬은 다음 과정을 거쳐 값을 찾는다.</p>
 <ol>
-<li>키 <code>'name'</code>의 해시값을 계산한다.</li>
+<li>키 <code>'이름'</code>의 해시값을 계산한다.</li>
 <li>그 해시값을 사물함의 칸 번호로 변환한다(예: 해시값을 사물함 크기로 나눈 나머지).</li>
 <li>그 칸으로 곧장 가서 값을 꺼낸다.</li>
 </ol>
@@ -167,7 +167,7 @@ weight : 82</pre>
 <div class="box keypoint"><span class="chip">요점</span><p>딕셔너리는 <code>{키: 값}</code> 형태로 생성하며, 키를 이용하여 값에 접근한다. 키가 존재하지 않는 경우를 대비하여 대괄호 접근 대신 <code>get()</code> 메소드를 사용하면 <code>KeyError</code>를 예방할 수 있다. <code>keys()</code>, <code>values()</code>, <code>items()</code> 메소드로 딕셔너리를 다양한 방식으로 순회할 수 있으며, <code>in</code> 연산자는 값이 아닌 키를 대상으로 검사한다. 딕셔너리가 항목 수와 거의 무관하게 빠른 까닭은 키의 <strong>해시값</strong>으로 저장 위치를 직접 계산하기 때문이다.</p></div>
 <h2 id="sec2">6.2 튜플</h2>
 <p><strong class="term-ko">튜플</strong><sup class="term">tuple</sup>은 리스트와 마찬가지로 여러 값을 순서대로 저장하는 자료형이다. 그러나 리스트와 결정적으로 다른 점이 하나 있다. 튜플은 한 번 생성되면 내부 값을 변경하거나 삭제할 수 없는 <strong class="term-ko">불변</strong><sup class="term">immutable</sup> 자료형이라는 것이다.</p>
-<p>왜 "바꿀 수 없는" 자료형이 필요할까? 현실에서도 "변경되면 안 되는 데이터"가 존재한다. 예를 들어 1주일의 요일 이름, 지도 위의 좌표, 데이터베이스에서 조회한 레코드 등은 프로그램 도중에 실수로 변경되면 심각한 오류가 발생할 수 있다. 이런 데이터를 리스트에 저장하면 누군가 <code>days[0] = 'Funday'</code>처럼 값을 바꿔 버릴 위험이 있다. 튜플을 사용하면 이런 실수를 원천적으로 방지할 수 있다.</p>
+<p>왜 "바꿀 수 없는" 자료형이 필요할까? 현실에서도 "변경되면 안 되는 데이터"가 존재한다. 예를 들어 1주일의 요일 이름, 지도 위의 좌표, 데이터베이스에서 조회한 레코드 등은 프로그램 도중에 실수로 변경되면 심각한 오류가 발생할 수 있다. 이런 데이터를 리스트에 저장하면 누군가 <code>days[0] = '노는날'</code>처럼 값을 바꿔 버릴 위험이 있다. 튜플을 사용하면 이런 실수를 원천적으로 방지할 수 있다.</p>
 <h3>튜플 생성</h3>
 <p>튜플은 소괄호 <code>( )</code>로 생성하거나, 괄호 없이 값을 쉼표로 나열해도 된다.</p>
 <pre class="line-numbers"><code class="language-python">t1 = (1, 2, 3, 4) # 소괄호 사용
@@ -225,8 +225,8 @@ a = 20, b = 10</pre>
 
 data = [45, 23, 78, 12, 67]
 minimum, maximum = get_min_max(data)
-print(f'Min: {minimum}, Max: {maximum}')</code></pre>
-<pre class="termout">Min: 12, Max: 78</pre>
+print(f'최솟값: {minimum}, 최댓값: {maximum}')</code></pre>
+<pre class="termout">최솟값: 12, 최댓값: 78</pre>
 <div class="listing-caption">코드 6.9: 튜플로 두 값 동시 반환</div>
 <p><code>return min(numbers), max(numbers)</code>에서 두 값은 튜플 <code>(12, 78)</code>로 패킹되어 반환되고, 호출하는 쪽에서 <code>minimum, maximum</code>으로 언패킹하여 각 변수에 저장한다. 이 패턴은 파이썬 프로그래밍에서 매우 자주 사용되므로 반드시 숙지하자.</p>
 <h3>리스트와 튜플 비교</h3>
@@ -250,7 +250,7 @@ print(s2)
 print(s3)</code></pre>
 <pre class="termout">{1, 2, 3, 4, 5}
 {1, 2, 3}
-{'h', 'e', 'l', 'o'}</pre>
+{'h', 'l', 'o', 'e'}</pre>
 <div class="listing-caption">코드 6.10: 집합의 여러 가지 생성 방법</div>
 <p><code>s2</code>를 보면 리스트 <code>[1, 2, 2, 3, 3, 3]</code>에서 중복된 값이 자동으로 제거되어 <code>{1, 2, 3}</code>만 남은 것을 확인할 수 있다. <code>s3</code>에서는 문자열 <code>'hello'</code>의 각 문자가 개별 원소가 되는데, <code>'l'</code>이 두 번 등장하지만 집합에서는 하나만 유지된다. 또한 출력 결과에서 원소의 순서가 입력 순서와 다를 수 있다는 점에 주목하자  —  집합은 순서가 없기 때문이다.</p>
 <div class="box caution"><span class="chip">주의</span><p>빈 집합을 만들 때 <code>{}</code>를 사용하면 빈 <strong>딕셔너리</strong>가 생성된다.
@@ -268,14 +268,14 @@ print(unique)</code></pre>
 <pre class="line-numbers"><code class="language-python">A = {1, 2, 3, 4, 5}
 B = {3, 4, 5, 6, 7}
 
-print('Union:', A | B) # 또는 A.union(B)
-print('Intersection:', A &amp; B) # 또는 A.intersection(B)
-print('Difference:', A - B) # 또는 A.difference(B)
-print('Symmetric diff:', A ^ B) # 또는 A.symmetric_difference(B)</code></pre>
-<pre class="termout">Union: {1, 2, 3, 4, 5, 6, 7}
-Intersection: {3, 4, 5}
-Difference: {1, 2}
-Symmetric diff: {1, 2, 6, 7}</pre>
+print('합집합:', A | B) # 또는 A.union(B)
+print('교집합:', A &amp; B) # 또는 A.intersection(B)
+print('차집합:', A - B) # 또는 A.difference(B)
+print('대칭 차집합:', A ^ B) # 또는 A.symmetric_difference(B)</code></pre>
+<pre class="termout">합집합: {1, 2, 3, 4, 5, 6, 7}
+교집합: {3, 4, 5}
+차집합: {1, 2}
+대칭 차집합: {1, 2, 6, 7}</pre>
 <div class="listing-caption">코드 6.12: 합집합·교집합·차집합·대칭차집합</div>
 <figure class="fig">
 <img class="tikz" src="img/fig/ch06/ch06_fig03.svg" alt="figure">
@@ -323,50 +323,50 @@ True</pre>
 my_list = [1, 2, 3, 2, 1]
 
 my_tuple = tuple(my_list)
-print('Tuple:', my_tuple)
+print('튜플:', my_tuple)
 
 my_set = set(my_list)
-print('Set:', my_set)
+print('집합:', my_set)
 
 back_to_list = list(my_set)
-print('List:', back_to_list)</code></pre>
-<pre class="termout">Tuple: (1, 2, 3, 2, 1)
-Set: {1, 2, 3}
-List: [1, 2, 3]</pre>
+print('리스트:', back_to_list)</code></pre>
+<pre class="termout">튜플: (1, 2, 3, 2, 1)
+집합: {1, 2, 3}
+리스트: [1, 2, 3]</pre>
 <div class="listing-caption">코드 6.14: 리스트·튜플·집합 간 변환</div>
 <p>리스트 <code>[1, 2, 3, 2, 1]</code>을 튜플로 변환하면 값이 그대로 유지되지만, 집합으로 변환하면 중복이 제거되어 <code>{1, 2, 3}</code>이 된다. 다시 리스트로 변환하면 중복이 없는 <code>[1, 2, 3]</code>을 얻는다.</p>
 <p>딕셔너리를 리스트로 변환하면 키만 추출된다. 값이나 키-값 쌍을 리스트로 얻으려면 <code>values()</code>나 <code>items()</code> 메소드를 함께 사용해야 한다.</p>
-<pre class="line-numbers"><code class="language-python">person = {'name': 'Hong Gildong', 'age': 26}
+<pre class="line-numbers"><code class="language-python">person = {'이름': '홍길동', '나이': 26}
 
 print(list(person)) # 키의 리스트
 print(list(person.values())) # 값의 리스트
 print(list(person.items())) # (키, 값) 튜플의 리스트</code></pre>
-<pre class="termout">['name', 'age']
-['Hong Gildong', 26]
-[('name', 'Hong Gildong'), ('age', 26)]</pre>
+<pre class="termout">['이름', '나이']
+['홍길동', 26]
+[('이름', '홍길동'), ('나이', 26)]</pre>
 <div class="listing-caption">코드 6.15: 딕셔너리를 리스트로 변환</div>
 <h3>실습: 과일 가게 프로그램</h3>
 <p>네 가지 자료형을 활용한 종합 예제를 살펴보자. 이 예제에서는 딕셔너리로 과일 가격을 관리하고, 리스트로 과일 이름 목록을 만들고, 집합으로 할인 대상을 찾고, 튜플로 가격 범위를 저장한다. 하나의 프로그램 안에서 각 자료형이 자신의 강점에 맞는 역할을 담당하는 것을 확인할 수 있다.</p>
 <pre class="line-numbers"><code class="language-python"># 딕셔너리: 과일 가격
-fruits_dic = {'apple': 6000, 'melon': 3000,
-    'banana': 5000, 'orange': 4000}
+fruits_dic = {'사과': 6000, '멜론': 3000,
+    '바나나': 5000, '오렌지': 4000}
 
 # 리스트: 모든 키를 리스트로
 fruit_names = list(fruits_dic.keys())
-print('Fruit list:', fruit_names)
+print('과일 목록:', fruit_names)
 
 # 집합: 할인 대상 과일
-discount_set = {'apple', 'grape', 'melon'}
+discount_set = {'사과', '포도', '멜론'}
 available_discount = discount_set &amp; set(fruit_names)
-print('Discountable:', available_discount)
+print('할인 가능:', available_discount)
 
 # 튜플: 가격 범위 (불변)
 price_range = (min(fruits_dic.values()),
     max(fruits_dic.values()))
-print('Price range:', price_range)</code></pre>
-<pre class="termout">Fruit list: ['apple', 'melon', 'banana', 'orange']
-Discountable: {'apple', 'melon'}
-Price range: (3000, 6000)</pre>
+print('가격 범위:', price_range)</code></pre>
+<pre class="termout">과일 목록: ['사과', '멜론', '바나나', '오렌지']
+할인 가능: {'사과', '멜론'}
+가격 범위: (3000, 6000)</pre>
 <div class="listing-caption">코드 6.16: 자료형을 조합한 과일 가게 프로그램</div>
 <p>이 프로그램에서 과일 가격 데이터는 "과일 이름으로 가격을 조회"하는 구조이므로 딕셔너리가 적합하다. 과일 이름의 순서 있는 목록이 필요할 때는 리스트로 변환했다. 할인 대상 과일 중 실제로 판매 중인 과일을 찾을 때는 집합의 교집합 연산을 활용했다. 그리고 가격 범위는 "한 번 결정되면 바뀌지 않는" 정보이므로 튜플에 저장했다. 이처럼 각 자료형의 특성을 이해하고 적절히 조합하면 명확하고 효율적인 프로그램을 작성할 수 있다. 파이썬의 자료형 힌트를 활용한 안전한 프로그래밍은 PEP 484에서 소개하고 있다.</p>
 <div class="box keypoint"><span class="chip">요점</span><p>리스트(변경 가능, 순서 있음), 튜플(변경 불가, 순서 있음), 딕셔너리(키-값 쌍), 집합(중복 불허, 순서 없음)의 특성을 정확히 이해하고, 데이터의 성격에 맞는 자료형을 선택해야 한다. <code>list()</code>, <code>tuple()</code>, <code>set()</code> 함수로 자료형을 상호 변환할 수 있으며, 실제 프로그램에서는 여러 자료형을 조합하여 사용하는 경우가 많다.</p></div>
@@ -374,22 +374,22 @@ Price range: (3000, 6000)</pre>
 <li>『Python Cookbook』(David Beazley, Brian K. Jones) — 딕셔너리, 집합 등 자료구조를 실전에서 활용하는 다양한 레시피를 담은 책</li>
 </ul></div>
 <p><span id="labs"></span><div class="box lab"><div class="lab-title">실습을 통한 6 장 개념 정리</div><ol>
-<li>과일 이름(키)과 가격(값)을 저장하는 딕셔너리 <code>fruits</code>를 만들고, <code>for</code> 문과 <code>items()</code>를 사용하여 "apple: 1500 won" 형식으로 모든 항목을 출력하시오.
-<p><pre class="line-numbers"><code class="language-python">fruits = {'apple': 1500, 'banana': 800, 'grape': 3000}
+<li>과일 이름(키)과 가격(값)을 저장하는 딕셔너리 <code>fruits</code>를 만들고, <code>for</code> 문과 <code>items()</code>를 사용하여 "사과: 1500원" 형식으로 모든 항목을 출력하시오.
+<p><pre class="line-numbers"><code class="language-python">fruits = {'사과': 1500, '바나나': 800, '포도': 3000}
 for name, price in fruits.items():
-    print(f'{name}: {price} won')</code></pre></li>
+    print(f'{name}: {price}원')</code></pre></li>
 <li>문자열 <code>'hello world'</code>의 각 문자가 몇 번 등장하는지 딕셔너리로 집계하시오. (힌트: <code>dict.get(ch, 0) + 1</code> 패턴 활용)</p>
 <p><pre class="line-numbers"><code class="language-python">s = 'hello world'
 count = {}
 for ch in s:
     count[ch] = count.get(ch, 0) + 1
 print(count)</code></pre></li>
-<li>수학 수강생 <code>math = {'Kim', 'Lee', 'Park', 'Choi'}</code>와 영어 수강생 <code>eng = {'Lee', 'Choi', 'Jung', 'Han'}</code>에 대해, 집합 연산으로 (a) 두 과목 모두 수강하는 학생, (b) 수학만 수강하는 학생, (c) 둘 중 하나라도 수강하는 학생을 각각 출력하시오.</p>
-<p><pre class="line-numbers"><code class="language-python">math = {'Kim', 'Lee', 'Park', 'Choi'}
-eng  = {'Lee', 'Choi', 'Jung', 'Han'}
-print('Both      :', math &amp; eng)    # 교집합
-print('Math only :', math - eng)    # 차집합
-print('Either    :', math | eng)    # 합집합</code></pre></li>
+<li>수학 수강생 <code>math = {'철수', '영희', '민수', '지영'}</code>와 영어 수강생 <code>eng = {'영희', '지영', '동현', '수진'}</code>에 대해, 집합 연산으로 (a) 두 과목 모두 수강하는 학생, (b) 수학만 수강하는 학생, (c) 둘 중 하나라도 수강하는 학생을 각각 출력하시오.</p>
+<p><pre class="line-numbers"><code class="language-python">math = {'철수', '영희', '민수', '지영'}
+eng  = {'영희', '지영', '동현', '수진'}
+print('둘 다:', math &amp; eng)    # 교집합
+print('수학만:', math - eng)    # 차집합
+print('하나 이상:', math | eng)    # 합집합</code></pre></li>
 <li>리스트 <code>nums = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3]</code>에서 중복을 제거한 뒤 오름차순으로 정렬하여 출력하시오.</p>
 <p><pre class="line-numbers"><code class="language-python">nums = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3]
 print(sorted(set(nums)))    # [1, 2, 3, 4, 5, 6, 9]</code></pre></li>
@@ -406,11 +406,11 @@ print(distance((1, 2), (4, 6)))   # 5.0</code></pre></li>
     return min(nums), max(nums), sum(nums) / len(nums)
 
 lo, hi, avg = stats([72, 88, 91, 65, 80])
-print(f'Min: {lo}, Max: {hi}, Avg: {avg}')</code></pre></li>
-<li>학생 이름(키)과 점수(값)를 가진 딕셔너리 <code>scores = {'Kim': 85, 'Lee': 92, 'Park': 78, 'Choi': 90}</code>에서 최고점을 받은 학생의 이름과 점수를 출력하시오. (힌트: <code>max(scores, key=scores.get)</code>)</p>
-<p><pre class="line-numbers"><code class="language-python">scores = {'Kim': 85, 'Lee': 92, 'Park': 78, 'Choi': 90}
+print(f'최솟값: {lo}, 최댓값: {hi}, 평균: {avg}')</code></pre></li>
+<li>학생 이름(키)과 점수(값)를 가진 딕셔너리 <code>scores = {'철수': 85, '영희': 92, '민수': 78, '지영': 90}</code>에서 최고점을 받은 학생의 이름과 점수를 출력하시오. (힌트: <code>max(scores, key=scores.get)</code>)</p>
+<p><pre class="line-numbers"><code class="language-python">scores = {'철수': 85, '영희': 92, '민수': 78, '지영': 90}
 top = max(scores, key=scores.get)
-print(f'Top student: {top} ({scores[top]})')</code></pre></li>
+print(f'최고 점수 학생: {top} ({scores[top]})')</code></pre></li>
 <li>두 리스트 <code>a = [1, 2, 3, 4, 5]</code>, <code>b = [3, 4, 5, 6, 7]</code>이 주어졌을 때, 자료형 변환을 활용하여 (1) 두 리스트의 공통 원소, (2) <code>a</code>에만 있고 <code>b</code>에는 없는 원소, (3) 두 리스트를 합쳐 중복을 제거한 결과를 각각 정렬된 리스트로 출력하시오.</p>
 <p><pre class="line-numbers"><code class="language-python">a = [1, 2, 3, 4, 5]
 b = [3, 4, 5, 6, 7]
@@ -432,10 +432,10 @@ print(sorted(set(a) | set(b)))   # [1, 2, 3, 4, 5, 6, 7]</code></pre></li>
 </ul></div></details>
 <details class="box exercise" id="exercises"><summary class="box-head">6장 연습문제</summary><div class="ex-body"><ol>
 <li class="ex-item" data-ex="1"><span class="diff"><span class="d2">★★</span></span>  다음과 같은 키-값의 항목을 가지는 <code>capital_dic</code> 딕셔너리를 생성하고, <code>for</code> 문을 사용하여 모든 항목을 출력하시오.
-<div class="center"><div class="table-wrap"><table><tr><th><strong>키(key)</strong></th><th><strong>값(value)</strong></th></tr><tr><td><code>'Korea'</code></td><td><code>'Seoul'</code></td></tr><tr><td><code>'China'</code></td><td><code>'Beijing'</code></td></tr><tr><td><code>'USA'</code></td><td><code>'Washington DC'</code></td></tr></table></div></div>
-<pre class="termout">The capital of Korea is Seoul.
-The capital of China is Beijing.
-The capital of USA is Washington DC.</pre></li>
+<div class="center"><div class="table-wrap"><table><tr><th><strong>키(key)</strong></th><th><strong>값(value)</strong></th></tr><tr><td><code>'한국'</code></td><td><code>'서울'</code></td></tr><tr><td><code>'중국'</code></td><td><code>'베이징'</code></td></tr><tr><td><code>'미국'</code></td><td><code>'워싱턴 DC'</code></td></tr></table></div></div>
+<pre class="termout">한국의 수도는 서울입니다.
+중국의 수도는 베이징입니다.
+미국의 수도는 워싱턴 DC입니다.</pre></li>
 <li class="ex-item" data-ex="2"><span class="diff"><span class="d2">★★</span></span>  튜플 <code>t = (10, 20, 30, 40, 50)</code>에 대해 다음을 수행하시오.
 <ol type="a">
 <li>첫 번째 원소와 마지막 원소를 출력하시오.</li>
@@ -443,18 +443,18 @@ The capital of USA is Washington DC.</pre></li>
 <li><code>a, b, c, d, e = t</code>와 같이 언패킹하여 <code>c</code>의 값을 출력하시오.</li>
 </ol></li>
 <li class="ex-item" data-ex="3"><span class="diff"><span class="d2">★★</span></span>  다음 두 리스트가 주어졌을 때, 집합 연산을 활용하여 요구 사항을 수행하시오.
-<pre class="pyout">class_a = ['Alice', 'Bob', 'Charlie', 'Diana', 'Eric']
-class_b = ['Bob', 'Diana', 'Frank', 'Grace', 'Charlie']</pre>
+<pre class="pyout">class_a = ['철수', '영희', '민수', '지영', '현우']
+class_b = ['영희', '지영', '수진', '동현', '민수']</pre>
 <ol type="a">
 <li>두 반에 모두 있는 학생 (교집합)</li>
 <li>두 반을 합친 전체 학생 명단 (합집합)</li>
 <li>A반에만 있는 학생 (차집합)</li>
 </ol></li>
 <li class="ex-item" data-ex="4"><span class="diff"><span class="d3">★★★</span></span>  과일의 이름을 키, 가격을 값으로 가지는 딕셔너리를 생성하시오.
-과일은 apple(5000원), banana(4000원), grape(5300원), melon(6500원)이다.
+과일은 사과(5000원), 바나나(4000원), 포도(5300원), 멜론(6500원)이다.
 이 딕셔너리에서 가장 비싼 과일의 이름과 가격을 출력하시오.
 (힌트: <code>max(dic, key=dic.get)</code>으로 값이 가장 큰 키를 찾을 수 있다)
-<pre class="termout">Most expensive fruit: melon (6500 won)</pre></li>
+<pre class="termout">가장 비싼 과일: 멜론 (6500원)</pre></li>
 <li class="ex-item" data-ex="5"><span class="diff"><span class="d2">★★</span></span>  다음 코드의 실행 결과를 예측하시오.
 <p><pre class="line-numbers"><code class="language-python">data = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3]
 unique_sorted = sorted(set(data))
@@ -466,13 +466,13 @@ print(len(result))</code></pre></li>
 <pre class="pyout">{1: 1, 2: 8, 3: 27, 4: 64, 5: 125}</pre></li>
 <li class="ex-item" data-ex="7"><span class="diff"><span class="d3">★★★</span></span>  다음과 같은 중첩 딕셔너리가 주어졌을 때, 각 학생의 이름과 평균 점수를 출력하는 프로그램을 작성하시오.
 <pre class="line-numbers"><code class="language-python">students = {
-    'Hong': {'kor': 90, 'eng': 85, 'math': 78},
-    'Kim': {'kor': 88, 'eng': 92, 'math': 95},
-    'Lee': {'kor': 76, 'eng': 80, 'math': 84}
+    '홍길동': {'국어': 90, '영어': 85, '수학': 78},
+    '김유신': {'국어': 88, '영어': 92, '수학': 95},
+    '이순신': {'국어': 76, '영어': 80, '수학': 84}
 }</code></pre>
-<pre class="termout">Hong: 84.3
-Kim: 91.7
-Lee: 80.0</pre></li>
+<pre class="termout">홍길동: 84.3
+김유신: 91.7
+이순신: 80.0</pre></li>
 <li class="ex-item" data-ex="8"><span class="diff"><span class="d2">★★</span></span>  집합의 메소드를 이용하여 다음을 수행하시오.
 <ol type="a">
 <li>빈 집합을 만들고 <code>add()</code>로 10, 20, 30, 20을 추가한 뒤 결과를 출력하시오.</li>

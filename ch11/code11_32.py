@@ -4,8 +4,8 @@
 import numpy as np
 
 data = np.array([23, 45, 67, 7, 2, 30, 34, 82])
-print('Max :', data.max())
-print('Min :', data.min())
-print('Mean :', data.mean())
-print('Sum :', data.sum())
-print('Sort :', np.sort(data))
+print('최댓값:', data.max())
+print('최솟값:', data.min())
+print('평균:', data.mean())
+print('합계:', data.sum())
+print('정렬:', np.sort(data))

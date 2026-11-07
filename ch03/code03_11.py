@@ -4,4 +4,4 @@
 s = 0
 for i in range(1, 11):
     s = s + i
-print('Sum from 1 to 10:', s)
+print('1부터 10까지의 합:', s)

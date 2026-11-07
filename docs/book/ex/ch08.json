@@ -19,15 +19,15 @@
       "tests": [
         {
           "stdin": "10\n4\n",
-          "expected": "Enter first number: 10\nEnter second number: 4\nResult: 2.5\n프로그램 종료"
+          "expected": "첫 번째 수를 입력하세요: 10\n두 번째 수를 입력하세요: 4\n결과: 2.5\n프로그램 종료"
         },
         {
           "stdin": "7\n0\n",
-          "expected": "Enter first number: 7\nEnter second number: 0\nCannot divide by zero.\n프로그램 종료"
+          "expected": "첫 번째 수를 입력하세요: 7\n두 번째 수를 입력하세요: 0\n0으로 나눌 수 없습니다.\n프로그램 종료"
         },
         {
           "stdin": "abc\n",
-          "expected": "Enter first number: abc\nInvalid input.\n프로그램 종료"
+          "expected": "첫 번째 수를 입력하세요: abc\n잘못된 입력입니다.\n프로그램 종료"
         }
       ]
     },
@@ -36,8 +36,8 @@
       "type": "code",
       "tests": [
         {
-          "stdin": "Hong\n85\n90\n78\nKim\n92\n88\n95\n끝\n",
-          "expected": "Name: Hong\nKorean: 85\nEnglish: 90\nMath: 78\nName: Kim\nKorean: 92\nEnglish: 88\nMath: 95\nName: 끝\nstudents.txt saved."
+          "stdin": "홍길동\n85\n90\n78\n김철수\n92\n88\n95\n끝\n",
+          "expected": "이름을 입력하세요: 홍길동\n국어 점수를 입력하세요: 85\n영어 점수를 입력하세요: 90\n수학 점수를 입력하세요: 78\n이름을 입력하세요: 김철수\n국어 점수를 입력하세요: 92\n영어 점수를 입력하세요: 88\n수학 점수를 입력하세요: 95\n이름을 입력하세요: 끝\nstudents.txt에 저장했습니다."
         }
       ]
     },
@@ -46,8 +46,8 @@
       "type": "code",
       "tests": [
         {
-          "stdin": "1\nhello python\n1\nfile handling\n2\n3\n",
-          "expected": "1) Write 2) Read 3) Exit: 1\nMemo: hello python\n1) Write 2) Read 3) Exit: 1\nMemo: file handling\n1) Write 2) Read 3) Exit: 2\nhello python\nfile handling\n1) Write 2) Read 3) Exit: 3"
+          "stdin": "1\n안녕하세요 파이썬\n1\n파일 처리\n2\n3\n",
+          "expected": "1) 쓰기 2) 읽기 3) 종료: 1\n메모를 입력하세요: 안녕하세요 파이썬\n1) 쓰기 2) 읽기 3) 종료: 1\n메모를 입력하세요: 파일 처리\n1) 쓰기 2) 읽기 3) 종료: 2\n안녕하세요 파이썬\n파일 처리\n1) 쓰기 2) 읽기 3) 종료: 3"
         }
       ]
     },
@@ -84,11 +84,11 @@
       "tests": [
         {
           "stdin": "10\n",
-          "expected": "Enter a positive integer: 10\nYou entered: 10"
+          "expected": "양의 정수를 입력하세요: 10\n입력한 수: 10"
         },
         {
           "stdin": "-5\n",
-          "expected": "Enter a positive integer: -5\nNegative number is not allowed."
+          "expected": "양의 정수를 입력하세요: -5\n음수는 허용되지 않습니다."
         }
       ]
     },
@@ -98,11 +98,11 @@
       "tests": [
         {
           "stdin": "7\n",
-          "expected": "Enter a positive integer: 7\nYou entered: 7"
+          "expected": "양의 정수를 입력하세요: 7\n입력한 수: 7"
         },
         {
           "stdin": "-3\n",
-          "expected": "Enter a positive integer: -3\nNegative number is not allowed."
+          "expected": "양의 정수를 입력하세요: -3\n음수는 허용되지 않습니다."
         }
       ]
     },
@@ -112,7 +112,7 @@
       "tests": [
         {
           "stdin": "",
-          "expected": "Hong: 84.33\nKim: 91.67\nLee: 79.33"
+          "expected": "홍길동: 84.33\n김철수: 91.67\n이영희: 79.33"
         }
       ]
     },
@@ -126,8 +126,8 @@
       "type": "code",
       "tests": [
         {
-          "stdin": "Today was a good day\nI studied Python\nquit\n",
-          "expected": "Enter a sentence: Today was a good day\nEnter a sentence: I studied Python\nEnter a sentence: quit\nToday was a good day\nI studied Python\nTotal lines: 2"
+          "stdin": "오늘은 좋은 날이었다\n파이썬을 공부했다\n종료\n",
+          "expected": "문장을 입력하세요: 오늘은 좋은 날이었다\n문장을 입력하세요: 파이썬을 공부했다\n문장을 입력하세요: 종료\n오늘은 좋은 날이었다\n파이썬을 공부했다\n총 줄 수: 2"
         }
       ]
     }

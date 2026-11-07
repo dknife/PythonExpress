@@ -7,7 +7,7 @@
       "tests": [
         {
           "stdin": "",
-          "expected": "Odd list: [1, 3, 5, 7, 9]\nSum: 25, Average: 5.0"
+          "expected": "홀수 리스트: [1, 3, 5, 7, 9]\n합계: 25, 평균: 5.0"
         }
       ]
     },
@@ -27,11 +27,11 @@
       "tests": [
         {
           "stdin": "85\n92\n78\n95\n88\n",
-          "expected": "Student 1 score: 85\nStudent 2 score: 92\nStudent 3 score: 78\nStudent 4 score: 95\nStudent 5 score: 88\nHighest: 95, Lowest: 78, Average: 87.6"
+          "expected": "1번 학생의 점수를 입력하세요: 85\n2번 학생의 점수를 입력하세요: 92\n3번 학생의 점수를 입력하세요: 78\n4번 학생의 점수를 입력하세요: 95\n5번 학생의 점수를 입력하세요: 88\n최고점: 95, 최저점: 78, 평균: 87.6"
         },
         {
           "stdin": "70\n80\n90\n100\n60\n",
-          "expected": "Student 1 score: 70\nStudent 2 score: 80\nStudent 3 score: 90\nStudent 4 score: 100\nStudent 5 score: 60\nHighest: 100, Lowest: 60, Average: 80.0"
+          "expected": "1번 학생의 점수를 입력하세요: 70\n2번 학생의 점수를 입력하세요: 80\n3번 학생의 점수를 입력하세요: 90\n4번 학생의 점수를 입력하세요: 100\n5번 학생의 점수를 입력하세요: 60\n최고점: 100, 최저점: 60, 평균: 80.0"
         }
       ]
     },
@@ -41,7 +41,7 @@
       "tests": [
         {
           "stdin": "",
-          "expected": "Pro\ngram\ngnimmargorP"
+          "expected": "프로\n그래밍\n밍래그로프"
         }
       ]
     },
@@ -76,7 +76,7 @@
       "tests": [
         {
           "stdin": "",
-          "expected": "1. apple\n2. banana\n3. cherry\n4. date\n5. elderberry"
+          "expected": "1. 사과\n2. 바나나\n3. 체리\n4. 포도\n5. 멜론"
         }
       ]
     },

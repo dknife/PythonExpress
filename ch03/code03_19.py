@@ -8,5 +8,5 @@ for i in range(1, 101):
         even_sum += i
     else:
         odd_sum += i
-print(f'Sum of even numbers: {even_sum}')
-print(f'Sum of odd numbers: {odd_sum}')
+print(f'짝수의 합: {even_sum}')
+print(f'홀수의 합: {odd_sum}')

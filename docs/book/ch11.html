@@ -97,8 +97,8 @@
 def add(x, y):
     return x + y
 
-print('Sum of 100 and 200 :', add(100, 200))</code></pre>
-<pre class="termout">Sum of 100 and 200 : 300</pre>
+print('100과 200의 합:', add(100, 200))</code></pre>
+<pre class="termout">100과 200의 합: 300</pre>
 <div class="listing-caption">코드 11.1: 일반 함수로 두 수의 합 구하기</div>
 <p>이 함수는 <code>def</code> 키워드, 함수 이름 <code>add</code>, 매개변수 <code>(x, y)</code>, 그리고 <code>return x + y</code>로 구성된다.
 두 수를 더하는 매우 간단한 함수임에도 불구하고 함수 이름, 함수 몸체, 반환을 위한 키워드인 <code>return</code>까지 모든 문법을 지켜야 한다.
@@ -107,8 +107,8 @@ print('Sum of 100 and 200 :', add(100, 200))</code></pre>
 <p>이를 람다 함수로 바꾸면 한 줄로 표현할 수 있다.</p>
 <pre class="line-numbers"><code class="language-python"># 람다 함수를 이용한 덧셈
 add = lambda x, y: x + y
-print('Sum of 100 and 200 :', add(100, 200))</code></pre>
-<pre class="termout">Sum of 100 and 200 : 300</pre>
+print('100과 200의 합:', add(100, 200))</code></pre>
+<pre class="termout">100과 200의 합: 300</pre>
 <div class="listing-caption">코드 11.2: 람다 함수로 두 수의 합 구하기</div>
 <p>위 코드를 살펴보면 <code>lambda</code>라는 키워드로 람다 함수를 정의하는데, <code>x</code>, <code>y</code>를 매개변수로 받고 표현식 <code>x + y</code>를 반환하는 기능을 가지고 있다.
 이때 <code>def add(x, y):</code>와 같은 헤드 필요 없이 인자 두 개를 더하는 기능을 가지는 형태로 구성되어 있다.
@@ -133,8 +133,8 @@ print('Sum of 100 and 200 :', add(100, 200))</code></pre>
 <p>람다 함수는 변수에 할당하지 않고 즉석에서 사용할 수도 있다.
 이러한 방식을 인라인(inline) 호출이라 한다.</p>
 <pre class="line-numbers"><code class="language-python"># 변수에 할당하지 않고 바로 호출
-print('Sum of 100 and 200 :', (lambda x, y: x + y)(100, 200))</code></pre>
-<pre class="termout">Sum of 100 and 200 : 300</pre>
+print('100과 200의 합:', (lambda x, y: x + y)(100, 200))</code></pre>
+<pre class="termout">100과 200의 합: 300</pre>
 <div class="listing-caption">코드 11.5: 인라인 람다 함수 호출</div>
 <p>위 코드에서 <code>(lambda x, y: x + y)</code>가 함수 자체를 만들고, 바로 뒤의 <code>(100, 200)</code>이 인자를 전달하여 호출한다.
 그렇다면 여기서 의문이 든다. 두 수의 합을 표현하려면 <code>(lambda x, y : x + y)(100, 200)</code>과 같이 표현식을 길게 써서 익명 함수를 호출하여 구할 필요 없이 <code>100 + 200</code> 표현식을 이용하는 것이 훨씬 간단하지 않은가?
@@ -179,10 +179,10 @@ print('Sum of 100 and 200 :', (lambda x, y: x + y)(100, 200))</code></pre>
         return False
 
 ages = [34, 39, 20, 18, 13, 54]
-print('Adult list :')
+print('성년 나이 목록:')
 for a in filter(adult_func, ages): # filter() 함수로 필터링
     print(a, end = ' ')</code></pre>
-<pre class="termout">Adult list :
+<pre class="termout">성년 나이 목록:
 34 39 20 54</pre>
 <div class="listing-caption">코드 11.7: 일반 함수로 성인 나이 필터링</div>
 <p>이 기능을 구현하기 위하여 변수 <code>n</code>의 값이 성년의 나이인 19세 이상이면 <code>True</code>를, 19세 미만이면 <code>False</code>를 반환하는 <code>adult_func()</code> 함수를 생성하였다.
@@ -194,8 +194,8 @@ for a in filter(adult_func, ages): # filter() 함수로 필터링
 이와 같은 특징을 가진 <code>adult_func()</code> 함수는 다음과 같이 <code>lambda</code> 키워드를 사용해서 익명 함수로 만들어 코드를 단순하게 만들 수 있다.</p>
 <pre class="line-numbers"><code class="language-python">ages = [34, 39, 20, 18, 13, 54]
 adult_ages = list(filter(lambda x: x &gt;= 19, ages))
-print('Adult list :', adult_ages)</code></pre>
-<pre class="termout">Adult list : [34, 39, 20, 54]</pre>
+print('성년 나이 목록:', adult_ages)</code></pre>
+<pre class="termout">성년 나이 목록: [34, 39, 20, 54]</pre>
 <div class="listing-caption">코드 11.8: 람다와 filter로 성인 나이 필터링</div>
 <p>비록 코드는 단순하지만, 필터링 역할은 같기 때문에 결과는 이전과 동일한 것을 확인할 수 있다.
 이와 같이 람다 함수를 사용하면 간결하면서도 핵심적인 알고리즘에 집중할 수 있다는 장점이 있으며,
@@ -208,8 +208,8 @@ print('Adult list :', adult_ages)</code></pre>
 <p>음수 필터링에 람다 함수를 활용하는 예제도 살펴보자.</p>
 <pre class="line-numbers"><code class="language-python">n_list = [-30, 45, -5, -90, 20, 53, 77, -36]
 minus_list = list(filter(lambda x: x &lt; 0, n_list))
-print('Negative list :', minus_list)</code></pre>
-<pre class="termout">Negative list : [-30, -5, -90, -36]</pre>
+print('음수 목록:', minus_list)</code></pre>
+<pre class="termout">음수 목록: [-30, -5, -90, -36]</pre>
 <div class="listing-caption">코드 11.9: 람다로 음수만 걸러내기</div>
 <h3>map() 함수</h3>
 <p>다음은 <strong class="term-ko">맵 함수</strong><sup class="term">map function</sup>에 대해 알아보도록 하자.
@@ -287,12 +287,12 @@ print(s_list)</code></pre>
 <div class="listing"><pre class="line-numbers"><code class="language-python"># filter와 람다를 사용한 방법
 ages = [34, 39, 20, 18, 13, 54]
 adult_ages = list(filter(lambda x: x &gt;= 19, ages))
-print('Adult list :', adult_ages)</code></pre><div class="listing-caption">코드 11.18: filter와 람다 방식</div></div>
+print('성년 나이 목록:', adult_ages)</code></pre><div class="listing-caption">코드 11.18: filter와 람다 방식</div></div>
 <p>위의 코드는 다음과 같은 리스트 축약 표현을 사용할 수 있다.</p>
 <pre class="line-numbers"><code class="language-python"># 리스트 축약 표현을 사용한 방법
 ages = [34, 39, 20, 18, 13, 54]
-print('Adult list :', [x for x in ages if x &gt;= 19])</code></pre>
-<pre class="termout">Adult list : [34, 39, 20, 54]</pre>
+print('성년 나이 목록:', [x for x in ages if x &gt;= 19])</code></pre>
+<pre class="termout">성년 나이 목록: [34, 39, 20, 54]</pre>
 <div class="listing-caption">코드 11.19: 리스트 축약 표현 방식</div>
 <p>이러한 리스트 축약 표현은 <code>for x in ages</code>라는 반복문을 통해 할당된 각각의 <code>x</code>에 대하여 <code>if</code> 키워드 다음에 나타나는 <code>x &gt;= 19</code>라는 조건식 필터를 적용하였으며, 이에 따라 다음과 같이 <code>x</code> 값이 19 이상인 값만 반환된다.</p>
 <p>이제 이 기능을 활용할 수 있는 예제를 살펴보자.
@@ -310,8 +310,8 @@ print('Adult list :', [x for x in ages if x &gt;= 19])</code></pre>
 &gt;&gt;&gt; [x * x for x in range(10) if x % 2 == 1]
 [1, 9, 25, 49, 81]</pre>
 <p>리스트 축약 표현은 매우 강력해서 다음과 같이 여러 개의 정수 문자열을 입력 받아 이를 <code>int()</code> 함수를 사용해서 정수형 값을 가진 리스트로 변환하는 것도 손쉽게 할 수 있다.</p>
-<pre class="pyout">&gt;&gt;&gt; s = input('Enter 5 integers : ').split()
-Enter 5 integers : 10 20 30 40 50
+<pre class="pyout">&gt;&gt;&gt; s = input('정수 5개를 입력하세요: ').split()
+정수 5개를 입력하세요: 10 20 30 40 50
 &gt;&gt;&gt; lst = [int(x) for x in s]
 &gt;&gt;&gt; lst
 [10, 20, 30, 40, 50]</pre>
@@ -393,7 +393,7 @@ print('itemsize:', a.itemsize) # 원소 하나의 바이트 크기</code></pre>
 ndim : 1
 dtype : int64
 size : 3
-itemsize : 8</pre>
+itemsize: 8</pre>
 <div class="listing-caption">코드 11.22: ndarray의 주요 속성 확인</div>
 <p>우선 <code>ndarray</code>에는 <code>shape</code>이라는 속성이 있는데 이는 배열의 차원 정보를 가지고 있다.
 1차원 배열은 <code>(3,)</code>와 같은 값으로 표시되며, 3행 4열의 원소를 가지는 2차원 배열이 있을 경우 <code>(3, 4)</code>라는 <code>shape</code> 값으로 표시된다.
@@ -465,12 +465,12 @@ start = time.time()
 result = np_arr ** 2
 np_time = time.time() - start
 
-print(f'List comprehension : {py_time:.4f} sec')
-print(f'NumPy vectorization: {np_time:.4f} sec')
-print(f'NumPy is {py_time/np_time:.1f}x faster')</code></pre>
-<pre class="termout">List comprehension : 0.1852 sec
-NumPy vectorization: 0.0021 sec
-NumPy is 88.2x faster</pre>
+print(f'리스트 축약 표현: {py_time:.4f}초')
+print(f'넘파이 벡터화 연산: {np_time:.4f}초')
+print(f'넘파이가 {py_time/np_time:.1f}배 빠릅니다.')</code></pre>
+<pre class="termout">리스트 축약 표현: 0.1852초
+넘파이 벡터화 연산: 0.0021초
+넘파이가 88.2배 빠릅니다.</pre>
 <div class="listing-caption">코드 11.24: 리스트와 넘파이의 실행 시간 비교</div>
 <p>위 실행 결과에서 볼 수 있듯이, 100만 개의 원소에 대한 제곱 연산에서 넘파이 배열은 파이썬 리스트 축약 표현보다 약 88배 빠르다(실행 환경에 따라 차이가 있을 수 있다).
 이러한 성능 차이는 데이터의 크기가 커질수록 더욱 극적으로 벌어지며, 이것이 데이터 과학과 머신러닝에서 넘파이가 필수적인 이유이다.</p>
@@ -506,10 +506,10 @@ print(student_sum)
 student_mid = np.array([70, 85, 90, 75]) # 중간시험 점수
 student_fin = np.array([90, 65, 70, 85]) # 기말시험 점수
 student_sum = student_mid + student_fin
-print('Total :', student_sum)
-print('Average :', student_sum / 2)</code></pre>
-<pre class="termout">Total : [160 150 160 160]
-Average : [80. 75. 80. 80.]</pre>
+print('합계:', student_sum)
+print('평균:', student_sum / 2)</code></pre>
+<pre class="termout">합계: [160 150 160 160]
+평균: [80. 75. 80. 80.]</pre>
 <div class="listing-caption">코드 11.26: 넘파이 배열의 벡터화 연산</div>
 <p>넘파이의 다차원 배열에 대하여 덧셈 연산을 수행하면 배열의 원소 중 첫 원소인 70 + 90의 합 160, 85와 65의 합 150, 90과 70의 합 160, 75와 85의 합 160이 <code>student_sum</code>의 값이 되는 것을 볼 수 있다.
 이와 같이 원소끼리의 연산이 이루어지는 것을 <strong class="term-ko">벡터화 연산</strong><sup class="term">vectorization</sup>이라고 한다.
@@ -527,10 +527,10 @@ Average : [80. 75. 80. 80.]</pre>
 sal = np.array([300, 360, 400, 380]) # 사원 4명의 급여
 sal_bonus = sal + 100 # 각 급여에 상여금 100 더하기
 sal_inc = sal * 1.2 # 각 급여를 20% 인상
-print('After bonus:', sal_bonus)
-print('After 20% raise:', sal_inc)</code></pre>
-<pre class="termout">After bonus: [400 460 500 480]
-After 20% raise: [360. 432. 480. 456.]</pre>
+print('상여금 지급 후:', sal_bonus)
+print('20% 인상 후:', sal_inc)</code></pre>
+<pre class="termout">상여금 지급 후: [400 460 500 480]
+20% 인상 후: [360. 432. 480. 456.]</pre>
 <div class="listing-caption">코드 11.27: 브로드캐스팅으로 보너스와 인상 계산</div>
 <h3>2차원 배열의 연산</h3>
 <p>이번에는 2행 2열의 2차원 행렬을 다루어 보는 예제이다.
@@ -617,16 +617,16 @@ print(b[0:2, 1:3]) # 0~1행, 1~2열 부분 배열</code></pre>
 <pre class="line-numbers"><code class="language-python">import numpy as np
 
 data = np.array([23, 45, 67, 7, 2, 30, 34, 82])
-print('Max :', data.max())
-print('Min :', data.min())
-print('Mean :', data.mean())
-print('Sum :', data.sum())
-print('Sort :', np.sort(data))</code></pre>
-<pre class="termout">Max : 82
-Min : 2
-Mean : 36.25
-Sum : 290
-Sort : [ 2 7 23 30 34 45 67 82]</pre>
+print('최댓값:', data.max())
+print('최솟값:', data.min())
+print('평균:', data.mean())
+print('합계:', data.sum())
+print('정렬:', np.sort(data))</code></pre>
+<pre class="termout">최댓값: 82
+최솟값: 2
+평균: 36.25
+합계: 290
+정렬: [ 2 7 23 30 34 45 67 82]</pre>
 <div class="listing-caption">코드 11.32: 배열의 최댓값·평균·합 메소드</div>
 <p>만일 2차원 이상의 배열이라면 이를 1차원 배열로 변환할 필요성도 있는데 이때 사용하는 메소드가 바로 <code>flatten()</code> 메소드이다.
 다음 실습 코드는 <code>[[1, 1], [2, 2], [3, 3]]</code>의 2차원 배열을 <code>[1, 1, 2, 2, 3, 3]</code>과 같은 1차원 배열로 만들어 준다.
@@ -660,10 +660,10 @@ print(evens)         # [8, 4, 22]</code></pre></li>
 <p><pre class="line-numbers"><code class="language-python">import numpy as np
 
 a = np.arange(1, 11)      # [ 1  2  3  4  5  6  7  8  9 10]
-print('Mean :', a.mean())
-print('Sum  :', a.sum())
-print('Std  :', a.std())
-print('Max  :', a.max())</code></pre></li>
+print('평균:', a.mean())
+print('합계:', a.sum())
+print('표준편차:', a.std())
+print('최댓값:', a.max())</code></pre></li>
 <li>넘파이 브로드캐스팅을 활용하여, 세 학생의 국어·영어·수학 점수가 담긴 \(3 \times 3\) 배열에서 모든 점수에 5점씩 가산한 결과를 출력하시오.</p>
 <p><pre class="line-numbers"><code class="language-python">import numpy as np
 
@@ -674,7 +674,7 @@ scores = np.array([
 ])
 boosted = scores + 5           # 브로드캐스팅
 print(boosted)
-print('Average per student :', boosted.mean(axis=1))</code></pre></li>
+print('학생별 평균:', boosted.mean(axis=1))</code></pre></li>
 <li><strong>넘파이의 위력  —  배열 연산 vs 원소별 순회</strong>: 1,000만 개의 수에 대해 같은 계산(\(y = x^2 + 2x + 1\))을 수행할 때, 파이썬 리스트 컴프리헨션과 넘파이의 벡터 연산이 얼마나 차이가 나는지 <code>time.time()</code>으로 측정해 비교하시오. 넘파이가 수십 배 빠르다는 점을 직접 확인할 수 있다.</p>
 <pre class="line-numbers"><code class="language-python">import numpy as np
 import time
@@ -692,9 +692,9 @@ start = time.time()
 ys_np = arr * arr + 2 * arr + 1
 t_np = time.time() - start
 
-print(f'Python list  : {t_py:.3f} sec')
-print(f'NumPy array  : {t_np:.3f} sec')
-print(f'Speedup      : {t_py / t_np:.1f}x')</code></pre>
+print(f'파이썬 리스트: {t_py:.3f}초')
+print(f'넘파이 배열: {t_np:.3f}초')
+print(f'속도 향상: {t_py / t_np:.1f}배')</code></pre>
 <p>같은 결과를 만드는데도 넘파이는 한 줄의 <strong>벡터화 연산</strong>으로 모든 원소를 C 수준에서 한꺼번에 처리하므로, 파이썬 인터프리터가 원소를 하나씩 돌리는 리스트 컴프리헨션보다 수십 배 빠르다.
 이 차이는 데이터의 크기가 커질수록 더 커진다  —  머신러닝·과학 계산에서 넘파이가 사실상 표준이 된 이유이다.</li>
 </ol></p></div></p>

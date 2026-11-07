@@ -1,8 +1,8 @@
 # 알짜 파이썬 (강영민·박동규, 생능출판사) — 제3장 조건문과 반복문
 # 코드 3.6: if-else 문을 이용한 짝수/홀수 판별  —  if_else_even_test.py
 
-num = int(input('Enter a positive integer: '))
+num = int(input('양의 정수를 입력하세요: '))
 if num % 2 == 0:
-    print(num, 'is even.')
+    print(num, ': 짝수입니다.')
 else:
-    print(num, 'is odd.')
+    print(num, ': 홀수입니다.')

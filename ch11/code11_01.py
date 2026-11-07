@@ -5,4 +5,4 @@
 def add(x, y):
     return x + y
 
-print('Sum of 100 and 200 :', add(100, 200))
+print('100과 200의 합:', add(100, 200))

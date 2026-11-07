@@ -17,7 +17,7 @@
       "tests": [
         {
           "stdin": "",
-          "expected": "Area of circle with radius 10 is 314.0, circumference is 62.8\n"
+          "expected": "반지름 10인 원의 면적은 314.0, 둘레는 62.8입니다.\n"
         }
       ]
     },
@@ -27,7 +27,7 @@
       "tests": [
         {
           "stdin": "",
-          "expected": "Max: 7, Min: 1\n"
+          "expected": "최댓값: 7, 최솟값: 1\n"
         }
       ]
     },
@@ -63,7 +63,7 @@
       "tests": [
         {
           "stdin": "",
-          "expected": "Hello, Alice!\nHi, Bob!\n"
+          "expected": "안녕하세요, 철수님!\n반갑습니다, 영희님!\n"
         }
       ]
     },
@@ -73,7 +73,7 @@
       "tests": [
         {
           "stdin": "",
-          "expected": "Min: 10, Max: 30, Avg: 20.0\n"
+          "expected": "최솟값: 10, 최댓값: 30, 평균: 20.0\n"
         }
       ]
     },
@@ -93,11 +93,11 @@
       "tests": [
         {
           "stdin": "36.5\n",
-          "expected": "Enter Celsius: 36.5\nFahrenheit: 97.7\n"
+          "expected": "섭씨 온도를 입력하세요: 36.5\n화씨 온도: 97.7\n"
         },
         {
           "stdin": "100\n",
-          "expected": "Enter Celsius: 100\nFahrenheit: 212.0\n"
+          "expected": "섭씨 온도를 입력하세요: 100\n화씨 온도: 212.0\n"
         }
       ]
     },
@@ -122,7 +122,7 @@
       "tests": [
         {
           "stdin": "",
-          "expected": "Sum: 100, Average: 25.0\n"
+          "expected": "합계: 100, 평균: 25.0\n"
         }
       ]
     },
@@ -132,15 +132,15 @@
       "tests": [
         {
           "stdin": "87\n",
-          "expected": "Enter score: 87\nGrade: B\n"
+          "expected": "점수를 입력하세요: 87\n학점: B\n"
         },
         {
           "stdin": "92\n",
-          "expected": "Enter score: 92\nGrade: A\n"
+          "expected": "점수를 입력하세요: 92\n학점: A\n"
         },
         {
           "stdin": "55\n",
-          "expected": "Enter score: 55\nGrade: F\n"
+          "expected": "점수를 입력하세요: 55\n학점: F\n"
         }
       ]
     }
