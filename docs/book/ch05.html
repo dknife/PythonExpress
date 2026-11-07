@@ -284,15 +284,15 @@ print('입력한 이름:', names)</code></pre>
 <div class="listing-caption">코드 5.17: input으로 리스트 구성하기</div>
 <p>위 프로그램은 빈 리스트 <code>names</code>를 만든 뒤, 반복문 안에서 <code>input()</code>으로 이름을 입력받고, <code>append()</code>로 리스트에 추가하는 과정을 3번 반복한다. 이 패턴은 "사용자로부터 여러 개의 데이터를 수집하는" 상황에서 매우 자주 사용되므로 잘 기억해 두자.</p>
 <div class="box caution"><span class="chip">주의</span><p>리스트를 다른 변수에 할당할 때 <code>b = a</code>와 같이 하면 리스트가 복사되는 것이 <strong>아니라</strong>, 같은 리스트를 가리키는 또 다른 참조가 만들어진다. 따라서 <code>b</code>를 통해 리스트를 수정하면 <code>a</code>에서도 변경된 내용이 보인다. 진정한 복사본을 만들려면 <code>b = a.copy()</code> 또는 <code>b = a[:]</code>와 같이 해야 한다.</p>
-<pre class="pyout">&gt;&gt;&gt; a = [1, 2, 3]
-&gt;&gt;&gt; b = a # b는 같은 리스트를 가리키는 참조
-&gt;&gt;&gt; b.append(4)
-&gt;&gt;&gt; print(a)
-[1, 2, 3, 4]
-&gt;&gt;&gt; c = a.copy() # c는 진정한 복사본
-&gt;&gt;&gt; c.append(5)
-&gt;&gt;&gt; print(a)
-[1, 2, 3, 4]</pre></div>
+<pre class="pyout pyrepl"><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">a</span> <span class="c1"># b는 같은 리스트를 가리키는 참조</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="go">[1, 2, 3, 4]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="c1"># c는 진정한 복사본</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="go">[1, 2, 3, 4]</span></pre></div>
 <div class="box keypoint"><span class="chip">요점</span><p><code>for</code> 문으로 리스트의 원소를 하나씩 순회할 수 있으며, <code>enumerate()</code>를 사용하면 인덱스와 값을 동시에 얻을 수 있다. <code>append()</code>는 리스트 끝에 원소를 추가하고, <code>del</code>은 인덱스로 삭제하며, <code>remove()</code>는 값으로 삭제한다. 빈 리스트를 만든 뒤 반복문에서 <code>append()</code>로 원소를 추가하는 패턴은 동적 데이터 수집에 널리 사용된다.</p></div>
 <h2 id="sec4">5.4 리스트 메소드와 슬라이싱</h2>
 <p>앞 절에서 <code>append()</code>, <code>remove()</code> 같은 리스트 메소드 몇 가지를 이미 사용해 보았다. 이번 절에서는 리스트가 제공하는 더 다양한 메소드를 체계적으로 정리하고, 리스트의 강력한 기능 중 하나인 <strong>슬라이싱</strong>(slicing)을 배운다. 슬라이싱은 리스트에서 여러 원소를 한꺼번에 추출하는 기능으로, 데이터 처리에서 매우 빈번하게 사용된다.</p>

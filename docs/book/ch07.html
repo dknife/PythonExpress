@@ -446,19 +446,19 @@ print('이번 주 로또 번호:', lotto)</code></pre>
 <p><code>pip</code>은 파이썬 패키지를 설치하고 관리하는 명령줄 도구이다.
 파이썬을 설치하면 함께 제공된다.
 터미널(명령 프롬프트)에서 다음과 같이 사용한다.</p>
-<pre class="pyout">pip install package_name # 패키지 설치
-pip uninstall package_name # 패키지 제거
-pip list # 설치된 패키지 목록 보기
-pip install --upgrade package # 최신 버전으로 업그레이드</pre>
+<pre class="pyout pyrepl shell">pip<span class="w"> </span>install<span class="w"> </span>package_name<span class="w"> </span><span class="c1"># 패키지 설치</span>
+pip<span class="w"> </span>uninstall<span class="w"> </span>package_name<span class="w"> </span><span class="c1"># 패키지 제거</span>
+pip<span class="w"> </span>list<span class="w"> </span><span class="c1"># 설치된 패키지 목록 보기</span>
+pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>package<span class="w"> </span><span class="c1"># 최신 버전으로 업그레이드</span></pre>
 <p>예를 들어 데이터 분석에 많이 쓰이는 <code>numpy</code> 패키지를 설치하려면 다음과 같이 입력한다.</p>
-<pre class="pyout">pip install numpy</pre>
+<pre class="pyout pyrepl shell">pip<span class="w"> </span>install<span class="w"> </span>numpy</pre>
 <div class="box note"><span class="chip">잠깐</span><span class="box-title"><code>externally-managed-environment</code> 오류가 난다면</span><p>최근 파이썬 배포판(예: Homebrew, Ubuntu 24.04 이상)에서는 시스템 파이썬에 직접 <code>pip install</code>을 실행하면 <code>error: externally-managed-environment</code> 오류가 발생한다.
 이는 시스템 파이썬을 보호하기 위한 정책(PEP 668)이며, 오류가 아니다.
 이런 경우 아래처럼 <strong class="term-ko">가상환경</strong><sup class="term">virtual environment</sup>을 먼저 만들어 활성화한 뒤 그 안에서 <code>pip install</code>을 실행하면 된다. 가상환경의 자세한 설명은 이 절 뒤쪽 <strong>가상환경</strong> 항목에서 다룬다.</p>
-<pre class="pyout">python3 -m venv myenv # 가상환경 생성
-source myenv/bin/activate # macOS/Linux
-myenv\Scripts\activate # Windows
-pip install numpy # 가상환경 안에 설치</pre></div>
+<pre class="pyout pyrepl shell">python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>myenv<span class="w"> </span><span class="c1"># 가상환경 생성</span>
+<span class="nb">source</span><span class="w"> </span>myenv/bin/activate<span class="w"> </span><span class="c1"># macOS/Linux</span>
+myenv<span class="se">\S</span>cripts<span class="se">\a</span>ctivate<span class="w"> </span><span class="c1"># Windows</span>
+pip<span class="w"> </span>install<span class="w"> </span>numpy<span class="w"> </span><span class="c1"># 가상환경 안에 설치</span></pre></div>
 <figure class="fig">
 <img class="tikz" src="img/fig/ch07/ch07_fig03.svg" alt="figure">
 <p><figcaption>그림 7.3: pip 패키지 설치 과정</figcaption></figure></p>
@@ -490,10 +490,10 @@ print(a.sum()) # 15 -- 합계</code></pre><div class="listing-caption">코드 7.
 <p>이때 <strong class="term-ko">가상환경</strong><sup class="term">virtual environment</sup>을 사용하면
 프로젝트별로 독립적인 패키지 환경을 만들 수 있다.
 가상환경은 각 프로젝트에 전용 "작업 공간"을 만들어 주는 것과 같다.</p>
-<pre class="pyout">python -m venv myenv # myenv라는 이름의 가상환경 생성
-source myenv/bin/activate # 가상환경 활성화 (macOS/Linux)
-myenv\Scripts\activate # 가상환경 활성화 (Windows)
-deactivate # 가상환경 비활성화</pre>
+<pre class="pyout pyrepl shell">python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>myenv<span class="w"> </span><span class="c1"># myenv라는 이름의 가상환경 생성</span>
+<span class="nb">source</span><span class="w"> </span>myenv/bin/activate<span class="w"> </span><span class="c1"># 가상환경 활성화 (macOS/Linux)</span>
+myenv<span class="se">\S</span>cripts<span class="se">\a</span>ctivate<span class="w"> </span><span class="c1"># 가상환경 활성화 (Windows)</span>
+deactivate<span class="w"> </span><span class="c1"># 가상환경 비활성화</span></pre>
 <p>가상환경을 활성화한 상태에서 <code>pip install</code>을 실행하면 패키지가 해당 가상환경에만 설치된다.
 따라서 다른 프로젝트에 영향을 주지 않으며, 프로젝트가 끝나면 가상환경 폴더를 삭제하면
 깔끔하게 정리된다.

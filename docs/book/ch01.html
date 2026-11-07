@@ -237,18 +237,18 @@ plt.imshow(img)</code></pre>
 명령을 입력하고 나서 키보드의 엔터(Enter) 키를 누르면 된다.
 입력된 명령이 인터프리터에 전달되고 인터프리터는 이를 해석하여 실행할 것이다.
 그러면 프롬프트 아래에 <code>Hello World!</code>라는 문자가 출력될 것이다.</p>
-<pre class="pyout">&gt;&gt;&gt; print('Hello World!')
-Hello World!</pre>
+<pre class="pyout pyrepl"><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hello World!&#39;</span><span class="p">)</span>
+<span class="go">Hello World!</span></pre>
 <p><code>print()</code> 함수는 괄호 안의 내용을 화면에 출력하는 파이썬의
 <strong class="term-ko">내장 함수</strong><sup class="term">built-in function</sup>이다.
 <code>print()</code> 함수는 괄호 안의 작은따옴표나 큰따옴표 내부에 있는 문자열이나 따옴표 외부의 숫자 등을 출력하는 역할을 한다. 작은따옴표(<code>'</code>) 또는 큰따옴표(<code>"</code>)로 감싼 문자의 나열을 <strong class="term-ko">문자열</strong><sup class="term">string</sup>이라 하며, <code>print()</code> 함수는 이 문자열을 화면에 출력한다.</p>
 <p>만일 <code>print('Hello World!')</code> 대신 <code>print("Hello World!")</code>와 같이 큰따옴표를 <code>print()</code> 함수 내에 넣어도 출력의 결과는 같을 것이다.</p>
-<pre class="pyout">&gt;&gt;&gt; print("Hello World!")
-Hello World!</pre>
+<pre class="pyout pyrepl"><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello World!&quot;</span><span class="p">)</span>
+<span class="go">Hello World!</span></pre>
 <p>주의할 점은 <code>print('Hello World!")</code>와 같이 작은따옴표로 시작해서 큰따옴표로 끝나거나, 반대의 경우에는 잘못된 명령으로 인식해서 오류가 발생한다는 것이다. 이때 파이썬 인터프리터는 다음과 같은 오류 메시지를 출력한다. 문자열을 따옴표로 시작해서 따옴표로 닫았지만, 시작은 작은따옴표, 끝은 큰따옴표로 했기 때문에 작은따옴표로 시작한 문자열이 끝나지 않았다고 판단하기 때문이다.</p>
-<pre class="pyout pyerr">&gt;&gt;&gt; print('Hello World!")
-...
-SyntaxError: incomplete input</pre>
+<pre class="pyout pyerr pyrepl"><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hello World!&quot;)</span>
+<span class="gp">...</span>
+<span class="go">SyntaxError: incomplete input</span></pre>
 <p>파이썬 대화창은 오류가 날 때 오류가 발생한 문장과 함께 오류의 내용을 출력해 준다. 위의 오류는 <code>SyntaxError: incomplete input</code>이다. 우리말로 해석하자면 구문 오류(Syntax Error)가 발생하였으며, "완전하지 않은 입력이 나타났다"라는 의미이다. 다소 축약된 그리고 익숙하지 않은 용어가 등장하기 때문에 처음 파이썬을 접하는 개발자들은 당황할 수 있다. 그러나 그 위의 줄에 분홍색 문자가 오류가 발생한 곳을 정확하게 알려주므로 당황하지 않아도 된다. 앞으로도 이러한 오류를 수없이 만나면서 프로그래밍 실력이 늘게 될 것이다. 오류에 친숙해지도록 하자.</p>
 <h3>파이썬의 오류와 대처 방법</h3>
 <p>프로그램을 작성할 때는 이와 같은 오류가 매우 빈번하게 나타나므로 오류에 당황하지 말고 번역기가 제공하는 오류 메시지를 차근차근 읽고 수정해서 다시 작동시켜보면 된다. 파이썬에서 자주 만나게 되는 오류의 종류를 미리 알아두면 도움이 된다.</p>
@@ -265,14 +265,14 @@ SyntaxError: incomplete input</pre>
 <h3>대화식 모드에서 간단한 계산</h3>
 <p>대화식 모드에서는 파이썬을 계산기처럼 사용할 수도 있다.
 프롬프트에 수식을 입력하고 엔터 키를 누르면 즉시 계산 결과가 표시된다.</p>
-<pre class="pyout">&gt;&gt;&gt; 10 + 20
-30
-&gt;&gt;&gt; 3 * 5
-15
-&gt;&gt;&gt; 100 / 4
-25.0
-&gt;&gt;&gt; 2 ** 10
-1024</pre>
+<pre class="pyout pyrepl"><span class="gp">&gt;&gt;&gt; </span><span class="mi">10</span> <span class="o">+</span> <span class="mi">20</span>
+<span class="go">30</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mi">3</span> <span class="o">*</span> <span class="mi">5</span>
+<span class="go">15</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mi">100</span> <span class="o">/</span> <span class="mi">4</span>
+<span class="go">25.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mi">2</span> <span class="o">**</span> <span class="mi">10</span>
+<span class="go">1024</span></pre>
 <p>위 예제에서 <code>+</code>는 덧셈, <code>*</code>는 곱셈, <code>/</code>는 나눗셈,
 <code>**</code>는 거듭제곱 연산자이다. 특히 나눗셈 연산자 <code>/</code>를 사용하면 결과가 항상 소수점을 포함한 실수형(<code>float</code>)으로 나온다는 점에 주목하자. <code>100 / 4</code>의 결과가 <code>25</code>가 아닌 <code>25.0</code>으로 출력되는 것이 바로 이 때문이다.
 연산자에 대한 자세한 내용은 다음 장에서 살펴볼 것이다.</p>
@@ -305,17 +305,17 @@ Let us start programming!</pre>
 print('나이:', 20)
 print('취미:', '독서')</code></pre></li>
 <li>대화식 모드에서 <code>print()</code> 함수 앞에 의도적으로 공백을 넣어 실행해 보자. 어떤 오류가 발생하는지 오류 메시지를 읽어 보자.</p>
-<p><pre class="pyout pyerr">&gt;&gt;&gt;   print('안녕하세요')
-  File "&lt;stdin&gt;", line 1
-    print('안녕하세요')
-IndentationError: unexpected indent</pre></li>
+<p><pre class="pyout pyerr pyrepl"><span class="gp">&gt;&gt;&gt; </span>  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;안녕하세요&#39;</span><span class="p">)</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>
+<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;안녕하세요&#39;</span><span class="p">)</span>
+<span class="gr">IndentationError</span>: <span class="n">unexpected indent</span></pre></li>
 <li>대화식 모드에서 <code>type()</code> 함수를 이용하여 숫자, 소수, 문자열의 자료형이 각각 무엇으로 표시되는지 확인해 보자.</p>
-<p><pre class="pyout">&gt;&gt;&gt; print(type(10))
-&lt;class 'int'&gt;
-&gt;&gt;&gt; print(type(3.14))
-&lt;class 'float'&gt;
-&gt;&gt;&gt; print(type('안녕하세요'))
-&lt;class 'str'&gt;</pre></li>
+<p><pre class="pyout pyrepl"><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+<span class="go">&lt;class &#39;int&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="mf">3.14</span><span class="p">))</span>
+<span class="go">&lt;class &#39;float&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="s1">&#39;안녕하세요&#39;</span><span class="p">))</span>
+<span class="go">&lt;class &#39;str&#39;&gt;</span></pre></li>
 <li>스크립트 파일 <code>welcome.py</code>를 만들어 간단한 환영 메시지를 3줄로 출력하는 프로그램을 작성해 보자. 첫 줄은 인사말, 둘째 줄은 오늘의 날짜 안내, 셋째 줄은 격려의 문구를 자유롭게 작성하자.</p>
 <p><pre class="line-numbers"><code class="language-python">print('=' * 40)
 print('파이썬 프로그래밍에 오신 것을 환영합니다!')
@@ -345,16 +345,16 @@ print('=' * 40)</code></pre></li>
 </ol></li>
 <li class="ex-item" data-ex="2"><span class="diff"><span class="d1">★</span></span>  파이썬 언어의 특징을 3가지 이상 쓰시오.</li>
 <li class="ex-item" data-ex="3"><span class="diff"><span class="d1">★</span></span>  다음 코드를 대화식 모드에서 입력했을 때 출력 결과를 쓰시오.
-<pre class="pyout">&gt;&gt;&gt; print('Hello', 'Python', '!!')</pre></li>
+<pre class="pyout pyrepl"><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hello&#39;</span><span class="p">,</span> <span class="s1">&#39;Python&#39;</span><span class="p">,</span> <span class="s1">&#39;!!&#39;</span><span class="p">)</span></pre></li>
 <li class="ex-item" data-ex="4"><span class="diff"><span class="d1">★</span></span>  다음 코드를 실행하면 오류가 발생한다. 오류의 원인을 설명하고 올바르게 수정하시오.
-<pre class="pyout">&gt;&gt;&gt; Print('안녕하세요')</pre></li>
+<pre class="pyout pyrepl"><span class="gp">&gt;&gt;&gt; </span><span class="n">Print</span><span class="p">(</span><span class="s1">&#39;안녕하세요&#39;</span><span class="p">)</span></pre></li>
 <li class="ex-item" data-ex="5"><span class="diff"><span class="d2">★★</span></span>  자신의 이름, 학과, 학번을 각 줄에 출력하는 스크립트 파일 <code>student_info.py</code>를 작성하시오.
 <pre class="termout">이름: 홍길동
 학과: 컴퓨터공학과
 학번: 20250001</pre></li>
 <li class="ex-item" data-ex="6"><span class="diff"><span class="d2">★★</span></span>  대화식 실행 모드와 스크립트 실행 모드의 차이점을 3가지 이상 비교하여 설명하시오.</li>
 <li class="ex-item" data-ex="7"><span class="diff"><span class="d1">★</span></span>  다음 코드를 실행하면 오류가 발생한다. 오류의 종류를 쓰고 원인을 설명하시오.
-<pre class="pyout">&gt;&gt;&gt; print('Hello World!)</pre></li>
+<pre class="pyout pyrepl"><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hello World!)</span></pre></li>
 <li class="ex-item" data-ex="8"><span class="diff"><span class="d2">★★</span></span>  다음 각 코드의 실행 결과를 쓰시오. 오류가 발생하면 오류의 종류를 적으시오.
 <ol type="a">
 <li><code>print(3 + 4 * 2)</code></li>
@@ -371,8 +371,8 @@ print('=' * 40)</code></pre></li>
 <li>파이썬은 대소문자를 한다.</li>
 </ol></li>
 <li class="ex-item" data-ex="11"><span class="diff"><span class="d1">★</span></span>  다음 코드의 출력 결과를 쓰시오.
-<pre class="pyout">&gt;&gt;&gt; print('파이썬\n프로그래밍')
-&gt;&gt;&gt; print('이름:\t홍길동')</pre></li>
+<pre class="pyout pyrepl"><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;파이썬</span><span class="se">\n</span><span class="s1">프로그래밍&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;이름:</span><span class="se">\t</span><span class="s1">홍길동&#39;</span><span class="p">)</span></pre></li>
 <li class="ex-item" data-ex="12"><span class="diff"><span class="d1">★</span></span>  대화식 모드에서 다음 수식을 입력했을 때의 결과를 각각 쓰시오.
 <ol type="a">
 <li><code>17 // 5</code></li>

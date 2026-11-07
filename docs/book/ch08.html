@@ -328,11 +328,11 @@ divide(100, 0) 호출:
 파이썬에서는 <code>raise</code> 문을 이용하여 예외를 강제로 발생시킬 수가 있다.
 즉, 파이썬에서 제공하는 예외가 발생하는 상황이 있는 경우 이외에도
 사용자가 직접 <code>raise</code>를 이용하여 다양한 예외를 발생시킬 수 있다.</p>
-<pre class="pyout pyerr">&gt;&gt;&gt; raise Exception('예외 발생')
-Traceback (most recent call last):
-  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
-    raise Exception('예외 발생')
-Exception: 예외 발생</pre>
+<pre class="pyout pyerr pyrepl"><span class="gp">&gt;&gt;&gt; </span><span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;예외 발생&#39;</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="w">    </span><span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;예외 발생&#39;</span><span class="p">)</span>
+<span class="gr">Exception</span>: <span class="n">예외 발생</span></pre>
 <p>위의 코드에서 <code>raise</code> 문을 사용하여 <code>Exception</code> 객체 생성자를 호출하였으며,
 문자열을 인자로 넣어 이 문자열을 출력값으로 나타낼 수 있다.
 <code>raise</code> 문에 의해서 <code>Exception</code>이 발생되어 파이썬 인터프리터 프로그램이

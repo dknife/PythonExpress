@@ -77,42 +77,42 @@
 <code>C:\Users\&lt;사용자&gt;\AppData\Local\Programs\Python\Python312</code> 경로와 그 아래 <code>Scripts</code> 경로를 추가한다.</p>
 <h3>여러 파이썬 버전 충돌 — <code>py launcher</code> 사용</h3>
 <p>Anaconda·VS Code·또 다른 인스톨러로 여러 버전이 깔린 경우 <code>python</code> 명령이 어느 버전을 가리키는지 헷갈린다. Windows에는 <strong class="term-ko">py launcher</strong><sup class="term">Python Launcher for Windows</sup>가 함께 설치되므로 다음과 같이 명시적으로 호출한다.</p>
-<pre class="pyout">py -3.12 --version       # 3.12 버전으로 실행
-py -3.11 my_script.py    # 3.11 버전으로 스크립트 실행
-py -0                    # 설치된 버전 목록</pre>
+<pre class="pyout pyrepl shell">py<span class="w"> </span>-3.12<span class="w"> </span>--version<span class="w">       </span><span class="c1"># 3.12 버전으로 실행</span>
+py<span class="w"> </span>-3.11<span class="w"> </span>my_script.py<span class="w">    </span><span class="c1"># 3.11 버전으로 스크립트 실행</span>
+py<span class="w"> </span>-0<span class="w">                    </span><span class="c1"># 설치된 버전 목록</span></pre>
 <h2 id="sec2">A.2 macOS 환경</h2>
 <h3>시스템 파이썬과 사용자 파이썬 구분 — Homebrew 권장</h3>
 <p>macOS에는 시스템 파이썬(<code>/usr/bin/python3</code>)이 함께 설치되어 있지만, 시스템 도구가 의존하는 버전이라 직접 패키지를 설치하지 않는 편이 안전하다. 학습용으로는 <strong>Homebrew</strong>로 별도 설치하는 것이 일반적이다.</p>
-<pre class="pyout"># Homebrew 설치(이미 깔려 있으면 생략)
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/\
-Homebrew/install/HEAD/install.sh)"
+<pre class="pyout pyrepl shell"><span class="c1"># Homebrew 설치(이미 깔려 있으면 생략)</span>
+/bin/bash<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://raw.githubusercontent.com/<span class="se">\</span>
+Homebrew/install/HEAD/install.sh<span class="k">)</span><span class="s2">&quot;</span>
 
-# 파이썬 설치
-brew install python@3.12
+<span class="c1"># 파이썬 설치</span>
+brew<span class="w"> </span>install<span class="w"> </span>python@3.12
 
-# 설치 위치 확인
-which python3            # /opt/homebrew/bin/python3 (Apple Silicon)
-                         # /usr/local/bin/python3     (Intel)</pre>
+<span class="c1"># 설치 위치 확인</span>
+which<span class="w"> </span>python3<span class="w">            </span><span class="c1"># /opt/homebrew/bin/python3 (Apple Silicon)</span>
+<span class="w">                         </span><span class="c1"># /usr/local/bin/python3     (Intel)</span></pre>
 <h3>여러 버전 관리 — <code>pyenv</code></h3>
 <p>학습이 진행되어 여러 프로젝트를 다루다 보면 프로젝트마다 다른 파이썬 버전이 필요해진다. 이 때 <code>pyenv</code>가 유용하다. 디렉터리별로 다른 버전을 자동 전환해 준다.</p>
-<pre class="pyout">brew install pyenv
-pyenv install 3.12.5         # 원하는 버전 설치
-pyenv local 3.12.5           # 현재 폴더의 기본 버전 지정
-python --version             # Python 3.12.5</pre>
+<pre class="pyout pyrepl shell">brew<span class="w"> </span>install<span class="w"> </span>pyenv
+pyenv<span class="w"> </span>install<span class="w"> </span><span class="m">3</span>.12.5<span class="w">         </span><span class="c1"># 원하는 버전 설치</span>
+pyenv<span class="w"> </span><span class="nb">local</span><span class="w"> </span><span class="m">3</span>.12.5<span class="w">           </span><span class="c1"># 현재 폴더의 기본 버전 지정</span>
+python<span class="w"> </span>--version<span class="w">             </span><span class="c1"># Python 3.12.5</span></pre>
 <h3>SSL 인증서 오류 — <code>Install Certificates.command</code></h3>
 <p><code>pip install</code> 시 <code>SSL: CERTIFICATE_VERIFY_FAILED</code> 오류가 발생하면
 <code>Applications/Python 3.x/Install Certificates.command</code>를 한 번 실행하면 해결된다.</p>
 <h2 id="sec3">A.3 Linux 환경</h2>
 <h3><code>sudo pip install</code>을 피하라</h3>
 <p>배포판 패키지 매니저로 깔린 시스템 파이썬에 <code>sudo pip install</code> 명령으로 패키지를 설치하면 시스템 도구가 의존하는 버전과 충돌해 OS가 망가질 수 있다. 대신 <strong>사용자 영역</strong> 또는 <strong>가상 환경</strong>을 쓴다.</p>
-<pre class="pyout"># 사용자 영역에 설치 (--user)
-pip install --user numpy
+<pre class="pyout pyrepl shell"><span class="c1"># 사용자 영역에 설치 (--user)</span>
+pip<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>numpy
 
-# 또는 venv로 가상 환경 만들기 (권장)
-python3 -m venv .venv
-source .venv/bin/activate     # 가상 환경 진입
-pip install numpy             # sudo 없이 안전하게 설치
-deactivate                     # 가상 환경 종료</pre>
+<span class="c1"># 또는 venv로 가상 환경 만들기 (권장)</span>
+python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
+<span class="nb">source</span><span class="w"> </span>.venv/bin/activate<span class="w">     </span><span class="c1"># 가상 환경 진입</span>
+pip<span class="w"> </span>install<span class="w"> </span>numpy<span class="w">             </span><span class="c1"># sudo 없이 안전하게 설치</span>
+deactivate<span class="w">                     </span><span class="c1"># 가상 환경 종료</span></pre>
 <h3><code>python</code>/<code>python3</code> 명령 혼동 (Ubuntu)</h3>
 <p>오래 된 Ubuntu에는 <code>python</code>이 <code>python2</code>를 가리키는 경우가 있다. <code>python: command not found</code>가 뜨거나 의도치 않은 버전이 실행되면 <code>python3</code>을 명시적으로 사용하자. 매번 입력이 번거롭다면 셸 별칭을 만든다.</p>
 <pre class="pyout"># ~/.bashrc 또는 ~/.zshrc 끝에 추가
@@ -120,15 +120,15 @@ alias python=python3
 alias pip=pip3</pre>
 <h3><code>tkinter</code> 모듈 누락 — IDLE이 실행되지 않을 때</h3>
 <p>Linux 배포판은 GUI 라이브러리(<code>tkinter</code>)를 별도 패키지로 분리해 두는 경우가 많다. IDLE 실행 시 <code>ModuleNotFoundError: No module named 'tkinter'</code>가 발생하면 다음을 설치한다.</p>
-<pre class="pyout"># Debian/Ubuntu
-sudo apt install python3-tk
+<pre class="pyout pyrepl shell"><span class="c1"># Debian/Ubuntu</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>python3-tk
 
-# Fedora/RHEL
-sudo dnf install python3-tkinter</pre>
+<span class="c1"># Fedora/RHEL</span>
+sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>python3-tkinter</pre>
 <h2 id="sec4">A.4 공통 — pip 가속  —  미러 사용</h2>
 <p>해외 PyPI 서버 응답이 느리거나 차단된 환경에서는 국내 미러를 임시로 지정해 다운로드 속도를 끌어올릴 수 있다.</p>
-<pre class="pyout">pip install -i https://mirror.kakao.com/pypi/simple/ numpy
-pip install -i https://pypi.org/simple/ numpy   # 기본 PyPI</pre>
+<pre class="pyout pyrepl shell">pip<span class="w"> </span>install<span class="w"> </span>-i<span class="w"> </span>https://mirror.kakao.com/pypi/simple/<span class="w"> </span>numpy
+pip<span class="w"> </span>install<span class="w"> </span>-i<span class="w"> </span>https://pypi.org/simple/<span class="w"> </span>numpy<span class="w">   </span><span class="c1"># 기본 PyPI</span></pre>
 <p><code>$HOME/.config/pip/pip.conf</code>(또는 Windows의 <code>%APPDATA%\pip\pip.ini</code>)에 다음을 적어 두면 매번 옵션을 주지 않아도 된다.</p>
 <pre class="pyout">[global]
 index-url = https://mirror.kakao.com/pypi/simple/</pre>

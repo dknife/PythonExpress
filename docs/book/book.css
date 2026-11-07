@@ -204,6 +204,26 @@ pre.pyout *, pre.termout * {
   color: inherit; background: none; margin: 0; padding: 0;
   font: inherit;
 }
+/* 대화식 세션·터미널 명령 — tex2html이 Pygments 토큰 클래스를 붙인다.
+   위의 inherit 규칙보다 구체적이어야 하므로 pre.pyout.pyrepl로 시작한다 */
+pre.pyout.pyrepl { color: #EDEDED; }
+pre.pyout.pyrepl .gp { color: #E8B04B; }
+pre.pyout.pyrepl .go { color: #A9B0B7; }
+pre.pyout.pyerr.pyrepl .go,
+pre.pyout.pyrepl .gt, pre.pyout.pyrepl .gr, pre.pyout.pyrepl .ne { color: #F87171; }
+pre.pyout.pyrepl .k, pre.pyout.pyrepl .kc, pre.pyout.pyrepl .kd, pre.pyout.pyrepl .kn,
+pre.pyout.pyrepl .kp, pre.pyout.pyrepl .kr, pre.pyout.pyrepl .kt,
+pre.pyout.pyrepl .ow { color: #7CB7FF; }
+pre.pyout.pyrepl .s, pre.pyout.pyrepl .s1, pre.pyout.pyrepl .s2, pre.pyout.pyrepl .sa,
+pre.pyout.pyrepl .sb, pre.pyout.pyrepl .sc, pre.pyout.pyrepl .sd, pre.pyout.pyrepl .se,
+pre.pyout.pyrepl .si, pre.pyout.pyrepl .sx { color: #9BE28A; }
+pre.pyout.pyrepl .m, pre.pyout.pyrepl .mf, pre.pyout.pyrepl .mi, pre.pyout.pyrepl .mh,
+pre.pyout.pyrepl .mo { color: #F5B971; }
+pre.pyout.pyrepl .nb, pre.pyout.pyrepl .bp, pre.pyout.pyrepl .nf { color: #7FD6D6; }
+pre.pyout.pyrepl .o { color: #F2A0C0; }
+pre.pyout.pyrepl .c, pre.pyout.pyrepl .c1, pre.pyout.pyrepl .ch, pre.pyout.pyrepl .cm { color: #9AA0A6; }
+/* 윈도우 경로의 \S를 bash 렉서가 이스케이프로 잡아도 칠하지 않는다 */
+pre.pyout.pyrepl.shell .se { color: inherit; }
 .listing { margin: 1.2rem 0; }
 .listing pre { margin-bottom: 0.35rem; }
 /* 파일 소스(HTML 템플릿 등) — 실행 결과가 아니라 독자가 만들어 저장하는 파일.
