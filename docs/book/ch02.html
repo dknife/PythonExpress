@@ -214,7 +214,7 @@ print(a)</pre>
 <div class="box caution"><span class="chip">주의</span><p><code>input()</code> 함수는 제4장에서 자세히 배울 것이지만, 여기서 미리 그 특성을 알아둘 필요가 있다.
 <code>input()</code> 함수로 사용자에게 입력받은 값은 항상 문자열(<code>str</code>) 형이다. 따라서 숫자로 계산하려면 반드시 <code>int()</code>이나 <code>float()</code>으로 변환해야 한다. 이것은 초보자가 자주 실수하는 부분으로, 입력받은 값으로 덧셈을 하려 했는데 문자열 연결이 되어 버리는 경우가 많다. 예를 들어 <code>input()</code>으로 "10"과 "20"을 입력받아 더하면 정수 30이 아니라 문자열 "1020"이 되어 버린다.</p>
 <pre class="pyout pyrepl"><span class="gp">&gt;&gt;&gt; </span><span class="n">age</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;나이를 입력하세요: &#39;</span><span class="p">)</span>
-<span class="go">나이를 입력하세요: 20</span>
+<span class="go">나이를 입력하세요: <span class="userin">20</span></span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">age</span><span class="p">)</span>
 <span class="go">&lt;class &#39;str&#39;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">age</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">age</span><span class="p">)</span>
@@ -496,12 +496,12 @@ print(x // y)
 print(x % y)
 print(x ** y)</pre></li>
 <li class="ex-item" data-ex="2"><span class="diff"><span class="d1">★</span></span>  사용자로부터 이름과 나이를 입력받아 다음과 같이 출력하는 프로그램을 작성하시오.
-<pre class="termout">이름을 입력하세요: 홍길동
-나이를 입력하세요: 20
+<pre class="termout">이름을 입력하세요: <span class="userin">홍길동</span>
+나이를 입력하세요: <span class="userin">20</span>
 홍길동 님의 나이는 20세입니다.</pre></li>
 <li class="ex-item" data-ex="3"><span class="diff"><span class="d2">★★</span></span>  사용자로부터 원의 반지름을 입력받아 원의 면적과 둘레를 계산하여 출력하는 프로그램을 작성하시오.
 (원주율은 3.14로 계산한다.)
-<pre class="termout">반지름을 입력하세요: 5
+<pre class="termout">반지름을 입력하세요: <span class="userin">5</span>
 원의 면적: 78.5
 원의 둘레: 31.400000000000002</pre></li>
 <li class="ex-item" data-ex="4"><span class="diff"><span class="d1">★</span></span>  다음 식별자 중 파이썬에서 사용할 수 없는 것을 모두 고르고 이유를 설명하시오.

@@ -311,7 +311,7 @@ print('성년 나이 목록:', [x for x in ages if x &gt;= 19])</code></pre>
 <span class="go">[1, 9, 25, 49, 81]</span></pre>
 <p>리스트 축약 표현은 매우 강력해서 다음과 같이 여러 개의 정수 문자열을 입력 받아 이를 <code>int()</code> 함수를 사용해서 정수형 값을 가진 리스트로 변환하는 것도 손쉽게 할 수 있다.</p>
 <pre class="pyout pyrepl"><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;정수 5개를 입력하세요: &#39;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
-<span class="go">정수 5개를 입력하세요: 10 20 30 40 50</span>
+<span class="go">정수 5개를 입력하세요: <span class="userin">10 20 30 40 50</span></span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">lst</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">s</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">lst</span>
 <span class="go">[10, 20, 30, 40, 50]</span></pre>

@@ -146,7 +146,7 @@ if hour &lt; 12:
     print('오전입니다.')
 else:
     print('오후입니다.')</code></pre>
-<pre class="termout">시각을 입력하세요: 10
+<pre class="termout">시각을 입력하세요: <span class="userin">10</span>
 오전입니다.</pre>
 <div class="listing-caption">코드 3.5: if-else 문을 이용한 오전/오후 판별</div>
 <p>이 코드의 흐름은 <code>hour</code> 값이 12보다 작은지 검사하여 참인지 거짓인지에 따라 왼쪽 혹은 오른쪽 흐름을 선택하는 간단한 제어 흐름이 된다.</p>
@@ -170,7 +170,7 @@ elif score &gt;= 60:
 else:
     grade = 'F'
 print(f'학점: {grade}')</code></pre>
-<pre class="termout">점수를 입력하세요: 85
+<pre class="termout">점수를 입력하세요: <span class="userin">85</span>
 학점: B</pre>
 <div class="listing-caption">코드 3.7: if-elif-else 조건문으로 학점 판정</div>
 <p>위 코드에서 <code>score</code>가 85이면 첫 번째 조건 <code>score &gt;= 90</code>은 거짓이므로 건너뛰고, 두 번째 조건 <code>score &gt;= 80</code>이 참이므로 <code>grade = 'B'</code>가 실행된다. 나머지 <code>elif</code>와 <code>else</code>는 더 이상 검사하지 않고 건너뛴다. <code>elif</code>는 필요한 만큼 여러 번 사용할 수 있으며, <code>else</code>는 위의 어떤 조건도 만족하지 않을 때 실행된다.</p>
@@ -201,7 +201,7 @@ if age &gt;= 20:
 else:
     print('미성년자')</code></pre><div class="listing-caption">코드 3.9: 중첩 조건문</div></div>
 <p>나이로 22세를 입력하면 외부 <code>if</code> 조건 <code>age &gt;= 20</code>을 만족하지만 내부 조건 <code>age &gt;= 65</code>는 만족하지 않으므로 <code>일반 성인</code>이 출력된다.</p>
-<pre class="termout">나이를 입력하세요: 22
+<pre class="termout">나이를 입력하세요: <span class="userin">22</span>
 일반 성인</pre>
 <h2 id="sec3">3.3 for 반복문</h2>
 <p>프로그래밍에서 <strong class="term-ko">반복문</strong><sup class="term">loop</sup>이란 특정한 작업을 여러 번 되풀이하여 수행할 때 사용하는 구문이다. 예를 들어, ‘모두 환영합니다!!’를 5회 반복하는 프로그램이 필요하다고 하자. 반복문을 사용하지 않고 5번 반복해 출력하려면 <code>print()</code> 함수를 5번에 걸쳐 사용하면 된다. 지금은 5회 반복이라 문제가 없어 보이지만, 같은 문장을 1,000회 반복하는 프로그램이 필요하다면 어떻게 될까? 같은 문장을 1,000줄에 걸쳐 적어야 하므로 코드가 매우 비효율적일 것이며, 읽기도 힘들 것이다. 이러한 문제는 반복문을 사용하면 아주 효과적으로 해결할 수 있다.</p>
@@ -258,7 +258,7 @@ fact = 1
 for i in range(1, n+1):
     fact = fact * i
 print(f'{n}! = {fact}')</code></pre>
-<pre class="termout">숫자를 입력하세요: 5
+<pre class="termout">숫자를 입력하세요: <span class="userin">5</span>
 5! = 120</pre>
 <div class="listing-caption">코드 3.12: for 반복문을 이용한 팩토리얼 계산</div>
 <h3>for-in 리스트/문자열 순회</h3>
@@ -474,21 +474,21 @@ print(total)</code></pre></li>
 </ul></div></details>
 <details class="box exercise" id="exercises"><summary class="box-head">3장 연습문제</summary><div class="ex-body"><ol>
 <li class="ex-item" data-ex="1"><span class="diff"><span class="d1">★</span></span>  다음 코드의 출력 결과를 쓰시오.
-<pre class="termout">x = 15
+<pre class="line-numbers"><code class="language-python">x = 15
 if x % 2 == 0:
     print('짝수')
 elif x % 3 == 0:
     print('3의 배수')
 else:
-    print('기타')</pre></li>
+    print('기타')</code></pre></li>
 <li class="ex-item" data-ex="2"><span class="diff"><span class="d2">★★</span></span>  사용자로부터 점수(0~100)를 입력받아 학점을 출력하는 프로그램을 작성하시오.
 (90 이상: A, 80 이상: B, 70 이상: C, 60 이상: D, 그 외: F)</li>
 <li class="ex-item" data-ex="3"><span class="diff"><span class="d1">★</span></span>  다음 코드의 출력 결과를 쓰시오.
-<pre class="termout">s = 0
+<pre class="line-numbers"><code class="language-python">s = 0
 for i in range(1, 11):
     if i % 2 == 0:
         s += i
-print(s)</pre></li>
+print(s)</code></pre></li>
 <li class="ex-item" data-ex="4"><span class="diff"><span class="d1">★</span></span>  <code>for</code> 문을 이용하여 1부터 100까지 정수 중 3의 배수의 합을 구하여 출력하는 프로그램을 작성하시오.</li>
 <li class="ex-item" data-ex="5"><span class="diff"><span class="d2">★★</span></span>  <code>while</code> 문을 사용하여 사용자로부터 양의 정수를 반복 입력받되, 0 이하의 수가 입력되면 입력을 중단하고 합과 개수를 출력하는 프로그램을 작성하시오.</li>
 <li class="ex-item" data-ex="6"><span class="diff"><span class="d1">★</span></span>  <code>for</code> 문을 이용하여 구구단 중 7단을 <code>7 x 1 = 7</code>부터 <code>7 x 9 = 63</code>까지 출력하는 프로그램을 작성하시오.</li>

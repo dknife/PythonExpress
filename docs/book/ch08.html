@@ -126,7 +126,7 @@ if True
 두 번째 수를 0으로 입력하게 되면 다음과 같은 문제가 발생하게 된다.</p>
 <pre class="line-numbers"><code class="language-python">a, b = input('두 수를 입력하세요: ').split()
 result = int(a) / int(b) # b가 0이면 ZeroDivisionError 발생!</code></pre>
-<p><pre class="pyout pyerr">두 수를 입력하세요: 10 0
+<p><pre class="pyout pyerr">두 수를 입력하세요: <span class="userin">10 0</span>
 ZeroDivisionError: division by zero</pre>
 <div class="listing-caption">코드 8.2: 0으로 나누기로 인한 ZeroDivisionError</div></p>
 <p>위 코드에서 사용자가 입력한 10과 0의 값을 받아 정수로 변환한 후 10 / 0과 같은 연산을 수행하면
@@ -139,7 +139,7 @@ ZeroDivisionError: division by zero</pre>
 <code>ValueError</code>라는 오류 메시지를 출력한다.</p>
 <pre class="line-numbers"><code class="language-python">a, b = input('두 수를 입력하세요: ').split()
 result = int(a) / int(b)</code></pre>
-<p><pre class="pyout pyerr">두 수를 입력하세요: 사백 이백
+<p><pre class="pyout pyerr">두 수를 입력하세요: <span class="userin">사백 이백</span>
 ValueError: invalid literal for int() with base 10: '사백'</pre>
 <div class="listing-caption">코드 8.3: 숫자가 아닌 입력으로 인한 ValueError</div></p>
 <p>개발자 입장에서 사용자로부터 입력을 받아 처리할 때 이와 같이 예상하지 못한 입력이
@@ -194,12 +194,12 @@ except [예외 종류]:
     print('{}/{} = {}'.format(a, b, result))
 except:
     print('수가 정확한지 확인하세요.')</code></pre>
-<pre class="termout">두 수를 입력하세요: 10 0
+<pre class="termout">두 수를 입력하세요: <span class="userin">10 0</span>
 수가 정확한지 확인하세요.</pre>
 <div class="listing-caption">코드 8.4: try-except로 나눗셈 오류 처리</div>
-<pre class="termout">두 수를 입력하세요: 사백 이백
+<pre class="termout">두 수를 입력하세요: <span class="userin">사백 이백</span>
 수가 정확한지 확인하세요.</pre>
-<pre class="termout">두 수를 입력하세요: 50 2
+<pre class="termout">두 수를 입력하세요: <span class="userin">50 2</span>
 50/2 = 25.0</pre>
 <p>위의 코드를 사용하면 <code>try</code> 내부에 있는 코드에 오류가 발생할 때 해당하는 오류에 맞는
 <code>except</code>로 이동하는데, 위에서는 "수가 정확한지 확인하세요."라는 오류 메시지를 출력하는
@@ -266,11 +266,11 @@ except:
 else: # 예외가 없을 때만 실행
     print('{} / {} = {}'.format(a, b, result))</code></pre><div class="listing-caption">코드 8.8: else로 정상 실행 결과 출력</div></div>
 <p>이제 이 프로그램에 대해 다양한 입력을 하고 그 결과를 확인해 보자.</p>
-<pre class="termout">두 수를 입력하세요: 20 0
+<pre class="termout">두 수를 입력하세요: <span class="userin">20 0</span>
 오류: 0으로 나눌 수 없습니다.</pre>
-<pre class="termout">두 수를 입력하세요: 이십 사십
+<pre class="termout">두 수를 입력하세요: <span class="userin">이십 사십</span>
 오류: 정수를 입력하세요.</pre>
-<pre class="termout">두 수를 입력하세요: 10 2
+<pre class="termout">두 수를 입력하세요: <span class="userin">10 2</span>
 10 / 2 = 5.0</pre>
 <p>우선 나누는 수가 0인 입력 값을 사용해 보자.
 이 경우 <code>ZeroDivisionError</code> 예외가 발생되므로 첫 번째 <code>except</code> 문에서 이 예외를 처리할 수 있다.
@@ -354,11 +354,11 @@ while True:
         break
     except Exception as e:
         print('오류:', e)</code></pre>
-<pre class="termout">예 또는 아니오를 입력하세요: 글쎄
+<pre class="termout">예 또는 아니오를 입력하세요: <span class="userin">글쎄</span>
 오류: 예/아니오를 입력하세요.
-예 또는 아니오를 입력하세요: 몰라
+예 또는 아니오를 입력하세요: <span class="userin">몰라</span>
 오류: 예/아니오를 입력하세요.
-예 또는 아니오를 입력하세요: 예
+예 또는 아니오를 입력하세요: <span class="userin">예</span>
 정상적인 입력입니다.</pre>
 <div class="listing-caption">코드 8.10: raise로 입력값 검증하기</div>
 <p>이 코드를 살펴보면 먼저 <code>get_ans</code>라고 하는 함수가 있고 아래에는

@@ -365,7 +365,7 @@ print('count =', count)</code></pre>
 <p><code>input()</code> 함수는 프로그램 실행 중에 사용자로부터 키보드 입력을 받는 내장 함수이다. 괄호 안에 문자열을 넣으면 해당 문자열이 화면에 <strong>프롬프트</strong>(안내 메시지)로 표시되고, 사용자가 값을 입력한 뒤 Enter를 누르면 입력한 내용이 함수의 반환값으로 전달된다.</p>
 <pre class="line-numbers"><code class="language-python">name = input('이름을 입력하세요: ')
 print('안녕하세요,', name, '님!')</code></pre>
-<pre class="termout">이름을 입력하세요: 홍길동
+<pre class="termout">이름을 입력하세요: <span class="userin">홍길동</span>
 안녕하세요, 홍길동 님!</pre>
 <div class="listing-caption">코드 4.17: input()으로 사용자 입력 받기</div>
 <p>위 코드를 실행하면 <code>이름을 입력하세요:</code>라는 안내 메시지가 나타나고, 사용자가 이름을 입력하면 그 값이 변수 <code>name</code>에 저장된다. 여기서 매우 중요한 사실이 있다. <code>input()</code> 함수가 반환하는 값은 사용자가 숫자를 입력하더라도 <strong>항상 문자열</strong>(str) 형태라는 점이다. 예를 들어 사용자가 "42"를 입력하면, 이 값은 정수 42가 아니라 문자열 <code>'42'</code>로 저장된다.</p>
@@ -374,8 +374,8 @@ print('안녕하세요,', name, '님!')</code></pre>
 <pre class="line-numbers"><code class="language-python">a = int(input('첫 번째 정수를 입력하세요: '))
 b = int(input('두 번째 정수를 입력하세요: '))
 print(f'{a} + {b} = {a + b}')</code></pre>
-<pre class="termout">첫 번째 정수를 입력하세요: 10
-두 번째 정수를 입력하세요: 20
+<pre class="termout">첫 번째 정수를 입력하세요: <span class="userin">10</span>
+두 번째 정수를 입력하세요: <span class="userin">20</span>
 10 + 20 = 30</pre>
 <div class="listing-caption">코드 4.18: int(input()) 패턴으로 정수 입력</div>
 <p><code>int(input(...))</code> 패턴은 파이썬에서 정수 입력을 받을 때 가장 많이 사용되는 관용적 표현이다. 실수를 입력받으려면 <code>int</code> 대신 <code>float</code>를 사용하면 된다.</p>
@@ -394,8 +394,8 @@ print(f'{a} + {b} = {a + b}')</code></pre>
 x = int(input('첫 번째 수를 입력하세요: '))
 y = int(input('두 번째 수를 입력하세요: '))
 calc(x, y)</code></pre>
-<pre class="termout">첫 번째 수를 입력하세요: 15
-두 번째 수를 입력하세요: 4
+<pre class="termout">첫 번째 수를 입력하세요: <span class="userin">15</span>
+두 번째 수를 입력하세요: <span class="userin">4</span>
 15 + 4 = 19
 15 - 4 = 11
 15 * 4 = 60
@@ -430,15 +430,15 @@ print('---- 정렬 출력 ----')
 for _ in range(n):
     x = float(input('숫자를 입력하세요: '))
     print(f'{x:7.2f}') # 전체 폭 7자리, 소수점 2자리</code></pre>
-<pre class="termout">숫자의 개수를 입력하세요: 4
+<pre class="termout">숫자의 개수를 입력하세요: <span class="userin">4</span>
 ---- 정렬 출력 ----
-숫자를 입력하세요: 3.14159
+숫자를 입력하세요: <span class="userin">3.14159</span>
    3.14
-숫자를 입력하세요: 1234.5
+숫자를 입력하세요: <span class="userin">1234.5</span>
 1234.50
-숫자를 입력하세요: 0.5
+숫자를 입력하세요: <span class="userin">0.5</span>
    0.50
-숫자를 입력하세요: 99
+숫자를 입력하세요: <span class="userin">99</span>
   99.00</pre>
 <div class="listing-caption">코드 4.21: input()으로 받은 숫자를 f-string으로 정렬 출력</div>
 <p>소수부는 <code>.2f</code> 덕분에 모두 두 자리로 통일되었고, 정수부도 폭 7자리(정수부 최대 4자리 + 점 + 소수부 2자리) 안에서 오른쪽 정렬되어 한눈에 비교할 수 있다.</p>
@@ -448,15 +448,15 @@ print('---- 정렬 출력 ----')
 for _ in range(n):
     x = float(input('숫자를 입력하세요: '))
     print(f'{x:08.2f}') # 전체 폭 8자리, 빈 자리는 0으로 채움</code></pre>
-<pre class="termout">숫자의 개수를 입력하세요: 4
+<pre class="termout">숫자의 개수를 입력하세요: <span class="userin">4</span>
 ---- 정렬 출력 ----
-숫자를 입력하세요: 3.14159
+숫자를 입력하세요: <span class="userin">3.14159</span>
 00003.14
-숫자를 입력하세요: 1234.5
+숫자를 입력하세요: <span class="userin">1234.5</span>
 01234.50
-숫자를 입력하세요: 0.5
+숫자를 입력하세요: <span class="userin">0.5</span>
 00000.50
-숫자를 입력하세요: 99
+숫자를 입력하세요: <span class="userin">99</span>
 00099.00</pre>
 <div class="listing-caption">코드 4.22: 0으로 자리를 채운 정렬 출력</div>
 <p>소수점 위치는 코드 4.19와 동일하게 가지런히 맞춰지지만, 빈 자리에 공백 대신 <code>0</code>이 채워져 모든 값이 똑같은 8자리 폭으로 표시된다. 일련번호나 시각·계측값처럼 자릿수를 항상 고정해서 보여 주어야 하는 출력에 유용하다.</p>
@@ -547,7 +547,7 @@ print(f'5! = {fact}')           # 120</code></pre></li>
 피보나치 수열은 <code>fib(0) = 0</code>, <code>fib(1) = 1</code>이며 (n ≥ 2)일 때 <code>fib(n) = fib(n-1) + fib(n-2)</code>로 정의된다. <code>fib(10)</code>의 결과가 (55)가 되도록 하시오.
 또한 이 함수를 (n = 30, 40)과 같이 큰 입력에 대해 호출했을 때 어떤 문제가 발생하는지 관찰하고, 그 원인이 무엇인지 분석하여 설명하시오 (어떤 부분 계산이 반복되는지, 호출 횟수가 (n)에 따라 어떻게 늘어나는지).</li>
 <li class="ex-item" data-ex="8"><span class="diff"><span class="d2">★★</span></span>  <code>input()</code> 함수를 사용하여 섭씨 온도를 입력받고, 화씨 온도로 변환하여 출력하는 프로그램을 작성하시오. 변환 공식은 \(F = C \times 9/5 + 32\)이다. 출력은 소수점 1자리까지 표시하시오.
-<pre class="termout">섭씨 온도를 입력하세요: 36.5
+<pre class="termout">섭씨 온도를 입력하세요: <span class="userin">36.5</span>
 화씨 온도: 97.7</pre></li>
 <li class="ex-item" data-ex="9"><span class="diff"><span class="d3">★★★</span></span>  다음 코드의 출력 결과를 쓰시오.
 <pre class="line-numbers"><code class="language-python">def outer(x):
@@ -569,7 +569,7 @@ print(outer(20))</code></pre></li>
 <li class="ex-item" data-ex="12"><span class="diff"><span class="d2">★★</span></span>  점수를 매개변수로 받아 학점을 반환하는 함수 <code>grade(score)</code>를 작성하시오.
 점수가 90 이상이면 <code>'A'</code>, 80 이상 90 미만이면 <code>'B'</code>, 70 이상 80 미만이면 <code>'C'</code>, 60 이상 70 미만이면 <code>'D'</code>, 그 외에는 <code>'F'</code>를 반환한다.
 사용자로부터 점수를 입력받아 학점을 출력하는 코드도 함께 작성하시오.
-<pre class="termout">점수를 입력하세요: 87
+<pre class="termout">점수를 입력하세요: <span class="userin">87</span>
 학점: B</pre></li>
 </ol></div></details>
 <div class="pager-row"><a class="pager prev" href="ch03.html">&larr; 3장</a><a class="pager next" href="ch05.html">5장 &rarr;</a></div>

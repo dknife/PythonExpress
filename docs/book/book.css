@@ -204,6 +204,13 @@ pre.pyout *, pre.termout * {
   color: inherit; background: none; margin: 0; padding: 0;
   font: inherit;
 }
+/* 터미널 입력값(원고의 \userin) — 사용자가 입력한 값에 음영을 둔다.
+   위 inherit 규칙보다 구체적이어야 하고, 글자 위치가 밀리지 않게 padding 대신 box-shadow를 쓴다 */
+pre.pyout .userin, pre.termout .userin {
+  background: rgba(232, 176, 75, 0.32); color: #FFFFFF;
+  border-radius: 2px; box-shadow: 0 0 0 2px rgba(232, 176, 75, 0.32);
+}
+pre.pyout.pyerr .userin { color: inherit; }
 /* 대화식 세션·터미널 명령 — tex2html이 Pygments 토큰 클래스를 붙인다.
    위의 inherit 규칙보다 구체적이어야 하므로 pre.pyout.pyrepl로 시작한다 */
 pre.pyout.pyrepl { color: #EDEDED; }
