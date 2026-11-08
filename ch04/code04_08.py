@@ -6,5 +6,5 @@ def average(*scores): # 모든 위치 인자를 튜플로 받음
         return 0
     return sum(scores) / len(scores)
 
-print(average(80, 90, 100)) # 인자 3개
-print(average(70, 85, 95, 100)) # 인자 4개
+print(average(80, 90, 100))      # 인자 3개
+print(average(70, 85, 95, 100))  # 인자 4개

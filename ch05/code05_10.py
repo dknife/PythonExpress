@@ -2,5 +2,5 @@
 # 코드 5.10: 문자열 리스트의 사전 순 비교
 
 fruits = ['바나나', '오렌지', '사과', '키위']
-print(min(fruits)) # 사전 순으로 가장 앞: 바나나
-print(max(fruits)) # 사전 순으로 가장 뒤: 키위
+print(min(fruits))  # 사전 순으로 가장 앞: 바나나
+print(max(fruits))  # 사전 순으로 가장 뒤: 키위

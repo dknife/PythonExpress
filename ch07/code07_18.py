@@ -3,5 +3,5 @@
 
 import math as m
 
-print(m.sin(0.0)) # 0.0 -- 정상, sin(0) = 0
-print(m.sin(90.0)) # 0.8939... -- sin(90도)가 아님!
+print(m.sin(0.0))   # 0.0 -- 정상, sin(0) = 0
+print(m.sin(90.0))  # 0.8939... -- sin(90도)가 아님!

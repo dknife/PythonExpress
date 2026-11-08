@@ -11,7 +11,7 @@ class Cat:
         name, age = text.split(',')
         return cls(name, int(age))
 
-c1 = Cat('초코', 2) # 기본 생성자
-c2 = Cat.from_string('나비,3') # 대안 생성자
-print(c1.name, c1.age) # 초코 2
-print(c2.name, c2.age) # 나비 3
+c1 = Cat('초코', 2)             # 기본 생성자
+c2 = Cat.from_string('나비,3')  # 대안 생성자
+print(c1.name, c1.age)          # 초코 2
+print(c2.name, c2.age)          # 나비 3

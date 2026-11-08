@@ -209,11 +209,11 @@ df = pd.DataFrame({
     '수학': [78, 95, 88, 87]
 })
 
-print(df.head(2)) # 처음 2행
-print(df.tail(2)) # 마지막 2행
-print(df.shape) # (행 수, 열 수)
-print(df.info()) # 열의 타입과 결측값 정보
-print(df.describe()) # 수치형 열의 통계 요약</code></pre>
+print(df.head(2))     # 처음 2행
+print(df.tail(2))     # 마지막 2행
+print(df.shape)       # (행 수, 열 수)
+print(df.info())      # 열의 타입과 결측값 정보
+print(df.describe())  # 수치형 열의 통계 요약</code></pre>
 <pre class="termout">    이름  국어  영어  수학
 0  홍길동  85  90  78
 1  김철수  92  88  95
@@ -263,12 +263,12 @@ df = pd.DataFrame({
 })
 
 # 열 선택
-print(df['이름']) # 열 하나 -&gt; Series
-print(df[['이름', '국어']]) # 열 여러 개 -&gt; DataFrame
+print(df['이름'])            # 열 하나 -&gt; Series
+print(df[['이름', '국어']])  # 열 여러 개 -&gt; DataFrame
 
 # 행 선택
-print(df.loc[0]) # 레이블 인덱스 0의 행
-print(df.iloc[0:2]) # 위치 기반 행 선택 (0~1)
+print(df.loc[0])     # 레이블 인덱스 0의 행
+print(df.iloc[0:2])  # 위치 기반 행 선택 (0~1)
 
 # 조건 필터링
 print(df[df['국어'] &gt;= 90]) # 국어 점수 90 이상인 학생</code></pre>
@@ -725,8 +725,8 @@ model = LinearRegression()
 model.fit(X, y)
 
 # 모델 파라미터
-a = model.coef_[0] # 기울기
-b = model.intercept_ # 절편
+a = model.coef_[0]    # 기울기
+b = model.intercept_  # 절편
 print(f'회귀선: y = {a:.2f}x + {b:.2f}')</code></pre>
 <pre class="termout">회귀선: y = 7.23x + 22.92</pre>
 <div class="listing-caption">코드 12.17: 선형 회귀 모델 학습</div>
@@ -890,12 +890,10 @@ pred = model.predict([[5]])
 print(f'5시간 -&gt; {pred[0]:.1f}점')</code></pre></li>
 <li>어떤 분류 모델이 10개 표본에 대해 <code>y_pred</code>처럼 예측하였다((1)=양성, (0)=음성). <code>y_true</code>와 비교하여 정확도·정밀도·재현율·F1 점수를 한 번에 출력해 보시오.</p>
 <p><pre class="line-numbers"><code class="language-python">from sklearn.metrics import classification_report
-
 y_true = [1, 0, 1, 1, 0, 1, 0, 0, 1, 0]
 y_pred = [1, 0, 1, 0, 0, 1, 1, 0, 1, 1]
 
-print(classification_report(y_true, y_pred, 
-                                        target_names=['음성', '양성']))</code></pre></li>
+print(classification_report(y_true, y_pred, target_names=['음성', '양성']))</code></pre></li>
 </ol></p></div></p>
 <details class="box summary" id="summary"><summary class="box-head">12장 요약</summary><div class="sum-body"><ul>
 <li><strong>데이터 과학</strong>은 데이터로부터 유용한 지식과 통찰을 추출하는 학문으로, 데이터 수집 \(\rightarrow\) 정리 \(\rightarrow\) 분석 \(\rightarrow\) 시각화 \(\rightarrow\) 의사결정의 5단계 워크플로우로 이루어진다. 파이썬은 NumPy, pandas, matplotlib, scikit-learn 등 풍부한 라이브러리 생태계 덕분에 데이터 과학의 핵심 도구로 자리잡았다.</li>

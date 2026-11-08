@@ -250,8 +250,8 @@ cubic_a = [1, 8, 27, 64, 125, 216, 343]</pre>
 이 경우에는 람다 함수의 본체가 될 표현식을 그대로 사용하기 때문에 따로 람다 함수를 정의할 필요가 없다.
 리스트의 축약 표현은 리스트뿐만 아니라 집합과 같은 반복 가능한 모든 객체에 대해 적용할 수 있다.</p>
 <p>리스트 축약 표현의 문법은 다음과 같다.</p>
-<div class="listing"><pre class="line-numbers"><code class="language-python">[expression for var in iterable] # map 기능
-[expression for var in iterable if condition] # map + filter 기능</code></pre><div class="listing-caption">코드 11.14: 리스트 축약 표현의 문법</div></div>
+<div class="listing"><pre class="line-numbers"><code class="language-python">[expression for var in iterable]               # map 기능
+[expression for var in iterable if condition]  # map + filter 기능</code></pre><div class="listing-caption">코드 11.14: 리스트 축약 표현의 문법</div></div>
 <p>이 문법의 <code>expression</code>에는 반복 가능 객체의 각 요소에 대해서 적용되는 수식으로 앞서 살펴본 맵 함수의 기능을 수행한다.
 다음에 나타난 <code>for var in iterable</code>에는 반복 가능 객체의 내부 항목을 반복적으로 꺼내는 기능이 들어간다.
 이어서 나타나는 <code>if condition</code>은 필터의 기능을 하게 된다.</p>
@@ -367,8 +367,8 @@ print('성년 나이 목록:', [x for x in ages if x &gt;= 19])</code></pre>
 <p>다음 실습 코드와 같이 <code>a = np.array([1, 2, 3])</code>과 같이 3개의 정수 값을 요소로 가지는 <code>ndarray</code>를 생성하여 그 속성을 하나하나 살펴보도록 하자.</p>
 <pre class="line-numbers"><code class="language-python">import numpy as np
 
-a = np.array([1, 2, 3]) # 리스트로 1차원 배열 생성
-b = np.array([[1, 2], [3, 4]]) # 2차원 배열 생성
+a = np.array([1, 2, 3])         # 리스트로 1차원 배열 생성
+b = np.array([[1, 2], [3, 4]])  # 2차원 배열 생성
 print('a =', a)
 print('b =')
 print(b)</code></pre>
@@ -384,11 +384,11 @@ b =
 <pre class="line-numbers"><code class="language-python">import numpy as np
 
 a = np.array([1, 2, 3])
-print('shape :', a.shape) # 배열의 형상
-print('ndim :', a.ndim) # 차원의 개수
-print('dtype :', a.dtype) # 원소의 자료형
-print('size :', a.size) # 전체 원소의 개수
-print('itemsize:', a.itemsize) # 원소 하나의 바이트 크기</code></pre>
+print('shape :', a.shape)       # 배열의 형상
+print('ndim :', a.ndim)         # 차원의 개수
+print('dtype :', a.dtype)       # 원소의 자료형
+print('size :', a.size)         # 전체 원소의 개수
+print('itemsize:', a.itemsize)  # 원소 하나의 바이트 크기</code></pre>
 <pre class="termout">shape : (3,)
 ndim : 1
 dtype : int64
@@ -415,12 +415,12 @@ itemsize: 8</pre>
 이 함수들은 특정 패턴이나 초기값을 가진 배열을 손쉽게 만들 수 있게 해 준다.</p>
 <pre class="line-numbers"><code class="language-python">import numpy as np
 
-print(np.zeros(5)) # 0으로 채운 배열
-print(np.ones((2, 3))) # 1로 채운 2x3 배열
-print(np.arange(0, 10, 2)) # 0부터 10 미만까지 간격 2
-print(np.linspace(0, 1, 5)) # 0부터 1까지 균등 간격 값 5개
-print(np.random.rand(3)) # 0과 1 사이의 난수 3개
-print(np.random.randint(0, 10, size=5)) # 0~9 범위의 정수 난수 5개</code></pre>
+print(np.zeros(5))                       # 0으로 채운 배열
+print(np.ones((2, 3)))                   # 1로 채운 2x3 배열
+print(np.arange(0, 10, 2))               # 0부터 10 미만까지 간격 2
+print(np.linspace(0, 1, 5))              # 0부터 1까지 균등 간격 값 5개
+print(np.random.rand(3))                 # 0과 1 사이의 난수 3개
+print(np.random.randint(0, 10, size=5))  # 0~9 범위의 정수 난수 5개</code></pre>
 <pre class="termout">[0. 0. 0. 0. 0.]
 {}
 [[1. 1. 1.]
@@ -492,8 +492,8 @@ print(f'넘파이가 {py_time/np_time:.1f}배 빠릅니다.')</code></pre>
 <p>먼저 파이썬 리스트의 한계를 살펴보자.
 어떤 모둠의 학생 4명이 중간시험과 기말시험을 치고 다음과 같은 성적을 얻었다고 가정하자.
 이 학생들의 점수를 리스트에 넣고 성적의 합과 평균을 구하기 위해서 <code>+</code>(더하기) 연산을 사용한다면 우리가 원하는 결과를 얻을 수 없을 것이다.</p>
-<pre class="line-numbers"><code class="language-python">student_mid = [70, 85, 90, 75] # 중간시험 점수
-student_fin = [90, 65, 70, 85] # 기말시험 점수
+<pre class="line-numbers"><code class="language-python">student_mid = [70, 85, 90, 75]  # 중간시험 점수
+student_fin = [90, 65, 70, 85]  # 기말시험 점수
 student_sum = student_mid + student_fin
 print(student_sum)
 # student_sum / 2 # TypeError: unsupported operand type(s)</code></pre>
@@ -503,8 +503,8 @@ print(student_sum)
 이제 이 코드의 리스트를 넘파이의 다차원 배열로 고쳐서 이 코드를 수행시켜 보자.</p>
 <pre class="line-numbers"><code class="language-python">import numpy as np
 
-student_mid = np.array([70, 85, 90, 75]) # 중간시험 점수
-student_fin = np.array([90, 65, 70, 85]) # 기말시험 점수
+student_mid = np.array([70, 85, 90, 75])  # 중간시험 점수
+student_fin = np.array([90, 65, 70, 85])  # 기말시험 점수
 student_sum = student_mid + student_fin
 print('합계:', student_sum)
 print('평균:', student_sum / 2)</code></pre>
@@ -524,9 +524,9 @@ print('평균:', student_sum / 2)</code></pre>
 만일 이들의 급여를 일괄적으로 20% 인상할 경우 <code>* 1.2</code>를 통해 일괄적으로 인상된 급여를 출력하는 것도 브로드캐스팅을 이용하여 쉽게 할 수 있을 것이다.</p>
 <pre class="line-numbers"><code class="language-python">import numpy as np
 
-sal = np.array([300, 360, 400, 380]) # 사원 4명의 급여
-sal_bonus = sal + 100 # 각 급여에 상여금 100 더하기
-sal_inc = sal * 1.2 # 각 급여를 20% 인상
+sal = np.array([300, 360, 400, 380])  # 사원 4명의 급여
+sal_bonus = sal + 100                 # 각 급여에 상여금 100 더하기
+sal_inc = sal * 1.2                   # 각 급여를 20% 인상
 print('상여금 지급 후:', sal_bonus)
 print('20% 인상 후:', sal_inc)</code></pre>
 <pre class="termout">상여금 지급 후: [400 460 500 480]
@@ -538,12 +538,12 @@ print('20% 인상 후:', sal_inc)</code></pre>
 마찬가지로 뺄셈과 곱셈, 나눗셈도 가능하다.</p>
 <pre class="line-numbers"><code class="language-python">import numpy as np
 
-a = np.array([[1, 2], [3, 4]]) # 2차원 배열 a
-b = np.array([[10, 20], [30, 40]]) # 2차원 배열 b
+a = np.array([[1, 2], [3, 4]])      # 2차원 배열 a
+b = np.array([[10, 20], [30, 40]])  # 2차원 배열 b
 
 print('a + b =\n', a + b)
-print('a * b =\n', a * b) # 원소별 곱셈
-print('a @ b =\n', a @ b) # 행렬 곱셈</code></pre>
+print('a * b =\n', a * b)  # 원소별 곱셈
+print('a @ b =\n', a @ b)  # 행렬 곱셈</code></pre>
 <pre class="termout">a + b =
  [[11 22]
   [33 44]]
@@ -564,8 +564,8 @@ a @ b =
 <pre class="line-numbers"><code class="language-python">import numpy as np
 
 a = [[1, 2], [3, 4]]
-b = [[1, 0], [0, 1]] # 단위행렬
-print(np.matmul(a, b)) # 결과는 a 자신</code></pre>
+b = [[1, 0], [0, 1]]    # 단위행렬
+print(np.matmul(a, b))  # 결과는 a 자신</code></pre>
 <pre class="termout">[[1 2]
  [3 4]]</pre>
 <div class="listing-caption">코드 11.29: 단위행렬과의 행렬 곱</div>
@@ -576,9 +576,9 @@ print(np.matmul(a, b)) # 결과는 a 자신</code></pre>
 
 a = np.array([10, 20, 30, 40, 50])
 
-print(a[0]) # 첫 번째 원소
-print(a[1:4]) # 슬라이싱
-print(a[-1]) # 마지막 원소
+print(a[0])    # 첫 번째 원소
+print(a[1:4])  # 슬라이싱
+print(a[-1])   # 마지막 원소
 
 # 불리언 인덱싱: 조건에 맞는 원소만 추출
 print(a[a &gt; 25]) # 25보다 큰 원소만</code></pre>
@@ -595,10 +595,10 @@ print(a[a &gt; 25]) # 25보다 큰 원소만</code></pre>
 <pre class="line-numbers"><code class="language-python">import numpy as np
 
 b = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
-print(b[0, 2]) # 0행 2열의 원소: 3
-print(b[1, :]) # 1행 전체: [4, 5, 6]
-print(b[:, 0]) # 0열 전체: [1, 4, 7]
-print(b[0:2, 1:3]) # 0~1행, 1~2열 부분 배열</code></pre>
+print(b[0, 2])      # 0행 2열의 원소: 3
+print(b[1, :])      # 1행 전체: [4, 5, 6]
+print(b[:, 0])      # 0열 전체: [1, 4, 7]
+print(b[0:2, 1:3])  # 0~1행, 1~2열 부분 배열</code></pre>
 <pre class="termout">3
 {}
 [4 5 6]
@@ -680,23 +680,19 @@ print('학생별 평균:', boosted.mean(axis=1))</code></pre></li>
 import time
 
 N = 10_000_000
-
 # 1) 순수 파이썬: range에 대한 리스트 축약 표현
 start = time.time()
 ys_py = [x * x + 2 * x + 1 for x in range(N)]
 t_py = time.time() - start
-
 # 2) 넘파이: ndarray의 벡터화 연산
 arr = np.arange(N)
 start = time.time()
 ys_np = arr * arr + 2 * arr + 1
 t_np = time.time() - start
-
 print(f'파이썬 리스트: {t_py:.3f}초')
 print(f'넘파이 배열: {t_np:.3f}초')
 print(f'속도 향상: {t_py / t_np:.1f}배')</code></pre>
-<p>같은 결과를 만드는데도 넘파이는 한 줄의 <strong>벡터화 연산</strong>으로 모든 원소를 C 수준에서 한꺼번에 처리하므로, 파이썬 인터프리터가 원소를 하나씩 돌리는 리스트 컴프리헨션보다 수십 배 빠르다.
-이 차이는 데이터의 크기가 커질수록 더 커진다  —  머신러닝·과학 계산에서 넘파이가 사실상 표준이 된 이유이다.</li>
+<p>넘파이는 <strong>벡터화 연산</strong>으로 모든 원소를 C 수준에서 한꺼번에 처리하므로 원소를 하나씩 돌리는 리스트 컴프리헨션보다 수십 배 빠르다. 이 차이는 데이터가 클수록 커진다.</li>
 </ol></p></div></p>
 <details class="box summary" id="summary"><summary class="box-head">11장 요약</summary><div class="sum-body"><ul>
 <li><strong>람다 함수</strong>는 <code>lambda 매개변수: 표현식</code> 형태의 이름 없는 간단한 함수로, 한 줄로 표현할 수 있는 일회성 연산에 적합하다.</li>

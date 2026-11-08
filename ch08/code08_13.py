@@ -9,8 +9,8 @@ f.close()
 
 # 한 번에 한 줄씩 읽기
 f = open('hello.txt', 'r')
-line1 = f.readline() # 첫 번째 줄
-line2 = f.readline() # 두 번째 줄
+line1 = f.readline()  # 첫 번째 줄
+line2 = f.readline()  # 두 번째 줄
 print(line1, line2)
 f.close()
 

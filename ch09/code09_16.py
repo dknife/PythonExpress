@@ -11,8 +11,8 @@ class Animal:
 
 class Dog(Animal):
     def __init__(self, name, age, breed):
-        super().__init__(name, age) # 부모의 __init__ 호출
-        self.breed = breed # 자식만의 속성 추가
+        super().__init__(name, age)  # 부모의 __init__ 호출
+        self.breed = breed           # 자식만의 속성 추가
 
     def info(self):
         super().info() # 부모의 info()를 확장

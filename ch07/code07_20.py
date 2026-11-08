@@ -3,6 +3,6 @@
 
 import random as rd
 
-print(rd.random()) # 0.0 이상 1.0 미만의 실수
-print(rd.randint(1, 6)) # 1 이상 6 이하의 정수 (주사위)
-print(rd.randrange(0, 10)) # 0 이상 9 이하의 정수
+print(rd.random())          # 0.0 이상 1.0 미만의 실수
+print(rd.randint(1, 6))     # 1 이상 6 이하의 정수 (주사위)
+print(rd.randrange(0, 10))  # 0 이상 9 이하의 정수

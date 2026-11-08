@@ -4,6 +4,6 @@
 import datetime as dt
 
 now = dt.datetime.now()
-print(now.strftime('%Y-%m-%d')) # 2026-04-06
-print(now.strftime('%B %d, %Y')) # April 06, 2026
-print(now.strftime('%H:%M:%S')) # 14:30:25
+print(now.strftime('%Y-%m-%d'))   # 2026-04-06
+print(now.strftime('%B %d, %Y'))  # April 06, 2026
+print(now.strftime('%H:%M:%S'))   # 14:30:25

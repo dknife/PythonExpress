@@ -13,12 +13,12 @@ df = pd.DataFrame({
 })
 
 # 열 선택
-print(df['이름']) # 열 하나 -> Series
-print(df[['이름', '국어']]) # 열 여러 개 -> DataFrame
+print(df['이름'])            # 열 하나 -> Series
+print(df[['이름', '국어']])  # 열 여러 개 -> DataFrame
 
 # 행 선택
-print(df.loc[0]) # 레이블 인덱스 0의 행
-print(df.iloc[0:2]) # 위치 기반 행 선택 (0~1)
+print(df.loc[0])     # 레이블 인덱스 0의 행
+print(df.iloc[0:2])  # 위치 기반 행 선택 (0~1)
 
 # 조건 필터링
 print(df[df['국어'] >= 90]) # 국어 점수 90 이상인 학생

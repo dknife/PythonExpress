@@ -6,5 +6,5 @@ def factorial(n):
         return 1
     return n * factorial(n - 1) # 재귀 단계
 
-print(factorial(5)) # 120
-print(factorial(7)) # 5040
+print(factorial(5))  # 120
+print(factorial(7))  # 5040

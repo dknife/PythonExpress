@@ -4,6 +4,6 @@
 def print_star(): # 별표를 출력하는 함수 정의
     print('************************')
 
-print_star() # 함수 호출 1
-print_star() # 함수 호출 2
-print_star() # 함수 호출 3
+print_star()  # 함수 호출 1
+print_star()  # 함수 호출 2
+print_star()  # 함수 호출 3

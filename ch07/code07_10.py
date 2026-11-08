@@ -4,7 +4,7 @@
 import datetime as dt
 
 today = dt.date.today()
-print(today) # 2026-04-06
-print(today.year) # 2026
-print(today.month) # 4
-print(today.day) # 6
+print(today)        # 2026-04-06
+print(today.year)   # 2026
+print(today.month)  # 4
+print(today.day)    # 6

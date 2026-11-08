@@ -2,9 +2,9 @@
 # 코드 9.3: 정수도 객체이며 더하기 메소드를 가짐
 
 n = 200
-print(type(n)) # <class 'int'>
-print(id(n)) # 24990565
-print(n + 100) # 300
-print(n.__add__(100)) # 300 (n + 100과 동일)
-print(200 + 100) # 300
-print((200).__add__(100)) # 300 (200 + 100과 동일)
+print(type(n))             # <class 'int'>
+print(id(n))               # 24990565
+print(n + 100)             # 300
+print(n.__add__(100))      # 300 (n + 100과 동일)
+print(200 + 100)           # 300
+print((200).__add__(100))  # 300 (200 + 100과 동일)

@@ -2,5 +2,5 @@
 # 코드 7.4: 별표로 모든 요소 가져오기
 
 from math import *
-print(ceil(3.2)) # 4
-print(floor(3.8)) # 3
+print(ceil(3.2))   # 4
+print(floor(3.8))  # 3

@@ -6,7 +6,7 @@ import random as rd
 colors = ['빨강', '파랑', '초록', '노랑', '보라']
 print(rd.choice(colors)) # 리스트에서 무작위로 하나 선택
 
-rd.shuffle(colors) # 리스트를 무작위로 섞기 (원본 변경)
-print(colors) # 순서가 무작위로 바뀜
+rd.shuffle(colors)  # 리스트를 무작위로 섞기 (원본 변경)
+print(colors)       # 순서가 무작위로 바뀜
 
 print(rd.sample(colors, 3)) # 3개를 비복원 추출

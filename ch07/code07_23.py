@@ -4,6 +4,6 @@
 import numpy as np
 
 a = np.array([1, 2, 3, 4, 5])
-print(a * 2) # [2 4 6 8 10] -- 요소별 곱셈
-print(a.mean()) # 3.0 -- 평균
-print(a.sum()) # 15 -- 합계
+print(a * 2)     # [2 4 6 8 10] -- 요소별 곱셈
+print(a.mean())  # 3.0 -- 평균
+print(a.sum())   # 15 -- 합계

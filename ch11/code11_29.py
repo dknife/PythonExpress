@@ -4,5 +4,5 @@
 import numpy as np
 
 a = [[1, 2], [3, 4]]
-b = [[1, 0], [0, 1]] # 단위행렬
-print(np.matmul(a, b)) # 결과는 a 자신
+b = [[1, 0], [0, 1]]    # 단위행렬
+print(np.matmul(a, b))  # 결과는 a 자신

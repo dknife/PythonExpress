@@ -3,9 +3,9 @@
 
 import numpy as np
 
-a = np.array([[1, 2], [3, 4]]) # 2차원 배열 a
-b = np.array([[10, 20], [30, 40]]) # 2차원 배열 b
+a = np.array([[1, 2], [3, 4]])      # 2차원 배열 a
+b = np.array([[10, 20], [30, 40]])  # 2차원 배열 b
 
 print('a + b =\n', a + b)
-print('a * b =\n', a * b) # 원소별 곱셈
-print('a @ b =\n', a @ b) # 행렬 곱셈
+print('a * b =\n', a * b)  # 원소별 곱셈
+print('a @ b =\n', a @ b)  # 행렬 곱셈

@@ -8,15 +8,15 @@ class Animal:
     def speak(self):
         print(f'{self.name}: 소리를 냅니다.')
 
-class Dog(Animal): # Animal 클래스를 상속
-    def speak(self): # 메소드 오버라이딩
+class Dog(Animal):    # Animal 클래스를 상속
+    def speak(self):  # 메소드 오버라이딩
         print(f'{self.name}: 멍멍!')
 
-class Cat(Animal): # Animal 클래스를 상속
-    def speak(self): # 메소드 오버라이딩
+class Cat(Animal):    # Animal 클래스를 상속
+    def speak(self):  # 메소드 오버라이딩
         print(f'{self.name}: 야옹~')
 
 dog = Dog('바둑')
 cat = Cat('나비')
-dog.speak() # 바둑: 멍멍!
-cat.speak() # 나비: 야옹~
+dog.speak()  # 바둑: 멍멍!
+cat.speak()  # 나비: 야옹~

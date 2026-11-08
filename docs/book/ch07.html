@@ -112,8 +112,8 @@
 이 점 연산자는 "~의 안에 있는"이라는 의미로 이해하면 된다.
 예를 들어 <code>math.pi</code>는 "math 모듈 안에 있는 pi"를 뜻한다.</p>
 <div class="listing"><pre class="line-numbers"><code class="language-python">import math
-print(math.pi) # 3.141592653589793
-print(math.sqrt(16)) # 4.0</code></pre><div class="listing-caption">코드 7.2: math 모듈을 import해서 사용</div></div>
+print(math.pi)        # 3.141592653589793
+print(math.sqrt(16))  # 4.0</code></pre><div class="listing-caption">코드 7.2: math 모듈을 import해서 사용</div></div>
 <h3>from … import 문</h3>
 <p>모듈 전체가 아니라 특정 함수나 변수만 가져오고 싶을 때는 <code>from … import</code> 구문을 사용한다.
 이 방식을 쓰면 모듈 이름 없이 바로 함수를 호출할 수 있어 코드가 더 간결해진다.</p>
@@ -122,15 +122,15 @@ print(math.sqrt(16)) # 4.0</code></pre><div class="listing-caption">코드 7.2: 
 <code>from [모듈 이름] import [함수 이름]</code>과 같은 방식으로 모듈로부터 클래스나 함수를 불러오게 되면
 "[클래스 이름].[메소드 이름]()" 방식과 같이 간단하게 클래스의 메소드를 호출할 수 있다.</p>
 <div class="listing"><pre class="line-numbers"><code class="language-python">from math import sqrt, pi
-print(pi) # 3.141592653589793
-print(sqrt(25)) # 5.0</code></pre><div class="listing-caption">코드 7.3: from import로 특정 요소만 가져오기</div></div>
+print(pi)        # 3.141592653589793
+print(sqrt(25))  # 5.0</code></pre><div class="listing-caption">코드 7.3: from import로 특정 요소만 가져오기</div></div>
 <p>모듈의 모든 요소를 한꺼번에 가져오려면 <code>*</code>을 사용한다.
 다만 이 방식은 이름 충돌의 위험이 있으므로 주의가 필요하다.
 예를 들어, 우리가 만든 변수 이름이 모듈에 있는 함수 이름과 같다면
 예상치 못한 오류가 발생할 수 있다.</p>
 <div class="listing"><pre class="line-numbers"><code class="language-python">from math import *
-print(ceil(3.2)) # 4
-print(floor(3.8)) # 3</code></pre><div class="listing-caption">코드 7.4: 별표로 모든 요소 가져오기</div></div>
+print(ceil(3.2))   # 4
+print(floor(3.8))  # 3</code></pre><div class="listing-caption">코드 7.4: 별표로 모든 요소 가져오기</div></div>
 <div class="box caution"><span class="chip">주의</span><p><code>from math import *</code>처럼 모든 요소를 한꺼번에 가져오는 방식은 편리하지만 위험할 수 있다.
 모듈 안에 정의된 수십 개의 이름이 현재 프로그램에 한꺼번에 들어오므로, 기존 변수나 함수와 이름이 겹쳐서 예기치 않은 동작을 일으킬 수 있다.
 소규모 실습이 아닌 실무 프로젝트에서는 필요한 이름만 명시적으로 가져오는 것이 좋다.</p></div>
@@ -139,10 +139,10 @@ print(floor(3.8)) # 3</code></pre><div class="listing-caption">코드 7.4: 별�
 모듈 내에 있는 클래스나 메소드를 활용할 때 점으로 연결하는데,
 모듈 이름이 너무 긴 경우 계속해서 이름을 써주는 것이 번거로울 수 있다.
 이때, <code>as</code>를 활용하여 모듈의 새 이름을 지정할 수 있다.</p>
-<div class="listing"><pre class="line-numbers"><code class="language-python">import datetime as dt # datetime -&gt; dt
-import random as rd # random -&gt; rd
-import math as m # math -&gt; m
-import turtle as t # turtle -&gt; t</code></pre><div class="listing-caption">코드 7.5: as로 모듈에 별칭 붙이기</div></div>
+<div class="listing"><pre class="line-numbers"><code class="language-python">import datetime as dt  # datetime -&gt; dt
+import random as rd    # random -&gt; rd
+import math as m       # math -&gt; m
+import turtle as t     # turtle -&gt; t</code></pre><div class="listing-caption">코드 7.5: as로 모듈에 별칭 붙이기</div></div>
 <p>보통 <code>math</code> 모듈은 <code>m</code>, <code>datetime</code>은 <code>dt</code>, <code>random</code>은 <code>rd</code>,
 <code>turtle</code>은 <code>t</code>와 같은 짧은 이름을 널리 사용한다.
 별칭을 지정하면 이후 코드에서 짧은 이름으로 모듈에 접근할 수 있어 코드가 간결해진다.</p>
@@ -211,10 +211,10 @@ print(start_time)</code></pre><div class="listing-caption">코드 7.9: from impo
 <div class="listing"><pre class="line-numbers"><code class="language-python">import datetime as dt
 
 today = dt.date.today()
-print(today) # 2026-04-06
-print(today.year) # 2026
-print(today.month) # 4
-print(today.day) # 6</code></pre><div class="listing-caption">코드 7.10: date.today()로 연·월·일 추출</div></div>
+print(today)        # 2026-04-06
+print(today.year)   # 2026
+print(today.month)  # 4
+print(today.day)    # 6</code></pre><div class="listing-caption">코드 7.10: date.today()로 연·월·일 추출</div></div>
 <figure class="fig">
 <img class="tikz" src="img/fig/ch07/ch07_fig02.svg" alt="figure">
 <p><figcaption>그림 7.2: datetime 객체의 구성요소</figcaption></figure></p>
@@ -296,9 +296,9 @@ print('100일 전:', minus100day)</code></pre>
 <div class="listing"><pre class="line-numbers"><code class="language-python">import datetime as dt
 
 now = dt.datetime.now()
-print(now.strftime('%Y-%m-%d')) # 2026-04-06
-print(now.strftime('%B %d, %Y')) # April 06, 2026
-print(now.strftime('%H:%M:%S')) # 14:30:25</code></pre><div class="listing-caption">코드 7.15: strftime()으로 날짜 문자열 포매팅</div></div>
+print(now.strftime('%Y-%m-%d'))   # 2026-04-06
+print(now.strftime('%B %d, %Y'))  # April 06, 2026
+print(now.strftime('%H:%M:%S'))   # 14:30:25</code></pre><div class="listing-caption">코드 7.15: strftime()으로 날짜 문자열 포매팅</div></div>
 <p>주요 형식 지정자는 다음과 같다: <code>%Y</code>(4자리 연도), <code>%m</code>(월), <code>%d</code>(일),
 <code>%H</code>(시), <code>%M</code>(분), <code>%S</code>(초), <code>%A</code>(요일).</p>
 <div class="box note"><span class="chip">잠깐</span><span class="box-title">time 모듈</span><p><code>time</code> 모듈은 시간에 관련된 정보를 제공하는 모듈이다.
@@ -335,16 +335,16 @@ print(dir(math)) # math 모듈의 모든 속성과 메소드 나열</code></pre>
 이렇게 나타난 함수 중의 몇 개만 함께 활용해보자.</p>
 <div class="listing"><pre class="line-numbers"><code class="language-python">import math as m
 
-print(m.pi) # 3.141592653589793 -- 원주율 상수
-print(m.e) # 2.718281828459045 -- 자연상수 e
-print(m.pow(3, 3)) # 27.0 -- 3의 3제곱
-print(m.fabs(-99)) # 99.0 -- -99의 절대값
-print(m.ceil(2.1)) # 3 -- 2.1의 올림
-print(m.ceil(-2.1)) # -2 -- -2.1의 올림
-print(m.floor(2.1)) # 2 -- 2.1의 내림
-print(m.log(2.71828)) # 0.999999327... -- 자연로그
-print(m.log(100, 10)) # 2.0 -- 밑이 10인 로그
-print(m.sqrt(144)) # 12.0 -- 제곱근</code></pre><div class="listing-caption">코드 7.17: math 모듈의 상수와 주요 함수</div></div>
+print(m.pi)            # 3.141592653589793 -- 원주율 상수
+print(m.e)             # 2.718281828459045 -- 자연상수 e
+print(m.pow(3, 3))     # 27.0 -- 3의 3제곱
+print(m.fabs(-99))     # 99.0 -- -99의 절대값
+print(m.ceil(2.1))     # 3 -- 2.1의 올림
+print(m.ceil(-2.1))    # -2 -- -2.1의 올림
+print(m.floor(2.1))    # 2 -- 2.1의 내림
+print(m.log(2.71828))  # 0.999999327... -- 자연로그
+print(m.log(100, 10))  # 2.0 -- 밑이 10인 로그
+print(m.sqrt(144))     # 12.0 -- 제곱근</code></pre><div class="listing-caption">코드 7.17: math 모듈의 상수와 주요 함수</div></div>
 <p>자주 사용하는 <code>math</code> 모듈의 함수들을 표로 정리하면 다음과 같다.</p>
 <div class="table-wrap"><div class="table-caption">표 7.3: math 모듈 주요 함수</div><table><tr><th><strong>함수</strong></th><th><strong>예시</strong></th><th><strong>설명</strong></th></tr><tr><td><code>sqrt(x)</code></td><td><code>sqrt(16)</code> \(\to\) 4.0</td><td>제곱근</td></tr><tr><td><code>pow(x, y)</code></td><td><code>pow(2, 3)</code> \(\to\) 8.0</td><td>거듭제곱</td></tr><tr><td><code>ceil(x)</code></td><td><code>ceil(3.2)</code> \(\to\) 4</td><td>올림</td></tr><tr><td><code>floor(x)</code></td><td><code>floor(3.8)</code> \(\to\) 3</td><td>내림</td></tr><tr><td><code>fabs(x)</code></td><td><code>fabs(-5)</code> \(\to\) 5.0</td><td>절대값</td></tr><tr><td><code>log(x)</code></td><td><code>log(m.e)</code> \(\to\) 1.0</td><td>자연로그</td></tr><tr><td><code>log(x, b)</code></td><td><code>log(100, 10)</code> \(\to\) 2.0</td><td>밑이 b인 로그</td></tr><tr><td><code>sin(x)</code></td><td><code>sin(m.pi/2)</code> \(\to\) 1.0</td><td>사인 (라디안)</td></tr><tr><td><code>radians(x)</code></td><td><code>radians(90)</code> \(\to\) 1.5707...</td><td>각도\(\to\)라디안 변환</td></tr><tr><td><code>degrees(x)</code></td><td><code>degrees(m.pi)</code> \(\to\) 180.0</td><td>라디안\(\to\)각도 변환</td></tr></table></div>
 <h4>삼각함수와 라디안</h4>
@@ -355,8 +355,8 @@ print(m.sqrt(144)) # 12.0 -- 제곱근</code></pre><div class="listing-caption">
 그 이유는 파이썬에서 제공하는 삼각함수들이 라디안 각도를 인자 값으로 사용하기 때문이다.</p>
 <div class="listing"><pre class="line-numbers"><code class="language-python">import math as m
 
-print(m.sin(0.0)) # 0.0 -- 정상, sin(0) = 0
-print(m.sin(90.0)) # 0.8939... -- sin(90도)가 아님!</code></pre><div class="listing-caption">코드 7.18: sin()에 각도를 직접 넣었을 때의 오류</div></div>
+print(m.sin(0.0))   # 0.0 -- 정상, sin(0) = 0
+print(m.sin(90.0))  # 0.8939... -- sin(90도)가 아님!</code></pre><div class="listing-caption">코드 7.18: sin()에 각도를 직접 넣었을 때의 오류</div></div>
 <p>따라서 60분법의 일반각 90도를 표기하고 싶다면 <code>math.pi/2.0</code>과 같은 라디안 표기로 변환해서
 사용해야만 한다.
 <code>radians()</code> 함수는 각도 값을 라디안으로 변환하고 <code>degrees()</code> 함수는 라디안을 각도 값으로 변환한다.</p>
@@ -369,8 +369,8 @@ print(m.sin(m.pi/2.0)) # 1.0
 print(m.pi) # 3.141592653589793
 
 # 90도를 라디안으로 변환한 후 sin 사용
-print(m.radians(90)) # 1.5707963267948966 (pi/2)
-print(m.sin(m.radians(90))) # 1.0 -- 올바른 결과!</code></pre><div class="listing-caption">코드 7.19: radians()로 각도를 라디안으로 변환</div></div>
+print(m.radians(90))         # 1.5707963267948966 (pi/2)
+print(m.sin(m.radians(90)))  # 1.0 -- 올바른 결과!</code></pre><div class="listing-caption">코드 7.19: radians()로 각도를 라디안으로 변환</div></div>
 <p>이제 위의 코드를 수정하여 <code>m.sin()</code>의 입력 값으로 라디안 값을 넣으니 정확히 1.0이 나온다.
 <code>m.pi</code>는 \(\pi\)의 근사값이지만, <code>sin(pi/2)</code>의 부동소수점 계산 결과가 마침 1.0으로 반올림되어 정확한 값처럼 보인다.
 파이썬의 \(\pi\) 값은 <code>m.pi</code>를 통해 출력해 볼 수 있으며,
@@ -393,9 +393,9 @@ print(m.sin(m.radians(90))) # 1.0 -- 올바른 결과!</code></pre><div class="l
 통계 분석에서 데이터를 무작위로 추출하는 작업 등에 반드시 필요하기 때문이다.</p>
 <div class="listing"><pre class="line-numbers"><code class="language-python">import random as rd
 
-print(rd.random()) # 0.0 이상 1.0 미만의 실수
-print(rd.randint(1, 6)) # 1 이상 6 이하의 정수 (주사위)
-print(rd.randrange(0, 10)) # 0 이상 9 이하의 정수</code></pre><div class="listing-caption">코드 7.20: random 모듈의 기본 난수 함수</div></div>
+print(rd.random())          # 0.0 이상 1.0 미만의 실수
+print(rd.randint(1, 6))     # 1 이상 6 이하의 정수 (주사위)
+print(rd.randrange(0, 10))  # 0 이상 9 이하의 정수</code></pre><div class="listing-caption">코드 7.20: random 모듈의 기본 난수 함수</div></div>
 <p><code>random()</code> 함수는 0.0 이상 1.0 미만의 실수를 반환하고,
 <code>randint(a, b)</code>는 a 이상 b <strong>이하</strong>의 정수를 반환한다.
 <code>randrange(a, b)</code>는 a 이상 b <strong>미만</strong>의 정수를 반환하는데,
@@ -406,8 +406,8 @@ print(rd.randrange(0, 10)) # 0 이상 9 이하의 정수</code></pre><div class=
 colors = ['빨강', '파랑', '초록', '노랑', '보라']
 print(rd.choice(colors)) # 리스트에서 무작위로 하나 선택
 
-rd.shuffle(colors) # 리스트를 무작위로 섞기 (원본 변경)
-print(colors) # 순서가 무작위로 바뀜
+rd.shuffle(colors)  # 리스트를 무작위로 섞기 (원본 변경)
+print(colors)       # 순서가 무작위로 바뀜
 
 print(rd.sample(colors, 3)) # 3개를 비복원 추출</code></pre><div class="listing-caption">코드 7.21: choice, shuffle, sample로 리스트 다루기</div></div>
 <p><code>choice()</code> 함수는 리스트에서 하나를 무작위로 선택하고,
@@ -467,9 +467,9 @@ pip<span class="w"> </span>install<span class="w"> </span>numpy<span class="w"> 
 <div class="listing"><pre class="line-numbers"><code class="language-python">import numpy as np
 
 a = np.array([1, 2, 3, 4, 5])
-print(a * 2) # [2 4 6 8 10] -- 요소별 곱셈
-print(a.mean()) # 3.0 -- 평균
-print(a.sum()) # 15 -- 합계</code></pre><div class="listing-caption">코드 7.23: numpy 배열 연산의 간결함</div></div>
+print(a * 2)     # [2 4 6 8 10] -- 요소별 곱셈
+print(a.mean())  # 3.0 -- 평균
+print(a.sum())   # 15 -- 합계</code></pre><div class="listing-caption">코드 7.23: numpy 배열 연산의 간결함</div></div>
 <p><code>numpy</code>는 과학 기술 분야에서 표준으로 사용되는 패키지로,
 일반 파이썬 리스트보다 훨씬 빠른 배열 연산을 지원한다.
 위 코드에서 <code>a * 2</code>는 배열의 모든 요소에 2를 곱하는 연산으로,
@@ -559,9 +559,8 @@ False</pre>
 <li><code>\d</code>, <code>\w</code>, <code>\s</code>, <code>*</code>, <code>+</code>, <code>?</code>, <code>{n}</code> 등 핵심 메타문자 몇 개만 익혀도 대부분의 실용 패턴을 작성할 수 있다.</li>
 <li>패턴 문자열은 항상 <code>r'…'</code> 형태의 원시 문자열로 작성하는 것이 관례이다.</li>
 </ul></div>
-<div class="box caution"><span class="chip">주의</span><p>정규표현식은 강력한 도구이지만 복잡해지면 읽기가 매우 어려워진다.
-패턴이 한 줄을 넘어가면 <code>re.VERBOSE</code> 옵션으로 주석을 달거나, 여러 단계로 나누어 처리하는 것이 좋다.
-또한 사용자 입력의 검증에서 너무 엄격한 패턴은 정상 입력까지 거부할 수 있으므로, 실제 서비스에서는 표준 라이브러리(<code>email.utils</code> 등)나 검증된 패턴을 사용하는 것이 안전하다.</p></div>
+<div class="box caution"><span class="chip">주의</span><p>정규표현식은 복잡해지면 읽기 어렵다. 패턴이 길어지면 <code>re.VERBOSE</code> 옵션으로 주석을 달거나 여러 단계로 나누자.
+너무 엄격한 패턴은 정상 입력까지 거부할 수 있으므로, 실제 서비스에서는 표준 라이브러리(<code>email.utils</code> 등)나 검증된 패턴을 쓰는 것이 안전하다.</p></div>
 <p><span id="labs"></span><div class="box lab"><div class="lab-title">실습을 통한 7 장 개념 정리</div><ol>
 <li><code>datetime</code> 모듈을 사용하여 오늘의 날짜와 시간을 오전/오후 표기와 함께 출력하시오.
 <p><pre class="line-numbers"><code class="language-python">from datetime import datetime

@@ -420,8 +420,8 @@ print(f'원의 면적: {3.14 * radius ** 2}')</code></pre>
 이 장에서 배운 <code>int</code>, <code>float</code>, <code>str</code>, <code>bool</code>은 하나의 값을 담는 기본형이다.
 이후 5장과 6장에서 배울 <code>list</code>, <code>dict</code>, <code>tuple</code>, <code>set</code>은 여러 값을 묶어 담는 컬렉션형이다.</p>
 <p>파이썬은 변수에 값을 할당할 때 자료형을 자동으로 결정하는 <strong class="term-ko">동적 타이핑</strong><sup class="term">dynamic typing</sup> 언어이다. 변수를 만들 때 자료형을 미리 선언할 필요가 없으며, 같은 변수에 정수를 넣었다가 문자열을 넣는 것도 가능하다.</p>
-<div class="listing"><pre class="line-numbers"><code class="language-python">x = 10 # x는 int 형
-x = '안녕하세요' # 이제 x는 str 형 (오류 없음)</code></pre><div class="listing-caption">코드 2.6: 파이썬의 동적 타이핑</div></div>
+<div class="listing"><pre class="line-numbers"><code class="language-python">x = 10            # x는 int 형
+x = '안녕하세요'  # 이제 x는 str 형 (오류 없음)</code></pre><div class="listing-caption">코드 2.6: 파이썬의 동적 타이핑</div></div>
 <p>반면 C, C++, Java, C# 같은 <strong class="term-ko">정적 타이핑</strong><sup class="term">static typing</sup> 언어에서는 변수를 사용하기 전에 반드시 자료형을 선언해야 한다. 한 번 선언한 자료형은 바꿀 수 없으므로, 정수로 선언한 변수에 문자열을 넣으면 컴파일 오류가 발생한다.</p>
 <div class="listing"><pre class="line-numbers"><code class="language-python">// C 언어 예제
 int x = 10; /* x를 int 형으로 선언 */
@@ -462,16 +462,13 @@ seconds = total % 60
 print(f'{hours}시간 {minutes}분 {seconds}초')</code></pre></li>
 <li>네 자리 정수 <code>n</code>의 각 자릿수를 모두 더한 합을 출력하시오. 예를 들어 <code>n = 1234</code>이면 결과는 <code>1 + 2 + 3 + 4 = 10</code>이다. 정수 나눗셈 연산자 <code>//</code>와 나머지 연산자 <code>%</code>를 조합하면 각 자리의 숫자를 따로 꺼낼 수 있다.</p>
 <p><pre class="line-numbers"><code class="language-python">n = 1234
-d1 = n // 1000           # 천의 자리
-d2 = (n // 100) % 10     # 백의 자리
-d3 = (n // 10) % 10      # 십의 자리
-d4 = n % 10              # 일의 자리
+d1 = n // 1000        # 천의 자리
+d2 = (n // 100) % 10  # 백의 자리
+d3 = (n // 10) % 10   # 십의 자리
+d4 = n % 10           # 일의 자리
 print('자릿수의 합:', d1 + d2 + d3 + d4)</code></pre></li>
-<li>문자열이 <strong class="term-ko">회문</strong><sup class="term">palindrome</sup>, 즉 거꾸로 읽어도 같은지 판별하여 출력하시오. 슬라이싱 <code>[::-1]</code>로 문자열을 뒤집은 뒤 원본과 비교하면 된다.</p>
+<li>문자열이 <strong class="term-ko">회문</strong><sup class="term">palindrome</sup>, 즉 거꾸로 읽어도 같은지 판별하여 출력하시오. <code>[::-1]</code>로 뒤집어 원본과 비교하고, <code>s</code>를 <code>'파이썬'</code>으로 바꿔서도 확인해 보자.</p>
 <p><pre class="line-numbers"><code class="language-python">s = '기러기'
-print(f'"{s}" 회문 여부: {s == s[::-1]}')
-
-s = '파이썬'
 print(f'"{s}" 회문 여부: {s == s[::-1]}')</code></pre></li>
 </ol></p></div></p>
 <details class="box summary" id="summary"><summary class="box-head">2장 요약</summary><div class="sum-body"><ul>

@@ -104,19 +104,19 @@ print(mixed)</code></pre>
 <div class="listing-caption">코드 5.2: 다양한 형태의 리스트 생성</div>
 <p>위 코드에서 <code>score_list</code>는 정수 7개를 저장하는 리스트이고, <code>fruits</code>는 문자열 4개를 저장하는 리스트이다. 특히 <code>mixed</code> 리스트처럼 정수와 문자열 등 서로 다른 자료형의 값을 하나의 리스트에 함께 저장할 수도 있다. 이것은 C나 Java의 배열(array)에서는 허용되지 않는 파이썬만의 유연한 특성이다.</p>
 <p>리스트는 대괄호로 직접 만드는 것 외에도 여러 가지 방법으로 생성할 수 있다.</p>
-<div class="listing"><pre class="line-numbers"><code class="language-python">list1 = list() # 빈 리스트
-list2 = [] # 빈 리스트
-list3 = list(range(1, 10)) # [1, 2,..., 9]
-list4 = list('ABCDEF') # ['A', 'B', 'C', 'D', 'E', 'F']</code></pre><div class="listing-caption">코드 5.3: 여러 가지 리스트 생성 방법</div></div>
+<div class="listing"><pre class="line-numbers"><code class="language-python">list1 = list()              # 빈 리스트
+list2 = []                  # 빈 리스트
+list3 = list(range(1, 10))  # [1, 2,..., 9]
+list4 = list('ABCDEF')      # ['A', 'B', 'C', 'D', 'E', 'F']</code></pre><div class="listing-caption">코드 5.3: 여러 가지 리스트 생성 방법</div></div>
 <p>빈 리스트는 <code>list()</code> 또는 <code>[]</code>로 만들 수 있다. <code>list(range(1, 10))</code>은 <code>range()</code> 함수가 생성하는 1부터 9까지의 수열을 리스트로 변환한 것이고, <code>list('ABCDEF')</code>는 문자열의 각 문자를 개별 원소로 분리하여 리스트를 만든 것이다.</p>
 <h3>인덱싱</h3>
 <p>리스트의 각 항목에는 0부터 시작하는 <strong class="term-ko">인덱스</strong><sup class="term">index</sup>가 부여된다.
 항목의 개수가 \(n\)개인 리스트의 인덱스는 0부터 시작해서 \(n-1\)까지의 정수를 사용한다. 인덱스를 이용하여 원하는 항목 값에 접근하는 것을 <strong class="term-ko">인덱싱</strong><sup class="term">indexing</sup>이라 한다.</p>
 <pre class="line-numbers"><code class="language-python">a = [11, 22, 33, 44, 55, 66]
-print(a[0]) # 첫 번째 요소
-print(a[3]) # 네 번째 요소
-print(a[5]) # 여섯 번째(마지막) 요소
-print(len(a)) # 리스트의 길이</code></pre>
+print(a[0])    # 첫 번째 요소
+print(a[3])    # 네 번째 요소
+print(a[5])    # 여섯 번째(마지막) 요소
+print(len(a))  # 리스트의 길이</code></pre>
 <pre class="termout">11
 44
 66
@@ -129,9 +129,9 @@ print(len(a)) # 리스트의 길이</code></pre>
 <h3>음수 인덱스</h3>
 <p>파이썬은 다른 언어에서는 잘 지원하지 않는 <strong>음수 인덱스</strong>를 제공한다. 음수 인덱스는 리스트의 끝에서부터 역방향으로 세는 방식이다. <code>-1</code>은 마지막 원소, <code>-2</code>는 뒤에서 두 번째 원소를 가리킨다.</p>
 <pre class="line-numbers"><code class="language-python">a = [11, 22, 33, 44, 55, 66]
-print(a[-1]) # 마지막 요소: 66
-print(a[-2]) # 뒤에서 두 번째 요소: 55
-print(a[-6]) # 첫 번째 요소: 11</code></pre>
+print(a[-1])  # 마지막 요소: 66
+print(a[-2])  # 뒤에서 두 번째 요소: 55
+print(a[-6])  # 첫 번째 요소: 11</code></pre>
 <pre class="termout">66
 55
 11</pre>
@@ -147,8 +147,8 @@ print(a[-6]) # 첫 번째 요소: 11</code></pre>
 <p>리스트는 덧셈(<code>+</code>)과 반복(<code>*</code>) 연산을 지원한다. 숫자에서의 덧셈, 곱셈과 의미는 다르지만 직관적으로 이해할 수 있다. 덧셈 연산자 <code>+</code>는 두 리스트를 <strong>연결</strong>(concatenation)하여 하나의 새로운 리스트를 만든다. 반복 연산자 <code>*</code>는 리스트의 원소를 지정한 횟수만큼 <strong>반복</strong>하여 새 리스트를 생성한다.</p>
 <pre class="line-numbers"><code class="language-python">a = [1, 2, 3]
 b = [4, 5, 6]
-print(a + b) # 리스트 연결
-print(a * 3) # 리스트 반복</code></pre>
+print(a + b)  # 리스트 연결
+print(a * 3)  # 리스트 반복</code></pre>
 <pre class="termout">[1, 2, 3, 4, 5, 6]
 [1, 2, 3, 1, 2, 3, 1, 2, 3]</pre>
 <div class="listing-caption">코드 5.6: 리스트의 연결과 반복 연산</div>
@@ -160,9 +160,9 @@ print(a * 3) # 리스트 반복</code></pre>
 <h3>멤버 연산자: in, not in</h3>
 <p>프로그래밍에서 "이 값이 리스트에 들어 있는가?"를 확인하는 것은 매우 흔한 작업이다. 파이썬은 이를 위해 <code>in</code>과 <code>not in</code>이라는 <strong>멤버 연산자</strong>를 제공한다. <code>in</code> 연산자는 값이 리스트에 포함되어 있으면 <code>True</code>를, 포함되어 있지 않으면 <code>False</code>를 반환한다. <code>not in</code>은 그 반대이다.</p>
 <pre class="line-numbers"><code class="language-python">a_list = [10, 20, 30, 40]
-print(10 in a_list) # True
-print(50 in a_list) # False
-print(50 not in a_list) # True</code></pre>
+print(10 in a_list)      # True
+print(50 in a_list)      # False
+print(50 not in a_list)  # True</code></pre>
 <pre class="termout">True
 False
 True</pre>
@@ -196,8 +196,8 @@ print('정렬:', sorted(nums))</code></pre>
 <p><code>min()</code>은 리스트에서 가장 작은 값을, <code>max()</code>는 가장 큰 값을, <code>sum()</code>은 모든 원소의 합계를 반환한다. <code>len()</code>은 원소의 개수를 알려 주며, <code>sorted()</code>는 정렬된 <strong>새로운 리스트</strong>를 반환한다(원본은 변하지 않는다).</p>
 <p>이 함수들은 문자열 리스트에도 동작한다. 문자열의 경우 사전 순서로 비교가 이루어진다. 영어는 알파벳 순서, 한글은 가나다 순서를 따른다. 다만, <code>sum()</code> 함수는 문자열에는 적용되지 않는다.</p>
 <pre class="line-numbers"><code class="language-python">fruits = ['바나나', '오렌지', '사과', '키위']
-print(min(fruits)) # 사전 순으로 가장 앞: 바나나
-print(max(fruits)) # 사전 순으로 가장 뒤: 키위</code></pre>
+print(min(fruits))  # 사전 순으로 가장 앞: 바나나
+print(max(fruits))  # 사전 순으로 가장 뒤: 키위</code></pre>
 <pre class="termout">바나나
 키위</pre>
 <div class="listing-caption">코드 5.10: 문자열 리스트의 사전 순 비교</div>
@@ -316,8 +316,8 @@ print('뒤집기:', list1)</code></pre>
 <div class="listing-caption">코드 5.18: sort()와 reverse() 정렬 메소드</div>
 <p><code>index()</code> 메소드는 특정 값이 리스트의 어디에 위치하는지 찾아 준다. 값이 존재하지 않으면 <code>ValueError</code>가 발생하므로, 안전하게 사용하려면 먼저 <code>in</code> 연산자로 존재 여부를 확인하는 것이 좋다.</p>
 <pre class="line-numbers"><code class="language-python">a_list = ['a', 'b', 'c', 'd', 'e']
-print(a_list.index('c')) # 2
-print(a_list.count('a')) # 1
+print(a_list.index('c'))  # 2
+print(a_list.count('a'))  # 1
 
 a_list.insert(1, 'x') # 인덱스 1 위치에 'x' 삽입
 print(a_list)</code></pre>
@@ -335,11 +335,11 @@ b.extend([4, 5]) # [1, 2, 3, 4, 5] -- 개별 원소로 추가됨</pre></p></div>
 <p>슬라이싱의 문법은 <code>리스트[start:end:step]</code>이며, <code>start</code>부터 <code>end-1</code>까지의 원소를 <code>step</code> 간격으로 가져온다. 여기서 <code>end</code> 인덱스의 원소는 <strong>포함되지 않는다</strong>는 점이 중요하다.</p>
 <pre class="line-numbers"><code class="language-python">a = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
-print(a[2:5]) # 인덱스 2부터 4까지
-print(a[:4]) # 처음부터 인덱스 3까지
-print(a[6:]) # 인덱스 6부터 끝까지
-print(a[::2]) # 2칸 간격으로 추출
-print(a[::-1]) # 역순으로 추출</code></pre>
+print(a[2:5])   # 인덱스 2부터 4까지
+print(a[:4])    # 처음부터 인덱스 3까지
+print(a[6:])    # 인덱스 6부터 끝까지
+print(a[::2])   # 2칸 간격으로 추출
+print(a[::-1])  # 역순으로 추출</code></pre>
 <pre class="termout">[2, 3, 4]
 [0, 1, 2, 3]
 [6, 7, 8, 9]
@@ -354,9 +354,6 @@ print(a[::-1]) # 역순으로 추출</code></pre>
 <div class="table-wrap"><div class="table-caption">표 5.2: 슬라이싱 패턴 정리</div><table><tr><th><strong>패턴</strong></th><th><strong>의미</strong></th></tr><tr><td><code>a[start:end]</code></td><td><code>start</code>부터 <code>end-1</code>까지</td></tr><tr><td><code>a[:end]</code></td><td>처음부터 <code>end-1</code>까지</td></tr><tr><td><code>a[start:]</code></td><td><code>start</code>부터 끝까지</td></tr><tr><td><code>a[::step]</code></td><td>전체에서 <code>step</code> 간격으로</td></tr><tr><td><code>a[::-1]</code></td><td>전체를 역순으로</td></tr></table></div>
 <p>슬라이싱에서 초보자가 자주 실수하는 점은 <code>end</code> 인덱스가 결과에 포함되지 않는다는 것이다. 예를 들어 <code>a[2:5]</code>는 인덱스 2, 3, 4의 원소만 가져오고, 인덱스 5의 원소는 포함되지 않는다. 이 규칙이 처음에는 어색하게 느껴질 수 있지만, <code>a[:3]</code>이 "처음부터 3개"를, <code>a[3:6]</code>이 "3번부터 3개"를 의미하는 등 "개수를 쉽게 계산할 수 있다"는 장점이 있어 익숙해지면 매우 편리하다.</p>
 <div class="box keypoint"><span class="chip">요점</span><p>리스트 메소드 중 <code>sort()</code>는 원본을 정렬하고, <code>append()</code>와 <code>extend()</code>는 추가 방식이 다르다. 슬라이싱 <code>[start:end:step]</code>으로 리스트의 부분을 추출할 수 있으며, <code>end</code> 인덱스의 원소는 포함되지 않는다. <code>step</code>이 음수이면 역순으로 추출한다.</p></div>
-<div class="box note"><span class="chip">잠깐</span><span class="box-title">더 읽을거리</span><ul>
-<li>『Fluent Python』(Luciano Ramalho) — 시퀀스와 슬라이싱을 비롯해 파이썬다운(Pythonic) 코드 작성법을 깊이 있게 다루는 중급서</li>
-</ul></div>
 <p><span id="labs"></span><div class="box lab"><div class="lab-title">실습을 통한 5 장 개념 정리</div><ol>
 <li>5명의 학생 점수를 리스트에 저장하고, <code>max()</code>, <code>min()</code>, <code>sum()</code>, <code>len()</code>을 활용하여 최고점·최저점·합계·평균을 출력하시오.
 <p><pre class="line-numbers"><code class="language-python">scores = [85, 90, 78, 92, 88]
@@ -378,36 +375,32 @@ for n in nums:
 print(evens)         # [10, 42]</code></pre></li>
 <li>리스트 <code>colors = ['빨강', '초록', '파랑', '노랑']</code>를 역순으로 출력하시오. (슬라이싱 <code>[::-1]</code> 또는 <code>reverse()</code> 활용)</p>
 <p><pre class="line-numbers"><code class="language-python">colors = ['빨강', '초록', '파랑', '노랑']
-print(colors[::-1])   # 슬라이싱 이용
-colors.reverse()      # reverse() 메소드 이용 (원본이 뒤집힘)
+print(colors[::-1])  # 슬라이싱 이용
+colors.reverse()     # reverse() 메소드 이용 (원본이 뒤집힘)
 print(colors)</code></pre></li>
 <li>리스트의 모든 원소 평균을 구하는 함수 <code>list_avg(lst)</code>를 작성하시오. 빈 리스트가 전달되면 0을 반환하도록 한다.</p>
 <p><pre class="line-numbers"><code class="language-python">def list_avg(lst):
     if len(lst) == 0:
         return 0
     return sum(lst) / len(lst)
-
-print(list_avg([1, 2, 3, 4, 5]))   # 3.0
-print(list_avg([]))                # 0</code></pre></li>
-<li><code>enumerate()</code>를 사용하여 리스트 <code>fruits = ['사과', '바나나', '체리', '키위']</code>의 인덱스와 값을 함께 출력하시오. 출력 형식은 <code>0: 사과</code>처럼 인덱스 뒤에 콜론을 두고 값을 표시한다.</p>
+print(list_avg([1, 2, 3, 4, 5]))  # 3.0
+print(list_avg([]))               # 0</code></pre></li>
+<li><code>enumerate()</code>를 사용하여 리스트 <code>fruits = ['사과', '바나나', '체리', '키위']</code>의 인덱스와 값을 함께 출력하시오. (출력 예: <code>0: 사과</code>)</p>
 <p><pre class="line-numbers"><code class="language-python">fruits = ['사과', '바나나', '체리', '키위']
 for i, name in enumerate(fruits):
     print(f'{i}: {name}')</code></pre></li>
 <li>리스트 <code>nums = [10, 20, 30, 40, 50, 60, 70, 80]</code>에 대하여 슬라이싱을 활용해 다음 세 가지를 출력하시오: (1) 처음 세 원소, (2) 마지막 세 원소, (3) 짝수 번째 인덱스에 있는 원소.</p>
 <p><pre class="line-numbers"><code class="language-python">nums = [10, 20, 30, 40, 50, 60, 70, 80]
-print(nums[:3])      # [10, 20, 30]
-print(nums[-3:])     # [60, 70, 80]
-print(nums[::2])     # [10, 30, 50, 70]</code></pre></li>
+print(nums[:3])   # [10, 20, 30]
+print(nums[-3:])  # [60, 70, 80]
+print(nums[::2])  # [10, 30, 50, 70]</code></pre></li>
 <li>빈 리스트로 시작하여 다음 작업을 차례대로 수행하고, 각 단계마다 리스트의 상태를 출력하시오: (1) 30, 50, 70을 차례로 <code>append</code>로 추가, (2) 인덱스 1 위치에 40을 <code>insert</code>로 삽입, (3) 마지막 원소를 <code>pop</code>으로 제거, (4) 값 30을 <code>remove</code>로 삭제.</p>
 <p><pre class="line-numbers"><code class="language-python">items = []
 items.append(30); items.append(50); items.append(70)
-print(items)        # [30, 50, 70]
-items.insert(1, 40)
-print(items)        # [30, 40, 50, 70]
-items.pop()
-print(items)        # [30, 40, 50]
-items.remove(30)
-print(items)        # [40, 50]</code></pre></li>
+print(items)                       # [30, 50, 70]
+items.insert(1, 40); print(items)  # [30, 40, 50, 70]
+items.pop(); print(items)          # [30, 40, 50]
+items.remove(30); print(items)     # [40, 50]</code></pre></li>
 </ol></p></div></p>
 <details class="box summary" id="summary"><summary class="box-head">5장 요약</summary><div class="sum-body"><ul>
 <li><strong>리스트</strong>는 대괄호 <code>[ ]</code>로 생성하며, 여러 자료형의 값을 하나의 변수에 순서대로 저장할 수 있는 가변(mutable) 자료형이다. 빈 리스트는 <code>[]</code>로 생성한다.</li>

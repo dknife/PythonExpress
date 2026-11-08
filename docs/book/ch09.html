@@ -138,14 +138,14 @@
 이렇게 파이썬에서는 다양한 기능을 수행하도록 만들어진 많은 실체들이 있으며,
 <strong>속성과 메소드를 가진 실체를 소프트웨어에서 객체</strong>라고 한다.</p>
 <div class="listing"><pre class="line-numbers"><code class="language-python">animals = ['사자', '호랑이', '고양이', '개']
-animals.sort() # 리스트 객체의 sort() 메소드
-animals.append('토끼') # 리스트 객체의 append() 메소드
+animals.sort()          # 리스트 객체의 sort() 메소드
+animals.append('토끼')  # 리스트 객체의 append() 메소드
 print(animals)
 # ['개', '고양이', '사자', '호랑이', '토끼']
 
 s = 'tiger'
-print(s.upper()) # 문자열 객체의 upper() 메소드 -- 'TIGER'
-print(s.find('g')) # 문자열 객체의 find() 메소드 -- 2</code></pre><div class="listing-caption">코드 9.1: 리스트와 문자열 객체의 메소드</div></div>
+print(s.upper())    # 문자열 객체의 upper() 메소드 -- 'TIGER'
+print(s.find('g'))  # 문자열 객체의 find() 메소드 -- 2</code></pre><div class="listing-caption">코드 9.1: 리스트와 문자열 객체의 메소드</div></div>
 <p>위의 실습 코드에 있는 <code>animals</code>라는 리스트에는 "사자", "호랑이", "고양이", "개" 요소들이 있다.
 우리는 이 리스트에 <code>animals.sort()</code>와 같은 방식으로 <code>sort()</code> 메소드를 호출하여
 리스트의 요소를 가나다순으로 정렬할 수 있다.
@@ -166,26 +166,26 @@ print(s.find('g')) # 문자열 객체의 find() 메소드 -- 2</code></pre><div 
 파이썬 프로그래밍을 하다 보면 많은 객체를 사용하게 되는데
 이 객체들은 생성될 때 서로 다른 고유의 아이디 값을 가진다.</p>
 <div class="listing"><pre class="line-numbers"><code class="language-python">animals = ['사자', '호랑이', '고양이', '개']
-print(type(animals)) # &lt;class 'list'&gt;
-print(id(animals)) # 24990662 (고유한 아이디)
+print(type(animals))  # &lt;class 'list'&gt;
+print(id(animals))    # 24990662 (고유한 아이디)
 
 s = 'tiger'
-print(type(s)) # &lt;class 'str'&gt;
-print(id(s)) # 83596600
+print(type(s))  # &lt;class 'str'&gt;
+print(id(s))    # 83596600
 
 n = 200
-print(type(n)) # &lt;class 'int'&gt;
-print(id(n)) # 24990565</code></pre><div class="listing-caption">코드 9.2: type()과 id()로 객체의 타입과 ID 확인</div></div>
+print(type(n))  # &lt;class 'int'&gt;
+print(id(n))    # 24990565</code></pre><div class="listing-caption">코드 9.2: type()과 id()로 객체의 타입과 ID 확인</div></div>
 <p>위의 결과에서 알 수 있듯이 리스트는 <code>list</code> 클래스, 문자열은 <code>str</code> 클래스,
 정수는 <code>int</code> 클래스의 객체이다.
 그렇다면 다음과 같은 정수는 어떤 <code>type</code>과 <code>id</code>를 가질까?</p>
 <div class="listing"><pre class="line-numbers"><code class="language-python">n = 200
-print(type(n)) # &lt;class 'int'&gt;
-print(id(n)) # 24990565
-print(n + 100) # 300
-print(n.__add__(100)) # 300 (n + 100과 동일)
-print(200 + 100) # 300
-print((200).__add__(100)) # 300 (200 + 100과 동일)</code></pre><div class="listing-caption">코드 9.3: 정수도 객체이며 더하기 메소드를 가짐</div></div>
+print(type(n))             # &lt;class 'int'&gt;
+print(id(n))               # 24990565
+print(n + 100)             # 300
+print(n.__add__(100))      # 300 (n + 100과 동일)
+print(200 + 100)           # 300
+print((200).__add__(100))  # 300 (200 + 100과 동일)</code></pre><div class="listing-caption">코드 9.3: 정수도 객체이며 더하기 메소드를 가짐</div></div>
 <p>위의 코드에서 살펴본 바와 같이 우리가 앞서 살펴본 정수라고 하는 자료형도 <code>type(n)</code>으로
 확인해 보면 실제로는 <code>int</code> 클래스 형의 객체라는 것을 알 수 있다.
 우리가 정수 연산을 실행하기 위하여 <code>n + 100</code> 혹은 <code>200 + 100</code>과 같은
@@ -256,12 +256,12 @@ print((200).__add__(100)) # 300 (200 + 100과 동일)</code></pre><div class="li
 <code>class</code>의 이름을 써준다.
 그 후 필요한 속성과 메소드를 파이썬 문법에 맞게 써준다.
 우선 다음과 같은 간단한 Cat 클래스를 정의하고 그 인스턴스를 생성해 보자.</p>
-<div class="listing"><pre class="line-numbers"><code class="language-python">class Cat: # Cat 클래스 정의
-    pass # 추후 코드를 위한 자리 표시자
+<div class="listing"><pre class="line-numbers"><code class="language-python">class Cat:  # Cat 클래스 정의
+    pass    # 추후 코드를 위한 자리 표시자
 
-nabi = Cat() # Cat 클래스의 인스턴스 생성
-print(nabi) # &lt;__main__.Cat object at 0x7f78399e0eb8&gt;
-print(type(nabi)) # &lt;class '__main__.Cat'&gt;</code></pre><div class="listing-caption">코드 9.5: 빈 Cat 클래스 정의와 인스턴스 생성</div></div>
+nabi = Cat()       # Cat 클래스의 인스턴스 생성
+print(nabi)        # &lt;__main__.Cat object at 0x7f78399e0eb8&gt;
+print(type(nabi))  # &lt;class '__main__.Cat'&gt;</code></pre><div class="listing-caption">코드 9.5: 빈 Cat 클래스 정의와 인스턴스 생성</div></div>
 <p>이 코드에서 <code>pass</code> 문은 아무런 역할을 하지 않는 파이썬 명령문으로
 다른 코드가 추후에 나타날 것을 대비한 플레이스홀더 역할을 한다.
 비록 아무런 역할을 하지는 않으나 이 문장이 없을 경우 전체 코드는 수행되지 않는다는 것도 유의하도록 하자.
@@ -327,19 +327,19 @@ mimi.meow() # 야옹 야옹~~~</code></pre>
 <pre class="line-numbers"><code class="language-python">class Cat:
     # 생성자 -- 인스턴스가 생성될 때 자동으로 호출됨
     def __init__(self, name, color):
-        self.name = name # 인스턴스 변수
-        self.color = color # 인스턴스 변수
+        self.name = name    # 인스턴스 변수
+        self.color = color  # 인스턴스 변수
 
     def meow(self):
         print(f'내 이름은 {self.name}, 색깔은 {self.color}, 야옹~~')
 
-nabi = Cat('나비', '검은색') # nabi 인스턴스
-nero = Cat('네로', '흰색') # nero 인스턴스
-mimi = Cat('미미', '갈색') # mimi 인스턴스
+nabi = Cat('나비', '검은색')  # nabi 인스턴스
+nero = Cat('네로', '흰색')    # nero 인스턴스
+mimi = Cat('미미', '갈색')    # mimi 인스턴스
 
-nabi.meow() # 내 이름은 나비, 색깔은 검은색, 야옹~~
-nero.meow() # 내 이름은 네로, 색깔은 흰색, 야옹~~
-mimi.meow() # 내 이름은 미미, 색깔은 갈색, 야옹~~</code></pre>
+nabi.meow()  # 내 이름은 나비, 색깔은 검은색, 야옹~~
+nero.meow()  # 내 이름은 네로, 색깔은 흰색, 야옹~~
+mimi.meow()  # 내 이름은 미미, 색깔은 갈색, 야옹~~</code></pre>
 <pre class="termout">내 이름은 나비, 색깔은 검은색, 야옹\textasciitilde\textasciitilde
 내 이름은 네로, 색깔은 흰색, 야옹\textasciitilde\textasciitilde
 내 이름은 미미, 색깔은 갈색, 야옹\textasciitilde\textasciitilde</pre>
@@ -427,8 +427,8 @@ C++나 Java와 같은 프로그래밍 언어는 여러 가지 형태의 생성�
     count = 0 # 클래스 변수 -- 모든 인스턴스가 공유
 
     def __init__(self, name):
-        self.name = name # 인스턴스 변수 -- 인스턴스마다 고유
-        Dog.count += 1 # 객체가 생성될 때마다 1씩 증가
+        self.name = name  # 인스턴스 변수 -- 인스턴스마다 고유
+        Dog.count += 1    # 객체가 생성될 때마다 1씩 증가
 
     def bark(self):
         print(f'{self.name}: 멍멍~~!!')
@@ -437,9 +437,9 @@ d1 = Dog('바둑')
 d2 = Dog('초코')
 d3 = Dog('진돌')
 
-print(f'생성된 강아지 수: {Dog.count}') # 3
-d1.bark() # 바둑: 멍멍~~!!
-d2.bark() # 초코: 멍멍~~!!</code></pre>
+print(f'생성된 강아지 수: {Dog.count}')  # 3
+d1.bark()                                # 바둑: 멍멍~~!!
+d2.bark()                                # 초코: 멍멍~~!!</code></pre>
 <pre class="termout">생성된 강아지 수: 3
 바둑: 멍멍\textasciitilde\textasciitilde!!
 초코: 멍멍\textasciitilde\textasciitilde!!</pre>
@@ -493,9 +493,9 @@ d2.bark() # 초코: 멍멍~~!!</code></pre>
         return self.__balance
 
 acc = BankAccount('홍길동', 100000)
-acc.deposit(50000) # 50000원을 입금했습니다. 잔액: 150000
-acc.withdraw(30000) # 30000원을 출금했습니다. 잔액: 120000
-print(acc.get_balance()) # 120000
+acc.deposit(50000)        # 50000원을 입금했습니다. 잔액: 150000
+acc.withdraw(30000)       # 30000원을 출금했습니다. 잔액: 120000
+print(acc.get_balance())  # 120000
 
 # acc.__balance # AttributeError! 직접 접근 불가</code></pre>
 <pre class="termout">50000원을 입금했습니다. 잔액: 150000
@@ -551,18 +551,18 @@ print(nabi) # 검은색 고양이 나비</code></pre>
     def speak(self):
         print(f'{self.name}: 소리를 냅니다.')
 
-class Dog(Animal): # Animal 클래스를 상속
-    def speak(self): # 메소드 오버라이딩
+class Dog(Animal):    # Animal 클래스를 상속
+    def speak(self):  # 메소드 오버라이딩
         print(f'{self.name}: 멍멍!')
 
-class Cat(Animal): # Animal 클래스를 상속
-    def speak(self): # 메소드 오버라이딩
+class Cat(Animal):    # Animal 클래스를 상속
+    def speak(self):  # 메소드 오버라이딩
         print(f'{self.name}: 야옹~')
 
 dog = Dog('바둑')
 cat = Cat('나비')
-dog.speak() # 바둑: 멍멍!
-cat.speak() # 나비: 야옹~</code></pre>
+dog.speak()  # 바둑: 멍멍!
+cat.speak()  # 나비: 야옹~</code></pre>
 <pre class="termout">바둑: 멍멍!
 나비: 야옹\textasciitilde</pre>
 <div class="listing-caption">코드 9.13: Animal 상속과 speak 메소드 오버라이딩</div>
@@ -605,10 +605,10 @@ cat.speak() # 나비: 야옹~</code></pre>
         self.__balance = value
 
 acc = BankAccount('홍길동', 100000)
-print(acc.balance) # 100000 -- 괄호 없이 접근
-acc.balance = 50000 # 세터가 실행되어 값을 검증
-print(acc.balance) # 50000
-acc.balance = -1000 # 세터가 거부</code></pre>
+print(acc.balance)   # 100000 -- 괄호 없이 접근
+acc.balance = 50000  # 세터가 실행되어 값을 검증
+print(acc.balance)   # 50000
+acc.balance = -1000  # 세터가 거부</code></pre>
 <pre class="termout">100000
 50000
 잔액은 음수가 될 수 없습니다.</pre>
@@ -632,10 +632,10 @@ acc.balance = -1000 # 세터가 거부</code></pre>
         name, age = text.split(',')
         return cls(name, int(age))
 
-c1 = Cat('초코', 2) # 기본 생성자
-c2 = Cat.from_string('나비,3') # 대안 생성자
-print(c1.name, c1.age) # 초코 2
-print(c2.name, c2.age) # 나비 3</code></pre>
+c1 = Cat('초코', 2)             # 기본 생성자
+c2 = Cat.from_string('나비,3')  # 대안 생성자
+print(c1.name, c1.age)          # 초코 2
+print(c2.name, c2.age)          # 나비 3</code></pre>
 <pre class="termout">초코 2
 나비 3</pre>
 <div class="listing-caption">코드 9.15: @classmethod로 만드는 대안 생성자</div>
@@ -672,8 +672,8 @@ print(c2.name, c2.age) # 나비 3</code></pre>
 
 class Dog(Animal):
     def __init__(self, name, age, breed):
-        super().__init__(name, age) # 부모의 __init__ 호출
-        self.breed = breed # 자식만의 속성 추가
+        super().__init__(name, age)  # 부모의 __init__ 호출
+        self.breed = breed           # 자식만의 속성 추가
 
     def info(self):
         super().info() # 부모의 info()를 확장
@@ -760,8 +760,8 @@ for obj in [Duck(), Person()]:
         return 2 * (self.width + self.height)
 
 r = Rectangle(3, 5)
-print('넓이:', r.area())        # 15
-print('둘레:', r.perimeter())   # 16</code></pre></li>
+print('넓이:', r.area())       # 15
+print('둘레:', r.perimeter())  # 16</code></pre></li>
 <li>학생을 표현하는 <code>Student</code> 클래스를 작성하시오. 이름과 점수 리스트를 속성으로 갖고, 평균을 반환하는 <code>average()</code> 메소드와 정보를 출력하는 <code>show()</code> 메소드를 구현한다.</p>
 <p><pre class="line-numbers"><code class="language-python">class Student:
     def __init__(self, name, scores):

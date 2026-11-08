@@ -19,6 +19,6 @@ model = LinearRegression()
 model.fit(X, y)
 
 # 모델 파라미터
-a = model.coef_[0] # 기울기
-b = model.intercept_ # 절편
+a = model.coef_[0]    # 기울기
+b = model.intercept_  # 절편
 print(f'회귀선: y = {a:.2f}x + {b:.2f}')

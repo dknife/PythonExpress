@@ -2,5 +2,5 @@
 # 코드 7.3: from import로 특정 요소만 가져오기
 
 from math import sqrt, pi
-print(pi) # 3.141592653589793
-print(sqrt(25)) # 5.0
+print(pi)        # 3.141592653589793
+print(sqrt(25))  # 5.0

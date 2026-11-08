@@ -6,6 +6,6 @@ import turtle
 t = turtle.Turtle()
 t.speed(0)
 for _ in range(4):
-    t.forward(120) # 한 변 그리기
-    t.left(90) # 90도 회전
+    t.forward(120)  # 한 변 그리기
+    t.left(90)      # 90도 회전
 turtle.done()

@@ -3,11 +3,11 @@
 
 from pathlib import Path
 
-p = Path('data') / 'scores.txt' # / 연산자로 경로 연결
-print(p.exists()) # True/False
-print(p.suffix) # '.txt'
-print(p.stem) # 'scores'
-print(p.parent) # PosixPath('data')
+p = Path('data') / 'scores.txt'  # / 연산자로 경로 연결
+print(p.exists())                # True/False
+print(p.suffix)                  # '.txt'
+print(p.stem)                    # 'scores'
+print(p.parent)                  # PosixPath('data')
 
 # 한 줄로 읽고 쓰기
 p.parent.mkdir(exist_ok=True) # data 디렉토리가 없으면 생성

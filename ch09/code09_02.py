@@ -2,13 +2,13 @@
 # 코드 9.2: type()과 id()로 객체의 타입과 ID 확인
 
 animals = ['사자', '호랑이', '고양이', '개']
-print(type(animals)) # <class 'list'>
-print(id(animals)) # 24990662 (고유한 아이디)
+print(type(animals))  # <class 'list'>
+print(id(animals))    # 24990662 (고유한 아이디)
 
 s = 'tiger'
-print(type(s)) # <class 'str'>
-print(id(s)) # 83596600
+print(type(s))  # <class 'str'>
+print(id(s))    # 83596600
 
 n = 200
-print(type(n)) # <class 'int'>
-print(id(n)) # 24990565
+print(type(n))  # <class 'int'>
+print(id(n))    # 24990565

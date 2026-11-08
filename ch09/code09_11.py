@@ -22,8 +22,8 @@ class BankAccount:
         return self.__balance
 
 acc = BankAccount('홍길동', 100000)
-acc.deposit(50000) # 50000원을 입금했습니다. 잔액: 150000
-acc.withdraw(30000) # 30000원을 출금했습니다. 잔액: 120000
-print(acc.get_balance()) # 120000
+acc.deposit(50000)        # 50000원을 입금했습니다. 잔액: 150000
+acc.withdraw(30000)       # 30000원을 출금했습니다. 잔액: 120000
+print(acc.get_balance())  # 120000
 
 # acc.__balance # AttributeError! 직접 접근 불가

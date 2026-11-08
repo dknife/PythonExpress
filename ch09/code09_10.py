@@ -5,8 +5,8 @@ class Dog:
     count = 0 # 클래스 변수 -- 모든 인스턴스가 공유
 
     def __init__(self, name):
-        self.name = name # 인스턴스 변수 -- 인스턴스마다 고유
-        Dog.count += 1 # 객체가 생성될 때마다 1씩 증가
+        self.name = name  # 인스턴스 변수 -- 인스턴스마다 고유
+        Dog.count += 1    # 객체가 생성될 때마다 1씩 증가
 
     def bark(self):
         print(f'{self.name}: 멍멍~~!!')
@@ -15,6 +15,6 @@ d1 = Dog('바둑')
 d2 = Dog('초코')
 d3 = Dog('진돌')
 
-print(f'생성된 강아지 수: {Dog.count}') # 3
-d1.bark() # 바둑: 멍멍~~!!
-d2.bark() # 초코: 멍멍~~!!
+print(f'생성된 강아지 수: {Dog.count}')  # 3
+d1.bark()                                # 바둑: 멍멍~~!!
+d2.bark()                                # 초코: 멍멍~~!!

@@ -3,6 +3,6 @@
 
 person = {'이름': '홍길동', '나이': 26}
 
-print(list(person)) # 키의 리스트
-print(list(person.values())) # 값의 리스트
-print(list(person.items())) # (키, 값) 튜플의 리스트
+print(list(person))           # 키의 리스트
+print(list(person.values()))  # 값의 리스트
+print(list(person.items()))   # (키, 값) 튜플의 리스트

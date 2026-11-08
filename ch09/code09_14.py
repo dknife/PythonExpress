@@ -18,7 +18,7 @@ class BankAccount:
         self.__balance = value
 
 acc = BankAccount('홍길동', 100000)
-print(acc.balance) # 100000 -- 괄호 없이 접근
-acc.balance = 50000 # 세터가 실행되어 값을 검증
-print(acc.balance) # 50000
-acc.balance = -1000 # 세터가 거부
+print(acc.balance)   # 100000 -- 괄호 없이 접근
+acc.balance = 50000  # 세터가 실행되어 값을 검증
+print(acc.balance)   # 50000
+acc.balance = -1000  # 세터가 거부

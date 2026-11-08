@@ -3,8 +3,8 @@
 
 import turtle
 
-ANGLE = 30 # 가지가 꺾이는 각도(단위: 도)
-RATIO = 0.7 # 단계마다 줄어드는 길이 비율
+ANGLE = 30   # 가지가 꺾이는 각도(단위: 도)
+RATIO = 0.7  # 단계마다 줄어드는 길이 비율
 
 def tree(t, length, depth):
     if depth == 0: # 종료 조건

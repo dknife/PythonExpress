@@ -439,8 +439,8 @@ if __name__ == '__main__':
 t = turtle.Turtle()
 t.speed(0)
 for _ in range(4):
-    t.forward(120) # 한 변 그리기
-    t.left(90) # 90도 회전
+    t.forward(120)  # 한 변 그리기
+    t.left(90)      # 90도 회전
 turtle.done()</code></pre><div class="listing-caption">코드 10.3: turtle로 정사각형 그리기</div></div>
 <p><code>forward(120)</code>으로 한 변을 긋고 <code>left(90)</code>으로 90도 회전하는 동작을 네 번 반복하면 정사각형이 완성된다.
 이처럼 turtle 프로그래밍은 "전진  —  회전"의 짧은 명령을 반복·중첩하여 점점 복잡한 도형을 만들어 나가는 방식이다.
@@ -454,8 +454,8 @@ turtle.done()</code></pre><div class="listing-caption">코드 10.3: turtle로 �
 함수 <code>tree(t, length, depth)</code>는 거북이 <code>t</code>의 현재 위치에서 길이 <code>length</code>짜리 가지 하나를 그린 뒤, 그 끝에서 좌우로 약간 꺾어 <strong>자기 자신</strong>을 더 짧은 길이와 한 단계 줄어든 깊이로 두 번 부른다.</p>
 <div class="listing"><pre class="line-numbers"><code class="language-python">import turtle
 
-ANGLE = 30 # 가지가 꺾이는 각도(단위: 도)
-RATIO = 0.7 # 단계마다 줄어드는 길이 비율
+ANGLE = 30   # 가지가 꺾이는 각도(단위: 도)
+RATIO = 0.7  # 단계마다 줄어드는 길이 비율
 
 def tree(t, length, depth):
     if depth == 0: # 종료 조건
@@ -759,13 +759,11 @@ sierpinski(t, 300, 5); turtle.done()</code></pre></li>
 extract_lines('log.txt', 'error_only.txt', 'ERROR')</code></pre></li>
 <li>학생 점수 정보가 담긴 <strong>JSON 문자열</strong>을 <code>json.loads()</code>로 파싱하여 일정 점수 이상인 학생만 추려 내고, 결과를 다시 <code>json.dumps()</code>로 보기 좋게 출력해 보자. 파일이 아닌 문자열 형태의 JSON을 다룰 때 자주 쓰이는 패턴이다.</p>
 <p><pre class="line-numbers"><code class="language-python">import json
-
 raw = '''[
     {"이름": "철수", "점수": 92},
     {"이름": "영희", "점수": 75},
     {"이름": "지영", "점수": 88}
 ]'''
-
 students = json.loads(raw)              # 문자열을 list[dict]로 변환
 top = [s for s in students if s['점수'] &gt;= 85]
 print(json.dumps(top, ensure_ascii=False, indent=4))</code></pre></li>

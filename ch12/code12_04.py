@@ -12,8 +12,8 @@ df = pd.DataFrame({
     '수학': [78, 95, 88, 87]
 })
 
-print(df.head(2)) # 처음 2행
-print(df.tail(2)) # 마지막 2행
-print(df.shape) # (행 수, 열 수)
-print(df.info()) # 열의 타입과 결측값 정보
-print(df.describe()) # 수치형 열의 통계 요약
+print(df.head(2))     # 처음 2행
+print(df.tail(2))     # 마지막 2행
+print(df.shape)       # (행 수, 열 수)
+print(df.info())      # 열의 타입과 결측값 정보
+print(df.describe())  # 수치형 열의 통계 요약

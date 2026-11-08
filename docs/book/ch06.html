@@ -170,10 +170,10 @@ for key in person:
 <p>왜 "바꿀 수 없는" 자료형이 필요할까? 현실에서도 "변경되면 안 되는 데이터"가 존재한다. 예를 들어 1주일의 요일 이름, 지도 위의 좌표, 데이터베이스에서 조회한 레코드 등은 프로그램 도중에 실수로 변경되면 심각한 오류가 발생할 수 있다. 이런 데이터를 리스트에 저장하면 누군가 <code>days[0] = '노는날'</code>처럼 값을 바꿔 버릴 위험이 있다. 튜플을 사용하면 이런 실수를 원천적으로 방지할 수 있다.</p>
 <h3>튜플 생성</h3>
 <p>튜플은 소괄호 <code>( )</code>로 생성하거나, 괄호 없이 값을 쉼표로 나열해도 된다.</p>
-<pre class="line-numbers"><code class="language-python">t1 = (1, 2, 3, 4) # 소괄호 사용
-t2 = 10, 20, 30 # 괄호 생략 가능
-t3 = tuple([1, 2, 3]) # 리스트로부터 생성
-t4 = () # 빈 튜플
+<pre class="line-numbers"><code class="language-python">t1 = (1, 2, 3, 4)      # 소괄호 사용
+t2 = 10, 20, 30        # 괄호 생략 가능
+t3 = tuple([1, 2, 3])  # 리스트로부터 생성
+t4 = ()                # 빈 튜플
 
 print(t1)
 print(t2)
@@ -188,8 +188,8 @@ tup = (100,) # 원소가 하나인 튜플</pre></p></div>
 <h3>튜플의 불변성</h3>
 <p>튜플은 인덱싱으로 값을 조회할 수 있다는 점에서 리스트와 동일하다. 그러나 값을 변경하려 하면 즉시 오류가 발생한다.</p>
 <pre class="line-numbers"><code class="language-python">t = (0, 1, 2, 3, 4)
-print(t[0]) # 0
-print(t[-1]) # 4
+print(t[0])   # 0
+print(t[-1])  # 4
 
 # t[0] = 100 # TypeError 발생!</code></pre>
 <pre class="termout">0
@@ -241,9 +241,9 @@ print(f'최솟값: {minimum}, 최댓값: {maximum}')</code></pre>
 <h3>집합 생성</h3>
 <p>집합은 중괄호 <code>{ }</code> 또는 <code>set()</code> 함수로 생성한다.</p>
 <pre class="line-numbers"><code class="language-python">s1 = {1, 2, 3, 4, 5}
-s2 = set([1, 2, 2, 3, 3, 3]) # 중복 자동 제거
-s3 = set('hello') # 문자열로부터 생성
-s4 = set() # 빈 집합 ({}은 빈 딕셔너리)
+s2 = set([1, 2, 2, 3, 3, 3])  # 중복 자동 제거
+s3 = set('hello')             # 문자열로부터 생성
+s4 = set()                    # 빈 집합 ({}은 빈 딕셔너리)
 
 print(s1)
 print(s2)
@@ -268,10 +268,10 @@ print(unique)</code></pre>
 <pre class="line-numbers"><code class="language-python">A = {1, 2, 3, 4, 5}
 B = {3, 4, 5, 6, 7}
 
-print('합집합:', A | B) # 또는 A.union(B)
-print('교집합:', A &amp; B) # 또는 A.intersection(B)
-print('차집합:', A - B) # 또는 A.difference(B)
-print('대칭 차집합:', A ^ B) # 또는 A.symmetric_difference(B)</code></pre>
+print('합집합:', A | B)       # 또는 A.union(B)
+print('교집합:', A &amp; B)       # 또는 A.intersection(B)
+print('차집합:', A - B)       # 또는 A.difference(B)
+print('대칭 차집합:', A ^ B)  # 또는 A.symmetric_difference(B)</code></pre>
 <pre class="termout">합집합: {1, 2, 3, 4, 5, 6, 7}
 교집합: {3, 4, 5}
 차집합: {1, 2}
@@ -338,9 +338,9 @@ print('리스트:', back_to_list)</code></pre>
 <p>딕셔너리를 리스트로 변환하면 키만 추출된다. 값이나 키-값 쌍을 리스트로 얻으려면 <code>values()</code>나 <code>items()</code> 메소드를 함께 사용해야 한다.</p>
 <pre class="line-numbers"><code class="language-python">person = {'이름': '홍길동', '나이': 26}
 
-print(list(person)) # 키의 리스트
-print(list(person.values())) # 값의 리스트
-print(list(person.items())) # (키, 값) 튜플의 리스트</code></pre>
+print(list(person))           # 키의 리스트
+print(list(person.values()))  # 값의 리스트
+print(list(person.items()))   # (키, 값) 튜플의 리스트</code></pre>
 <pre class="termout">['이름', '나이']
 ['홍길동', 26]
 [('이름', '홍길동'), ('나이', 26)]</pre>
@@ -370,9 +370,6 @@ print('가격 범위:', price_range)</code></pre>
 <div class="listing-caption">코드 6.16: 자료형을 조합한 과일 가게 프로그램</div>
 <p>이 프로그램에서 과일 가격 데이터는 "과일 이름으로 가격을 조회"하는 구조이므로 딕셔너리가 적합하다. 과일 이름의 순서 있는 목록이 필요할 때는 리스트로 변환했다. 할인 대상 과일 중 실제로 판매 중인 과일을 찾을 때는 집합의 교집합 연산을 활용했다. 그리고 가격 범위는 "한 번 결정되면 바뀌지 않는" 정보이므로 튜플에 저장했다. 이처럼 각 자료형의 특성을 이해하고 적절히 조합하면 명확하고 효율적인 프로그램을 작성할 수 있다. 파이썬의 자료형 힌트를 활용한 안전한 프로그래밍은 PEP 484에서 소개하고 있다.</p>
 <div class="box keypoint"><span class="chip">요점</span><p>리스트(변경 가능, 순서 있음), 튜플(변경 불가, 순서 있음), 딕셔너리(키-값 쌍), 집합(중복 불허, 순서 없음)의 특성을 정확히 이해하고, 데이터의 성격에 맞는 자료형을 선택해야 한다. <code>list()</code>, <code>tuple()</code>, <code>set()</code> 함수로 자료형을 상호 변환할 수 있으며, 실제 프로그램에서는 여러 자료형을 조합하여 사용하는 경우가 많다.</p></div>
-<div class="box note"><span class="chip">잠깐</span><span class="box-title">더 읽을거리</span><ul>
-<li>『Python Cookbook』(David Beazley, Brian K. Jones) — 딕셔너리, 집합 등 자료구조를 실전에서 활용하는 다양한 레시피를 담은 책</li>
-</ul></div>
 <p><span id="labs"></span><div class="box lab"><div class="lab-title">실습을 통한 6 장 개념 정리</div><ol>
 <li>과일 이름(키)과 가격(값)을 저장하는 딕셔너리 <code>fruits</code>를 만들고, <code>for</code> 문과 <code>items()</code>를 사용하여 "사과: 1500원" 형식으로 모든 항목을 출력하시오.
 <p><pre class="line-numbers"><code class="language-python">fruits = {'사과': 1500, '바나나': 800, '포도': 3000}
@@ -387,36 +384,33 @@ print(count)</code></pre></li>
 <li>수학 수강생 <code>math = {'철수', '영희', '민수', '지영'}</code>와 영어 수강생 <code>eng = {'영희', '지영', '동현', '수진'}</code>에 대해, 집합 연산으로 (a) 두 과목 모두 수강하는 학생, (b) 수학만 수강하는 학생, (c) 둘 중 하나라도 수강하는 학생을 각각 출력하시오.</p>
 <p><pre class="line-numbers"><code class="language-python">math = {'철수', '영희', '민수', '지영'}
 eng  = {'영희', '지영', '동현', '수진'}
-print('둘 다:', math &amp; eng)    # 교집합
-print('수학만:', math - eng)    # 차집합
-print('하나 이상:', math | eng)    # 합집합</code></pre></li>
+print('둘 다:', math &amp; eng)      # 교집합
+print('수학만:', math - eng)     # 차집합
+print('하나 이상:', math | eng)  # 합집합</code></pre></li>
 <li>리스트 <code>nums = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3]</code>에서 중복을 제거한 뒤 오름차순으로 정렬하여 출력하시오.</p>
 <p><pre class="line-numbers"><code class="language-python">nums = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3]
 print(sorted(set(nums)))    # [1, 2, 3, 4, 5, 6, 9]</code></pre></li>
 <li>두 점의 좌표를 튜플 <code>(x, y)</code> 형태로 받아 두 점 사이의 거리를 반환하는 함수 <code>distance(p1, p2)</code>를 작성하시오. 함수 내부에서는 튜플 언패킹을 활용한다. (힌트: \(d=\sqrt{(x_1-x_2)^2+(y_1-y_2)^2}\))</p>
 <p><pre class="line-numbers"><code class="language-python">def distance(p1, p2):
-    x1, y1 = p1
-    x2, y2 = p2
+    (x1, y1), (x2, y2) = p1, p2
     return ((x1 - x2) ** 2 + (y1 - y2) ** 2) ** 0.5
-
-print(distance((0, 0), (3, 4)))   # 5.0
-print(distance((1, 2), (4, 6)))   # 5.0</code></pre></li>
+print(distance((0, 0), (3, 4)))  # 5.0
+print(distance((1, 2), (4, 6)))  # 5.0</code></pre></li>
 <li>숫자 리스트를 매개변수로 받아 <code>(최솟값, 최댓값, 평균)</code>을 <strong>튜플</strong>로 반환하는 함수 <code>stats(nums)</code>를 작성하고, 호출하는 쪽에서는 세 변수로 언패킹하여 출력하시오.</p>
 <p><pre class="line-numbers"><code class="language-python">def stats(nums):
     return min(nums), max(nums), sum(nums) / len(nums)
-
 lo, hi, avg = stats([72, 88, 91, 65, 80])
 print(f'최솟값: {lo}, 최댓값: {hi}, 평균: {avg}')</code></pre></li>
 <li>학생 이름(키)과 점수(값)를 가진 딕셔너리 <code>scores = {'철수': 85, '영희': 92, '민수': 78, '지영': 90}</code>에서 최고점을 받은 학생의 이름과 점수를 출력하시오. (힌트: <code>max(scores, key=scores.get)</code>)</p>
 <p><pre class="line-numbers"><code class="language-python">scores = {'철수': 85, '영희': 92, '민수': 78, '지영': 90}
 top = max(scores, key=scores.get)
 print(f'최고 점수 학생: {top} ({scores[top]})')</code></pre></li>
-<li>두 리스트 <code>a = [1, 2, 3, 4, 5]</code>, <code>b = [3, 4, 5, 6, 7]</code>이 주어졌을 때, 자료형 변환을 활용하여 (1) 두 리스트의 공통 원소, (2) <code>a</code>에만 있고 <code>b</code>에는 없는 원소, (3) 두 리스트를 합쳐 중복을 제거한 결과를 각각 정렬된 리스트로 출력하시오.</p>
+<li>두 리스트 <code>a = [1, 2, 3, 4, 5]</code>, <code>b = [3, 4, 5, 6, 7]</code>이 주어졌을 때 (1) 두 리스트의 공통 원소, (2) <code>a</code>에만 있고 <code>b</code>에는 없는 원소, (3) 두 리스트를 합쳐 중복을 제거한 결과를 각각 정렬된 리스트로 출력하시오.</p>
 <p><pre class="line-numbers"><code class="language-python">a = [1, 2, 3, 4, 5]
 b = [3, 4, 5, 6, 7]
-print(sorted(set(a) &amp; set(b)))   # [3, 4, 5]
-print(sorted(set(a) - set(b)))   # [1, 2]
-print(sorted(set(a) | set(b)))   # [1, 2, 3, 4, 5, 6, 7]</code></pre></li>
+print(sorted(set(a) &amp; set(b)))  # [3, 4, 5]
+print(sorted(set(a) - set(b)))  # [1, 2]
+print(sorted(set(a) | set(b)))  # [1, 2, 3, 4, 5, 6, 7]</code></pre></li>
 </ol></p></div></p>
 <details class="box summary" id="summary"><summary class="box-head">6장 요약</summary><div class="sum-body"><ul>
 <li><strong>딕셔너리</strong>는 <code>{키: 값}</code> 형태의 <strong>키-값 쌍</strong>으로 데이터를 저장하는 자료형이다. 키는 고유해야 하며, 키를 이용하여 값에 빠르게 접근할 수 있다.</li>

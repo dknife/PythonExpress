@@ -5,9 +5,9 @@ import numpy as np
 
 a = np.array([10, 20, 30, 40, 50])
 
-print(a[0]) # 첫 번째 원소
-print(a[1:4]) # 슬라이싱
-print(a[-1]) # 마지막 원소
+print(a[0])    # 첫 번째 원소
+print(a[1:4])  # 슬라이싱
+print(a[-1])   # 마지막 원소
 
 # 불리언 인덱싱: 조건에 맞는 원소만 추출
 print(a[a > 25]) # 25보다 큰 원소만

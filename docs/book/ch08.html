@@ -415,8 +415,8 @@ A라는 사용자가 "과제0423.hwp"라는 이름으로 한글 파일을 저장
 <h3>파일 쓰기</h3>
 <p><code>write()</code> 메소드를 이용하여 파일에 텍스트를 쓸 수 있다.
 다음 코드를 통해 파일 쓰기의 기본적인 과정을 살펴보자.</p>
-<div class="listing"><pre class="line-numbers"><code class="language-python">f = open('hello.txt', 'w') # 1) 쓰기 모드로 파일 열기
-f.write('Hello World!\n') # 2) 파일에 문자열 쓰기
+<div class="listing"><pre class="line-numbers"><code class="language-python">f = open('hello.txt', 'w')  # 1) 쓰기 모드로 파일 열기
+f.write('Hello World!\n')   # 2) 파일에 문자열 쓰기
 f.write('Python file I/O\n')
 f.close() # 3) 파일 닫기</code></pre><div class="listing-caption">코드 8.11: write()로 파일에 문자열 쓰기</div></div>
 <p>이 코드를 하나하나 살펴보자.
@@ -446,8 +446,8 @@ f.close()
 
 # 한 번에 한 줄씩 읽기
 f = open('hello.txt', 'r')
-line1 = f.readline() # 첫 번째 줄
-line2 = f.readline() # 두 번째 줄
+line1 = f.readline()  # 첫 번째 줄
+line2 = f.readline()  # 두 번째 줄
 print(line1, line2)
 f.close()
 
@@ -498,11 +498,11 @@ with open('data.txt', 'r', encoding='utf-8') as f:
 <p>전통적으로 파이썬에서는 <code>os.path.join()</code>, <code>os.path.exists()</code> 같은 문자열 기반 함수로 파일 경로를 다뤘다. 파이썬 3.4부터 도입된 <code>pathlib</code> 모듈은 경로를 <strong>객체</strong>로 취급하여 훨씬 읽기 쉽고 일관된 API를 제공한다. 현대 파이썬 코드에서는 <code>pathlib</code>을 우선적으로 사용하도록 권장된다.</p>
 <p><pre class="line-numbers"><code class="language-python">from pathlib import Path
 
-p = Path('data') / 'scores.txt' # / 연산자로 경로 연결
-print(p.exists()) # True/False
-print(p.suffix) # '.txt'
-print(p.stem) # 'scores'
-print(p.parent) # PosixPath('data')
+p = Path('data') / 'scores.txt'  # / 연산자로 경로 연결
+print(p.exists())                # True/False
+print(p.suffix)                  # '.txt'
+print(p.stem)                    # 'scores'
+print(p.parent)                  # PosixPath('data')
 
 # 한 줄로 읽고 쓰기
 p.parent.mkdir(exist_ok=True) # data 디렉토리가 없으면 생성
@@ -607,7 +607,6 @@ print(count_lines('no_such_file.txt'))    # -1</code></pre></li>
 <li>점수가 한 줄에 하나씩 저장된 파일 <code>scores.txt</code>를 읽어 평균을 구하시오. 단, 숫자가 아닌 줄이 섞여 있을 수 있으므로 <code>try-except</code>로 <code>ValueError</code>를 잡아 그 줄은 건너뛰고, 처리한 유효 점수의 개수와 평균을 출력하시오.</p>
 <p><pre class="line-numbers"><code class="language-python">with open('scores.txt', 'w', encoding='utf-8') as f:
     f.write('85\n92\nabc\n77\n90\n')   # 숫자가 아닌 줄 하나 포함
-
 total, count = 0, 0
 with open('scores.txt', 'r', encoding='utf-8') as f:
     for line in f:
@@ -616,7 +615,6 @@ with open('scores.txt', 'r', encoding='utf-8') as f:
             count += 1
         except ValueError:
             print('건너뜀:', line.strip())
-
 print(f'유효 점수: {count}개, 평균: {total / count}')</code></pre></li>
 </ol></p></div></p>
 <details class="box summary" id="summary"><summary class="box-head">8장 요약</summary><div class="sum-body"><ul>

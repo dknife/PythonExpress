@@ -6,5 +6,5 @@ def gcd(a, b):
         return a
     return gcd(b, a % b) # 재귀 단계
 
-print(gcd(48, 18)) # 6
-print(gcd(100, 75)) # 25
+print(gcd(48, 18))   # 6
+print(gcd(100, 75))  # 25
