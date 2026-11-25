@@ -123,7 +123,7 @@ print(len(a))  # 리스트의 길이</code></pre>
 6</pre>
 <div class="listing-caption">코드 5.4: 인덱스로 리스트 요소 접근</div>
 <figure class="fig">
-<img class="gfx" src="img/ch05/ch05_img02.png" alt="figure">
+<img class="gfx" src="img/ch05/ch05_img02.png" style="width:62%" alt="figure">
 <p><figcaption>그림 5.1: 리스트 인덱스</figcaption></figure></p>
 <p>그림 5.1은 리스트 <code>a</code>의 원소와 인덱스의 관계를 시각적으로 보여 준다. 각 칸에 값이 저장되어 있고, 칸 위에 인덱스 번호가 표시되어 있다. 양수 인덱스는 앞에서부터, 음수 인덱스는 뒤에서부터 센다.</p>
 <h3>음수 인덱스</h3>
@@ -154,7 +154,7 @@ print(a * 3)  # 리스트 반복</code></pre>
 <div class="listing-caption">코드 5.6: 리스트의 연결과 반복 연산</div>
 <p><code>a + b</code>는 리스트 <code>a</code>의 원소 뒤에 리스트 <code>b</code>의 원소를 이어 붙인 새 리스트를 반환한다. 원본 리스트 <code>a</code>와 <code>b</code>는 변하지 않는다. <code>a * 3</code>은 <code>a</code>의 원소를 3번 반복한 새 리스트를 만든다.</p>
 <figure class="fig">
-<img class="gfx" src="img/ch05/ch05_img03.png" alt="figure">
+<img class="gfx" src="img/ch05/ch05_img03.png" style="width:72%" alt="figure">
 <p><figcaption>그림 5.2: 리스트의 연결과 반복 연산</figcaption></figure></p>
 <p>그림 5.2은 리스트의 연결(<code>+</code>)과 반복(<code>*</code>) 연산이 어떻게 동작하는지를 보여 준다. <code>+</code> 연산은 두 리스트를 나란히 이어 붙이고, <code>*</code> 연산은 원본 리스트를 지정된 횟수만큼 반복한다. 이 연산들은 문자열의 <code>+</code>(연결)와 <code>*</code>(반복)와 동일한 패턴이므로, 문자열을 이미 배운 학습자라면 자연스럽게 이해할 수 있을 것이다.</p>
 <h3>멤버 연산자: in, not in</h3>
@@ -243,7 +243,7 @@ for i, nation in enumerate(nations):
 <h3>리스트에 요소 추가/삭제</h3>
 <p>리스트는 생성 후에도 원소를 자유롭게 추가하거나 삭제할 수 있는 <strong>가변</strong>(mutable) 자료형이다. 이 특성 덕분에 프로그램 실행 중에 데이터를 동적으로 관리할 수 있다. 원소를 추가하고 삭제하는 세 가지 주요 방법을 알아보자.</p>
 <figure class="fig">
-<img class="gfx" src="img/ch05/ch05_img04.png" alt="figure">
+<img class="gfx" src="img/ch05/ch05_img04.png" style="width:65%" alt="figure">
 <p><figcaption>그림 5.3: 리스트의 추가와 삭제</figcaption></figure></p>
 <p>그림 5.3은 리스트에 원소를 추가하고 삭제하는 세 가지 방법을 시각적으로 보여 준다. 초록색은 추가되는 원소, 빨간색은 삭제되는 원소를 나타낸다.</p>
 <p><strong>1) append()  —  끝에 추가</strong></p>
@@ -347,7 +347,7 @@ print(a[::-1])  # 역순으로 추출</code></pre>
 [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]</pre>
 <div class="listing-caption">코드 5.20: 리스트 슬라이싱의 여러 형태</div>
 <figure class="fig">
-<img class="gfx" src="img/ch05/ch05_img05.png" alt="figure">
+<img class="gfx" src="img/ch05/ch05_img05.png" style="width:75%" alt="figure">
 <p><figcaption>그림 5.4: 슬라이싱 <code>a[2:5]</code>의 동작</figcaption></figure></p>
 <p>그림 5.4은 슬라이싱 <code>a[2:5]</code>의 범위를 시각적으로 보여 준다. 인덱스 2부터 4까지(5는 제외)의 원소가 추출되는 과정을 확인하자. start 인덱스(2)는 포함하고 end 인덱스(5)는 미포함한다.</p>
 <p>슬라이싱의 핵심 규칙을 정리하면 다음과 같다.</p>

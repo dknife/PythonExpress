@@ -115,7 +115,7 @@ print('100과 200의 합:', add(100, 200))</code></pre>
 이제 이 익명의 함수(lambda)의 변수 <code>add</code>에 대입해 준 다음 <code>add</code>라는 람다 함수에 100, 200 매개변수를 넣어서 덧셈 연산을 수행하고 있다.</p>
 <p>그림 11.1은 일반 함수와 람다 함수의 구조를 비교하여 보여 준다.</p>
 <figure class="fig">
-<img class="gfx" src="img/ch11/ch11_img02.png" alt="figure">
+<img class="gfx" src="img/ch11/ch11_img02.png" style="width:85%" alt="figure">
 <p><figcaption>그림 11.1: 일반 함수와 람다 함수의 구조 비교</figcaption></figure></p>
 <p>그림 11.1에서 보듯이, 일반 함수는 def 키워드, 함수 이름, 매개변수, return 문으로 구성되지만, 람다 함수는 매개변수와 표현식만으로 간결하게 표현된다.</p>
 <h3>람다 함수의 문법</h3>
@@ -202,7 +202,7 @@ print('성년 나이 목록:', adult_ages)</code></pre>
 일반적으로 특정한 목적으로 한번 사용한 후 뒤에는 재사용하지 않는 특징이 있다.</p>
 <p>그림 11.2은 <code>filter()</code> 함수의 동작 과정을 시각적으로 보여 준다.</p>
 <figure class="fig">
-<img class="gfx" src="img/ch11/ch11_img03.png" alt="figure">
+<img class="gfx" src="img/ch11/ch11_img03.png" style="width:85%" alt="figure">
 <p><figcaption>그림 11.2: filter() 함수의 동작</figcaption></figure></p>
 <p>그림 11.2에서 보듯이, 반복 가능한 객체 ages의 각 요소에 대해 람다 함수의 조건(x &gt;= 19)을 검사하여 True인 요소만 반환한다.</p>
 <p>음수 필터링에 람다 함수를 활용하는 예제도 살펴보자.</p>
@@ -256,7 +256,7 @@ cubic_a = [1, 8, 27, 64, 125, 216, 343]</pre>
 다음에 나타난 <code>for var in iterable</code>에는 반복 가능 객체의 내부 항목을 반복적으로 꺼내는 기능이 들어간다.
 이어서 나타나는 <code>if condition</code>은 필터의 기능을 하게 된다.</p>
 <figure class="fig">
-<img class="gfx" src="img/ch11/ch11_img04.png" alt="figure">
+<img class="gfx" src="img/ch11/ch11_img04.png" style="width:85%" alt="figure">
 <p><figcaption>그림 11.3: 리스트 축약 표현의 구조</figcaption></figure></p>
 <p>그림 11.3에서 보듯이, 표현식(map 기능), 반복(for 루프), 조건(filter 기능)의 세 부분으로 구성된다.</p>
 <h4>축약 표현식을 이용한 값의 수정</h4>
@@ -406,7 +406,7 @@ itemsize: 8</pre>
 <code>size</code>는 배열 원소의 개수인데 다음 코드와 같이 3개의 원소가 있을 경우 그 값은 3이 된다.</p>
 <p>그림 11.4은 1차원 및 2차원 <code>ndarray</code>의 구조를 시각적으로 보여 준다.</p>
 <figure class="fig">
-<img class="gfx" src="img/ch11/ch11_img05.png" alt="figure">
+<img class="gfx" src="img/ch11/ch11_img05.png" style="width:100%" alt="figure">
 <p><figcaption>그림 11.4: ndarray의 구조</figcaption></figure></p>
 <p>그림 11.4에서 보듯이, 1차원 배열은 하나의 축을 가지며, 2차원 배열은 행과 열의 두 축을 가진다. shape, ndim, dtype, size 등의 속성으로 배열의 구조를 확인할 수 있다.</p>
 <div class="table-wrap"><div class="table-caption">표 11.1: ndarray의 주요 속성</div><table><tr><th>속성</th><th>설명</th></tr><tr><td><code>ndim</code></td><td>배열 축 혹은 차원의 개수</td></tr><tr><td><code>shape</code></td><td>배열의 차원으로 (m, n) 형식의 튜플 형이다</td></tr><tr><td><code>size</code></td><td>배열의 원소의 개수이다. (m, n) shape 배열의 size는 m*n이다</td></tr><tr><td><code>dtype</code></td><td>배열 내의 원소의 형을 기술하는 객체이다</td></tr><tr><td><code>itemsize</code></td><td>배열 내의 원소의 크기를 바이트 단위로 기술한다</td></tr><tr><td><code>data</code></td><td>배열의 실제 원소를 포함하고 있는 버퍼</td></tr></table></div>
@@ -516,7 +516,7 @@ print('평균:', student_sum / 2)</code></pre>
 다음으로 <code>student_sum / 2</code>의 결과 역시 모든 원소에 대해서 <code>/ 2</code> 연산을 적용시켜 평균값을 출력하는데, 이것을 <strong class="term-ko">브로드캐스팅</strong><sup class="term">broadcasting</sup> 기능이라고 한다.</p>
 <h3>브로드캐스팅</h3>
 <p>브로드캐스팅은 크기가 다른 배열이나 배열과 스칼라 값 사이의 연산을 자동으로 처리하는 기능이다. <figure class="fig"></p>
-<img class="gfx" src="img/ch11/ch11_img06.png" alt="figure">
+<img class="gfx" src="img/ch11/ch11_img06.png" style="width:85%" alt="figure">
 <p><figcaption>그림 11.5: 넘파이 브로드캐스팅</figcaption></figure></p>
 <p>그림 11.5은 브로드캐스팅의 동작 과정을 보여 준다. 스칼라 값 100이 배열과 같은 크기로 자동 확장되어 원소별 연산이 수행된다.</p>
 <p>만일 A 회사의 사원 4명의 급여가 각각 300, 360, 400, 380만 원이라고 할 때, 회사에서 이들에게 100만 원의 상여금을 지급하는 경우를 생각해 보자.

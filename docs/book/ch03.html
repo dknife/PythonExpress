@@ -92,7 +92,7 @@ num = 300</pre>
 <p>그러나 프로그래밍 언어에서는 항상 순차적인 흐름만 있는 것은 아니다. 특정한 조건이 만족되는 경우에만 특정 명령어가 수행되도록 할 수도 있고 조건에 따라 서로 다른 일을 해야 할 때도 있다. 또한 같은 작업을 여러 번 반복해야 할 때도 있다. 이렇게 프로그램의 흐름을 제어하는 명령을 <strong class="term-ko">제어문</strong><sup class="term">control statement</sup>이라 한다.</p>
 <p>제어문에는 크게 두 가지 종류가 있다. 첫째는 <strong class="term-ko">조건문</strong><sup class="term">conditional statement</sup>으로, <code>if</code>, <code>if-else</code> 문과 같이 조건에 따라 실행할 코드를 선택하는 구문이다. 둘째는 <strong class="term-ko">반복문</strong><sup class="term">loop statement</sup>으로, <code>for</code>, <code>while</code> 문과 같이 특정 코드를 여러 번 반복 실행하는 구문이다. 그리고 <code>break</code>와 <code>continue</code>처럼 반복문의 흐름 자체를 변경하는 명령문도 있다. 이 장에서는 조건문과 반복문을 함께 살펴보자.</p>
 <figure class="fig">
-<img class="gfx" src="img/ch03/ch03_img02.png" alt="figure">
+<img class="gfx" src="img/ch03/ch03_img02.png" style="width:85%" alt="figure">
 <p><figcaption>그림 3.1: 프로그램의 세 가지 실행 구조</figcaption></figure></p>
 <p>그림 3.1에서 보듯이, 프로그램의 실행 구조는 순차, 조건, 반복의 세 가지로 구성된다.</p>
 <p>사실 모든 프로그램은 이 세 가지 구조  —  순차, 조건, 반복  —  의 조합으로 이루어진다. 아무리 복잡한 프로그램이라도 결국은 이 세 가지 구조를 적절히 결합하여 만들어진 것이다. 따라서 이 장에서 배우는 내용은 프로그래밍의 근간을 이루는 매우 중요한 개념이다.</p>
@@ -110,7 +110,7 @@ if age &lt; 20:
 <div class="listing-caption">코드 3.2: if 조건문을 이용한 출력</div>
 <p><code>age</code> 값이 18이므로 <code>age &lt; 20</code> 조건식이 참(<code>True</code>)이 되어 <code>print('청소년 할인')</code> 문장이 실행된다. 반면, <code>age = 24</code>와 같이 <code>age</code> 값이 20 이상의 값이 되면 조건식이 거짓(<code>False</code>)이 되어 아무런 출력도 없다. 즉, 흐름도 상에서 <code>if</code> 문의 다음에 실행문이 있지만, 조건이 참(<code>True</code>)이 아니므로 이 블록을 건너뛰게 된다.</p>
 <figure class="fig">
-<img class="gfx" src="img/ch03/ch03_img03.png" alt="figure">
+<img class="gfx" src="img/ch03/ch03_img03.png" style="width:95%" alt="figure">
 <p><figcaption>그림 3.2: 조건식에 따른 제어의 흐름</figcaption></figure></p>
 <p>그림 3.2의 가장 왼쪽 경우가 바로 이 단순한 <code>if</code> 문 구조이다. 이 외에도 두 번째와 세 번째 경우로 제시된 <code>if-else</code> 문과 <code>if-elif-else</code> 문과 같은 방식으로도 조건 실행 구조를 만들 수 있는데, 이들을 차례로 살펴볼 것이다.</p>
 <h3>조건문과 블록</h3>
@@ -218,7 +218,7 @@ else:
 <div class="listing-caption">코드 3.10: for 문을 이용한 반복 출력</div>
 <p><code>range(5)</code>는 0부터 4까지의 정수열 <code>0, 1, 2, 3, 4</code>를 생성한다. <code>for</code> 문은 이 값들을 하나씩 제어변수 <code>i</code>에 할당하면서 들여쓰기 블록을 반복 실행한다. 위 코드에서는 <code>i</code>의 값을 사용하지 않고 단순히 5번 반복만 하고 있다. 만일 "모두 환영합니다!!"를 10번 반복하고자 한다면 <code>range()</code> 괄호 안의 값만 10으로 고쳐주면 된다.</p>
 <figure class="fig">
-<img class="gfx" src="img/ch03/ch03_img04.png" alt="figure">
+<img class="gfx" src="img/ch03/ch03_img04.png" style="width:75%" alt="figure">
 <p><figcaption>그림 3.3: for 반복문의 흐름도</figcaption></figure></p>
 <p>그림 3.3에서 보듯이, 제어변수 <code>i</code>가 조건을 만족하는 동안 블록을 반복 실행한다.</p>
 <p>이처럼 반복문 <code>for</code>나 <code>while</code> 문 내에서 사용되는 변수는 <code>i</code>, <code>j</code>, <code>k</code>, <code>l,...</code>과 같은 알파벳 문자를 할당하는 것이 프로그래밍 언어의 오랜 관습이다. 이러한 변수를 C나 Java에서는 <strong class="term-ko">루프</strong><sup class="term">loop</sup> <strong>제어변수</strong>라고 한다. 위 반복문에서 새롭게 할당되는 변수 <code>i</code>처럼 실행문에서 사용되지 않는 루프변수는 <code>for _ in range(5):</code>와 같이 언더스코어(<code>_</code>)를 대신 넣어서 익명화시킬 수 있다.</p>
@@ -302,7 +302,7 @@ print()</code></pre>
 <div class="listing-caption">코드 3.15: while 문의 기본 사용</div>
 <p><code>while</code> 문은 먼저 조건식 <code>i &lt;= 5</code>를 검사한다. 조건이 참이면 블록을 실행하고 다시 조건을 검사하는 과정을 반복한다. <code>i</code>가 6이 되면 조건이 거짓이 되어 반복이 종료된다. 여기서 중요한 점은 블록 안에서 <code>i += 1</code>을 통해 제어변수를 직접 변경해야 한다는 것이다. <code>for</code> 문에서는 제어변수가 자동으로 변경되지만, <code>while</code> 문에서는 프로그래머가 직접 변경해야 한다.</p>
 <figure class="fig">
-<img class="gfx" src="img/ch03/ch03_img05.png" alt="figure">
+<img class="gfx" src="img/ch03/ch03_img05.png" style="width:75%" alt="figure">
 <p><figcaption>그림 3.4: while 반복문의 흐름도</figcaption></figure></p>
 <p>그림 3.4에서 보듯이, 조건이 거짓이 될 때까지 블록을 반복 실행한다.</p>
 <div class="box caution"><span class="chip">주의</span><p><code>while</code> 문에서 반복 조건이 항상 참이면 <strong class="term-ko">무한 루프</strong><sup class="term">infinite loop</sup>에 빠진다. 예를 들어 위 코드에서 <code>i += 1</code>을 빠뜨리면 <code>i</code>는 영원히 1인 채로 남아서 <code>i &lt;= 5</code>가 항상 참이 되어 프로그램이 끝나지 않는다. 반드시 루프 안에서 조건이 거짓이 되도록 변수를 변경해야 한다. 만약 무한 루프에 빠졌을 때는 <code>Ctrl+C</code> 키를 눌러서 강제로 프로그램을 종료할 수 있다.</p></div>
