@@ -91,7 +91,7 @@ print(person['몸무게'])</code></pre>
 <div class="listing-caption">코드 6.1: 딕셔너리 생성과 키로 값 조회</div>
 <p>위 코드에서 <code>person</code>이라는 딕셔너리는 세 개의 항목을 가지고 있다. <code>'이름'</code>이라는 키에 <code>'홍길동'</code>이라는 값이, <code>'나이'</code>라는 키에 <code>26</code>이라는 값이, <code>'몸무게'</code>라는 키에 <code>82</code>라는 값이 연결되어 있다. <code>person['이름']</code>처럼 대괄호 안에 키를 넣으면 해당 값을 조회할 수 있다.</p>
 <figure class="fig">
-<img class="tikz" src="img/fig/ch06/ch06_fig01.svg" alt="figure">
+<img class="gfx" src="img/ch06/ch06_img02.png" alt="figure">
 <p><figcaption>그림 6.1: 딕셔너리의 구조</figcaption></figure></p>
 <p>그림 6.1은 딕셔너리의 키-값 쌍 구조를 시각적으로 보여 준다. 각 항목은 키(key)와 값(value)의 쌍으로 이루어진다.</p>
 <p>딕셔너리의 키는 문자열뿐 아니라 정수도 사용할 수 있다. 학번을 키로, 이름을 값으로 가지는 딕셔너리를 만들어 보자.</p>
@@ -214,7 +214,7 @@ print(f'a = {a}, b = {b}')</code></pre>
 a = 20, b = 10</pre>
 <div class="listing-caption">코드 6.8: 튜플 패킹·언패킹과 변수 교환</div>
 <figure class="fig">
-<img class="tikz" src="img/fig/ch06/ch06_fig02.svg" alt="figure">
+<img class="gfx" src="img/ch06/ch06_img03.png" alt="figure">
 <p><figcaption>그림 6.2: 튜플의 패킹과 언패킹</figcaption></figure></p>
 <p>그림 6.2은 패킹과 언패킹의 과정을 시각적으로 보여 준다. 패킹은 여러 값을 하나의 튜플로 묶고, 언패킹은 튜플의 값을 개별 변수로 분리한다.</p>
 <p>특히 <code>a, b = b, a</code>는 파이썬에서 두 변수의 값을 교환하는 가장 간결한 방법이다. 다른 언어에서는 임시 변수를 사용하여 세 줄에 걸쳐 작성해야 하는 작업을 파이썬에서는 튜플 언패킹 덕분에 한 줄로 해결할 수 있다. 이것은 파이썬의 대표적인 "우아한" 문법 중 하나이다.</p>
@@ -278,7 +278,7 @@ print('대칭 차집합:', A ^ B)  # 또는 A.symmetric_difference(B)</code></pr
 대칭 차집합: {1, 2, 6, 7}</pre>
 <div class="listing-caption">코드 6.12: 합집합·교집합·차집합·대칭차집합</div>
 <figure class="fig">
-<img class="tikz" src="img/fig/ch06/ch06_fig03.svg" alt="figure">
+<img class="gfx" src="img/ch06/ch06_img04.png" alt="figure">
 <p><figcaption>그림 6.3: 집합 연산의 벤 다이어그램</figcaption></figure></p>
 <p>그림 6.3은 네 가지 집합 연산을 벤 다이어그램으로 보여 준다. 색칠된 영역이 각 연산의 결과를 나타낸다. 합집합(<code>|</code>)은 두 집합의 모든 원소를 합친 것이고, 교집합(<code>&amp;</code>)은 양쪽 모두에 있는 원소만 모은 것이다. 차집합(<code>-</code>)은 <code>A</code>에는 있지만 <code>B</code>에는 없는 원소를 구하고, 대칭 차집합(<code>^</code>)은 한쪽에만 있는 원소를 모은 것이다.</p>
 <p>이 연산들은 실제 프로그래밍에서도 자주 활용된다. 예를 들어 "A 수업과 B 수업을 모두 수강하는 학생"은 교집합, "A 수업만 수강하는 학생"은 차집합, "A 또는 B 중 하나라도 수강하는 학생"은 합집합으로 구할 수 있다.</p>
@@ -309,7 +309,7 @@ True</pre>
 <div class="table-wrap"><div class="table-caption">표 6.3: 자료형 특성 비교</div><table><tr><th><strong>구분</strong></th><th><strong>리스트</strong></th><th><strong>튜플</strong></th><th><strong>딕셔너리</strong></th><th><strong>집합</strong></th></tr><tr><td>기호</td><td><code>[ ]</code></td><td><code>( )</code></td><td><code>{키:값}</code></td><td><code>{ }</code></td></tr><tr><td>순서</td><td>있음</td><td>있음</td><td>있음<sup class="term">*</sup></td><td>없음</td></tr><tr><td>변경</td><td>가능</td><td>불가능</td><td>가능</td><td>가능</td></tr><tr><td>중복</td><td>허용</td><td>허용</td><td>키 중복 불가</td><td>불허</td></tr><tr><td>인덱싱</td><td>가능</td><td>가능</td><td>키로 접근</td><td>불가</td></tr></table></div>
 <p>그림 6.4은 네 가지 자료형의 핵심 특성을 한눈에 비교할 수 있도록 정리한 것이다.</p>
 <figure class="fig">
-<img class="tikz" src="img/fig/ch06/ch06_fig04.svg" alt="figure">
+<img class="gfx" src="img/ch06/ch06_img05.png" alt="figure">
 <p><figcaption>그림 6.4: 컬렉션 자료형 비교</figcaption></figure></p>
 <h3>상황별 자료형 선택 가이드</h3>
 <p>"어떤 자료형을 사용할까?"라는 질문에 대한 답은 데이터의 특성에 따라 달라진다. 핵심적인 판단 기준을 정리하면 다음과 같다.</p>

@@ -91,7 +91,7 @@
     return value # 생략 가능</code></pre><div class="listing-caption">코드 4.1: 함수 정의의 기본 문법</div></div>
 <p><code>def</code> 다음에 함수 이름을 적고, 괄호 안에 매개변수를 나열한 뒤 콜론(<code>:</code>)으로 헤드를 마무리한다. 그 아래에 들여쓰기된 코드 블록이 함수의 <strong>몸체</strong>(body)가 된다. 조건문이나 반복문의 블록과 마찬가지로, 함수 몸체도 반드시 들여쓰기를 해야 파이썬이 함수의 범위를 인식한다. 마지막으로 <code>return</code> 문은 함수가 계산한 결과를 호출한 곳으로 돌려줄 때 사용하며, 반환할 값이 없으면 생략할 수 있다.</p>
 <figure class="fig">
-<img class="tikz" src="img/fig/ch04/ch04_fig01.svg" alt="figure">
+<img class="gfx" src="img/ch04/ch04_img02.png" alt="figure">
 <p><figcaption>그림 4.1: 함수 호출 과정</figcaption></figure></p>
 <p>그림 4.1은 함수 호출의 전체 과정을 보여 준다. 인자가 매개변수에 전달되고, 함수 본체가 실행된 뒤, 결과가 반환값으로 돌아오는 흐름을 확인하자. 인자가 매개변수에 전달되고, 함수 본체가 실행된 뒤, 결과가 반환값으로 돌아온다.</p>
 <p>이제 간단한 예제를 통해 함수를 정의하고 호출하는 방법을 직접 확인해 보자. 아래 코드에서 <code>print_star()</code>는 별표(<code>*</code>) 한 줄을 출력하는 함수이다. 한 번 정의해 두면 이름만으로 몇 번이든 호출할 수 있다.</p>
@@ -322,7 +322,7 @@ NameError: name 'y1' is not defined. Did you mean: 'x1'?</pre>
 <p>함수 내부에서 변수에 <strong>할당</strong>을 하면 사정이 달라진다. 파이썬은 같은 이름의 전역변수가 이미 있더라도 함수 안에서의 할당을 <strong>새로운 지역변수의 생성</strong>으로 처리한다. 위 코드에서 <code>x2 = 2</code>는 전역변수 <code>x2</code>(값 20)와 무관한 새 지역변수를 함수 안에 만든다. 그래서 함수 호출이 끝나고 바깥에서 <code>x2</code>를 출력하면 여전히 20이다. <code>y1 = 40</code>, <code>y2 = 50</code>도 같은 이유로 함수 호출이 끝나면 사라지는 지역변수다.</p>
 <p>이러한 자동 생성을 막고 함수 안에서 전역변수를 직접 다루고 싶다면 <code>global</code> 키워드로 그 이름을 명시적으로 전역변수로 선언해야 한다. 위 코드에서는 <code>global x1</code> 선언 덕분에 <code>x1 = 1</code>이 새 지역변수를 만들지 않고 전역변수 <code>x1</code>의 값을 10에서 1로 직접 바꾼다. 그래서 함수 호출이 끝난 뒤에 <code>print(x1, x2, x3)</code>을 실행하면 전역 <code>x1</code>이 바뀐 <code>1 20 30</code>이 출력된다.</p>
 <figure class="fig">
-<img class="tikz" src="img/fig/ch04/ch04_fig02.svg" alt="figure">
+<img class="gfx" src="img/ch04/ch04_img03.png" alt="figure">
 <p><figcaption>그림 4.2: 전역변수와 지역변수의 범위</figcaption></figure></p>
 <p>그림 4.2은 전역변수와 지역변수의 범위를 시각적으로 보여 준다. 전역변수는 함수 안에서 읽을 수 있지만, 지역변수는 함수 밖에서 접근할 수 없다. 변수의 접근 범위와 관련해 잘 기억해야 할 두 가지 상황을 구체적 예와 함께 살펴보자.</p>
 <h3>같은 이름의 전역변수와 지역변수</h3>
@@ -380,7 +380,7 @@ print(f'{a} + {b} = {a + b}')</code></pre>
 <div class="listing-caption">코드 4.18: int(input()) 패턴으로 정수 입력</div>
 <p><code>int(input(...))</code> 패턴은 파이썬에서 정수 입력을 받을 때 가장 많이 사용되는 관용적 표현이다. 실수를 입력받으려면 <code>int</code> 대신 <code>float</code>를 사용하면 된다.</p>
 <figure class="fig">
-<img class="gfx" src="img/ch04/ch04_img02.png" alt="figure">
+<img class="gfx" src="img/ch04/ch04_img04.png" alt="figure">
 <p><figcaption>그림 4.3: int(input()) 패턴의 동작 과정</figcaption></figure></p>
 <p>그림 4.3은 <code>int(input(...))</code> 패턴의 동작 과정을 보여 준다. <code>input()</code> 함수는 항상 문자열을 반환하므로 <code>int()</code>로 정수 변환하는 단계가 필요하다.</p>
 <div class="box caution"><span class="chip">주의</span><p><code>input()</code>의 반환값은 항상 문자열이다. 숫자 연산 전에 반드시 <code>int()</code> 또는 <code>float()</code>로 변환해야 한다. 만약 사용자가 "abc"처럼 숫자가 아닌 값을 입력한 상태에서 <code>int()</code>로 변환하면 <code>ValueError</code>가 발생한다. 이러한 오류를 방지하려면 나중에 배울 예외 처리(<code>try-except</code>)를 활용하면 된다.</p></div>
