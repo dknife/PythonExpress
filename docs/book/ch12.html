@@ -249,6 +249,7 @@ max    95.000000  91.000000  95.00000</pre>
 <code>shape</code>은 (행 수, 열 수)를 튜플로 반환하여 데이터의 크기를 알려 준다.
 <code>info()</code>는 각 열의 이름, 데이터 타입, 결측값이 아닌 값의 수를 보여 준다.
 <code>describe()</code>는 수치형 열에 대해 <strong class="term-ko">개수</strong><sup class="term">count</sup>, <strong class="term-ko">평균</strong><sup class="term">mean</sup>, <strong class="term-ko">표준편차</strong><sup class="term">std</sup>, <strong class="term-ko">최솟값</strong><sup class="term">min</sup>, <strong class="term-ko">최댓값</strong><sup class="term">max</sup> 등의 기술 통계를 한 번에 계산해 준다.</p>
+<div class="box note"><span class="chip">잠깐</span><span class="box-title">pandas 버전에 따른 자료형 표시</span><p>위 <code>info()</code> 결과에서 문자열 열의 자료형이 <code>str</code>로 표시되는데, 이는 pandas 3.0 이상의 표기이다. pandas 1.x·2.x에서는 같은 열이 <code>object</code>로, 요약 줄도 <code>dtypes: int64(3), object(1)</code>로 나온다. 둘 다 파이썬 문자열을 가리키므로 의미는 같다.</p></div>
 <h3>데이터 선택과 필터링</h3>
 <p>DataFrame에서 원하는 데이터를 선택하는 방법은 크게 열 선택, 행 선택, 조건 필터링의 세 가지이다.</p>
 <pre class="line-numbers"><code class="language-python">import pandas as pd

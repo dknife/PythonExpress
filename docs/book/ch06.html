@@ -124,12 +124,12 @@ print(person)</code></pre>
 <div class="listing-caption">코드 6.3: 딕셔너리 항목의 추가·수정·삭제</div>
 <p>삭제는 리스트와 마찬가지로 <code>del</code> 키워드를 사용한다. <code>del person['몸무게']</code>는 키가 <code>'몸무게'</code>인 항목 전체(키와 값 모두)를 삭제한다.</p>
 <div class="box caution"><span class="chip">주의</span><p>존재하지 않는 키로 접근하면 <code>KeyError</code>가 발생한다.
-안전하게 값을 조회하려면 <code>get()</code> 메소드를 사용하자. <code>get()</code>은 키가 존재하면 값을 반환하고, 존재하지 않으면 오류 대신 <code>None</code>을 반환한다. 이 방법은 "키가 있을 수도 있고 없을 수도 있는" 상황에서 특히 유용하다.
+안전하게 값을 조회하려면 <code>get()</code> 메소드를 사용하자. <code>get()</code>은 키가 존재하면 값을 반환하고, 존재하지 않으면 오류 대신 <code>None</code>을 반환한다. 두 번째 인자로 기본값을 지정하면(<code>get(키, 기본값)</code>) 키가 없을 때 그 값을 대신 돌려준다. 이 방법은 "키가 있을 수도 있고 없을 수도 있는" 상황에서 특히 유용하다.
 <pre class="pyout">print(person.get('취미')) # 키가 없으면 None 반환
 print(person.get('이름')) # '홍길동' 반환</pre></p></div>
 <h3>딕셔너리 메소드</h3>
 <p>딕셔너리는 키, 값, 또는 키-값 쌍을 조회하는 여러 메소드를 제공한다. 가장 자주 사용하는 메소드를 표로 정리하면 다음과 같다.</p>
-<div class="table-wrap"><div class="table-caption">표 6.1: 딕셔너리 주요 메소드</div><table><tr><th><strong>메소드</strong></th><th><strong>설명</strong></th></tr><tr><td><code>keys()</code></td><td>모든 키를 반환한다.</td></tr><tr><td><code>values()</code></td><td>모든 값을 반환한다.</td></tr><tr><td><code>items()</code></td><td>모든 항목을 (키, 값) 쌍으로 반환한다.</td></tr><tr><td><code>get(key)</code></td><td>키에 대한 값을 반환한다. 키가 없으면 <code>None</code>을 반환한다.</td></tr><tr><td><code>pop(key)</code></td><td>키에 대한 값을 반환하고 항목을 삭제한다.</td></tr><tr><td><code>clear()</code></td><td>딕셔너리의 모든 항목을 삭제한다.</td></tr></table></div>
+<div class="table-wrap"><div class="table-caption">표 6.1: 딕셔너리 주요 메소드</div><table><tr><th><strong>메소드</strong></th><th><strong>설명</strong></th></tr><tr><td><code>keys()</code></td><td>모든 키를 반환한다.</td></tr><tr><td><code>values()</code></td><td>모든 값을 반환한다.</td></tr><tr><td><code>items()</code></td><td>모든 항목을 (키, 값) 쌍으로 반환한다.</td></tr><tr><td><code>get(key[, 기본값])</code></td><td>키에 대한 값을 반환한다. 키가 없으면 <code>None</code>(또는 지정한 기본값)을 반환한다.</td></tr><tr><td><code>pop(key)</code></td><td>키에 대한 값을 반환하고 항목을 삭제한다.</td></tr><tr><td><code>clear()</code></td><td>딕셔너리의 모든 항목을 삭제한다.</td></tr></table></div>
 <pre class="line-numbers"><code class="language-python">person = {'이름': '홍길동', '나이': 26, '몸무게': 82}
 
 print(person.keys())
@@ -252,6 +252,7 @@ print(s3)</code></pre>
 {1, 2, 3}
 {'h', 'l', 'o', 'e'}</pre>
 <div class="listing-caption">코드 6.10: 집합의 여러 가지 생성 방법</div>
+<div class="box caution"><span class="chip">주의</span><p>집합은 <strong>순서가 없으므로</strong> 원소가 출력되는 순서는 실행 환경이나 실행할 때마다 달라질 수 있다. 위 <code>set('hello')</code>의 결과도 <code>{'h', 'l', 'o', 'e'}</code>가 아닌 다른 순서로 나올 수 있다. 집합을 늘 같은 순서로 보고 싶으면 <code>sorted()</code>로 정렬한다.</p></div>
 <p><code>s2</code>를 보면 리스트 <code>[1, 2, 2, 3, 3, 3]</code>에서 중복된 값이 자동으로 제거되어 <code>{1, 2, 3}</code>만 남은 것을 확인할 수 있다. <code>s3</code>에서는 문자열 <code>'hello'</code>의 각 문자가 개별 원소가 되는데, <code>'l'</code>이 두 번 등장하지만 집합에서는 하나만 유지된다. 또한 출력 결과에서 원소의 순서가 입력 순서와 다를 수 있다는 점에 주목하자  —  집합은 순서가 없기 때문이다.</p>
 <div class="box caution"><span class="chip">주의</span><p>빈 집합을 만들 때 <code>{}</code>를 사용하면 빈 <strong>딕셔너리</strong>가 생성된다.
 빈 집합은 반드시 <code>set()</code>으로 만들어야 한다. 이것은 딕셔너리와 집합이 모두 중괄호를 사용하기 때문에 발생하는 혼동으로, 파이썬이 <code>{}</code>를 딕셔너리로 우선 해석하기 때문이다.</p></div>
@@ -368,7 +369,7 @@ print('가격 범위:', price_range)</code></pre>
 할인 가능: {'사과', '멜론'}
 가격 범위: (3000, 6000)</pre>
 <div class="listing-caption">코드 6.16: 자료형을 조합한 과일 가게 프로그램</div>
-<p>이 프로그램에서 과일 가격 데이터는 "과일 이름으로 가격을 조회"하는 구조이므로 딕셔너리가 적합하다. 과일 이름의 순서 있는 목록이 필요할 때는 리스트로 변환했다. 할인 대상 과일 중 실제로 판매 중인 과일을 찾을 때는 집합의 교집합 연산을 활용했다. 그리고 가격 범위는 "한 번 결정되면 바뀌지 않는" 정보이므로 튜플에 저장했다. 이처럼 각 자료형의 특성을 이해하고 적절히 조합하면 명확하고 효율적인 프로그램을 작성할 수 있다. 파이썬의 자료형 힌트를 활용한 안전한 프로그래밍은 PEP 484에서 소개하고 있다.</p>
+<p>이 프로그램에서 과일 가격 데이터는 "과일 이름으로 가격을 조회"하는 구조이므로 딕셔너리가 적합하다. 과일 이름의 순서 있는 목록이 필요할 때는 리스트로 변환했다. 할인 대상 과일 중 실제로 판매 중인 과일을 찾을 때는 집합의 교집합 연산을 활용했다. 그리고 가격 범위는 "한 번 결정되면 바뀌지 않는" 정보이므로 튜플에 저장했다. 이처럼 각 자료형의 특성을 이해하고 적절히 조합하면 명확하고 효율적인 프로그램을 작성할 수 있다. 참고로 <code>할인 가능</code>은 집합이므로 출력되는 원소의 순서는 실행마다 달라질 수 있다. 파이썬의 자료형 힌트를 활용한 안전한 프로그래밍은 PEP 484에서 소개하고 있다.</p>
 <div class="box keypoint"><span class="chip">요점</span><p>리스트(변경 가능, 순서 있음), 튜플(변경 불가, 순서 있음), 딕셔너리(키-값 쌍), 집합(중복 불허, 순서 없음)의 특성을 정확히 이해하고, 데이터의 성격에 맞는 자료형을 선택해야 한다. <code>list()</code>, <code>tuple()</code>, <code>set()</code> 함수로 자료형을 상호 변환할 수 있으며, 실제 프로그램에서는 여러 자료형을 조합하여 사용하는 경우가 많다.</p></div>
 <p><span id="labs"></span><div class="box lab"><div class="lab-title">실습을 통한 6 장 개념 정리</div><ol>
 <li>과일 이름(키)과 가격(값)을 저장하는 딕셔너리 <code>fruits</code>를 만들고, <code>for</code> 문과 <code>items()</code>를 사용하여 "사과: 1500원" 형식으로 모든 항목을 출력하시오.
@@ -456,7 +457,7 @@ result = tuple(unique_sorted)
 print(result)
 print(type(result))
 print(len(result))</code></pre></li>
-<li class="ex-item" data-ex="6"><span class="diff"><span class="d2">★★</span></span>  딕셔너리 축약 표현(dictionary comprehension)을 사용하여 1부터 5까지의 정수를 키로, 각 정수의 세제곱을 값으로 가지는 딕셔너리를 생성하여 출력하시오.
+<li class="ex-item" data-ex="6"><span class="diff"><span class="d2">★★</span></span>  반복문을 사용하여 1부터 5까지의 정수를 키로, 각 정수의 세제곱을 값으로 가지는 딕셔너리를 생성하여 출력하시오.
 <pre class="pyout">{1: 1, 2: 8, 3: 27, 4: 64, 5: 125}</pre></li>
 <li class="ex-item" data-ex="7"><span class="diff"><span class="d3">★★★</span></span>  다음과 같은 중첩 딕셔너리가 주어졌을 때, 각 학생의 이름과 평균 점수를 출력하는 프로그램을 작성하시오.
 <pre class="line-numbers"><code class="language-python">students = {

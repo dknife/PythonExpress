@@ -16,7 +16,7 @@ def my_function() :
     print('함수 안:', x1, x2, x3, y1, y2)
 
 
-my_function(); # 함수 호출, x1, x2, x3, y1, y2 출력
+my_function() # 함수 호출, x1, x2, x3, y1, y2 출력
 # 예상 출력: 1, 2, 30, 40, 50
 
 print('함수 밖:')

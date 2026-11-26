@@ -93,7 +93,7 @@
 <figure class="fig">
 <img class="gfx" src="img/ch04/ch04_img02.png" style="width:95%" alt="figure">
 <p><figcaption>그림 4.1: 함수 호출 과정</figcaption></figure></p>
-<p>그림 4.1은 함수 호출의 전체 과정을 보여 준다. 인자가 매개변수에 전달되고, 함수 본체가 실행된 뒤, 결과가 반환값으로 돌아오는 흐름을 확인하자. 인자가 매개변수에 전달되고, 함수 본체가 실행된 뒤, 결과가 반환값으로 돌아온다.</p>
+<p>그림 4.1은 함수 호출의 전체 과정을 보여 준다. 인자가 매개변수에 전달되고, 함수 본체가 실행된 뒤, 결과가 반환값으로 돌아오는 흐름을 확인하자.</p>
 <p>이제 간단한 예제를 통해 함수를 정의하고 호출하는 방법을 직접 확인해 보자. 아래 코드에서 <code>print_star()</code>는 별표(<code>*</code>) 한 줄을 출력하는 함수이다. 한 번 정의해 두면 이름만으로 몇 번이든 호출할 수 있다.</p>
 <pre class="line-numbers"><code class="language-python">def print_star(): # 별표를 출력하는 함수 정의
     print('************************')
@@ -170,6 +170,7 @@ greet('영희', '반갑습니다')  # 기본값 대신 전달한 값 사용</cod
 반갑습니다, 영희님!</pre>
 <div class="listing-caption">코드 4.6: 기본값을 가진 매개변수</div>
 <p>첫 번째 호출에서는 <code>greeting</code> 인자를 생략했으므로 기본값 <code>'안녕하세요'</code>가 사용되었다. 두 번째 호출에서는 <code>'반갑습니다'</code>를 직접 전달하여 기본값을 덮어썼다. 이처럼 기본값 매개변수를 활용하면 함수를 호출하는 코드가 더 간결해진다.</p>
+<div class="box caution"><span class="chip">주의</span><p>기본값으로는 <code>리스트</code>나 <code>딕셔너리</code> 같은 <strong>가변 객체를 쓰지 않는 것</strong>이 좋다. 기본값은 함수가 정의될 때 한 번만 만들어져 여러 번의 호출이 함께 사용하므로, <code>def f(x, items=[])</code>처럼 쓰면 앞선 호출에서 바뀐 값이 다음 호출에 그대로 남는 함정이 생긴다. 이럴 때는 기본값을 <code>None</code>으로 두고 함수 안에서 <code>if items is None: items = []</code>처럼 새로 만든다.</p></div>
 <p>또한 <strong class="term-ko">키워드 인자</strong><sup class="term">keyword argument</sup>를 사용하면 매개변수 이름을 지정하여 순서와 관계없이 값을 전달할 수 있다. 매개변수가 많은 함수에서 특히 유용하다.</p>
 <pre class="line-numbers"><code class="language-python">greet(greeting='어서 오세요', name='민수')</code></pre>
 <pre class="termout">어서 오세요, 민수님!</pre>
@@ -304,7 +305,7 @@ def my_function() :
     print('함수 안:', x1, x2, x3, y1, y2)
 
 
-my_function(); # 함수 호출, x1, x2, x3, y1, y2 출력
+my_function() # 함수 호출, x1, x2, x3, y1, y2 출력
 # 예상 출력: 1, 2, 30, 40, 50
 
 print('함수 밖:')

@@ -8,7 +8,7 @@ except ZeroDivisionError:
     print('오류: 0으로 나눌 수 없습니다.')
 except ValueError:
     print('오류: 정수를 입력하세요.')
-except:
+except Exception:
     print('오류: 10 2처럼 두 수를 입력하세요.')
 else: # 예외가 없을 때만 실행
     print('{} / {} = {}'.format(a, b, result))

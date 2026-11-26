@@ -504,7 +504,7 @@ print(acc.get_balance())  # 120000
 <div class="listing-caption">코드 9.11: 캡슐화로 은행 계좌 보호하기</div>
 <p>위 예제에서 <code>__balance</code>는 외부에서 직접 접근할 수 없으며,
 반드시 <code>deposit()</code>, <code>withdraw()</code>, <code>get_balance()</code> 메소드를 통해서만 접근해야 한다.
-이렇게 하면 잔액이 임의로 변경되는 것을 방지할 수 있다.
+이렇게 하면 잔액이 임의로 변경되는 것을 방지할 수 있다. 참고로 뒤의 <code>@property</code> 항목에서는 이 <code>get_balance()</code>를 더 파이썬다운 방식으로 바꾸어, 메소드 호출 없이 속성처럼 잔액을 읽는 방법을 살펴본다.
 <code>deposit()</code> 메소드는 금액이 0보다 큰 경우에만 입금을 허용하고,
 <code>withdraw()</code> 메소드는 출금 금액이 잔액 이하인 경우에만 출금을 허용한다.
 이러한 검증 로직이 메소드 안에 포함되어 있기 때문에 데이터의 무결성이 보장되는 것이다.</p>

@@ -105,7 +105,7 @@
 프로그램이 실행되기 전에 발견되므로, 코드를 수정해야 실행할 수 있다.</p>
 <div class="listing"><pre class="line-numbers"><code class="language-python"># 닫는 따옴표 누락 -- 구문 오류
 print('Hello World!)
-# SyntaxError: EOL while scanning string literal
+# SyntaxError: unterminated string literal (detected at line 1)
 
 # if 문 뒤에 콜론 누락
 if True
@@ -191,8 +191,8 @@ except [예외 종류]:
 <pre class="line-numbers"><code class="language-python">try:
     a, b = input('두 수를 입력하세요: ').split()
     result = int(a) / int(b)
-    print('{}/{} = {}'.format(a, b, result))
-except:
+    print(f'{a}/{b} = {result}')
+except Exception:
     print('수가 정확한지 확인하세요.')</code></pre>
 <pre class="termout">두 수를 입력하세요: <span class="userin">10 0</span>
 수가 정확한지 확인하세요.</pre>
@@ -206,6 +206,7 @@ except:
 코드가 실행된다.
 이와 같이 <code>try-except</code> 문을 이용함으로써 프로그램은 급작스럽게 종료되지 않고
 사용자에게 대처할 수 있는 방법을 제시할 수 있으며, 이전의 프로그램에 비해 안정적으로 작동하게 된다.</p>
+<div class="box caution"><span class="chip">주의</span><p>위 예제의 <code>except Exception:</code>은 대부분의 오류를 한꺼번에 받는다. 간단한 프로그램에서는 편리하지만, 오류 종류에 따라 다르게 대처하려면 다음 절처럼 <code>ValueError</code>, <code>ZeroDivisionError</code>와 같이 <strong>구체적인 예외</strong>를 명시하는 것이 좋다. 한편 아무 예외도 적지 않은 <code>except:</code>는 <code>KeyboardInterrupt</code>(강제 종료) 같은 신호까지 삼켜 버그를 숨기므로 쓰지 않는다.</p></div>
 <h3>다중 except  —  구체적인 예외를 명시하기</h3>
 <p>다음 코드는 예외가 발생할 경우 "수가 정확한지 확인하세요."와 같은 메시지를 출력하는데
 구체적인 상황에 대한 처리를 위해서는 <code>except</code> 다음에 위에서 열거한 예외를 적어주는 것이 좋을 것이다.
@@ -261,7 +262,7 @@ except ZeroDivisionError:
     print('오류: 0으로 나눌 수 없습니다.')
 except ValueError:
     print('오류: 정수를 입력하세요.')
-except:
+except Exception:
     print('오류: 10 2처럼 두 수를 입력하세요.')
 else: # 예외가 없을 때만 실행
     print('{} / {} = {}'.format(a, b, result))</code></pre><div class="listing-caption">코드 8.8: else로 정상 실행 결과 출력</div></div>

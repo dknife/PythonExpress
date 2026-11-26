@@ -3,7 +3,7 @@
 
 # 닫는 따옴표 누락 -- 구문 오류
 print('Hello World!)
-# SyntaxError: EOL while scanning string literal
+# SyntaxError: unterminated string literal (detected at line 1)
 
 # if 문 뒤에 콜론 누락
 if True
